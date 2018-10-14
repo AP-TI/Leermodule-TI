@@ -1,5 +1,6 @@
 # Deel 2
-## DEEL2_1A
+## Oefening 1
+### 1a
 ```
 create database ap;
 ```
@@ -19,7 +20,7 @@ INSERT INTO afdeling (afdnr, budget, locatie, telcontact, isactief, gempunten)
 VALUES ('12345', 2000.25, 'Antwerpen', '(123)45 89 12', false, 12.43);
 ```
 
-## DEEL2_1B
+### 1b
 ```
 create table tblopleiding
 (
@@ -58,7 +59,7 @@ create table tblgevolgdeopleidingen
 );
 ```
 
-## DEEL2_1C
+### 1c
 ```
 Create database renting;
 ```
@@ -103,7 +104,7 @@ create table tblhuurcontract
 );
 ```
 
-## DEEL2_1D
+### 1d
 ```
 create table tblstudent
 (
@@ -143,4 +144,19 @@ create table tblresultaat
     datum date,
     resultaat dec(4,2)
 );
+```
+## Oefening 2
+```
+create table SPELERS_KOPIE
+(
+    partnervan int,
+    voorletters char(4)
+) 
+AS 
+(
+    SELECT * FROM Tennis.Spelers WHERE plaats = "Den Haag"
+);
+```
+```
+SELECT * FROM spelers_kopie;
 ```
