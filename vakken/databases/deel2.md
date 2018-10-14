@@ -160,3 +160,18 @@ AS
 ```
 SELECT * FROM spelers_kopie;
 ```
+## Oefening 3
+```
+create table lessen
+(
+    lesnr char(5) not null,
+    spelersnr int,
+    aanwezig bool,
+    lesdatum date,
+    primary key(lesnr, spelersnr),
+    unique(spelersnr, lesdatum),
+    foreign key(spelersnr) references spelers1(spelersnr) 
+		on delete cascade /*update bij het verwijderen van een speler*/
+        on update cascade /*update bij het aanpassen van een speler*/
+);
+```
