@@ -58,7 +58,7 @@ create table tblgevolgdeopleidingen
 );
 ```
 
-# DEEL2_1C
+## DEEL2_1C
 ```
 Create database renting;
 ```
@@ -100,5 +100,47 @@ create table tblhuurcontract
     foreign key (kamernr) references tblkamerbestand(kamernr),
     contractduur timestamp,
     datumeindecontract date
+);
+```
+
+## DEEL2_1D
+```
+create table tblstudent
+(
+    studentnr int auto_increment primary key,
+    naam varchar(100),
+    adres varchar(100),
+    plaats varchar(100),
+    geboortedatum date
+);
+```
+```
+create table tblcursus
+(
+    cursusnr int primary key,
+    cursusomschrijving varchar(1000)
+);
+```
+```
+create table tblmodule
+(
+    cursusomschrijving varchar(500),
+    foreign key (cursusomschrijving) references tblcursus(cursusomschrijving),
+    modulenr int primary key,
+    onderdeel varchar(100),
+    omschrijving varchar(500)
+);
+```
+```
+create table tblresultaat
+(
+    studentnr int,
+    foreign key (studentnr) references tblstudent(studentnr),
+    cursusnr int,
+    foreign key (cursusnr) references tblcursus(cursusnr),
+    modulenr int,
+    foreign key (modulenr) references tblmodule(modulenr),
+    datum date,
+    resultaat dec(4,2)
 );
 ```
