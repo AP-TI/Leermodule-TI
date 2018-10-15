@@ -70,3 +70,71 @@ SELECT
 FROM 
     spelers;
 ```
+## Oefening 3:
+### 3A
+```
+SELECT
+    spelersnr,
+    naam,
+    concat('+31(0)', RIGHT(TELEFOON, (LENGTH(TELEFOON) - 1))) AS telefoon
+FROM
+    spelers;
+```
+### 3B
+```
+SELECT
+    spelersnr,
+    naam,
+    CASE
+        WHEN (MONTH(geb_datum) = MONTH(CURRENT_DATE())) AND (DAY(geb_datum) = DAY(CURRENT_DATE())) THEN 'JARIG!'
+        ELSE 'niet jarig'
+    END AS FEEST
+FROM 
+    spelers;
+```
+## Oefening 4:
+### 4A
+```
+SELECT 
+    max(gewonnen-verloren) AS maximum
+FROM 
+    wedstrijden;
+```
+### 4B
+```
+SELECT 
+    count(wedstrijdnr) AS aantal
+FROM 
+    wedstrijden;
+```
+## EXTRA
+### EX1
+```
+SELECT 
+    naam as Uitgever
+FROM 
+    tbluitgevers;
+```
+Of uitgebreider:
+```
+SELECT 
+    replace(naam, ' ', '_') as Uitgever
+FROM 
+    tbluitgevers;
+```
+### EX2
+```
+SELECT 
+    lower(naam)
+FROM 
+    tblgamedefinitions
+;
+```
+### EX3
+```
+SELECT 
+    replace(replace(lower(naam), '-', '_'), ' ', '_') as Game
+FROM 
+    tblgamedefinitions
+;
+```
