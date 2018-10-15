@@ -26,7 +26,7 @@ o	**cd map1/map2/map3** gaat naar map3 in map2 in map1
 o	**cd /** gaat naar root-directory
 -	Wildcards: voorbeelden (zelf af te leiden, super easy)
 
- [image wildcards](/afb/wildcards.png)
+ ![image wildcards](afb/wildcards.png)
 
 -	**cp (item)** maakt een copy van (item)
 -	**mv (item)** verplaats/hernoem (item)
