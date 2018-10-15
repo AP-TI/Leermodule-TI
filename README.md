@@ -3,7 +3,7 @@
 ## Databases 1
 - [Oefeningen](/vakken/databases/algemeen.md)
 ## Programmeren 1
-- COMING
+- [Oefeningen](/vakken/programmeren/algemeen.md)
 ## Systeemanalyse
 - COMING
 ## Wiskunde
