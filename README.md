@@ -6,7 +6,5 @@
 - [Oefeningen](/vakken/programmeren/algemeen.md)
 ## Systeemanalyse
 - COMING
-## Wiskunde
-- COMING
 ## Systeembeheer
-- COMING
+- [Samenvattingen](/vakken/systeembeheer/algemeen.md)
