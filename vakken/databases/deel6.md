@@ -149,3 +149,35 @@ FROM
 ;
 ```
 > `naam, CAST(releasedatum AS CHAR(10))`is naar mijn mening een betere manier, maar dit geeft niet 100% het gewenste resultaat.
+### EX5
+```
+SELECT
+    naam, length(naam)
+FROM
+    tblgamedefinitions
+;
+```
+### EX6
+```
+SELECT
+    MAX(price) AS Hoogste_Prijs
+FROM
+    tblgames
+;
+```
+### EX7
+```
+SELECT
+    SUM(price) AS Max_Omzet
+FROM
+    tblgames
+;
+```
+### EX8
+```
+SELECT
+    naam, MIN(releasedatum)
+FROM 
+    tblgamedefinitions
+;
+```
