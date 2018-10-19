@@ -138,3 +138,14 @@ FROM
     tblgamedefinitions
 ;
 ```
+### EX4
+```
+SELECT
+    /*naam, CAST(releasedatum AS CHAR(10))*/
+    naam,
+    concat(DAY(releasedatum), '-', MONTH(releasedatum), '-', YEAR(releasedatum)) AS releasedatum
+FROM 
+    tblconsoles
+;
+```
+> `naam, CAST(releasedatum AS CHAR(10))`is naar mijn mening een betere manier, maar dit geeft niet 100% het gewenste resultaat.
