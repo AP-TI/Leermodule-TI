@@ -181,3 +181,54 @@ FROM
     tblgamedefinitions
 ;
 ```
+### EX9
+```
+SELECT
+    gd.naam,
+    price,
+    CASE
+        WHEN (gametypeid = 1) THEN 'Nieuw'
+        ELSE 'Occasie'
+    END AS gametypeid
+FROM 
+    tblgames, tblgamedefinitions as gd
+;
+```
+### EX10
+```
+select
+    concat(naam, ';', id, ';', uitgever, ';', releasedatum, ';')
+FROM
+    tblgamedefinitions
+;
+```
+### EX11
+```
+select
+    g.price/*,
+    gd.naam*/
+FROM
+    tblgamedefinitions as gd, tblgames as g
+WHERE
+    gd.naam = 'Super Ghouls \'n Ghosts' 
+    AND
+    g.gamedefinitionid = gd.id
+;
+```
+### EX12
+```
+select
+    g.price,
+    gd.naam,
+    CASE
+        WHEN (g.gametypeid = 1 && g.price < 50) THEN 'Nieuw - best buy'
+        WHEN (g.gametypeid = 1 && g.price >= 50) THEN 'Nieuw - normaal'
+        WHEN (g.gametypeid = 2 && g.price < 20) THEN 'Occassie - best buy'
+        WHEN (g.gametypeid = 2 && g.price >= 20) THEN 'Occassie - normaal'
+    END AS prijsindicator
+FROM
+    tblgamedefinitions as gd, tblgames as g
+where
+    gd.id = g.gamedefinitionid
+;
+```
