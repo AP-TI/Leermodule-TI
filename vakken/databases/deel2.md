@@ -65,8 +65,8 @@ Create database renting;
 create table tblFaciliteiten 
 (
     Faciliteitcode char(20) primary key,
-    kookgelegenheid bool,
-    douche_bad bool,
+    kookgelegenheid tinyint,
+    douche_bad tinyint,
     aantalkamers tinyint
 );
 ```
@@ -164,12 +164,12 @@ create table lessen
 (
     lesnr char(5) not null,
     spelersnr int,
-    aanwezig bool,
+    aanwezig tinyint,
     lesdatum date,
     primary key(lesnr, spelersnr),
     unique(spelersnr, lesdatum),
     foreign key(spelersnr) references spelers1(spelersnr) 
-	on delete cascade /*update bij het verwijderen van een speler*/
+	on delete cascade /*les verwijderen bij het verwijderen van een speler*/
         on update cascade /*update bij het aanpassen van een speler*/
 );
 ```
