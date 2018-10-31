@@ -5,14 +5,13 @@
 create database ap;
 ```
 ```
-create table afdeling 
-(
-    afdnr char(5) unique primary key,
-    budget dec NOT NULL,
+create table afdeling (
+    afdnr char(5) unique,
+    budget decimal(8 , 2 ) not null,
     locatie varchar(30),
     telcontact char(13),
-    isactief bool default false,
-    gempunten decimal(4,2)
+    isactief tinyint(1) default 0,
+    gempunten decimal(5 , 2 )
 );
 ```
 ```
