@@ -15,8 +15,7 @@ create table afdeling (
 );
 ```
 ```
-INSERT INTO afdeling (afdnr, budget, locatie, telcontact, isactief, gempunten)
-VALUES ('12345', 2000.25, 'Antwerpen', '(123)45 89 12', false, 12.43);
+insert into afdeling values('12345', 2000.25, 'Antwerpen', '(123)45 89 12', false, 12.43);
 ```
 
 ### 1b
