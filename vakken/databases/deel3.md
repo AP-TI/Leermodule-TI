@@ -27,7 +27,7 @@ insert into L2_T1 value ('école');
 ```
 ALTER TABLE L2_Bestuursleden 
 change functie bestuursfunctie char(30),
-add betaald bool default false,
+add betaald tinyint default false,
 add primary key(spelersnr, begin_datum)
 ;
 ```
@@ -38,8 +38,8 @@ CREATE TABLE WEDSTRIJDEN
     wedstrijdnr int primary key,
     teamnr int,
     spelersnr int, 
-    gewonnen bool,
-    verloren bool,
+    gewonnen tinyint,
+    verloren tinyint,
     divisie char(6)
 );
 ```
@@ -80,7 +80,7 @@ create table product
     productid int primary key,
     omschrijving varchar(100),
     prijspereenheid dec(10,2) default 0.00,
-    voorradig bool default false
+    voorradig tinyint default false
 );
 ```
 ```

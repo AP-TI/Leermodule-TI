@@ -5,19 +5,17 @@
 create database ap;
 ```
 ```
-create table afdeling 
-(
-    afdnr char(5) unique primary key,
-    budget dec NOT NULL,
+create table afdeling (
+    afdnr char(5) unique,
+    budget decimal(8 , 2 ) not null,
     locatie varchar(30),
     telcontact char(13),
-    isactief bool default false,
-    gempunten decimal(4,2)
+    isactief tinyint(1) default 0,
+    gempunten decimal(5 , 2 )
 );
 ```
 ```
-INSERT INTO afdeling (afdnr, budget, locatie, telcontact, isactief, gempunten)
-VALUES ('12345', 2000.25, 'Antwerpen', '(123)45 89 12', false, 12.43);
+insert into afdeling values('12345', 2000.25, 'Antwerpen', '(123)45 89 12', false, 12.43);
 ```
 
 ### 1b
@@ -67,8 +65,8 @@ Create database renting;
 create table tblFaciliteiten 
 (
     Faciliteitcode char(20) primary key,
-    kookgelegenheid bool,
-    douche_bad bool,
+    kookgelegenheid tinyint,
+    douche_bad tinyint,
     aantalkamers tinyint
 );
 ```
@@ -166,12 +164,12 @@ create table lessen
 (
     lesnr char(5) not null,
     spelersnr int,
-    aanwezig bool,
+    aanwezig tinyint,
     lesdatum date,
     primary key(lesnr, spelersnr),
     unique(spelersnr, lesdatum),
     foreign key(spelersnr) references spelers1(spelersnr) 
-	on delete cascade /*update bij het verwijderen van een speler*/
+	on delete cascade /*les verwijderen bij het verwijderen van een speler*/
         on update cascade /*update bij het aanpassen van een speler*/
 );
 ```
