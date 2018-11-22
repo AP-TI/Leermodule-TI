@@ -32,3 +32,40 @@ where
 select spelersnr, naam from spelers where spelersnr = any(select spelersnr from boetes);
 ```
 LET OP! Wegens een bug in MySQL workbench lijkt dit een error te geven, dit is niet het geval, de query runt gewoon.
+### 2.
+```sql
+select 
+    betalingsnr, bedrag, datum
+from
+    boetes b1
+where
+    bedrag >= all (select 
+            bedrag
+        from
+            boetes b2
+        where
+            year(b1.datum) = year(b2.datum));
+```
+### 3.
+```sql
+select 
+    (select 
+            spelersnr
+        from
+            spelers
+        where
+            spelersnr <= all (select 
+                    spelersnr
+                from
+                    spelers)) as laagste,
+    (select 
+            spelersnr
+        from
+            spelers
+        where
+            spelersnr >= all (select 
+                    spelersnr
+                from
+                    spelers)) as hoogste;
+```
+## Oefening 4
