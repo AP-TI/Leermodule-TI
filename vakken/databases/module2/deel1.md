@@ -69,3 +69,31 @@ select
                     spelers)) as hoogste;
 ```
 ## Oefening 4
+### 1.
+```sql
+select 
+    spelersnr
+from
+    wedstrijden w1
+where
+    not 3 = any (select 
+            gewonnen
+        from
+            wedstrijden w2
+        where
+            w1.spelersnr = w2.spelersnr);
+```
+### 2.
+```sql
+select 
+    t.teamnr, divisie
+from
+    teams t
+where
+    teamnr not in (select 
+            teamnr
+        from
+            wedstrijden
+        where
+            spelersnr = 6);
+```
