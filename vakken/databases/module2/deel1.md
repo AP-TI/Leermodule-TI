@@ -97,3 +97,33 @@ where
         where
             spelersnr = 6);
 ```
+## Oefening 5
+### 1.
+```sql
+select 
+    spelersnr, naam
+from
+    spelers s
+where
+    s.spelersnr not in (select 
+            w.spelersnr
+        from
+            wedstrijden w
+        where
+            w.spelersnr = s.spelersnr
+                and w.teamnr = 1);
+```
+### 2.
+```sql
+SELECT 
+    spelersnr, naam
+FROM
+    spelers s
+WHERE
+    s.spelersnr IN (SELECT 
+            w.spelersnr
+        FROM
+            wedstrijden w
+        WHERE
+            gewonnen > verloren and exists(select * from wedstrijden w1 where w.spelersnr = w1.spelersnr and gewonnen > verloren and w.wedstrijdnr <> w1.wedstrijdnr));
+```
