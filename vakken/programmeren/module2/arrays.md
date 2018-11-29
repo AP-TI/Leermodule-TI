@@ -5,7 +5,7 @@
 static Random random = new Random();
         static void Main(string[] args)
         {
-            const int AANTALGETALLEN = 101;
+            const int AANTALGETALLEN = 100;
             int[] getallen = new int[AANTALGETALLEN];
             int tussenVariabele;
             
