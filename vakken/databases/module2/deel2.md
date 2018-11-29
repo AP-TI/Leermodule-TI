@@ -67,4 +67,36 @@ WHERE
 ```
 ### 2.
 ```sql
+SELECT DISTINCT
+    spelersnr, bedrag, datum
+FROM
+    boetes b
+WHERE
+    b.bedrag = (SELECT 
+            MAX(bedrag)
+        FROM
+            boetes b1
+        WHERE
+            b.spelersnr = b1.spelersnr);
+```
+### 3.
+```sql
+SELECT DISTINCT
+    spelersnr,
+    COALESCE((SELECT 
+                    MAX(bedrag)
+                FROM
+                    boetes b2
+                WHERE
+                    s.spelersnr = b2.spelersnr),
+            0) AS `Hoogste bedrag`,
+    COALESCE((SELECT 
+                    MIN(bedrag)
+                FROM
+                    boetes b2
+                WHERE
+                    s.spelersnr = b2.spelersnr),
+            0) AS `Laagste bedrag`
+FROM
+    spelers s
 ```
