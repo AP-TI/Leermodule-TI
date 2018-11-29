@@ -4,7 +4,7 @@ Vanaf dit deel zet ik alle keywords in hoofdletters omdat de code zo overzichtel
 ### 1.
 ```sql
 SELECT 
-    COUNT(DISTINCT functie) AS 'Aantal Bestuursfuncties'
+    COUNT(DISTINCT functie) AS `Aantal Bestuursfuncties`
 FROM
     bestuursleden;
 ```
@@ -44,7 +44,7 @@ SELECT DISTINCT
         FROM
             boetes b1
         WHERE
-            b.spelersnr = b1.spelersnr) AS 'aantal boetes'
+            b.spelersnr = b1.spelersnr) AS `aantal boetes`
 FROM
     boetes b
 WHERE
@@ -54,4 +54,17 @@ WHERE
             boetes b1
         WHERE
             b.spelersnr = b1.spelersnr)
+```
+## Oefening 2
+### 1.
+```sql
+SELECT 
+    MIN(gewonnen - verloren) as `laagste aantal`
+FROM
+    wedstrijden
+WHERE
+    gewonnen > verloren;
+```
+### 2.
+```sql
 ```
