@@ -27,7 +27,7 @@ WHERE
             wedstrijden w
         WHERE
             w.spelersnr = w1.spelersnr
-                AND gewonnen > verloren)
+                AND gewonnen > verloren);
 ```
 ### 3.
 ```sql
@@ -53,7 +53,7 @@ WHERE
         FROM
             boetes b1
         WHERE
-            b.spelersnr = b1.spelersnr)
+            b.spelersnr = b1.spelersnr);
 ```
 ## Oefening 2
 ### 1.
@@ -98,5 +98,60 @@ SELECT DISTINCT
                     s.spelersnr = b2.spelersnr),
             0) AS `Laagste bedrag`
 FROM
-    spelers s
+    spelers s;
+```
+## Oefening 3
+### 1.
+```sql
+SELECT 
+    AVG(bedrag)
+FROM
+    boetes b
+WHERE
+    1 IN (SELECT 
+            teamnr
+        FROM
+            wedstrijden w
+        WHERE
+            b.spelersnr = w.spelersnr);
+```
+### 2.
+```sql
+SELECT DISTINCT
+    spelersnr,
+    (SELECT 
+            naam
+        FROM
+            spelers s
+        WHERE
+            w.spelersnr = s.spelersnr) AS naam
+FROM
+    wedstrijden w
+WHERE
+    8 = (SELECT 
+            SUM(gewonnen)
+        FROM
+            wedstrijden w1
+        WHERE
+            w.spelersnr = w1.spelersnr);
+```
+### 3.
+```sql
+SELECT 
+    COALESCE((SELECT 
+                    MAX(bedrag)
+                FROM
+                    boetes b
+                WHERE
+                    s.spelersnr = b.spelersnr),
+            0) AS `Maximale Boete`,
+    COALESCE((SELECT 
+                    AVG(bedrag)
+                FROM
+                    boetes b
+                WHERE
+                    s.spelersnr = b.spelersnr),
+            0) AS `Gemiddelde Boete`
+FROM
+    spelers s;
 ```
