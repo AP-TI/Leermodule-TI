@@ -1,6 +1,6 @@
 # Deel 1
 ## Oefening 1: Visitekaartje
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -14,7 +14,7 @@ class Program
     }
 ```
 ## Oefening 2: Getallen
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -59,7 +59,7 @@ class Program
     }
 ```
 ## Oefening 3: Vierkant
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -76,7 +76,7 @@ class Program
     }
 ```
 ## Oefening 4: Balk
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -97,7 +97,7 @@ class Program
     }
 ```
 ## Oefening 5: Bankrekening
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -125,7 +125,7 @@ class Program
     }
 ```
 ## Oefening 6: Gemiddelde
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -152,7 +152,7 @@ class Program
     }
 ```
 ## Oefening 7: Seconden
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -169,7 +169,7 @@ class Program
     }
 ```
 ## Oefening 8: Munten
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -199,7 +199,7 @@ class Program
     }
 ```
 ## Oefening 9: BTW
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -220,7 +220,7 @@ class Program
     }
 ```
 ## Oefening 10: Mosselfestijn
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -247,7 +247,7 @@ class Program
     }
 ```
 ## Oefening 11: Stripwinkel
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
