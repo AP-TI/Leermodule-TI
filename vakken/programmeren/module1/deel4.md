@@ -1,6 +1,6 @@
 # Deel 4
 ## Oefening 1: Getaltoestand
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -27,7 +27,7 @@ class Program
 ```
 
 ## Oefening 2: Deelbaar door 2 
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -58,7 +58,7 @@ class Program
 ```
 
 ## Oefening 3: Karakter inlezen
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -94,7 +94,7 @@ class Program
 ```
 
 ## Oefening 4: Getal 1-2-3-4 cijfers
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -120,7 +120,7 @@ class Program
 ## Oefening 6: ZIE OEF 3
 
 ## Oefening 7: Hexadecimaal
-```
+```csharp
 class Program
     {
         enum Hexa { A = 10, B, C, D, E, F}
@@ -164,7 +164,7 @@ class Program
 ```
 
 ## Oefening 8: Som aantal getallen
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -184,7 +184,7 @@ class Program
 ```
 
 ## Oefening 9: Aantal positief / negatief
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -212,7 +212,7 @@ class Program
 ```
 
 ## Oefening 10: Aantal positief / negatief met 0
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -245,7 +245,7 @@ class Program
 ```
 
 ## Oefening 11: Product
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -271,7 +271,7 @@ class Program
 ```
 
 ## Oefening 12: Som van cijfers 
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -293,7 +293,7 @@ class Program
 ```
 
 ## Oefening 13: Gemiddelde
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -322,7 +322,7 @@ class Program
 ```
 
 ## Oefening 14: Grootste getal
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -359,7 +359,7 @@ class Program
 ```
 
 ## Oefening 15: Kleinste getal
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -396,7 +396,7 @@ class Program
 ```
 
 ## Oefening 16: Stijgende volgorde
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -414,7 +414,7 @@ class Program
 ```
 
 ## Oefening 17: Gemiddelde aantal getallen
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -449,7 +449,7 @@ class Program
 ```
 
 ## Oefening 18: Dezelfde getallen
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -484,7 +484,7 @@ class Program
 ```
 
 ## Oefening 19: Stijgende getallen, stoppen met fout of 0
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -506,7 +506,7 @@ class Program
 ```
 
 ## Oefening 20: Gemiddelde 20 getallen
-```
+```csharp
 class Program
     {
         //static Random random = new Random();
@@ -529,7 +529,7 @@ class Program
 ```
 
 ## Oefening 21: Even getallen optellen
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -555,7 +555,7 @@ class Program
 ```
 
 ## Oefening 22: Driehoekjes (+ logo avicii voor de lol)
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -700,7 +700,7 @@ class Program
 ```
 
 ## Oefening 23: Rechthoekig kadertje
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -746,7 +746,7 @@ class Program
 ```
 
 ## Oefening 24: Minimumgetal
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -776,7 +776,7 @@ class Program
 ```
 
 ## Oefening 25: Maximumgetal
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -806,7 +806,7 @@ class Program
 ```
 
 ## Oefening 26: Som van kwadraten 50 - 100
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -823,7 +823,7 @@ class Program
 ```
 
 ## Oefening 27: Positief getal deelbaar door  2 - 3 - 6
-```
+```csharp
 class Program
     {
         //static Random random = new Random();
@@ -859,7 +859,7 @@ class Program
 ```
 
 ## Oefening 28: 30 termen van 6
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -979,7 +979,7 @@ class Program
 
 ## Oefening 29: ---
 ## Oefening 30: Hoger - Lager (spel)
-```
+```csharp
 class Program
     {
         static Random random = new Random();
@@ -1024,7 +1024,7 @@ class Program
 ```
 
 ## Oefening 31: Gokautomaat
-```
+```csharp
 class Program
     {
         static Random random = new Random();
@@ -1065,7 +1065,7 @@ class Program
 
 ## Oefening 32: ---
 ## Oefening 33: Delers van een positief getal
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -1092,7 +1092,7 @@ class Program
 ## Oefening 35: ---
 ## Oefening 36: ---
 ## Oefening 37: Faculteit van getallen
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -1111,7 +1111,7 @@ class Program
 
 ## Oefening 38: ---
 ## Oefening 39: Eerste 20 getallen van Fibonnaci
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -1133,7 +1133,7 @@ class Program
 ```
 
 ## Oefening 40: 10e getal van Fibonnaci
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -1155,7 +1155,7 @@ class Program
 ```
 
 ## Oefening 41: Som 2 cijfers van tweecijfersgetal = deler van getal
-```
+```csharp
 class Program
     {
         static Random random = new Random();
@@ -1174,7 +1174,7 @@ class Program
 ```
 
 ## Oefening 42: Dagnummer bepalen
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -1192,7 +1192,7 @@ class Program
 ```
 
 ## Oefening 43: Tennis (de eenvoudige oplossing, niet met de juiste regels)
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -1229,7 +1229,7 @@ class Program
 ```
 
 ## Oefening 44: Machten met getal
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
