@@ -1,6 +1,6 @@
 # Deel 3
 ## Oefening 1: Telefoonnummer
-```
+```csharp
 class Program
     {
         static Random random = new Random();
@@ -14,7 +14,7 @@ class Program
     }
 ```
 ## Oefening 2: Random datum
-```
+```csharp
 class Program
     {
         static Random random = new Random();
@@ -33,7 +33,7 @@ class Program
     }
 ```
 ## Oefening 3: Bibliotheek
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -50,7 +50,7 @@ class Program
     }
 ```
 ## Oefening 4: Hotelklokken
-```
+```csharp
 class Program
     {
         static Random random = new Random();
@@ -79,7 +79,7 @@ class Program
     }
 ```
 ## Oefening 5: Schaakspel
-```
+```csharp
 class Program
     {
         enum Kleur { Witte, zwarte }
