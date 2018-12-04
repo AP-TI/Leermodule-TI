@@ -1,6 +1,6 @@
 # Deel 2
 ## Oefening 1: Aantal dagen
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -20,7 +20,7 @@ class Program
     }
 ```
 ## Oefening 2: Firmaconferentie
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -38,7 +38,7 @@ class Program
     }
 ```
 ## Oefening 3: Invoer bij oefening 2
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -61,7 +61,7 @@ class Program
     }
 ```
 ## Oefening 4: Interest
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -83,7 +83,7 @@ class Program
     }
 ```
 ## Oefening 5: Stelsels
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -109,7 +109,7 @@ class Program
     }
 ```
 ## Oefening 6: Verjaardagen
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
@@ -127,7 +127,7 @@ class Program
     }
 ```
 ## Oefening 7: Geleefde dagen
-```
+```csharp
 class Program
     {
         static void Main(string[] args)
