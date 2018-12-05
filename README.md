@@ -10,6 +10,7 @@
 - [Oefeningen](/vakken/programmeren/module2/algemeen.md)
 ## Systeemanalyse
 - [Oefeningen](/vakken/systeemanalyse/module1/algemeen.md)
+- [Het grote systeemanalyse afkijkblad module 1](/vakken/systeemanalyse/module1/afkijkblad.md)
 ## Gegevensanalyse
 --COMING--
 ## Systeembeheer
