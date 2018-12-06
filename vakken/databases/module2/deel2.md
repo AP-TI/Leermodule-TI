@@ -215,3 +215,102 @@ FROM
 GROUP BY spelersnr;
 ```
 Dit is wel juist, maar van de oefening wordt verwacht dat je een `GROUP BY` op 2 kolommen tegelijk kan toepassen, daarom moet je oplossing 1 ook snappen.
+### 2.
+```sql
+SELECT 
+    t.teamnr, t.divisie, SUM(w.gewonnen)
+FROM
+    teams t
+        INNER JOIN
+    wedstrijden w ON t.teamnr = w.teamnr
+GROUP BY t.teamnr , t.divisie;
+```
+## Oefening 6
+### 1.
+```sql
+SELECT 
+    FLOOR(spelersnr / 25 + 1) AS groep,
+    COUNT(*) AS aantal,
+    MAX(spelersnr) AS `Max spelersnr`
+FROM
+    spelers
+GROUP BY FLOOR(spelersnr / 25 + 1);
+```
+### 2.
+```sql
+SELECT DISTINCT
+    w.spelersnr, coalesce(b.aantal, 0) as aantal
+FROM
+    wedstrijden w
+        LEFT OUTER JOIN
+    (SELECT 
+        spelersnr, COUNT(*) AS aantal
+    FROM
+        boetes
+    GROUP BY spelersnr) b ON w.spelersnr = b.spelersnr;
+```
+### 3.
+```sql
+SELECT 
+    w.teamnr, COUNT(DISTINCT (spelersnr)) AS aantal
+FROM
+    wedstrijden w
+        INNER JOIN
+    (SELECT 
+        teamnr
+    FROM
+        teams t
+    INNER JOIN spelers s ON s.spelersnr = t.spelersnr
+    WHERE
+        plaats = 'Den Haag') AS team_denhaag ON team_denhaag.teamnr = w.teamnr
+WHERE
+    gewonnen > verloren
+GROUP BY w.teamnr;
+```
+## Oefening 7
+### 1.
+```sql
+SELECT 
+    plaats
+FROM
+    spelers
+GROUP BY plaats
+HAVING COUNT(*) > 4;
+```
+### 2.
+```sql
+SELECT 
+    spelersnr
+FROM
+    boetes
+GROUP BY spelersnr
+HAVING SUM(bedrag) > 150;
+```
+### 3.
+```sql
+SELECT 
+    teamnr, divisie
+FROM
+    teams
+WHERE
+    teamnr IN (SELECT 
+            teamnr
+        FROM
+            wedstrijden
+        GROUP BY teamnr
+        HAVING COUNT(DISTINCT spelersnr) > 4)
+```
+### 4.
+```sql
+SELECT 
+    spelersnr
+FROM
+    boetes
+GROUP BY spelersnr
+HAVING SUM(bedrag) = (SELECT 
+        SUM(bedrag) * 2
+    FROM
+        boetes
+    WHERE
+        spelersnr = 104);
+```
