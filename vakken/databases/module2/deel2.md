@@ -214,4 +214,4 @@ FROM
     boetes b
 GROUP BY spelersnr;
 ```
-Dit is wel juist, maar van de oefening wordt verwacht dat je een `sql GROUP BY` op 2 kolommen tegelijk kan toepassen, daarom moet je oplossing 1 ook snappen.
+Dit is wel juist, maar van de oefening wordt verwacht dat je een `GROUP BY` op 2 kolommen tegelijk kan toepassen, daarom moet je oplossing 1 ook snappen.
