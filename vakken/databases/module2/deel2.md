@@ -155,3 +155,63 @@ SELECT
 FROM
     spelers s;
 ```
+## Oefening 4
+### 1.
+```sql
+SELECT
+    jaartoe
+FROM
+    spelers
+GROUP BY jaartoe;
+```
+### 2.
+```sql
+SELECT
+    jaartoe, count(*)
+FROM
+    spelers s
+GROUP BY jaartoe;
+```
+### 3.
+```sql
+SELECT 
+    teamnr, COUNT(*), SUM(gewonnen)
+FROM
+    wedstrijden w
+WHERE
+    w.teamnr = (SELECT 
+            teamnr
+        FROM
+            teams
+        WHERE
+            divisie = 'ere')
+GROUP BY teamnr;
+```
+## Oefening 5
+### 1.
+#### Oplossing 1
+```sql
+SELECT 
+    s.spelersnr, naam, SUM(bedrag)
+FROM
+    spelers s
+        INNER JOIN
+    boetes b ON s.spelersnr = b.spelersnr
+GROUP BY s.spelersnr , naam;
+```
+#### Oplossing 2
+```sql
+SELECT 
+    spelersnr,
+    (SELECT 
+            naam
+        FROM
+            spelers s
+        WHERE
+            s.spelersnr = b.spelersnr) AS naam,
+    SUM(bedrag)
+FROM
+    boetes b
+GROUP BY spelersnr;
+```
+Dit is wel juist, maar van de oefening wordt verwacht dat je een `sql GROUP BY` op 2 kolommen tegelijk kan toepassen, daarom moet je oplossing 1 ook snappen.
