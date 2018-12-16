@@ -81,3 +81,25 @@ SELECT * FROM TENNIS.SPELERS
 ```sql
 DROP USER RONALDO@LOCALHOST;
 ```
+## Oefening 4
+### 1.
+```sql
+CREATE USER ALYSSA@LOCALHOST IDENTIFIED BY 'BOND007';
+```
+### 2.
+```sql
+GRANT SELECT ON tennis.spelers TO ALYSSA@LOCALHOST;
+```
+### 4.
+Dit lukt.
+### 5.
+```sql
+CREATE USER dennis@localhost;
+```
+Dit lukt niet.
+
+Om dit op te lossen loggen we terug in als root en geven we ALYSSA het recht om gebruikers aan te maken:
+```sql
+GRANT CREATE USER ON *.* TO ALYSSA@LOCALHOST;
+```
+Als we nu opnieuw het `CREATE USER`-commando uitvoeren, krijgen we geen error meer op het account 'ALYSSA'.
