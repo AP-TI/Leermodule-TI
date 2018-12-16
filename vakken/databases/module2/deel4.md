@@ -103,3 +103,16 @@ Om dit op te lossen loggen we terug in als root en geven we ALYSSA het recht om 
 GRANT CREATE USER ON *.* TO ALYSSA@LOCALHOST;
 ```
 Als we nu opnieuw het `CREATE USER`-commando uitvoeren, krijgen we geen error meer op het account 'ALYSSA'.
+## Oefening 5
+LET OP: Roles behoren op dit moment niet tot onze leerstof, aangezien dit vroeger geen onderdeel was van MySQL. In de laatste versie is dit echter wel toegevoegd. Meer info daarover [hier](https://dev.mysql.com/doc/refman/8.0/en/roles.html).
+### 1.
+```sql
+CREATE ROLE bestuur;
+```
+```sql
+GRANT ALL ON tennis.bestuursleden TO bestuur;
+```
+### 2.
+```sql
+GRANT bestuur TO ALYSSA@LOCALHOST, dennis@LOCALHOST;
+```
