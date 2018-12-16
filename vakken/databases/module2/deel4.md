@@ -67,3 +67,17 @@ SELECT
 FROM
     v_spelers_meer_dan_gemiddeld_boete;
 ```
+## Oefening 3
+### 1.
+```sql
+CREATE USER RONALDO@LOCALHOST IDENTIFIED BY 'NIKE';
+```
+### 3.
+Als je onderstaand statement probeert uit te voeren, krijg je een foutmelding: `Error Code: 1142. SELECT command denied to user 'RONALDO'@'localhost' for table 'spelers'`. Dit komt omdat de gebruiker 'RONALDO' geen toestemming heeft om het select-commando uit te voeren.
+```sql
+SELECT * FROM TENNIS.SPELERS
+```
+### 4.
+```sql
+DROP USER RONALDO@LOCALHOST;
+```
