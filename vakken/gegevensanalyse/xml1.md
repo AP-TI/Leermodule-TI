@@ -94,3 +94,22 @@ Wel wellformed, niet valid aangezien er 'tol' in plaats van 'to' staat.
   </huisdier>
 </huisdieren>
 ```
+### Oefening 6
+```xml
+<?xml version="1.0"?>
+<!DOCTYPE bank [
+<!ELEMENT bank (rekening+, klant+)>
+<!ELEMENT rekening (#PCDATA)>
+<!ELEMENT klant (#PCDATA)>
+<!ATTLIST rekening rekening-nummer ID #REQUIRED kantoorNaam CDATA #REQUIRED saldo CDATA #REQUIRED>
+<!ATTLIST klant klant-naam ID #REQUIRED klant-straat CDATA #REQUIRED klant-stad CDATA #REQUIRED>
+]>
+
+<bank>
+  <rekening rekening-nummer="A-101" kantoorNaam="Brussel&amp;stad" saldo="500"></rekening>
+  <rekening rekening-nummer="A-102" kantoorNaam="Antwerpen-centrum" saldo="400"></rekening>
+  <rekening rekening-nummer="A-201" kantoorNaam="Brussel-rand" saldo="900"></rekening>
+  <klant klant-naam="Marthe" klant-straat="Kerkstraat" klant-stad="Antwerpen"></klant>
+  <klant klant-naam="Hanne" klant-straat="Oyalelelaan" klant-stad="Bergen"></klant>
+</bank>
+```
