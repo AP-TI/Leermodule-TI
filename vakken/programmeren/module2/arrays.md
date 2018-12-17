@@ -1,5 +1,86 @@
 # Programmeren 2
 ## Arrays
+### Oefening 1
+```csharp
+static void Main(string[] args)
+        {
+            const int AANTALGETALLEN = 20;
+            int[] getallen = new int[AANTALGETALLEN];
+
+            for (int teller = 0; teller < AANTALGETALLEN; teller++)
+            {
+                Console.Write("Geef een getal({0}/{1}): ", teller + 1, AANTALGETALLEN);
+                getallen[teller] = int.Parse(Console.ReadLine());
+            }
+            for (int teller = AANTALGETALLEN - 1; teller >= 0; teller--)
+            {
+                Console.WriteLine(getallen[teller]);
+            }
+        }
+```
+### Oefening 2
+```csharp
+static void Main(string[] args)
+        {
+            const int AANTAL_GETALLEN = 20;
+            const int AANTAL_OP_TE_SCHUIVEN_GETALLEN = 1;
+            int[] getallen = new int[AANTAL_GETALLEN];
+
+            for(int teller = 0; teller < AANTAL_GETALLEN; teller++)
+            {
+                Console.Write("Geef getal({0}/{1}): ", teller + 1, AANTAL_GETALLEN);
+                getallen[teller] = int.Parse(Console.ReadLine());
+            }
+            for(int teller = 0; teller < AANTAL_GETALLEN ; teller++)
+            {
+                Console.WriteLine(getallen[(teller + AANTAL_OP_TE_SCHUIVEN_GETALLEN) % getallen.Length]);
+            }
+        }
+```
+### Oefening 3
+```csharp
+static void Main(string[] args)
+        {
+            const int AANTALGETALLEN = 20;
+            int[] getallen = new int[AANTALGETALLEN];
+
+            for(int teller = 0; teller < AANTALGETALLEN; teller++)
+            {
+                Console.Write("Geef getal({0}/{1}): ", teller + 1, AANTALGETALLEN);
+                getallen[teller] = int.Parse(Console.ReadLine());
+            }
+            for(int teller = AANTALGETALLEN - 3; teller < AANTALGETALLEN; teller++)
+            {
+                Console.WriteLine(getallen[teller]);
+            }
+            for(int teller = 0; teller < AANTALGETALLEN - 3; teller++)
+            {
+                Console.WriteLine(getallen[teller]);
+            }
+
+        }
+```
+### Oefening 4
+```csharp
+static void Main(string[] args)
+        {
+            const int AANTALGETALLEN = 5;
+            int rotatieGetal;
+            int[] getallen = new int[AANTALGETALLEN];
+
+            Console.Write("Geef het rotatiegetal: ");
+            rotatieGetal = int.Parse(Console.ReadLine());
+            for (int teller = 0; teller < AANTALGETALLEN; teller++)
+            {
+                Console.Write("Geef getal({0}/{1}): ", teller + 1, AANTALGETALLEN);
+                getallen[teller] = int.Parse(Console.ReadLine());
+            }
+            for (int teller = 0; teller < AANTALGETALLEN; teller++)
+            {
+                Console.WriteLine(getallen[(teller + rotatieGetal + AANTALGETALLEN) % AANTALGETALLEN]);
+            }
+        }
+```
 ### Oefening 5
 ```csharp
 static Random random = new Random();
@@ -8,7 +89,7 @@ static Random random = new Random();
             const int AANTALGETALLEN = 100;
             int[] getallen = new int[AANTALGETALLEN];
             int tussenVariabele;
-            
+
 
             for(int teller = 0; teller < AANTALGETALLEN; teller++)
             {

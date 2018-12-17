@@ -17,7 +17,7 @@ class Program
         }
     }
 ```
-### Klasse 
+### Klasse Persoon
 ```csharp
 class Persoon
     {
