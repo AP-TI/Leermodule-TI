@@ -8,7 +8,7 @@
 </persoon>
 ```
 Deze is niet wellformed omdat de sluitende `</voorNaam>` een hoofdletter N heeft.
-Is ook niet valid aangezien er geen DTD is.
+Is ook niet valid aangezien er geen DTD (document type definition) is.
 ## Oefening 2
 ```xml
 <?xml version="1.0"?>
@@ -18,7 +18,7 @@ Is ook niet valid aangezien er geen DTD is.
    <leeftijd>  >20 jaar & < 90 jaar </leeftijd>
 </persoon>
 ```
-Is niet wellformed aangezien er een & staat, om een & te weergeven zet je `&amp`.
+Is niet wellformed aangezien er een & staat, om een & te weergeven zet je `&amp;`.
 ## Oefening 3
 ```xml
 <?xml version="1.0"?>
