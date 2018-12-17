@@ -113,3 +113,46 @@ Wel wellformed, niet valid aangezien er 'tol' in plaats van 'to' staat.
   <klant klant-naam="Hanne" klant-straat="Oyalelelaan" klant-stad="Bergen"></klant>
 </bank>
 ```
+### Oefening 7
+Mondeling gedaan
+### Oefening 8
+```xml
+<?xml version="1.0"?>
+<!DOCTYPE student [
+<!ELEMENT student (firstName, lastName, id, plan)>
+<!ELEMENT plan (courses)>
+<!ELEMENT courses (course)*>
+<!ELEMENT course (name, shortName, record?)>
+<!ELEMENT record (grade, date)>
+<!ELEMENT firstName (#PCDATA)>
+<!ELEMENT lastName (#PCDATA)>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT shortName (#PCDATA)>
+<!ELEMENT grade (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+<!ATTLIST courses year CDATA #REQUIRED>
+]>
+	 <student>
+		<firstName>John</firstName>
+		<lastName>Van Kerckhove</lastName>
+		<id>281283</id>
+		<plan>
+			<courses year="1">
+				 <course>
+					<name>Systeemanalyse</name>
+					<shortName>SA</shortName>
+					<record>
+						<grade>14</grade>
+						<date>13/06/11</date>
+					</record>
+				</course>
+				<course>
+					<name>Gegevensanalyse</name>
+					<shortName>GA</shortName>
+				 </course>
+			</courses>
+		</plan>
+	</student>
+
+```
