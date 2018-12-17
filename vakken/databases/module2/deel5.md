@@ -37,3 +37,40 @@ end //
 call grootste_tabel(@grootste);
 select @grootste;
 ```
+## Oefening 3
+### 1.
+```sql
+delimiter //
+CREATE PROCEDURE hoogste_3_boetes
+(OUT hoogste_1 INTEGER, OUT hoogste_2 INTEGER, OUT hoogste_3 INTEGER)
+BEGIN
+	-- begin handler
+	DECLARE ERROR VARCHAR(5);
+	DECLARE c_hoogste CURSOR FOR
+		SELECT
+			bedrag
+		FROM
+			boetes
+		ORDER BY
+			bedrag DESC;
+
+	DECLARE CONTINUE HANDLER FOR SQLSTATE '23000' SET ERROR = '23000';
+	SET ERROR = '00000';
+  -- einde handler
+
+	OPEN c_hoogste;
+
+	FETCH c_hoogste INTO hoogste_1;
+	FETCH c_hoogste INTO hoogste_2;
+	FETCH c_hoogste INTO hoogste_3;
+
+	CLOSE c_hoogste;
+END //
+
+delimiter ;
+```
+### 2.
+```sql
+CALL hoogste_3_boetes(@hoogste_1, @hoogste_2, @hoogste_3);
+SELECT @hoogste_1, @hoogste_2, @hoogste_3;
+```
