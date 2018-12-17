@@ -50,3 +50,47 @@ Wel wellformed, niet valid aangezien er 'tol' in plaats van 'to' staat.
 	<body>Don't forget me this weekend</body>
 </note>
 ```
+## Oefening 4
+```xml
+<?xml version="1.0"?>
+<!DOCTYPE personen [
+<!ELEMENT personen (persoon)+>
+<!ELEMENT persoon (voornaam, achternaam)>
+<!ELEMENT voornaam (#PCDATA)>
+<!ELEMENT achternaam (#PCDATA)>
+]>
+<personen>
+	<persoon>
+		<voornaam>Jos</voornaam>
+		<achternaam>Van De Walle</achternaam>
+	</persoon>
+	<persoon>
+<voornaam>Saïda</voornaam>
+<achternaam>Thrari</achternaam>
+	</persoon>
+</personen>
+```
+## Oefening 5
+```xml
+<?xml version="1.0"?>
+<!DOCTYPE huisdieren [
+<!ELEMENT huisdieren (huisdier)+>
+<!ELEMENT huisdier (naam, diersoort, leeftijd)>
+<!ATTLIST huisdier kleur (groen|wit|bruin) #REQUIRED>
+<!ELEMENT naam (#PCDATA)>
+<!ELEMENT diersoort (#PCDATA)>
+<!ELEMENT leeftijd (#PCDATA)>
+]>
+<huisdieren>
+  <huisdier kleur="bruin">
+    <naam>Rex</naam>
+    <diersoort>Hond</diersoort>
+    <leeftijd>10</leeftijd>
+  </huisdier>
+  <huisdier kleur="groen">
+    <naam>Fwiet</naam>
+    <diersoort>Parkiet</diersoort>
+    <leeftijd>8</leeftijd>
+  </huisdier>
+</huisdieren>
+```
