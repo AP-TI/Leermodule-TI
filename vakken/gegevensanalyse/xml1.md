@@ -156,3 +156,57 @@ Mondeling gedaan
 	</student>
 
 ```
+### Extra Oefening DTD
+```xml
+<?xml version="1.0" ?>
+<!DOCTYPE TVPLANNING[
+<!ELEMENT TVPLANNING (KANAAL+)>
+<!ELEMENT KANAAL (BANNER?, DAG)>
+<!ELEMENT PROGRAMMASLOT (TIJD, TITEL, BESCHRIJVING?)>
+<!ATTLIST PROGRAMMASLOT VTR CDATA #IMPLIED>
+<!ELEMENT BANNER (#PCDATA)>
+<!ELEMENT DAG (DATUM, FEESTDAG?, PROGRAMMASLOT?)>
+<!ELEMENT DATUM (#PCDATA)>
+<!ELEMENT FEESTDAG (#PCDATA)>
+<!ELEMENT TITEL (#PCDATA)>
+<!ATTLIST TVPLANNING NAAM CDATA #REQUIRED>
+<!ATTLIST KANAAL KAN CDATA #REQUIRED>
+<!ELEMENT TIJD (#PCDATA)>
+<!ATTLIST TITEL RATING CDATA #IMPLIED>
+<!ATTLIST TITEL TAAL (Nederlands|Frans|Duits) #IMPLIED>
+<!ELEMENT BESCHRIJVING (#PCDATA)>
+
+
+]>
+<TVPLANNING NAAM="SPORT">
+    <KANAAL KAN="VRT">
+        <BANNER>Pol</BANNER>
+        <DAG>
+            <DATUM>31/10/2017</DATUM>
+            <FEESTDAG>Halloween</FEESTDAG>
+        </DAG>
+    </KANAAL>
+    <KANAAL KAN="SPORTNET">
+        <DAG>
+            <DATUM>30/11/2017</DATUM>
+            <PROGRAMMASLOT VTR="avond">
+                <TIJD>19:08</TIJD>
+                <TITEL RATING="KT" TAAL="Nederlands">Mixed martial arts grootste
+                    <![CDATA[%
+                    <!&]]> wedstrijden
+                </TITEL>
+                <BESCHRIJVING>De beste wedstrijden van 2016 &amp; 2017</BESCHRIJVING>
+            </PROGRAMMASLOT>
+        </DAG>
+    </KANAAL>
+    <KANAAL KAN="SPORTNET">
+        <DAG>
+            <DATUM>05/11/2017</DATUM>
+            <PROGRAMMASLOT>
+                <TIJD />
+                <TITEL />
+            </PROGRAMMASLOT>
+        </DAG>
+    </KANAAL>
+</TVPLANNING>
+```
