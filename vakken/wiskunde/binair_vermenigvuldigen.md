@@ -12,7 +12,7 @@ Omdat de derde bit van ons tweede getal gelijk is aan 0, slagen we dit over (0 *
 
 In het geval dat we met kommagetallen werken, tellen we de het aantal bits achter de komma vanaf de minst beduidende bit bij beide getallen op.
 Stel dat we 100,(01 <-- 2 bits achter de komma tot en met de lsb(least significant bit, of laatste 1)) en 11,(1 <-- 1 bit achter de komma tot en met de lsb) optellen geeft dat dat we in ons uiteindelijk resultaat 3 beduidende bits (2+1) achter de komma gaan hebben.
-
+```
           1 0 0, 0 1
             1 1, 1
       x
@@ -25,3 +25,4 @@ Stel dat we 100,(01 <-- 2 bits achter de komma tot en met de lsb(least significa
   Toevoeging komma 3 bits vanaf de lsb:
 
   1 1 1 0,1 1 1
+```
