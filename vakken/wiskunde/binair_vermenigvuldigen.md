@@ -7,7 +7,7 @@ We starten van rechts naar links vanaf het tweede getal (011). We nemen dus de 1
 We doen exact hetzelfde voor de tweede bit van het tweede getal en verkrijgen opnieuw 100. We plaatsen dit resultaat wel 1 bit naar links.
 ![vermenigvuldiging](vermenigvuldigen_2.png)
 
-Omdat de derde bit van ons tweede getal gelijk is aan 0, slagen we dit over (0 * 100 = 0) en kunnen we meteen starten aan het [optellen](binair_optellen.md) van onze tussenresultaten.
+Omdat de derde bit van ons tweede getal gelijk is aan 0, slagen we dit over (0 * 100 = 0) en kunnen we meteen starten aan het [optellen](binair_optellen.md) van onze tussenresultaten. Als je met grotere getallen werkt is het soms echter wel handig om deze nullen te noteren, aangezien dat de optelling achteraf vergemakkelijkt (minder overdrachten van 1).
 ![vermenigvuldiging](vermenigvuldigen_3.png)
 
 In het geval dat we met kommagetallen werken, tellen we de het aantal bits achter de komma vanaf de minst beduidende bit bij beide getallen op.
