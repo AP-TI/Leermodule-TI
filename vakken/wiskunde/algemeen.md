@@ -1,0 +1,2 @@
+- [Binair optellen](binair_optellen.md)
+- [Binair vermenigvuldigen](binair_vermenigvuldigen.md)

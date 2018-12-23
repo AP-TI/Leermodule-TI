@@ -1,5 +1,7 @@
 # AP_2018-2019
 
+## Wiskunde
+- [Uitleg](/vakken/wiskunde/algemeen.md)
 ## Databases 1
 - [Oefeningen](/vakken/databases/module1/algemeen.md)
 ## Databases 2
