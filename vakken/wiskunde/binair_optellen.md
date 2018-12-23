@@ -2,10 +2,10 @@ Exact hetzelfde als decimaal optellen.
 
 Voorbeeld:
 ```
-  1 0 1
-  0 1 0
+   1 0 1
+   0 1 0
  +
-  1 1 1
+   1 1 1
 ```
 Indien we 2 keer een 1 hebben, werken we met de overdracht van een 1
 ```
