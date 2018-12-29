@@ -80,7 +80,7 @@ We doen exact hetzelfde voor de tweede bit van het tweede getal en verkrijgen op
 
 ![vermenigvuldiging](../afb/H1/vermenigvuldigen_2.png)
 
-Omdat de derde bit van ons tweede getal gelijk is aan 0, slagen we dit over (0 * 100 = 0) en kunnen we meteen starten aan het [optellen](binair_optellen.md) van onze tussenresultaten. Als je met grotere getallen werkt is het soms echter wel handig om deze nullen te noteren, aangezien dat de optelling achteraf vergemakkelijkt (minder overdrachten van 1).
+Omdat de derde bit van ons tweede getal gelijk is aan 0, slagen we dit over (0 * 100 = 0) en kunnen we meteen starten aan het optellen van onze tussenresultaten (zie hierboven). Als je met grotere getallen werkt is het soms echter wel handig om deze nullen te noteren, aangezien dat de optelling achteraf vergemakkelijkt (minder overdrachten van 1).
 
 ![vermenigvuldiging](../afb/H1/vermenigvuldigen_3.png)
 
