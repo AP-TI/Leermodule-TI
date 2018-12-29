@@ -23,15 +23,15 @@ Mantisse: een waarde tussen 1 en de vaste getalbasis B
 
 Wetenschappelijke getalnotatie: een getal uitgedrukt in een product van 3 factoren
 
-getal = toestandsteken x mantisse x (getalbasis)exponent
+getal = toestandsteken x mantisse x (getalbasis)<sup>exponent</sup>
 
 Decimaal getal: een waarde uitgedrukt in het positiesysteem met vaste getalbasis 10
 
-Notatie: (cijferpatroon)dec = (cijferpatroon)10
+Notatie: (cijferpatroon)<sub>dec</sub> = (cijferpatroon)<sub>10</sub>
 
 Binair getal: een waarde uitgedrukt in het positiesysteem met vaste getalbasis 2
 
-Notatie: (cijferpatroon)bin = (cijferpatroon)2
+Notatie: (cijferpatroon)<sub>bin</sub> = (cijferpatroon)<sub>2</sub>
 - bit: binary digit, afgekort met ‘b’
 - msb: most significant bit
 - lsb: least significant bit
@@ -100,14 +100,20 @@ Stel dat we 100,(01 <-- 2 bits achter de komma tot en met de lsb(least significa
 
   1 1 1 0,1 1 1
 ```
-Verdubbeling van een binair getal: de vlottende komma met 1 positie naar rechts schuiven
+## Binair verdubbelen
+De binaire verdubbeling is heel simpel. Het enige wat je hoeft te doen is de vlottende komma naar achter verplaatsen.
+Het dubbel van (1)<sub>bin</sub> is (10)<sub>bin</sub>.
+
+Het dubbel van (111010,101)<sub>bin</sub> is (1110101,01)<sub>bin</sub>
+
+Je kan een binair getal ook makkelijk vermenigvuldigen met een macht van 2. Zo is het 16-voud van (101,1001)<sub>bin</sub>, (1011001)<sub>bin</sub>, aangezien 2 * 2 * 2 * 2 = 16, oftewel 4 verdubbelingen.
 
 Octaal getal: een waarde uitgedrukt in het positiesysteem met vaste getalbasis 8
-Notatie: (cijferpatroon)oct = (cijferpatroon)8
+Notatie: (cijferpatroon)<sub>oct</sub> = (cijferpatroon)<sub>8</sub>
 met de cijfers genomen uit de verzameling {0,1,2,3,4,5,6,7}
 
 Hexadecimaal getal: een waarde uitgedrukt in het positiesysteem met vaste getalbasis 16
-Notatie: (cijferpatroon)hex = (cijferpatroon)16
+Notatie: (cijferpatroon)<sub>hex</sub> = (cijferpatroon)<sub>16</sub>
 met de cijfers genomen uit de verzameling {0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F}
 
 In IT-contexten worden de hexadecimale weergaven onderscheiden van de decimale d.m.v. de prefix 0x	Voorbeeld: (A1A2A3,FB)hex = 0xA1A2A3,FB
@@ -115,7 +121,7 @@ De suffix h wordt gebruikt om de 16-delige weergave van bitrijen voor te stellen
 
 RGB-waarden: 1 byte per kleurcomponent (FF0000)-> 6 bytes = 6*8 bits
 
-groeperen binaire getalwaarden per nibble --> (1 0001,11)bin = (0001 0001,1100)bin
+groeperen binaire getalwaarden per nibble --> (1 0001,11)<sub>bin</sub> = (0001 0001,1100)<sub>bin</sub>
 
 modulo-rekenen (voorbeeld) 
 - 13+12 = 25 ≡ 1 mod 24
@@ -127,9 +133,9 @@ Hoekformaten: getalbasis 60 ( ° , ’ , ” )
 
 Conversie naar een macht van 2: 
 - Converteer naar 2
-- Vb octaal -> 8 = 2^3 --> voeg voorloop- en naloopnullen toe en groepeer per 3 bits
+- Vb octaal -> 8 = 2<sup>3</sup> --> voeg voorloop- en naloopnullen toe en groepeer per 3 bits
 - Converteer de 3 bits naar hun octale waarde
-- Hexadecimaal: per 4 (16 = 2^4
+- Hexadecimaal: per 4 (16 = 2<sup>4</sup>)
 - …
 - Omgekeerd net hetzelfde. Converteer elk cijfer om naar zijn binaire waarde , voeg voorloop- en naloopnullen toe en plak alles aan elkaar. Vergeet de komma niet.
 
