@@ -1,10 +1,8 @@
 ## Waarschuwing
-Dit is slechts een aanvulling op wat er in het boek staat. Ik heb hier enkel de dingen gezet die niet deftig in het boek waren uitgelegd. Om te slagen op je examen wiskunde dien je dus je boek van wiskunde open te doen en alles proberen te begrijpen.
+Om te slagen op je examen wiskunde dien je je boek van wiskunde open te doen en alles proberen te begrijpen. Bekijk ook zeker alle voorbeelden in de ppt's eens!
+
+- [Samenvatting PPT 1](PPT_1.md) 
+
 - [Belangrijke formules](belangrijke_formules.md)
 - [Belangrijke begrippen](belangrijke_begrippen.md)
 - [Belangrijke afkortingen](belangrijke_afkortingen.md)
-
-
-- [Binair optellen](binair_optellen.md)
-- [Binair vermenigvuldigen](binair_vermenigvuldigen.md)
-- [Binair verdubbelen](binair_verdubbelen.md)
