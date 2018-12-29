@@ -1,7 +1,8 @@
 # AP_2018-2019
 
 ## Wiskunde
-- [Uitleg](/vakken/wiskunde/algemeen.md)
+- [Theorie](/vakken/wiskunde/algemeen_theorie.md)
+- [Oefeningen](/vakken/wiskunde/algemeen_oefeningen.md)
 ## Databases 1
 - [Oefeningen](/vakken/databases/module1/algemeen.md)
 ## Databases 2
