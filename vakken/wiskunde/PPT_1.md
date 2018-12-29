@@ -141,4 +141,4 @@ Conversie naar een macht van 2:
 
 ! Steeds werken via het binair formaat, NIET decimaal
 
-Oefeningn: /\* COMING \*/
+Oefeningen: /\* COMING \*/
