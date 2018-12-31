@@ -55,7 +55,7 @@ Xor: ‘uitsluitende of’ (‘exclusieve or’), exact 1 vd 2 is waar. (T.O.V. 
 ![XOR](../afb/H3/PPT3_XOR.png)
 
 ##### OR:
-![OR](../afb/H3/PPT3_OR.png) 
+![OR](../afb/H3/PPT3_OR.png)
 
 ##### AND:
 ![AND](../afb/H3/PPT3_AND.png)
@@ -144,7 +144,7 @@ B = {0,1}, ‘0’ en ‘1’ zijn elkaar uitsluitende waarden en dus geen binai
 functies: zie ppt. 16 functies bij 2 veranderlijken omdat elk element 4 waarden kan hebben: 4\*4=16. waarvan 2 constante functies, 4 minimale, 4 maximale en 6 disjunctieve + normaalvormen
 
 ##### disjunctieve normaalvorm dnv(f)
-→ dnv(xor(a,b) = (¬a∧b) ∨ (a∧¬b) → minimale vormen (*)
+→ dnv(xor(a,b) = (¬a∧b) ∨ (a∧¬b) → minimale vormen (\*)
 
 ##### conjunctieve normaalvorm cnv(f)
 → cnv(xor(a,b) = (a∨b) ∧ (¬a∨¬b) → maximale vormen (+)
