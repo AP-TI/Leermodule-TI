@@ -41,7 +41,7 @@ benamingen:
 - nibble = 4 cijfers (0-1)
 - byte = 8 cijfers (0-1)
 
-## Decimaal optellen:
+## Binair optellen:
 Exact hetzelfde als decimaal optellen.
 
 Voorbeeld:
