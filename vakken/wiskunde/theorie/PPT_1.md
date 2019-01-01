@@ -39,7 +39,7 @@ Notatie: (cijferpatroon)<sub>bin</sub> = (cijferpatroon)<sub>2</sub>
 benamingen:
 - bit = 1 cijfer (0-1)
 - nibble = 4 cijfers (0-1)
-- byte = 8 cijfers (0-1) 
+- byte = 8 cijfers (0-1)
 
 ## Decimaal optellen:
 Exact hetzelfde als decimaal optellen.
@@ -68,7 +68,15 @@ Bij het overdragen van een 1 kunnen we op dezelfde situatie uitkomen. Draag dan 
 +
   1 0 0
 ```
-
+Het kan zijn dat we 3 of meer 1's bij elkaar moeten optellen. In dit geval schrijven we vanonder een 1 én dragen we er één over.
+```
+   (1)
+ (1)
+  0 1 1
+  0 1 1
++ -----
+  1 1 0
+```
 ## Binair vermenigvuldigen
 In dit voorbeeld vermenigvuldigen we 4 met 3, in binair 100 met 011.
 
@@ -89,11 +97,11 @@ Stel dat we 100,(01 <-- 2 bits achter de komma tot en met de lsb(least significa
 ```
           1 0 0, 0 1
             1 1, 1
-      x
+      x ------------
       1 0 0 0 1       <-- 1 * 10001
     1 0 0 0 1         <-- 1 * 10001
   1 0 0 0 1           <-- 1 * 10001
-+
++ -------------
   1 1 1 0 1 1 1
 
   Toevoeging komma 3 bits vanaf de lsb:
@@ -123,7 +131,7 @@ RGB-waarden: 1 byte per kleurcomponent (FF0000)-> 6 bytes = 6*8 bits
 
 groeperen binaire getalwaarden per nibble --> (1 0001,11)<sub>bin</sub> = (0001 0001,1100)<sub>bin</sub>
 
-modulo-rekenen (voorbeeld) 
+modulo-rekenen (voorbeeld)
 - 13+12 = 25 ≡ 1 mod 24
 - “25 modulo 24 is (congruent met) 1”
 
@@ -131,7 +139,7 @@ Converteren van 10-delige naar vreemde getalbases: geheel deel en fractioneel de
 
 Hoekformaten: getalbasis 60 ( ° , ’ , ” )
 
-Conversie naar een macht van 2: 
+Conversie naar een macht van 2:
 - Converteer naar 2
 - Vb octaal -> 8 = 2<sup>3</sup> --> voeg voorloop- en naloopnullen toe en groepeer per 3 bits
 - Converteer de 3 bits naar hun octale waarde
