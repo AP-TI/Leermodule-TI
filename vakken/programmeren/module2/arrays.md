@@ -195,3 +195,40 @@ class Program
         }
     }
 ```
+
+### Oefening 7
+```csharp
+class Program
+    {
+        static Random random = new Random();
+        static void Main(string[] args)
+        {
+            const int AANTAL_GETALLEN = 10;
+            int[] nieuweIntarray = new int[AANTAL_GETALLEN];
+            
+
+            for (int i = 0; i < AANTAL_GETALLEN; i++)
+            {
+                nieuweIntarray[i] = random.Next(0,20);
+                Console.WriteLine(nieuweIntarray[i]);
+            }
+
+            int[] origineleIntarray = nieuweIntarray;
+
+            Console.WriteLine("-------");
+
+            int helft = (int)(AANTAL_GETALLEN / 2.00);
+            int wisselgetal;
+            for (int i = 0; i < helft ; i++)
+            {
+                wisselgetal = nieuweIntarray[i];
+                nieuweIntarray[i] = nieuweIntarray[(AANTAL_GETALLEN - 1) - i];
+                nieuweIntarray[(AANTAL_GETALLEN - 1) - i] = wisselgetal;
+            }
+            foreach(int x in nieuweIntarray)
+            {
+                Console.WriteLine(x);
+            }
+        }
+    }
+```
