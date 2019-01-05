@@ -275,7 +275,7 @@ class Program
 ```
 
 ### Oefening 9, 10, 11, 12
-> verander gewoon de waarde van `const int VERSCHUIVEN` omde code voor de andere oefeningen te hebben.
+> verander gewoon de waarde van `const int VERSCHUIVING` om de code voor de andere oefeningen te hebben.
 ```csharp
 class Program
     {
@@ -313,3 +313,170 @@ class Program
         }
     }
 ```
+
+### Oefening 13, 14
+> Voeg het stukje met Array.Sort() toe om oef. 14 te verkrijgen.
+```csharp
+class Program
+    {
+        static Random random = new Random();
+
+        static void Main(string[] args)
+        {
+            const int AANTAL_GETALLEN = 20;
+            int[] initArray = new int[AANTAL_GETALLEN];
+            int[] tussenArray = new int[AANTAL_GETALLEN];
+            int[] endArray;
+
+            // waardes initialiseren
+            for (int i = 0; i < AANTAL_GETALLEN; i++)
+            {
+                initArray[i] = random.Next(0, 10);
+            }
+
+            // waardes checken
+            int teller = 0;
+            int aantalVerschillendeGetallen = 0;
+
+            for (int i = 0; i < AANTAL_GETALLEN; i++)
+            {
+                if (tussenArray.Contains(initArray[i])) 
+                //als het voorkomt moet de tussenarray niks onthouden, teller-- om teller++ te neutraliseren.
+                {
+                    teller--;
+                }
+                else 
+                // als het nog niet vorkomt wordt het getal toegevoegd
+                {
+                    tussenArray[teller] = initArray[i];
+                    aantalVerschillendeGetallen++;
+                }
+                teller++;
+            }
+
+            // 0 is defaultwaarde en zal altijd voorkomen in tussenarray. vandaar checken of 0 voorkomt in de init-array. 
+            // Zo ja, tussenArray[aantalVerschillendeGetallen] is default 0, dus aantalVerschillendeGetallen++
+            if (initArray.Contains(0))
+            {
+                aantalVerschillendeGetallen++;
+            }
+
+            // enkele waardes in 1 array met gepaste grootte steken
+            endArray = new int[aantalVerschillendeGetallen];
+
+            for (int i = 0; i < aantalVerschillendeGetallen; i++)
+            {
+                endArray[i] = tussenArray[i];
+            }
+
+            /// verschillende waardes sorteren: oef 14
+            Array.Sort(initArray);
+            Array.Sort(endArray);
+
+            // waardes afdrukken
+            for (int i = 0; i < AANTAL_GETALLEN; i++)
+            {
+                Console.WriteLine(initArray[i]);
+            }
+            Console.WriteLine("--------");
+            Console.WriteLine("Verschillende waarden (gesorteerd):");
+            for (int i = 0; i < endArray.Length; i++)
+            {
+                Console.WriteLine(endArray[i]);
+            }
+        }
+    }
+```
+
+### Oefening 15, 16
+> oefening 15 en 16 gecombineerd (zelfde principe). Met invoercorrectie.
+```csharp
+class Program
+    {
+        static void Main(string[] args)
+        {
+            // waardes in string
+            string invoer = "";
+            string totaalInvoer = "";
+            do
+            {
+                Console.Write("Geef een getal in: ");
+                invoer = Console.ReadLine();
+                if (invoer == "")
+                // voorkomen dat gebruiker geen getal invoert, voor de lol
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Geef een getal in a.u.b.");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    totaalInvoer += invoer + ",";
+                }
+            }
+            while (invoer != "32767");
+            totaalInvoer += "0"; // om geen error te krijgen door een "null" waarde na de laatste komma
+            
+            // waardes naar stringArray
+            string[] stringArray = totaalInvoer.Split(',');
+
+            // intArray aanmaken
+            int aantalIngevoerdeGetallen = stringArray.Length - 2;
+            int[] intArray = new int[aantalIngevoerdeGetallen]; // -2 want 32767 en 0
+
+            // waardes in intArray
+            for (int i = 0; i < aantalIngevoerdeGetallen; i++)
+            {
+                int getal = int.Parse(stringArray[i]);
+                intArray[i] = getal;
+            }
+
+            // grootste getal, aantal grootste getal en eerste index grootste getal bepalen
+            int grootsteGetal = intArray[0];
+            int aantalKeerGrootsteGetal = 1;
+            int indexEersteKeerGrootsteGetal = 0;
+            for (int i = 1; i < intArray.Length; i++)
+            {
+                if (intArray[i] > grootsteGetal)
+                {
+                    grootsteGetal = intArray[i];
+                    aantalKeerGrootsteGetal = 1;
+                    indexEersteKeerGrootsteGetal = i;
+                }
+                else if (intArray[i] == grootsteGetal)
+                {
+                    aantalKeerGrootsteGetal++;
+                }
+                else { /* getal is kleiner. */ }
+            }
+            indexEersteKeerGrootsteGetal++; // mensen werken niet met index 0... sukkelaars
+
+            // kleinste getal, aantal kleinste getal en laatste index kleinste getal bepalen
+            int kleinsteGetal = intArray[0];
+            int aantalKeerKleinsteGetal = 1;
+            int indexLaatsteKeerKleinsteGetal = 0;
+            for (int i = 1; i < intArray.Length; i++)
+            {
+                if (intArray[i] < kleinsteGetal)
+                {
+                    kleinsteGetal = intArray[i];
+                    aantalKeerKleinsteGetal = 1;
+                    indexLaatsteKeerKleinsteGetal = i;
+                }
+                else if (intArray[i] == kleinsteGetal)
+                {
+                    aantalKeerKleinsteGetal++;
+                    indexLaatsteKeerKleinsteGetal = i;
+                }
+                else { /* getal is groter. */ }
+            }
+            indexLaatsteKeerKleinsteGetal++; // mensen werken niet met index 0... sukkelaars
+
+            // alles afdrukken:
+            Console.WriteLine("--------");
+            Console.WriteLine("Het grootste getal {0} kwam {1} keer voor, de eerste keer op index {2}.", grootsteGetal, aantalKeerGrootsteGetal, indexEersteKeerGrootsteGetal);
+            Console.WriteLine("Het kleinste getal {0} kwam {1} keer voor, de laatste keer op index {2}.", kleinsteGetal, aantalKeerKleinsteGetal, indexLaatsteKeerKleinsteGetal);
+        }
+    }
+```
+
