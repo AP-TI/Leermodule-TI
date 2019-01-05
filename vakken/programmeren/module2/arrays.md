@@ -4,15 +4,15 @@
 ```csharp
 static void Main(string[] args)
         {
-            const int AANTALGETALLEN = 20;
-            int[] getallen = new int[AANTALGETALLEN];
+            const int AANTAL_GETALLEN = 20;
+            int[] getallen = new int[AANTAL_GETALLEN];
 
-            for (int teller = 0; teller < AANTALGETALLEN; teller++)
+            for(int teller = 0; teller < AANTAL_GETALLEN; teller++)
             {
-                Console.Write("Geef een getal({0}/{1}): ", teller + 1, AANTALGETALLEN);
+                Console.Write("Getal {0}/{1}: ", teller + 1, AANTAL_GETALLEN);
                 getallen[teller] = int.Parse(Console.ReadLine());
             }
-            for (int teller = AANTALGETALLEN - 1; teller >= 0; teller--)
+            for(int teller = AANTAL_GETALLEN - 1; teller >= 0; teller--)
             {
                 Console.WriteLine(getallen[teller]);
             }
@@ -180,10 +180,10 @@ class Program
             {
                 // voor elke kolom...
                 for (int j = 0; j < intJaggedArray.Length; j++)
-                { 
-                    // als de lengte van de array j groter is dan i 
-                      // stel overschot = 1 --> (34 groter dan i = 0 t/m 34 groter dan i = 33), 
-                      // stel overschot = 0 --> lengte 33 is niet groter dan i=33 dus het 33e element 
+                {
+                    // als de lengte van de array j groter is dan i
+                      // stel overschot = 1 --> (34 groter dan i = 0 t/m 34 groter dan i = 33),
+                      // stel overschot = 0 --> lengte 33 is niet groter dan i=33 dus het 33e element
                         // (dat niet bestaat want array met 33 elementen = 0 --> 32) zal niet afgedrukt worden --> geen errors!
                     if (intJaggedArray[j].Length > i)
                     {
@@ -205,7 +205,7 @@ class Program
         {
             const int AANTAL_GETALLEN = 10;
             int[] nieuweIntarray = new int[AANTAL_GETALLEN];
-            
+
 
             for (int i = 0; i < AANTAL_GETALLEN; i++)
             {
@@ -243,7 +243,7 @@ class Program
         {
             const int AANTAL_GETALLEN = 10;
             int[] intarray = new int[AANTAL_GETALLEN];
-            
+
             for (int i = 0; i < intarray.Length; i++)
             {
                 intarray[i] = random.Next(0, 10);
@@ -340,12 +340,12 @@ class Program
 
             for (int i = 0; i < AANTAL_GETALLEN; i++)
             {
-                if (tussenArray.Contains(initArray[i])) 
+                if (tussenArray.Contains(initArray[i]))
                 //als het voorkomt moet de tussenarray niks onthouden, teller-- om teller++ te neutraliseren.
                 {
                     teller--;
                 }
-                else 
+                else
                 // als het nog niet vorkomt wordt het getal toegevoegd
                 {
                     tussenArray[teller] = initArray[i];
@@ -354,7 +354,7 @@ class Program
                 teller++;
             }
 
-            // 0 is defaultwaarde en zal altijd voorkomen in tussenarray. vandaar checken of 0 voorkomt in de init-array. 
+            // 0 is defaultwaarde en zal altijd voorkomen in tussenarray. vandaar checken of 0 voorkomt in de init-array.
             // Zo ja, tussenArray[aantalVerschillendeGetallen] is default 0, dus aantalVerschillendeGetallen++
             if (initArray.Contains(0))
             {
@@ -416,7 +416,7 @@ class Program
             }
             while (invoer != "32767");
             totaalInvoer += "0"; // om geen error te krijgen door een "null" waarde na de laatste komma
-            
+
             // waardes naar stringArray
             string[] stringArray = totaalInvoer.Split(',');
 
@@ -479,4 +479,3 @@ class Program
         }
     }
 ```
-
