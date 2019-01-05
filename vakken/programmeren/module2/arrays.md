@@ -41,23 +41,19 @@ static void Main(string[] args)
 ```csharp
 static void Main(string[] args)
         {
-            const int AANTALGETALLEN = 20;
-            int[] getallen = new int[AANTALGETALLEN];
+            const int AANTAL_GETALLEN = 20;
+            const int AANTAL_GETALLEN_NAAR_ACHTER = 3;
+            int[] getallen = new int[AANTAL_GETALLEN];
 
-            for(int teller = 0; teller < AANTALGETALLEN; teller++)
+            for(int teller = 0; teller < AANTAL_GETALLEN; teller++)
             {
-                Console.Write("Geef getal({0}/{1}): ", teller + 1, AANTALGETALLEN);
+                Console.Write("Geef getal {0}/{1}: ", teller + 1, AANTAL_GETALLEN);
                 getallen[teller] = int.Parse(Console.ReadLine());
             }
-            for(int teller = AANTALGETALLEN - 3; teller < AANTALGETALLEN; teller++)
+            for(int teller = AANTAL_GETALLEN - AANTAL_GETALLEN_NAAR_ACHTER; teller % 20 != AANTAL_GETALLEN - (AANTAL_GETALLEN_NAAR_ACHTER + 1); teller++)
             {
-                Console.WriteLine(getallen[teller]);
+                Console.WriteLine(getallen[(teller) % 20]);
             }
-            for(int teller = 0; teller < AANTALGETALLEN - 3; teller++)
-            {
-                Console.WriteLine(getallen[teller]);
-            }
-
         }
 ```
 ### Oefening 4
