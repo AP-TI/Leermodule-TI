@@ -232,3 +232,83 @@ class Program
         }
     }
 ```
+
+### Oefening 8
+```csharp
+class Program
+    {
+        static Random random = new Random();
+
+        static void Main(string[] args)
+        {
+            const int AANTAL_GETALLEN = 10;
+            int[] intarray = new int[AANTAL_GETALLEN];
+            
+            for (int i = 0; i < intarray.Length; i++)
+            {
+                intarray[i] = random.Next(0, 10);
+            }
+
+            foreach (int x in intarray)
+            {
+                Console.WriteLine(x);
+            }
+            Console.WriteLine("------");
+
+            int randomIndexWaarde;
+            int tussenVariabele;
+
+            for (int i = 0; i < AANTAL_GETALLEN; i++)
+            {
+                randomIndexWaarde = random.Next(0, AANTAL_GETALLEN);
+                tussenVariabele = intarray[randomIndexWaarde];
+                intarray[randomIndexWaarde] = intarray[i];
+                intarray[i] = tussenVariabele;
+            }
+
+            foreach (int x in intarray)
+            {
+                Console.WriteLine(x);
+            }
+        }
+    }
+```
+
+### Oefening 9
+```csharp
+class Program
+    {
+        static Random random = new Random();
+
+        static void Main(string[] args)
+        {
+            const int AANTAL_GETALLEN = 10;
+            const int VERSCHUIVING = -3;
+            int[,] intArray = new int[2,AANTAL_GETALLEN];
+            const int INIT_ARRAY = 0;
+            const int VERSCHOVEN_ARRAY = 1;
+
+            // init waardes in array 0
+            for (int i = 0; i < AANTAL_GETALLEN; i++)
+            {
+                intArray[INIT_ARRAY, i] = random.Next(0,10);
+            }
+
+            // verschoven waardes in array 1
+            for (int i = 0; i < AANTAL_GETALLEN; i++)
+            {
+                intArray[VERSCHOVEN_ARRAY, i] = intArray[INIT_ARRAY, ((i + VERSCHUIVING)+AANTAL_GETALLEN) % AANTAL_GETALLEN];
+            }
+
+            // print alle waardes uit beide arrays
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < AANTAL_GETALLEN; j++)
+                {
+                    Console.WriteLine(intArray[i,j]);
+                }
+                Console.WriteLine("------");
+            }
+        }
+    }
+```
