@@ -28,12 +28,12 @@ static void Main(string[] args)
 
             for(int teller = 0; teller < AANTAL_GETALLEN; teller++)
             {
-                Console.Write("Geef getal({0}/{1}): ", teller + 1, AANTAL_GETALLEN);
+                Console.Write("Geef getal {0}/{1}: ", teller + 1, AANTAL_GETALLEN);
                 getallen[teller] = int.Parse(Console.ReadLine());
             }
-            for(int teller = 0; teller < AANTAL_GETALLEN ; teller++)
+            for(int teller = 0; teller < AANTAL_GETALLEN; teller++)
             {
-                Console.WriteLine(getallen[(teller + AANTAL_OP_TE_SCHUIVEN_GETALLEN) % getallen.Length]);
+                Console.WriteLine(getallen[(teller + AANTAL_OP_TE_SCHUIVEN_GETALLEN) % AANTAL_GETALLEN]);
             }
         }
 ```
