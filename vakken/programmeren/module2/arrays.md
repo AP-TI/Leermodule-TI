@@ -274,7 +274,8 @@ class Program
     }
 ```
 
-### Oefening 9
+### Oefening 9, 10, 11, 12
+> verander gewoon de waarde van `const int VERSCHUIVEN` omde code voor de andere oefeningen te hebben.
 ```csharp
 class Program
     {
@@ -283,7 +284,7 @@ class Program
         static void Main(string[] args)
         {
             const int AANTAL_GETALLEN = 10;
-            const int VERSCHUIVING = -3;
+            const int VERSCHUIVING = 1;
             int[,] intArray = new int[2,AANTAL_GETALLEN];
             const int INIT_ARRAY = 0;
             const int VERSCHOVEN_ARRAY = 1;
