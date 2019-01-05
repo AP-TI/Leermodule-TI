@@ -60,20 +60,19 @@ static void Main(string[] args)
 ```csharp
 static void Main(string[] args)
         {
-            const int AANTALGETALLEN = 5;
+            const int AANTAL_GETALLEN = 20;
+            int[] getallen = new int[AANTAL_GETALLEN];
             int rotatieGetal;
-            int[] getallen = new int[AANTALGETALLEN];
-
-            Console.Write("Geef het rotatiegetal: ");
+            Console.Write("Geef het getal waarover u de getalrij wilt roteren: ");
             rotatieGetal = int.Parse(Console.ReadLine());
-            for (int teller = 0; teller < AANTALGETALLEN; teller++)
+            for(int teller = 0; teller < AANTAL_GETALLEN; teller++)
             {
-                Console.Write("Geef getal({0}/{1}): ", teller + 1, AANTALGETALLEN);
+                Console.Write("Geef getal {0}/{1}: ", teller + 1, AANTAL_GETALLEN);
                 getallen[teller] = int.Parse(Console.ReadLine());
             }
-            for (int teller = 0; teller < AANTALGETALLEN; teller++)
+            for (int teller = 0; teller < AANTAL_GETALLEN; teller++)
             {
-                Console.WriteLine(getallen[(teller + rotatieGetal + AANTALGETALLEN) % AANTALGETALLEN]);
+                Console.WriteLine(getallen[(teller + rotatieGetal + AANTAL_GETALLEN) % AANTAL_GETALLEN]);
             }
         }
 ```
