@@ -50,9 +50,9 @@ static void Main(string[] args)
                 Console.Write("Geef getal {0}/{1}: ", teller + 1, AANTAL_GETALLEN);
                 getallen[teller] = int.Parse(Console.ReadLine());
             }
-            for(int teller = AANTAL_GETALLEN - AANTAL_GETALLEN_NAAR_ACHTER; teller % 20 != AANTAL_GETALLEN - (AANTAL_GETALLEN_NAAR_ACHTER + 1); teller++)
+            for(int teller = AANTAL_GETALLEN - AANTAL_GETALLEN_NAAR_ACHTER; teller % AANTAL_GETALLEN != AANTAL_GETALLEN - (AANTAL_GETALLEN_NAAR_ACHTER + 1); teller++)
             {
-                Console.WriteLine(getallen[(teller) % 20]);
+                Console.WriteLine(getallen[(teller) % AANTAL_GETALLEN]);
             }
         }
 ```
