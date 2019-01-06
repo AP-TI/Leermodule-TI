@@ -1,7 +1,7 @@
 # Hoofdstuk 2
 Von Neumann-cyclus: ophalen, decoderen, uitvoeren, wegschrijven.
 
-Datatypes zijn gestandariseerd dankzij IEEE
+Datatypes zijn gestandaardiseerd dankzij IEEE
 
 Getalbreedte: het aantal bits, benut door de computer, voor een getal
 
@@ -53,13 +53,13 @@ Verdeling bij wetenschappelijke notatie:
 - 1 bit voor toestandsteken
 - 1 bit voor grootte-orde (exponent)
 - 4 bits voor mantisse (x’)
- 
+
 Verdeling bij mini-precision:
 - 1 bit voor toestandsteken
 - 3 bits voor exponent
 - 4 bits voor mantisse (x’)
- 
-Bias β = een constant positief getal, waarmee de effectieve exponent E2 wordt verhoogd 
+
+Bias β = een constant positief getal, waarmee de effectieve exponent E2 wordt verhoogd
 
 E<sub>β</sub> = E<sub>2</sub> + β
 
@@ -85,7 +85,7 @@ niet alles 0, of tekenbit 1 en de rest 0 -> NULL
 
 - NAN: 2<sup>4</sup>
 - -NAN: 2<sup>4</sup>
-- INFINITY al bij in NAN geteld, -INFINITY al bij in -NAN geteld 
+- INFINITY al bij in NAN geteld, -INFINITY al bij in -NAN geteld
 - NULL & -NULL
 
 Machineprecisie p2 = 5 (4 mantissebits + hiddenbit) uitdrukken in absolute foutvlaggen ±α rond de machinegetallen x’
@@ -109,16 +109,16 @@ Verdeling bij single-precision:
 - 1 bit voor toestandsteken
 - 8 bits voor exponent
 - 23 bits voor mantisse (x’)
- 
+
 Bias β = 127
 
 Machineprecisie p2 = 24 (23 mantissebits + hiddenbit) uitdrukken in absolute foutvlaggen ±α rond de machinegetallen x’
 
-Vaste procentuele opslagfout = 2<sup>-24</sup> ≈ 10<sup>-8</sup> 
+Vaste procentuele opslagfout = 2<sup>-24</sup> ≈ 10<sup>-8</sup>
 
 Als de computer meerdere bewerkingen uitvoert op x’ in R, dan kunnen de fouten verergeren
 
-Er bestaan 
+Er bestaan
 - oneindig veel niet-machinegetallen
 - eindig aantal bruikbare machinegetallen
 
