@@ -210,3 +210,117 @@ Mondeling gedaan
     </KANAAL>
 </TVPLANNING>
 ```
+### Oefening 9
+```xml
+<?xml version="1.0"?>
+<!DOCTYPE personen[
+<!ELEMENT personen (persoon+)>
+<!ELEMENT persoon (((voornaam, achternaam)|(achternaam, voornaam)), geboortedatum?, vrijeTekst?)>
+<!ELEMENT voornaam (#PCDATA)>
+<!ELEMENT achternaam (#PCDATA)>
+<!ELEMENT geboortedatum (#PCDATA)>
+<!ELEMENT vrijeTekst (#PCDATA)>
+<!ATTLIST persoon id CDATA #REQUIRED>
+]>
+<personen>
+	<persoon id="p1">
+		<voornaam>Jos</voornaam>
+		<achternaam>Van De Walle</achternaam>
+	</persoon>
+	<persoon id="p2">
+		<achternaam>Thrari</achternaam>
+		<voornaam>Saïda</voornaam>
+		<geboortedatum>02/11/1980</geboortedatum>
+		<vrijeTekst>
+			<![CDATA[Zij houdt van speciale tekens zoals &<> en ]]>
+		</vrijeTekst>
+	</persoon>
+	<persoon id="p3">
+		<achternaam>Johnson</achternaam>
+		<voornaam>Thomas</voornaam>
+		<geboortedatum>02/12/1982</geboortedatum>
+	</persoon>
+</personen>
+```
+### Oefening 10
+Deze oefening diende enkel om te tonen hoe slechte XML eruit zag. Je kan hiervoor geen zinvol DTD maken.
+### Scouts
+```xml
+<?xml version="1.0" ?>
+
+<!DOCTYPE SCOUTS [
+<!ELEMENT SCOUTS (LEIDER, PATROUILLE+)>
+<!ATTLIST SCOUTS NAAM CDATA #REQUIRED>
+<!ATTLIST SCOUTS id ID #REQUIRED>
+    <!ELEMENT LEIDER (#PCDATA)>
+    <!ELEMENT PATROUILLE (LEIDER, SUBLEIDER+, AANTAL, KREET?, VAANDEL)>
+        <!ATTLIST PATROUILLE naam CDATA #REQUIRED>
+        <!ATTLIST LEIDER geslacht (M|V|X) #IMPLIED>
+        <!ELEMENT SUBLEIDER (#PCDATA)>
+        <!ELEMENT AANTAL (#PCDATA)>
+        <!ELEMENT KREET (#PCDATA)>
+        <!ELEMENT VAANDEL ((FIGUUR, KLEUR) | (KLEUR, FIGUUR))>
+            <!ELEMENT FIGUUR (#PCDATA)>
+            <!ELEMENT KLEUR (#PCDATA)>
+]>
+
+<SCOUTS NAAM="ALBERTUS" id="A859">
+   <LEIDER>AKELA &amp; RAHJA</LEIDER>
+   <PATROUILLE naam="VALKEN">
+        <LEIDER geslacht="M">Karel De Grootte</LEIDER>
+        <SUBLEIDER> Karin De Cleyne</SUBLEIDER>
+        <AANTAL>6</AANTAL>
+        <KREET>VALKEN<![CDATA[%<!]]> VLIEGEN HOGER</KREET>
+        <VAANDEL>
+            <KLEUR>Groen</KLEUR>
+            <FIGUUR>Boom</FIGUUR>
+        </VAANDEL>
+   </PATROUILLE>
+   <PATROUILLE naam="MEEUWEN">
+        <LEIDER geslacht="V">Kim Patteyns</LEIDER>
+        <SUBLEIDER> Veerle De Baatselier</SUBLEIDER>
+        <SUBLEIDER> Debbie De Baatselier</SUBLEIDER>
+        <AANTAL>7</AANTAL>
+        <VAANDEL>
+            <FIGUUR>Rots</FIGUUR>
+            <KLEUR>Blauw</KLEUR>
+        </VAANDEL>
+   </PATROUILLE>
+</SCOUTS>
+```
+### Oefening 11
+```xml
+<?xml version="1.0"?>
+<!DOCTYPE security[
+<!ELEMENT security (userRole, managerRole, adminRole)>
+<!ELEMENT userRole (logon, insert, create)>
+<!ELEMENT managerRole (logon, insert, create, update)>
+<!ELEMENT adminRole (logon, insert, create, update, delete)>
+
+<!ELEMENT logon EMPTY>
+<!ELEMENT insert EMPTY>
+<!ELEMENT create EMPTY>
+<!ELEMENT update EMPTY>
+<!ELEMENT delete EMPTY>
+]>
+<security>
+	<userRole>
+		<logon />
+		<insert />
+		<create />
+	</userRole>
+	<managerRole>
+		<logon />
+		<insert />
+		<create />
+		<update />
+	</managerRole>
+	<adminRole>
+		<logon />
+		<insert />
+		<create />
+		<update />
+		<delete />
+	</adminRole>
+</security>
+```
