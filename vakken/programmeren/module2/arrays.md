@@ -472,3 +472,199 @@ class Program
         }
     }
 ```
+
+### Oefening 17
+```csharp
+class Program
+    {
+        static Random random = new Random();
+
+        static void Main(string[] args)
+        {
+            const int AANTAL_VERSCHILLENDE_GETALLEN = 100;
+            const int AFSLUITWAARDE = 32767;
+            int[] intArray = new int[AANTAL_VERSCHILLENDE_GETALLEN];
+            int[] endArray;
+            int ingelezenGetal;
+            int teller = 0;
+            do
+            {
+                // ingelezenGetal = random.Next(0, (AFSLUITWAARDE+1));
+                ingelezenGetal = int.Parse(Console.ReadLine());
+                if (intArray.Contains(ingelezenGetal))
+                {
+                    teller--;
+                }
+                else
+                {
+                    intArray[teller] = ingelezenGetal;
+                }
+                teller++;
+            } while (ingelezenGetal != AFSLUITWAARDE);
+            teller--;
+
+            endArray = new int[teller];
+
+            for (int i = 0; i < teller; i++)
+            {
+                endArray[i] = intArray[i];
+            }
+            
+            Console.WriteLine("Aantal verschillende getallen: {0}", endArray.Length);
+            Console.WriteLine("Getallen: ");
+
+            foreach (int x in endArray)
+            {
+                Console.WriteLine(x);
+            }
+        }
+    }
+```
+
+### Oefening 18
+```csharp
+class Program
+    {
+        static void Main(string[] args)
+        {
+            int STARTWAARDE = 2;
+            const int EINDWAARDE = 100000;
+
+            ArrayList nietPriem = new ArrayList();
+
+            Console.WriteLine("Geduld aub, kan effe duren, we moeten {0} getallen doorlopen!", EINDWAARDE);
+
+            for (int i = STARTWAARDE; i < EINDWAARDE; i++)
+            {
+                if (!nietPriem.Contains(i))
+                {
+                    for (int j = i * 2; j < EINDWAARDE; j += i)
+                    {
+                        if (!nietPriem.Contains(j))
+                        {
+                            nietPriem.Add(j);
+                            Console.Write(j + " - ");
+                        }
+                    }
+                }
+            }
+
+            for (int i = STARTWAARDE; i < EINDWAARDE; i++)
+            {
+                if (!nietPriem.Contains(i))
+                {
+                    Console.Write(i + " - ");
+                }
+            }
+            Console.WriteLine("Dat zal het zijn :D");
+        }
+    }
+```
+
+### Oefening 19, a,b,c,d,e (work in progress)
+```csharp
+class Program
+    {
+        static void Main(string[] args)
+        {
+            const int AANTAL_LETTERS = 26;
+            char[] letters = new char[AANTAL_LETTERS] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            const int AANTAL_KLINKERS = 6;
+            char[] klinkers = new char[AANTAL_KLINKERS] { 'a', 'e', 'i', 'o', 'u', 'y' };
+
+            string ingelezenString1 = "ik pak koekjes wanneer ik honger heb";
+            string ingelezenString2 = "abcdefghijklmnopqrstuvwxyzzxwvutsrqponmlkjihgfedcba";
+
+            //1a//Console.WriteLine(PalindroomCheck(ingelezenString2));
+            //2b//Console.WriteLine(WoordenTeller(ingelezenString1));
+            //3c//Console.WriteLine(AantalKeer_(ingelezenString1, char.Parse(Console.ReadLine())));
+            //4d
+            /*int[] waardes = AantalKeerElkeKlinker(ingelezenString1, klinkers);
+            for (int i = 0; i < waardes.Length; i++)
+            {
+                Console.WriteLine("{0} - {1}", klinkers[i], waardes[i]);
+            }*/
+            //5e
+            /*int[] waardes = AantalKeerElkeLetter(ingelezenString2, letters);
+            for (int i = 0; i < waardes.Length; i++)
+            {
+                Console.WriteLine("{0} - {1}", letters[i], waardes[i]);
+            }*/
+            //6f
+        }
+
+        // 1
+        static public bool PalindroomCheck(string controleString)
+        {
+            int charLeft = -1;
+            int charRight = controleString.Length;
+
+            do
+            {
+                charLeft++;
+                charRight--;
+
+            } while (charLeft < charRight && controleString[charLeft] == controleString[charRight]);
+
+            if (charLeft < charRight)
+                return false;
+            return true;
+        }
+
+        // 2
+        static public int WoordenTeller(string controleString)
+        {
+            return controleString.Split(" ").Length;
+        }
+
+        // 3
+        static public int AantalKeer_(string controleString, char gekozenLetter)
+        {
+            int aantalGekozenLetter = 0;
+            foreach (string woord in controleString.Split(" "))
+            {
+                foreach (char letter in woord)
+                {
+                    if (letter == gekozenLetter)
+                    {
+                        aantalGekozenLetter++;
+                    }
+                }
+            }
+            return aantalGekozenLetter;
+        }
+
+        // 4
+        static public int[] AantalKeerElkeKlinker(string controleString, char[] klinkers)
+        {
+            int[] klinkersAantal = new int[klinkers.Length];
+            for (int i = 0; i < controleString.Length; i++)
+            {
+                if (klinkers.Contains(controleString[i]))
+                {
+                    int index = Array.IndexOf(klinkers, controleString[i]);
+                    klinkersAantal[index]++;
+                }
+            }
+            return klinkersAantal;
+        }
+
+        // 5
+        static public int[] AantalKeerElkeLetter(string controleString, char[] letters)
+        {
+            int[] lettersAantal = new int[letters.Length];
+            for (int i = 0; i < controleString.Length; i++)
+            {
+                if (letters.Contains(controleString[i]))
+                {
+                    int index = Array.IndexOf(letters, controleString[i]);
+                    lettersAantal[index]++;
+                }
+            }
+            return lettersAantal;
+        }
+
+        // 6
+        
+    }
+```
