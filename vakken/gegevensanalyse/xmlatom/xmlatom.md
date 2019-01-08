@@ -1,6 +1,6 @@
 # XML-linter in Atom
 ## Stap 1
-Open Atom en open de instellingen via de toetsencombinatie `ctrl` + `,` om de instellingen te openen. Druk vervolgens op `install`
+Open Atom (indien je dit nog niet hebt: [download](https://atom.io/)) en open de instellingen via de toetsencombinatie `ctrl` + `,` om de instellingen te openen. Druk vervolgens op `install`
 
 ![1](1.png)
 
