@@ -509,7 +509,7 @@ class Program
             {
                 endArray[i] = intArray[i];
             }
-            
+
             Console.WriteLine("Aantal verschillende getallen: {0}", endArray.Length);
             Console.WriteLine("Getallen: ");
 
@@ -665,6 +665,488 @@ class Program
         }
 
         // 6
-        
+
     }
+```
+
+### Oefening 20
+```csharp
+class Program
+{
+    static void Main(string[] args)
+    {
+        const int RIJEN = 2;
+        const int KOLOMMEN = 3;
+
+        int[,] matrix1 = new int[RIJEN, KOLOMMEN];
+        int[,] matrix2 = new int[RIJEN, KOLOMMEN];
+        int[,] uitkomst = new int[RIJEN, KOLOMMEN];
+
+        Console.WriteLine("Eerste array");
+
+        for (int teller = 0; teller < RIJEN; teller++)
+        {
+            for (int teller2 = 0; teller2 < KOLOMMEN; teller2++)
+            {
+                matrix1[teller, teller2] = int.Parse(Console.ReadLine());
+            }
+        }
+
+        Console.WriteLine("Tweede array");
+
+        for (int teller = 0; teller < RIJEN; teller++)
+        {
+            for (int teller2 = 0; teller2 < KOLOMMEN; teller2++)
+            {
+                matrix2[teller, teller2] = int.Parse(Console.ReadLine());
+            }
+        }
+
+        Console.WriteLine("Bewerking");
+
+        for (int teller = 0; teller < RIJEN; teller++)
+        {
+            for (int teller2 = 0; teller2 < KOLOMMEN; teller2++)
+            {
+                uitkomst[teller, teller2] = matrix1[teller, teller2] + matrix2[teller, teller2];
+            }
+        }
+
+        Console.WriteLine("Uitkomst");
+
+        for (int teller = 0; teller < RIJEN; teller++)
+        {
+            for (int teller2 = 0; teller2 < KOLOMMEN; teller2++)
+            {
+                Console.Write(uitkomst[teller, teller2]);
+                Console.Write(" ");
+            }
+            Console.WriteLine();
+        }
+    }
+}
+```
+
+### Oefening 21
+```csharp
+class Program
+{
+    static void Main(string[] args)
+    {
+        const int RIJEN = 2;
+        const int KOLOMMEN = 3;
+
+        int[,] matrix = new int[RIJEN, KOLOMMEN];
+        int[,] matrixT = new int[KOLOMMEN, RIJEN];
+
+        Console.WriteLine("Eerste array ingeven");
+
+        for (int teller = 0; teller < RIJEN; teller++)
+        {
+            for (int teller2 = 0; teller2 < KOLOMMEN; teller2++)
+            {
+                matrix[teller, teller2] = int.Parse(Console.ReadLine());
+            }
+        }
+
+        Console.WriteLine("Eerste array:");
+
+        for (int teller = 0; teller < RIJEN; teller++)
+        {
+            for (int teller2 = 0; teller2 < KOLOMMEN; teller2++)
+            {
+                Console.Write(matrix[teller, teller2]);
+                Console.Write(" ");
+            }
+            Console.WriteLine();
+        }
+
+        Console.WriteLine("Getransponeerde matrix:");
+
+        for (int teller = 0; teller < KOLOMMEN; teller++)
+        {
+            for (int teller2 = 0; teller2 < RIJEN; teller2++)
+            {
+                matrixT[teller, teller2] = matrix[teller2, teller];
+                Console.Write(matrixT[teller, teller2]);
+                Console.Write(" ");
+            }
+            Console.WriteLine();
+        }
+    }
+}
+```
+
+### Oefening 22
+```csharp
+class Program
+{
+    static void Main(string[] args)
+    {
+        const int RIJEN = 3;
+        const int KOLOMMEN = 3;
+        bool symmetrisch = true;
+
+        int[,] matrix = new int[RIJEN, KOLOMMEN];
+
+        Console.WriteLine("Eerste array ingeven");
+
+        for (int teller = 0; teller < RIJEN; teller++)
+        {
+            for (int teller2 = 0; teller2 < KOLOMMEN; teller2++)
+            {
+                matrix[teller, teller2] = int.Parse(Console.ReadLine());
+            }
+        }
+
+        Console.WriteLine("Eerste array:");
+
+        for (int teller = 0; teller < RIJEN; teller++)
+        {
+            for (int teller2 = 0; teller2 < KOLOMMEN; teller2++)
+            {
+                Console.Write(matrix[teller, teller2]);
+                Console.Write(" ");
+            }
+            Console.WriteLine();
+        }
+
+        for (int teller = 0; teller < RIJEN; teller++)
+        {
+            for (int teller2 = 0; teller2 < KOLOMMEN; teller2++)
+            {
+                if (matrix[teller, teller2] != matrix[teller2, teller])
+                     symmetrisch = false;
+            }
+        }
+
+        Console.WriteLine("symmetrisch: {0}", symmetrisch);
+    }
+}
+```
+
+### Oefening 23
+```csharp
+class Program
+{
+    static void Main(string[] args)
+    {
+        const int RIJEN = 3;
+        const int KOLOMMEN = 3;
+
+        bool diagonaal = true;
+
+        int[,] matrix = new int[RIJEN, KOLOMMEN];
+
+        Console.WriteLine("Eerste array ingeven");
+
+        for (int teller = 0; teller < RIJEN; teller++)
+        {
+            for (int teller2 = 0; teller2 < KOLOMMEN; teller2++)
+            {
+                matrix[teller, teller2] = int.Parse(Console.ReadLine());
+            }
+        }
+
+        Console.WriteLine("Eerste array:");
+
+        for (int teller = 0; teller < RIJEN; teller++)
+        {
+            for (int teller2 = 0; teller2 < KOLOMMEN; teller2++)
+            {
+                Console.Write(matrix[teller, teller2]);
+                Console.Write(" ");
+            }
+            Console.WriteLine();
+        }
+
+        for (int teller = 0; teller < RIJEN; teller++)
+        {
+            for (int teller2 = 0; teller2 < KOLOMMEN; teller2++)
+            {
+                if ((teller == teller2) && (matrix[teller, teller2] == 1))
+                    diagonaal = true;
+                else if (matrix[teller, teller2] == 0)
+                    diagonaal = true;
+                else
+                    diagonaal = false;
+            }
+        }
+        Console.WriteLine("Diagonaal matrix: {0}", diagonaal);
+    }
+}
+```
+
+### Oefening 26, 27
+```csharp
+class Program
+{
+    static void Main(string[] args)
+    {
+        const int RIJEN_MATRIX1 = 4;
+        const int KOLOMMEN_MATRIX1 = 3;
+        const int RIJEN_MATRIX2 = 3;
+        const int KOLOMMEN_MATRIX2 = 2;
+
+        int[,] matrix1 = new int[RIJEN_MATRIX1, KOLOMMEN_MATRIX1];
+        int[,] matrix2 = new int[RIJEN_MATRIX2, KOLOMMEN_MATRIX2];
+        int[,] uitkomst = new int[RIJEN_MATRIX1, KOLOMMEN_MATRIX2];
+
+        Console.WriteLine("Enter Matrix 1: ");
+
+        for (int teller = 0; teller < RIJEN_MATRIX1; teller++)
+        {
+            for (int teller2 = 0; teller2 < KOLOMMEN_MATRIX1; teller2++)
+            {
+                matrix1[teller, teller2] = int.Parse(Console.ReadLine());
+            }
+        }
+
+        Console.WriteLine("Enter Matrix 2: ");
+
+        for (int teller = 0; teller < RIJEN_MATRIX2; teller++)
+        {
+            for (int teller2 = 0; teller2 < KOLOMMEN_MATRIX2; teller2++)
+            {
+                matrix2[teller, teller2] = int.Parse(Console.ReadLine());
+            }
+        }
+
+        Console.WriteLine("Matrix 1: ");
+
+        for (int teller = 0; teller < RIJEN_MATRIX1; teller++)
+        {
+            for (int teller2 = 0; teller2 < KOLOMMEN_MATRIX1; teller2++)
+            {
+                Console.Write(matrix1[teller, teller2]);
+                Console.Write(" ");
+            }
+            Console.WriteLine();
+        }
+
+        Console.WriteLine("Matrix 2: ");
+
+        for (int teller = 0; teller < RIJEN_MATRIX2; teller++)
+        {
+            for (int teller2 = 0; teller2 < KOLOMMEN_MATRIX2; teller2++)
+            {
+                Console.Write(matrix2[teller, teller2]);
+                Console.Write(" ");
+            }
+            Console.WriteLine();
+        }
+
+        Console.WriteLine("Uitkomst: ");
+
+        for (int teller = 0; teller < RIJEN_MATRIX1; teller++)
+        {
+            for (int teller2 = 0; teller2 < KOLOMMEN_MATRIX2; teller2++)
+            {
+                for (int teller3 = 0; teller3 < KOLOMMEN_MATRIX1 /*Dit mag ook RIJEN_MATRIX2 zijn*/; teller3++)
+                {
+                    uitkomst[teller, teller2] += (matrix1[teller, teller3] * matrix2[teller3, teller2]);
+                }
+            }
+        }
+
+        for (int teller = 0; teller < RIJEN_MATRIX1; teller++)
+        {
+            for (int teller2 = 0; teller2 < KOLOMMEN_MATRIX2; teller2++)
+            {
+                Console.Write(uitkomst[teller, teller2]);
+                Console.Write(" ");
+            }
+            Console.WriteLine();
+        }
+    }
+}
+```
+
+### Oefening 28
+## Class Program
+```csharp
+class Program
+{
+    static void Main(string[] args)
+    {
+        const int RIJEN = 3;
+        const int KOLOMMEN = 3;
+        Matrix matrix1 = new Matrix(new int[RIJEN, KOLOMMEN]);
+        Matrix matrix2 = new Matrix(new int[RIJEN, KOLOMMEN]);
+        Matrix uitkomst = new Matrix(new int[RIJEN, KOLOMMEN]);
+
+
+        Console.WriteLine("Enter eerste array");
+
+        for (int teller = 0; teller < matrix1.Rows; teller++)
+        {
+            for (int teller2 = 0; teller2 < matrix1.Columns; teller2++)
+            {
+                matrix1.Array[teller, teller2] = int.Parse(Console.ReadLine());
+            }
+        }
+
+        Console.WriteLine("Enter tweede array");
+
+        for (int teller = 0; teller < matrix2.Rows; teller++)
+        {
+            for (int teller2 = 0; teller2 < matrix2.Columns; teller2++)
+            {
+                matrix2.Array[teller, teller2] = int.Parse(Console.ReadLine());
+            }
+        }
+
+        Console.WriteLine("Eerste array:");
+
+        Console.WriteLine(matrix1);
+
+        Console.WriteLine("Tweede array:");
+
+        Console.WriteLine(matrix2);
+
+        Console.WriteLine("Bewerkingen: ");
+
+        Console.WriteLine("Som");
+
+        Console.WriteLine(Matrix.Sum(matrix1, matrix2));
+
+        Console.WriteLine("Verschil");
+
+        Console.WriteLine(Matrix.Difference(matrix1, matrix2));
+
+        Console.WriteLine("Product");
+
+        Console.WriteLine(Matrix.Product(matrix1, matrix2));
+
+        Console.WriteLine("Transpose");
+
+        Console.WriteLine(matrix1.Transpose());
+    }
+}
+```
+## Class Matrix
+```csharp
+enum Bewerkingen { Sum, Difference, Product };
+class Matrix
+{
+    public const int COLUMN = 1;
+    public const int ROW = 0;
+
+    public int[,] Array { get; set; }
+    public int Rows { get; set; }
+    public int Columns { get; set; }
+
+    public Matrix(int[,] sArray)
+    {
+        this.Array = sArray;
+        this.Rows = this.Array.GetLength(ROW);
+        this.Columns = this.Array.GetLength(COLUMN);
+    }
+
+    public bool IsPossible(Bewerkingen bewerking, Matrix matrix1, Matrix matrix2)
+    {
+        bool possible = false;
+
+        switch (bewerking)
+        {
+            case Bewerkingen.Sum:
+                if ((matrix1.Rows == matrix1.Rows) && (matrix1.Columns == matrix2.Columns))
+                    possible = true;
+                break;
+            case Bewerkingen.Difference:
+                if ((matrix1.Rows == matrix1.Rows) && (matrix1.Columns == matrix2.Columns))
+                    possible = true;
+                break;
+            case Bewerkingen.Product:
+                if (matrix1.Columns == matrix2.Rows)
+                    possible = true;
+                break;
+            default:
+                possible = false;
+                break;
+        }
+
+        return possible;
+    }
+
+    public Matrix Transpose()
+    {
+        int[,] tussenstap = new int[Rows, Columns];
+
+        for (int teller = 0; teller < Columns; teller++)
+        {
+            for (int teller2 = 0; teller2 < Rows; teller2++)
+            {
+                tussenstap[teller, teller2] = Array[teller2, teller];
+            }
+        }
+
+        return new Matrix(tussenstap);
+    }
+
+    public override string ToString()
+    {
+        StringBuilder matrixString = new StringBuilder();
+
+        for (int teller = 0; teller < this.Rows; teller++)
+        {
+            for (int teller2 = 0; teller2 < this.Columns; teller2++)
+            {
+                matrixString.Append(this.Array[teller, teller2]);
+                matrixString.Append(" ");
+            }
+            matrixString.AppendLine();
+        }
+
+        return matrixString.ToString();
+    }
+
+    static public Matrix Product(Matrix matrix1, Matrix matrix2)
+    {
+        Matrix uitkomst = new Matrix(new int[matrix1.Rows, matrix1.Columns]);
+
+        for (int teller = 0; teller < matrix1.Rows; teller++)
+        {
+            for (int teller2 = 0; teller2 < matrix2.Columns; teller2++)
+            {
+                for (int teller3 = 0; teller3 < matrix1.Columns /*Dit mag ook RIJEN_MATRIX2 zijn*/; teller3++)
+                {
+                    uitkomst.Array[teller, teller2] += (matrix1.Array[teller, teller3] * matrix2.Array[teller3, teller2]);
+                }
+            }
+        }
+
+        return uitkomst;
+    }
+
+    static public Matrix Difference(Matrix matrix1, Matrix matrix2)
+    {
+        Matrix uitkomst = new Matrix(new int[matrix1.Rows, matrix1.Columns]);
+
+        for (int teller = 0; teller < matrix1.Rows; teller++)
+        {
+            for (int teller2 = 0; teller2 < matrix1.Columns; teller2++)
+            {
+                uitkomst.Array[teller, teller2] = matrix1.Array[teller, teller2] - matrix2.Array[teller, teller2];
+            }
+        }
+
+        return uitkomst;
+    }
+
+    static public Matrix Sum(Matrix matrix1, Matrix matrix2)
+    {
+        Matrix uitkomst = new Matrix(new int[matrix1.Rows, matrix1.Columns]);
+
+        for (int teller = 0; teller < matrix1.Rows; teller++)
+        {
+            for (int teller2 = 0; teller2 < matrix1.Columns; teller2++)
+            {
+                uitkomst.Array[teller, teller2] = matrix1.Array[teller, teller2] + matrix2.Array[teller, teller2];
+            }
+        }
+
+        return uitkomst;
+    }
+}
 ```
