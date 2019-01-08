@@ -963,7 +963,7 @@ class Program
 ```
 
 ### Oefening 28
-## Class Program
+#### Class Program
 ```csharp
 class Program
 {
@@ -1024,7 +1024,7 @@ class Program
     }
 }
 ```
-## Class Matrix
+#### Class Matrix
 ```csharp
 enum Bewerkingen { Sum, Difference, Product };
 class Matrix
