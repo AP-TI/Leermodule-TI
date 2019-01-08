@@ -9,3 +9,5 @@ overflow: het resultaat van een bewerking past niet meer binnen de getalbreedte.
 +   ----------------
   1(0 0 0 0  0 1 0 0) --> Enkel de bits binnen de haakjes worden opgeslagen, we verkrijgen dus 4 in plaats van 260.
 ```
+
+gereduceerd restsysteem: Bevat enkel elementen die een invers element hebbent.
