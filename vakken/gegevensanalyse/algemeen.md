@@ -1,1 +1,2 @@
+[XML-validator in Atom (AKA nooit meer kopieren en plakken naar die ene site)](xmlatom/xmlatom.md)
 [XML deel 1](xml1.md)

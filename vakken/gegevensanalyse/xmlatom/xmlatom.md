@@ -15,8 +15,12 @@ De tweede stap verschilt van besturingssysteem tot besturingssysteem.
 Je hoeft niets extra te doen, het zou meteen moeten werken.
 
 ### Linux
-Voer het volgende commando uit in de terminal:
+Open de terminal(`ctrl` + `alt` + `t`) en type het volgende commando:
 `sudo apt-get install libxml2-utils`
+
+![terminallinux](terminallinux.png)
+
+Druk op enter om uit te voeren.
 
 ### Windows
 Download [dit bestand](https://www.dropbox.com/s/xyhecziybkxlh8u/xmlvalidator.zip?dl=0)
