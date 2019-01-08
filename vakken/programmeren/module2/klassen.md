@@ -266,3 +266,153 @@ public class PaarDobbelstenen
         }
     }
 ```
+## Oefening4
+### Klasse Program
+```csharp
+class Program
+{
+    static Random random = new Random();
+    static void Main(string[] args)
+    {
+        Reis reis1 = new Reis(new DateTime(2018 ,10, 1) ,new DateTime(2018, 10, 10) ,(Vervoersmiddelen)random.Next(3) ,(Verblijven)random.Next(2));
+        Reis reis2 = new Reis(new DateTime(2019 , 1, 1), new DateTime(2019, 1, 25), (Verblijven)random.Next(2));
+        Reis reis3 = new Reis(DateTime.Today, DateTime.Today);
+
+        Console.WriteLine(reis1);
+        Console.WriteLine(reis2);
+        Console.WriteLine(reis3);
+    }
+}
+```
+### Klasse Reis
+```csharp
+enum Vervoersmiddelen { Vliegtuig, Bus, Trein }
+enum Verblijven { Hotel, Jeugdherberg }
+class Reis
+{
+    public const int PRIJS_VLIEGTUIG = 500;
+    public const int PRIJS_TREIN = 350;
+    public const int PRIJS_BUS = 200;
+    public const int PRIJS_HOTEL_PER_DAG = 75;
+    public const int PRIJS_JEUGDHERBERG_PER_DAG = 20;
+    public const double KORTING_2WEKEN = 90D / 100;
+    public const double KORTING_4WEKEN = 85D / 100;
+    public const int GEEN_KORTING = 1;
+    public const int TWEE_WEKEN = 14;
+    public const int VIER_WEKEN = 28;
+
+    private DateTime vertrekHeenDatum;
+
+    public DateTime VertrekHeenDatum
+    {
+        get { return vertrekHeenDatum; }
+        set
+        {
+            //if (DateTime.Compare(value, DateTime.Today) < 0)
+            if (value > DateTime.Today)
+                vertrekHeenDatum = DateTime.Today;
+            else
+                vertrekHeenDatum = value;
+        }
+    }
+
+    private DateTime vertrekTerugKeerDatum;
+
+    public DateTime VertrekTerugKeerDatum
+    {
+        get { return vertrekTerugKeerDatum; }
+        set
+        {
+            if (DateTime.Compare(value, vertrekHeenDatum) > 0)
+                vertrekTerugKeerDatum = value;
+            else
+                vertrekTerugKeerDatum = vertrekHeenDatum.AddDays(7);
+        }
+    }
+
+    public Vervoersmiddelen Vervoer { get; set; }
+    public Verblijven Verblijf { get; set; }
+
+    public Reis(DateTime sVertrekHeenDatum, DateTime sVertrekTerugKeerDatum, Vervoersmiddelen sVervoer,  Verblijven sVerblijf)
+    {
+        this.VertrekHeenDatum = sVertrekHeenDatum;
+        this.VertrekTerugKeerDatum = sVertrekTerugKeerDatum;
+        this.Vervoer = sVervoer;
+        this.Verblijf = sVerblijf;
+    }
+
+    public Reis(DateTime sVertrekHeenDatum, DateTime sVertrekTerugKeerDatum) : this(sVertrekHeenDatum, sVertrekTerugKeerDatum, Vervoersmiddelen.Vliegtuig, Verblijven.Hotel)
+    {
+    }
+
+    public Reis(DateTime sVertrekHeenDatum, DateTime sVertrekTerugKeerDatum, Verblijven sVerblijf) : this(sVertrekHeenDatum, sVertrekTerugKeerDatum, Vervoersmiddelen.Vliegtuig, sVerblijf)
+    {
+    }
+
+    public int TotaalPrijs()
+    {
+        return VervoersPrijs() + VerblijfsPrijs();
+    }
+
+    public int VerblijfsPrijs()
+    {
+        TimeSpan reisDuur = VertrekTerugKeerDatum.Subtract(VertrekHeenDatum);
+        int prijsVerblijf;
+
+        if (Verblijf == Verblijven.Hotel)
+            prijsVerblijf = PRIJS_HOTEL_PER_DAG;
+        else
+            prijsVerblijf = PRIJS_JEUGDHERBERG_PER_DAG;
+
+        return (prijsVerblijf * reisDuur.Days); 
+    }
+
+    public int VervoersPrijs()
+    {
+        int prijsVervoer;
+
+        if (Vervoer == Vervoersmiddelen.Bus)
+            prijsVervoer = PRIJS_BUS;
+        else if (Vervoer == Vervoersmiddelen.Trein)
+            prijsVervoer = PRIJS_TREIN;
+        else
+            prijsVervoer = PRIJS_VLIEGTUIG;
+
+        return prijsVervoer;
+    }
+
+    public double TotaalPrijsMetKorting()
+    {
+
+        return VervoersPrijs() + (VerblijfsPrijs() * Korting());
+    }
+
+    public double Korting()
+    {
+        double korting;
+        TimeSpan reisDuur = VertrekTerugKeerDatum.Subtract(VertrekHeenDatum);
+        if ((reisDuur.Days - 2) > VIER_WEKEN)
+            korting = KORTING_4WEKEN;
+        else if ((reisDuur.Days - 2) > TWEE_WEKEN)
+            korting = KORTING_2WEKEN;
+        else
+            korting = GEEN_KORTING;
+
+        return korting;
+    }
+
+    public override string ToString()
+    {
+        return
+        (
+            "Vervoer: " + this.Vervoer + '\n' +
+            "Verblijf: " + this.Verblijf + '\n' +
+            "VertrekDatum: " + this.vertrekHeenDatum.ToShortDateString() + '\n' +
+            "TerugKeerDatum: " + this.VertrekTerugKeerDatum.ToShortDateString() + '\n' +
+            "Totaal prijs zonder korting: " + string.Format("{0:n}",TotaalPrijs()) + '\n' + 
+            "Totaal prijs met korting: " + string.Format("{0:n}",TotaalPrijsMetKorting()) + '\n'
+        );
+    }
+
+}
+```
