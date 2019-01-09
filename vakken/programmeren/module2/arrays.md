@@ -942,6 +942,8 @@ class Program
         {
             for (int teller2 = 0; teller2 < KOLOMMEN_MATRIX2; teller2++)
             {
+                //Dit kan ook zonder de for(met teller3) dan natuurlijk maar dan werkt dit niet meer voor oefening 27
+                //uitkomst[teller, teller2] = (matrix1[teller, 0] * matrix2[0, teller2]) + (matrix1[teller, 1] * matrix2[1, teller2])
                 for (int teller3 = 0; teller3 < KOLOMMEN_MATRIX1 /*Dit mag ook RIJEN_MATRIX2 zijn*/; teller3++)
                 {
                     uitkomst[teller, teller2] += (matrix1[teller, teller3] * matrix2[teller3, teller2]);
