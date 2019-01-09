@@ -1270,14 +1270,14 @@ class CheckTabel
         this.LastReceivedNumber = number;
         switch (CheckIfNumberLegit(number))
         {
-            case 0:
+            case 0: //Als het nummer nog niet in de tabel staat
 
                 this.Table = CheckTabel.ExpandTabel(this.Table);
                 this.Table[this.Table.GetLength(0) - 1, 0] = number;
                 this.Table[this.Table.GetLength(0) - 1, 1]++;
 
             break;
-            case 1:
+            case 1: //Als het nummer al in de tabel staat
 
                 for (int teller = 0; teller < this.Table.GetLength(0); teller++)
                 {
