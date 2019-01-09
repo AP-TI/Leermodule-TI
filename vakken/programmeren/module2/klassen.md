@@ -416,3 +416,99 @@ class Reis
 
 }
 ```
+## Oefening 5
+### Klasse Persoon
+```csharp
+enum Land { België, Nederland, Luxemburg}
+    class Persoon
+    {
+        //property's
+        public string Naam { get; set; }
+        public string Voornaam { get; set; }
+        public DateTime GeboorteDatum { get; set; }
+        public Land Afkomst { get; set; }
+
+        //constructors
+
+        public Persoon (string naam, string voornaam, DateTime geboorteDatum, Land afkomst)
+        {
+            Naam = naam;
+            Voornaam = voornaam;
+            GeboorteDatum = geboorteDatum;
+            Afkomst = afkomst;
+        }
+
+        //Methodes
+
+        public override string ToString()
+        {
+            return Naam + "" + Voornaam + " " + GeboorteDatum.ToShortDateString() + " " + Afkomst;
+
+        }
+    }
+```
+### Klasse Bankrekening
+```csharp
+class Bankrekening
+    {
+        private const double INTREST_PERCENTAGE = 0.0125;
+        private const int BANKKAART_DELER = 97;
+        
+
+        //Property's
+        public double Saldo { get; set; }
+
+        private long rekeningnummer;
+
+        public long Rekeningnummer
+        {
+            get { return rekeningnummer; }
+            set { rekeningnummer = value; }
+        }
+
+        public DateTime Registratie_Datum { get; set; }
+
+        public Persoon Eigenaar { get; set; }
+        
+
+        //constructors
+
+        public Bankrekening (double saldo, long rekeningnummer, Persoon eigenaar)
+        {
+            Saldo = saldo;
+            Rekeningnummer = rekeningnummer;
+            Registratie_Datum = DateTime.Today;
+            Eigenaar = eigenaar;
+        }
+
+        //methodes
+
+        public bool Geldig()
+        {
+            if (((Rekeningnummer / 100) % BANKKAART_DELER) == (Rekeningnummer % 100))
+                return true;
+            else
+                return false;
+        }
+        
+        public void Storten(double bedrag)
+        {
+            Saldo += bedrag;
+        }
+
+        public void Afhalen(double bedrag)
+        {
+            Saldo -= bedrag;
+        }
+
+        public double Bekijk_Saldo()
+        {
+            return Saldo + (Saldo * INTREST_PERCENTAGE);
+        }
+
+        public override string ToString()
+        {
+            return Saldo + " " + Rekeningnummer + " " + Registratie_Datum.ToShortDateString() + " " + Eigenaar + " " + Geldig().ToString();
+        }
+    }
+```
