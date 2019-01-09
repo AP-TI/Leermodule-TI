@@ -1152,3 +1152,177 @@ class Matrix
     }
 }
 ```
+
+### Oefening 29
+```csharp
+class Program
+{
+    static Random random = new Random();
+    static void Main(string[] args)
+    {
+        const int AANTAL_LEERLINGEN = 30;
+        const int AANTAL_VAKKEN = 12;
+
+        int[,] punten = new int[AANTAL_LEERLINGEN, AANTAL_VAKKEN];
+        double[] gemStudent = new double[AANTAL_LEERLINGEN];
+        double[] gemVakken = new double[AANTAL_VAKKEN];
+
+        for (int teller = 0; teller < AANTAL_LEERLINGEN; teller++)
+        {
+            for (int teller2 = 0; teller2 < AANTAL_VAKKEN; teller2++)
+            {
+                punten[teller, teller2] = random.Next(11);
+            }
+        }
+
+        for (int teller = 0; teller < AANTAL_LEERLINGEN; teller++)
+        {
+            for (int teller2 = 0; teller2 < AANTAL_VAKKEN; teller2++)
+            {
+                gemStudent[teller] += punten[teller, teller2] / 12D;
+            }
+        }
+
+        for (int teller = 0; teller < AANTAL_VAKKEN; teller++)
+        {
+            for (int teller2 = 0; teller2 < AANTAL_LEERLINGEN; teller2++)
+            {
+                gemVakken[teller] += punten[teller2, teller] / 30D;
+            }
+        }
+
+        for (int teller = 0; teller < AANTAL_LEERLINGEN; teller++)
+        {
+            Console.Write(Math.Round(gemStudent[teller], 2));
+            Console.Write(' ');
+        }
+
+        Console.WriteLine();
+
+        for (int teller = 0; teller < AANTAL_VAKKEN; teller++)
+        {
+            Console.Write(Math.Round(gemVakken[teller], 2));
+            Console.Write(' ');
+        }
+    }
+}
+```
+
+### Oefening 30
+#### Class Program
+```csharp
+class Program
+{
+    static void Main(string[] args)
+    {
+        const int AFSLUIT_WAARDE = 32767;
+        bool afsluiten = false;
+
+        CheckTabel tabel = new CheckTabel(0, 99);
+
+        do
+        {
+            tabel.AddNumber(int.Parse(Console.ReadLine()));
+        } while (tabel.LastReceivedNumber != AFSLUIT_WAARDE);
+
+        Console.WriteLine(tabel);
+    }
+}
+```
+#### Class CheckTabel
+```csharp
+class CheckTabel
+{
+    public const int AANTAL_KOLOMMEN = 2;
+    public const int DEFAULT_RIJEN = 1;
+    public int[,] Table { get; set; }
+    public int Minimum { get; set; }
+    public int Maximum { get; set; }
+    public int LastReceivedNumber { get; set; }
+
+    public CheckTabel(int minimum, int maximum)
+    {
+        this.Minimum = minimum;
+        this.Maximum = maximum;
+        this.Table = new int[DEFAULT_RIJEN, AANTAL_KOLOMMEN];
+    }
+
+    public int CheckIfNumberLegit(int number)
+    {
+        int checkNumber = 0;
+        if(number <= this.Maximum && number >= this.Minimum)
+        {
+            for (int teller = 0; teller < this.Table.GetLength(0); teller++)
+            {
+                if (this.Table[teller, 0] == number)
+                    checkNumber = 1;
+            }
+        }
+        else
+        {
+            checkNumber = 2;
+        }
+        return checkNumber;
+    }
+
+    public void AddNumber(int number)
+    {
+        this.LastReceivedNumber = number;
+        switch (CheckIfNumberLegit(number))
+        {
+            case 0:
+
+                this.Table = CheckTabel.ExpandTabel(this.Table);
+                this.Table[this.Table.GetLength(0) - 1, 0] = number;
+                this.Table[this.Table.GetLength(0) - 1, 1]++;
+
+            break;
+            case 1:
+
+                for (int teller = 0; teller < this.Table.GetLength(0); teller++)
+                {
+                    if (this.Table[teller, 0] == number)
+                        this.Table[teller, 1]++;
+                }
+
+            break;
+            case 2:
+
+            break;
+            default:
+
+            break;
+        }
+    }
+
+    public static int[,] ExpandTabel(int[,] table)
+    {
+        int[,] cTabel = new int[table.GetLength(0) + 1, AANTAL_KOLOMMEN];
+
+        for (int teller = 0; teller < table.GetLength(0); teller++)
+        {
+            for (int teller2 = 0; teller2 < table.GetLength(1); teller2++)
+            {
+                cTabel[teller, teller2] = table[teller, teller2];
+            }
+        }
+        return cTabel;
+    }
+
+    public override string ToString()
+    {
+        StringBuilder output = new StringBuilder();
+        output.Append("Nummers" + '\t' + "Aantal" + '\n');
+        for (int teller = 0; teller < this.Table.GetLength(0); teller++)
+        {
+            for (int teller2 = 0; teller2 < this.Table.GetLength(1); teller2++)
+            {
+                output.Append(this.Table[teller, teller2]);
+                output.Append('\t');
+            }
+            output.Append('\n');
+        }
+        return output.ToString();
+    }
+}
+```
