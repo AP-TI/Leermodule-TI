@@ -16,5 +16,6 @@
 - [Het grote systeemanalyse afkijkblad module 1](/vakken/systeemanalyse/module1/afkijkblad.md)
 ## Gegevensanalyse
 - [Oefeningen](/vakken/gegevensanalyse/algemeen.md)
+- [XML-validator in Atom (AKA nooit meer kopieren en plakken naar die ene site)](xmlatom/xmlatom.md)
 ## Systeembeheer
 - [Samenvattingen](/vakken/systeembeheer/algemeen.md)
