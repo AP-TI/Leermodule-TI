@@ -133,61 +133,53 @@ static void Main(string[] args)
 class Program
     {
         static Random random = new Random();
-
         static void Main(string[] args)
         {
             const int AANTAL_GETALLEN = 100;
-            const int AANTAL_KOLOMMEN = 3;
-            int[][] intJaggedArray = new int[AANTAL_KOLOMMEN][];
+            const int AANTAl_KOLOMMEN = 3;
+            int[][] getallen = new int[AANTAl_KOLOMMEN][];
 
-            int overschot = AANTAL_GETALLEN % AANTAL_KOLOMMEN;
-
-            // grootte van array bepalen
-            for (int i = 0; i < intJaggedArray.Length; i++)
+            int rest = AANTAL_GETALLEN % AANTAl_KOLOMMEN;//Deze rest hebben we later nodig om ervoor te zorgen dat we alle getallen kunnen weergeven in het geval dat het aantal getallen niet deelbaar is door het aantal kolommen.
+            //We creëren eerst onze 3 arrays binnenin de getallen-array. De eerste array heeft een lengte van 34, de andere 2 hebben een lengte van 33.
+            for (int teller = 0; teller < AANTAl_KOLOMMEN; teller++)
             {
-                int getallenPerKolom = AANTAL_GETALLEN / AANTAL_KOLOMMEN;
-                if (overschot > 0)
+                int kolomGrootte = AANTAL_GETALLEN / AANTAl_KOLOMMEN; //We declareren dit binnen de for-loop zodat we geen fouten krijgen.
+                if(rest > 0)
                 {
-                    overschot--;
-                    getallenPerKolom++;
+                    rest--;
+                    kolomGrootte++; //Omdat we hier de variabele aanpassen.
                 }
-                intJaggedArray[i] = new int[getallenPerKolom];
+                getallen[teller] = new int[kolomGrootte];
             }
 
-            // getallen in array steken.
-            for (int i = 0; i < intJaggedArray.Length; i++){
-                for (int j = 0; j < intJaggedArray[i].Length; j++)
+            for(int teller = 0; teller < AANTAl_KOLOMMEN; teller++)
+                for(int teller1 = 0; teller1 < getallen[teller].Length; teller1++)
                 {
-                    intJaggedArray[i][j] = random.Next(100);
+                    getallen[teller][teller1] = random.Next(1000);
                 }
-            }
 
-            // getallen in array sorteren
-            for (int i = 0; i < intJaggedArray.Length; i++)
-            {
-                Array.Sort(intJaggedArray[i]);
-            }
+            for (int teller = 0; teller < AANTAl_KOLOMMEN; teller++)
+                Array.Sort(getallen[teller]);
 
-            // voor elke rij... (vb. 100 / 3 --> 33.333 --> ceiling = 34 --> tot 34 = 0 --> 33 = 34 keer.)
-            for (int i = 0; i < (int)Math.Ceiling((double)AANTAL_GETALLEN / intJaggedArray.Length); i++)
-            {
-                // voor elke kolom...
-                for (int j = 0; j < intJaggedArray.Length; j++)
-                {
-                    // als de lengte van de array j groter is dan i
-                      // stel overschot = 1 --> (34 groter dan i = 0 t/m 34 groter dan i = 33),
-                      // stel overschot = 0 --> lengte 33 is niet groter dan i=33 dus het 33e element
-                        // (dat niet bestaat want array met 33 elementen = 0 --> 32) zal niet afgedrukt worden --> geen errors!
-                    if (intJaggedArray[j].Length > i)
-                    {
-                        Console.Write(intJaggedArray[j][i] + "\t"); // druk uit kolom j het i-de element af
-                    }
-                }
+            for (int teller = 0; teller < getallen[0].Length/*Indien er een verschil is in de lengten van de arrays, is de eerste altijd de langste, daarom checken we daarop.*/; teller++)
+            {//Deze for-loop wordt uiteindelijk 34 keer uitgevoerd, dit is gelijk aan de lengte van de langste kolom.
+                for (int teller1 = 0; teller1 < AANTAl_KOLOMMEN; teller1++)//Deze for-loop wordt telkens 3 keer uitgevoerd
+                    if(getallen[teller1].Length > teller)//Dankzij deze if-structuur drukken we enkel af wat er bestaat. (extra uitleg hieronder)
+                        Console.Write(getallen[teller1][teller] + "\t");
                 Console.WriteLine();
             }
         }
     }
 ```
+We checken in de laatste if-structuur of de lengte van de array waarvan een item moet worden afgedrukt groter is dan de teller, zodat we geen items die niet bestaan proberen af te drukken wat in een error zou resulteren.
+
+Enkele voorbeelden om aan te tonen dat dit altijd werkt:
+In de eerste iteratie is onze teller 0 en is de lengte van onze eerste array 34, het lijntje onder de if wordt in dit geval dus uitgevoerd, en we kunnen ervan uitgaan dat dit ook zo zal zijn voor de 32 hierop volgende iteraties.
+
+In de 34<sup>ste</sup> iteratie staat onze teller op 33, en is de lengte van onze eerste array nog steeds 34. Dit geeft dat het lijntje onder de if terug wordt uitgevoerd.
+Echter, als we kijken naar de tweede array, die maar 33 elementen heeft, zien we dat het aantal elementen niet groter is dan de teller. Daarom krijgen we dus geen foutmelding.
+
+[Alternatieve oplossing voor deze oefening](https://github.com/MrDanaT/Module-2/blob/master/Programmeren_2/Oefeningen/Dana/Arrays/1.06_100Getallen/1.06_100Getallen/Program.cs)(met grootste verschil in de voorlaatste for-loop)
 
 ### Oefening 7
 ```csharp
