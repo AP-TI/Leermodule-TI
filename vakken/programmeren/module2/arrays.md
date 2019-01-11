@@ -217,6 +217,27 @@ class Program
         }
     }
 ```
+#### Kortere, eenvoudigere versie:
+```csharp
+class MainClass
+    {
+        public static void Main(string[] args)
+        {
+            const int AANTAL_GETALLEN = 100;
+            int[] getallen = new int[AANTAL_GETALLEN];
+            int[] getallenOmgekeerd = new int[AANTAL_GETALLEN];
+
+            for (int teller = 0; teller < AANTAL_GETALLEN; teller++)
+                getallen[teller] = teller;
+
+            for(int teller = 0, teller1 = AANTAL_GETALLEN - 1; teller < AANTAL_GETALLEN; teller++, teller1--)
+                getallenOmgekeerd[teller] = getallen[teller1];
+
+            for (int teller = 0; teller < AANTAL_GETALLEN; teller++)
+                Console.WriteLine(getallen[teller] + "\t" + getallenOmgekeerd[teller]);
+        }
+    }
+```
 
 ### Oefening 8
 ```csharp
