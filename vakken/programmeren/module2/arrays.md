@@ -254,8 +254,7 @@ class MainClass
                 getallen[teller] = teller;
 
             int tussenVariabele;
-            int helft = AANTAL_GETALLEN / 2;
-            for (int teller = 0; teller < helft; teller++)
+            for (int teller = 0; teller < AANTAL_GETALLEN / 2; teller++)
             {
                 tussenVariabele = getallen[Math.Abs(teller - (AANTAL_GETALLEN - 1)) % AANTAL_GETALLEN];
                 getallen[Math.Abs(teller - (AANTAL_GETALLEN - 1)) % AANTAL_GETALLEN] = getallen[teller];
