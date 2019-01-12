@@ -333,7 +333,7 @@ class MainClass
         }
     }
 ```
-# Oefening 10
+### Oefening 10
 ```csharp
 class Program
     {
@@ -393,7 +393,27 @@ class MainClass
         }
     }
 ```
+### Oefening 11
+```csharp
+class MainClass
+    {
+        public static void Main(string[] args)
+        {
+            const int AANTAL_GETALLEN = 100;
+            const int AANTAL_GETALLEN_NAAR_VOOR = 3;
+            int[,] getallen = new int[2, AANTAL_GETALLEN];
 
+            for (int teller = 0; teller < AANTAL_GETALLEN; teller++)
+                getallen[0, teller] = teller;
+
+            for (int teller = 0; teller < AANTAL_GETALLEN; teller++)
+            {
+                getallen[1, teller] = getallen[0, (teller + AANTAL_GETALLEN_NAAR_VOOR + AANTAL_GETALLEN) % AANTAL_GETALLEN];
+                Console.WriteLine(getallen[1, teller]);
+            }
+        }
+    }
+```
 ### Oefening 13, 14
 > Voeg het stukje met Array.Sort() toe om oef. 14 te verkrijgen.
 ```csharp
