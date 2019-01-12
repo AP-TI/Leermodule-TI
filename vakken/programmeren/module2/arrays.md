@@ -240,6 +240,34 @@ class MainClass
 ```
 
 ### Oefening 8
+Aangezien de beschrijving van deze oefening een beetje vaag was, staan hier de oplossingen van de twee mogelijke interpretaties.
+#### Optie 1 (Items omkeren zonder een tweede array aan te maken)
+```csharp
+class MainClass
+    {
+        public static void Main(string[] args)
+        {
+            const int AANTAL_GETALLEN = 100;
+            int[] getallen = new int[AANTAL_GETALLEN];
+
+            for (int teller = 0; teller < AANTAL_GETALLEN; teller++)
+                getallen[teller] = teller;
+
+            int tussenVariabele;
+            int helft = AANTAL_GETALLEN / 2;
+            for (int teller = 0; teller < helft; teller++)
+            {
+                tussenVariabele = getallen[Math.Abs(teller - (AANTAL_GETALLEN - 1)) % AANTAL_GETALLEN];
+                getallen[Math.Abs(teller - (AANTAL_GETALLEN - 1)) % AANTAL_GETALLEN] = getallen[teller];
+                getallen[teller] = tussenVariabele;
+            }
+
+            for (int teller = 0; teller < AANTAL_GETALLEN; teller++)
+                Console.WriteLine(getallen[teller]);
+        }
+    }
+```
+#### Optie 2 (Items willekeurig plaatsen):
 ```csharp
 class Program
     {
