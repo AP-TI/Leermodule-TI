@@ -307,8 +307,33 @@ class Program
     }
 ```
 
-### Oefening 9, 10, 11, 12
-> verander gewoon de waarde van `const int VERSCHUIVING` om de code voor de andere oefeningen te hebben.
+### Oefening 9
+```csharp
+class MainClass
+    {
+        public static void Main(string[] args)
+        {
+            const int AANTAL_GETALLEN = 100;
+            const int AANTAL_NAAR_ACHTER_VERPLAATSEN = 1;
+            int[] getallen = new int[AANTAL_GETALLEN];
+
+            for (int teller = 0; teller < AANTAL_GETALLEN; teller++)
+                getallen[teller] = teller;
+
+            int tussenVariabele;
+            for(int teller = 0; teller < AANTAL_GETALLEN / 2; teller++)
+            {
+                tussenVariabele = getallen[teller];
+                getallen[teller] = getallen[AANTAL_GETALLEN - teller - AANTAL_NAAR_ACHTER_VERPLAATSEN];
+                getallen[AANTAL_GETALLEN - teller - AANTAL_NAAR_ACHTER_VERPLAATSEN] = tussenVariabele;
+            }
+
+            foreach(int x in getallen)
+                Console.WriteLine(x);
+        }
+    }
+```
+# Oefening 10
 ```csharp
 class Program
     {
@@ -343,6 +368,28 @@ class Program
                 }
                 Console.WriteLine("------");
             }
+        }
+    }
+```
+#### Kortere versie:
+```csharp
+class MainClass
+    {
+        public static void Main(string[] args)
+        {
+            const int AANTAL_GETALLEN = 100;
+            const int AANTAL_NAAR_ACHTER = 1;
+            int[,] getallen = new int[2,AANTAL_GETALLEN];
+
+            for (int teller = 0; teller < AANTAL_GETALLEN; teller++)
+                getallen[0, teller] = teller;
+
+            for (int teller = 0; teller < AANTAL_GETALLEN; teller++)
+                getallen[1, teller] = getallen[0, (teller - AANTAL_NAAR_ACHTER + AANTAL_GETALLEN) % AANTAL_GETALLEN];
+
+            for(int teller = 0; teller < AANTAL_GETALLEN; teller++)
+                Console.WriteLine(getallen[1, teller]);
+
         }
     }
 ```
