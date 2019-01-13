@@ -60,7 +60,7 @@ class Persoon
     }
 ```
 ## Oefening 2
-#### Maxim (KONING is hoogste)
+#### Versie Maxim (KONING is hoogste)
 ### Klasse Program
 ```csharp
 class Program
@@ -160,7 +160,7 @@ enum Waarden { Aas, Twee, Drie, Vier, Vijf, Zes, Zeven, Acht, Negen, Tien, Boeri
         }
     }
 ```
-#### Mathias (AAS is hoogste)
+#### Versie Mathias (AAS is hoogste)
 ### Enums:
 ```csharp
 enum Waardes { Boer = 11, Dame, Heer, Aas }
