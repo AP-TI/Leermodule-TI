@@ -512,3 +512,129 @@ class Bankrekening
         }
     }
 ```
+
+## Oefening 6
+### Klasse Program (MAIN)
+```csharp
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Persoon davidGuetta = new Persoon("Guetta","David","Frans");
+            CD davidCD = new CD("Little Bad Girl", 18, new DateTime(2020,1,1), davidGuetta);
+            Console.WriteLine(davidCD);
+            Console.WriteLine("--------------");
+            Persoon koenWouters = new Persoon("Wouters", "Koen", "Belgisch");
+            CD koenCD = new CD("ANNE", 25, new DateTime(2000, 1, 1), koenWouters);
+            Console.WriteLine(koenCD);
+        }
+    }
+```
+### Klasse Persoon
+```csharp
+class Persoon
+    {
+        public string Naam { get; set; }
+        public string Voornaam { get; set; }
+        public string Nationaliteit { get; set; }
+
+        public Persoon(string naam, string voornaam, string nationaliteit)
+        {
+            this.Naam = naam;
+            this.Voornaam = voornaam;
+            this.Nationaliteit = nationaliteit;
+        }
+
+        public override string ToString()
+        {
+            return 
+                (
+                    "Naam: " + this.Naam + "\n" +
+                    "Voornaam: " + this.Voornaam + "\n" +
+                    "Nationaliteit: " + this.Nationaliteit
+                );
+        }
+    }
+```
+### Klasse CD
+```csharp
+class CD
+    {
+        const int MINIMUM_AANTAL_HITS = 2;
+        const int MAXIMUM_AANTAL_HITS = 20;
+
+        public string Titel { get; set; }
+        private int aantalHits;
+
+        public int AantalHits
+        {
+            get { return aantalHits; }
+            set
+            {
+                if (value >= MINIMUM_AANTAL_HITS && value <= MAXIMUM_AANTAL_HITS)
+                    aantalHits = value;
+                else
+                    aantalHits = MINIMUM_AANTAL_HITS;
+            }
+        }
+
+        private DateTime releaseDatum;
+
+        public DateTime ReleaseDatum
+        {
+            get { return releaseDatum; }
+            set
+            {
+                if (value >= DateTime.Today)
+                    releaseDatum = value;
+                else
+                    releaseDatum = DateTime.Today;
+            }
+        }
+
+        private Persoon uitvoerder;
+        private bool toegelaten = false;
+
+        public Persoon Uitvoerder
+        {
+            get { return uitvoerder; }
+            set
+            {
+                if (value.Nationaliteit == "Belgisch")
+                {
+                    toegelaten = true;
+                }
+                else
+                {
+                    value.Nationaliteit = "Niet Toegelaten";
+                }
+
+                uitvoerder = value;
+            }
+        }
+
+        public CD(string titel, int aantalHits, DateTime releaseDatum, Persoon uitvoerder)
+        {
+            this.Titel = titel;
+            this.AantalHits = aantalHits;
+            this.ReleaseDatum = releaseDatum;
+            this.Uitvoerder = uitvoerder;
+        }
+
+        public override string ToString()
+        {
+            if (toegelaten)
+            {
+                return
+                    (
+                        "Uitvoerder:\n" + this.Uitvoerder + "\n" +
+                        "Titel: " + this.Titel + "\n" +
+                        "Aantal Hits: " + this.AantalHits + "\n" +
+                        "Releasedatum: " + this.ReleaseDatum.ToShortDateString() + "\n"
+                    );
+            }
+            else
+                return "ERROR 404: Niet Toegelaten: Geen Belgische nationaliteit.";
+        }
+    }
+```
