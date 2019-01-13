@@ -5,3 +5,6 @@
 ## Gegevensanalyse
 - [Oefeningen](/vakken/gegevensanalyse/algemeen.md)
 - [XML-validator in Atom (AKA nooit meer kopieren en plakken naar die ene site)](/vakken/gegevensanalyse/xmlatom/xmlatom.md)
+### Wiskunde
+- [Theorie](/vakken/wiskunde/algemeen_theorie.md)
+- [Oefeningen](/vakken/wiskunde/algemeen_oefeningen.md)
