@@ -414,6 +414,49 @@ class MainClass
         }
     }
 ```
+### Oefening 12
+Danku [@MrDanaT](https://github.com/MrDanaT) om deze oefening te maken! [Dana's repository](https://github.com/MrDanaT/Module-2)
+```csharp
+internal class Program
+    {
+        private static Random random = new Random();
+
+        private static void Main(string[] args)
+        {
+            const int GROOTTE = 100, SHUFFLE = 3;
+            int[] myArray = new int[GROOTTE];
+
+            // Vul de originele array
+            for (int i = 0; i < myArray.GetLength(0); i++)
+            {
+                myArray[i] = i;
+            }
+
+            Console.WriteLine();
+
+            // Verplaats de elementen
+            for (int x = 0; x <= SHUFFLE; x++)
+            {
+                for (int i = 0; i < myArray.Length - 1; i++)
+                {
+                    Swap(myArray, i, i + 1);
+                }
+            }
+
+            foreach (int x in myArray)
+            {
+                Console.WriteLine(x);
+            }
+        }
+
+        private static void Swap(int[] array, int i, int j)
+        {
+            int tmp = array[i];
+            array[i] = array[j];
+            array[j] = tmp;
+        }
+    }
+```
 ### Oefening 13, 14
 > Voeg het stukje met Array.Sort() toe om oef. 14 te verkrijgen.
 ```csharp
