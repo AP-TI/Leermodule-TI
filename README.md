@@ -1,3 +1,4 @@
+##### Wij werken nu in team, per module. Volg ons hier: [https://github.com/AP-TI-2018-2019](https://github.com/AP-TI-2018-2019)
 # AP_2018-2019
 
 ## Wiskunde
@@ -19,3 +20,4 @@
 - [XML-validator in Atom (AKA nooit meer kopieren en plakken naar die ene site)](/vakken/gegevensanalyse/xmlatom/xmlatom.md)
 ## Systeembeheer
 - [Samenvattingen](/vakken/systeembeheer/algemeen.md)
+
