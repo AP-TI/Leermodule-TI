@@ -30,7 +30,7 @@ class Persoon
         {
             get { return geboorteDatum; }
             set {
-                if (value >= minimumGeboorteDatum && value <= DateTime.Today)
+                if (value > minimumGeboorteDatum && value < DateTime.Today)
                     geboorteDatum = value;
                 else
                     geboorteDatum = DateTime.Today;
@@ -43,12 +43,12 @@ class Persoon
             this.GeboorteDatum = geboorteDatum;
         }
 
-        private int BerekenLeeftijd()
+        private int Leeftijd()
         {
             int jaren = DateTime.Today.Year - geboorteDatum.Year;
             DateTime verjaardag = new DateTime(DateTime.Today.Year, geboorteDatum.Month, geboorteDatum.Day);
             if (DateTime.Today <= verjaardag)
-                jaren -= 1;
+                jaren --;
             return jaren;
         }
         public override string ToString()
@@ -60,6 +60,7 @@ class Persoon
     }
 ```
 ## Oefening 2
+#### Maxim (KONING is hoogste)
 ### Klasse Program
 ```csharp
 class Program
@@ -159,6 +160,115 @@ enum Waarden { Aas, Twee, Drie, Vier, Vijf, Zes, Zeven, Acht, Negen, Tien, Boeri
         }
     }
 ```
+#### Mathias (AAS is hoogste)
+### Enums:
+```csharp
+enum Waardes { Boer = 11, Dame, Heer, Aas }
+enum Soorten { Schoppen, Klaveren, Ruiten, Harten }
+```
+### Klasse Program
+```csharp
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Kaart kaart = new Kaart();
+            Console.WriteLine(kaart);
+            Console.WriteLine(kaart.BepaalVolgendeKaart());
+            Console.WriteLine("------------");
+            foreach (Kaart k in Kaart.Random_Kaarten())
+            {
+                Console.WriteLine(k);
+            }
+        }
+    }
+```
+### Klasse Speelkaarten
+```csharp
+class Kaart
+    {
+        const int AANTAL_WAARDES = 13;
+        const int AANTAL_SOORTEN = 4;
+        const int EERSTE_ELEMENT = 1;
+        const int AANTAL_RANDOM_KAARTEN = 5;
+
+        static Random random = new Random();
+
+        private Waardes waarde;
+        private Soorten soort;
+
+        public Waardes Waarde
+        {
+            get { return waarde; }
+            set
+            {
+                if (value >= (Waardes)EERSTE_ELEMENT && value <= (Waardes)AANTAL_WAARDES)
+                {
+                    waarde = value;
+                }
+                else
+                {
+                    waarde = (Waardes)EERSTE_ELEMENT;
+                }
+            }
+        }
+
+        public Soorten Soort
+        {
+            get { return soort; }
+            set
+            {
+                if (value >= (Soorten)EERSTE_ELEMENT && value <= (Soorten)AANTAL_SOORTEN)
+                {
+                    soort = value;
+                }
+                else
+                {
+                    soort = (Soorten)EERSTE_ELEMENT;
+                }
+            }
+        }
+
+        public Kaart(Waardes waarde, Soorten soort)
+        {
+            this.Waarde = waarde;
+            this.Soort = soort;
+        }
+
+        public Kaart(): this((Waardes)random.Next(EERSTE_ELEMENT, AANTAL_WAARDES), (Soorten)random.Next(EERSTE_ELEMENT, AANTAL_SOORTEN))
+        {
+        }
+
+        public Kaart BepaalVolgendeKaart()
+        {
+            Waardes waarde = (Waardes)(((int)(this.Waarde) + 1) % AANTAL_WAARDES);
+            Soorten soort = this.Soort;
+            if (this.Waarde == (Waardes)EERSTE_ELEMENT)
+            {
+                soort = (Soorten)((((int)soort) + 1) % AANTAL_SOORTEN);
+            }
+            return new Kaart(waarde, soort);
+        }
+
+        public static Kaart[] Random_Kaarten()
+        {
+            Kaart[] kaartLijst = new Kaart[AANTAL_RANDOM_KAARTEN];
+
+            for (int i = 0; i < AANTAL_RANDOM_KAARTEN; i++)
+            {
+                kaartLijst[i] = new Kaart();
+            }
+
+            return kaartLijst;
+        }
+
+        public override string ToString()
+        {
+            return Soort + " " + Waarde;
+        }
+    }
+```
+
 ## Oefening 3
 ### Klasse Program
 ```csharp
@@ -206,10 +316,9 @@ public class Dobbelsteen
             return Waarde == 6;
         }
 
-        public int Gooi()
+        public void Gooi()
         {
             Waarde = random.Next(1, 7);
-            return Waarde;
         }
 
         public override string ToString()
@@ -501,9 +610,27 @@ class Bankrekening
             Saldo -= bedrag;
         }
 
-        public double Bekijk_Saldo()
+        public double Rente()
         {
-            return Saldo + (Saldo * INTREST_PERCENTAGE);
+            DateTime beginVanHetJaar = new DateTime(DateTime.Today.Year, 1, 1);
+            DateTime vandaag = DateTime.Today;
+            int aantalDagen;
+            if (DateTime.Today.Year % 4 == 0)
+                aantalDagen = 366;
+            else
+                aantalDagen = 365;
+
+            int aantalVerlopenDagen = (vandaag - beginVanHetJaar).Days;
+            double percentageInterest = aantalVerlopenDagen / aantalDagen;
+            double rente = (Saldo * INTEREST_PERCENTAGE_PER_JAAR);
+            double effectieveRente = rente * percentageInterest;
+
+            return effectieveRente;
+        }
+
+        public double SaldoWeergeven()
+        {
+            return Saldo + Rente();
         }
 
         public override string ToString()
