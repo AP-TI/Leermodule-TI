@@ -935,6 +935,7 @@ class Program
     }
 ```
 ### Oefening 21
+#### Manier 1
 ```csharp
 class Program
 {
@@ -983,7 +984,39 @@ class Program
     }
 }
 ```
-
+#### Manier 2: Korter (maar juister: ?) IDK wat getransponeerd is, volgens mij bestaat dat woord niet.
+```csharp
+class Program
+    {
+        static Random random = new Random();
+        static void Main(string[] args)
+        {
+            const int AANTAL_WAARDES_IN_MATRIX = 6;
+            int[,] matrix1 = new int[2, AANTAL_WAARDES_IN_MATRIX / 2];
+            int[,] matrix2 = new int[AANTAL_WAARDES_IN_MATRIX / 2, 2];
+            Console.WriteLine("Matrix 1");
+            for (int i = 0; i < AANTAL_WAARDES_IN_MATRIX/(AANTAL_WAARDES_IN_MATRIX /2); i++)
+            {
+                for (int j = 0; j < AANTAL_WAARDES_IN_MATRIX / 2; j++)
+                {
+                    matrix1[i, j] = random.Next(0, 100);
+                    Console.Write(matrix1[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("Matrix 2");
+            for (int i = 0; i < AANTAL_WAARDES_IN_MATRIX / 2; i++)
+            {
+                for (int j = 0; j < AANTAL_WAARDES_IN_MATRIX / (AANTAL_WAARDES_IN_MATRIX / 2); j++)
+                {
+                    matrix2[i, j] = matrix1[j, i];
+                    Console.Write(matrix2[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+```
 ### Oefening 22
 ```csharp
 class Program
