@@ -1104,9 +1104,9 @@ class Program
         {
             for (int teller2 = 0; teller2 < KOLOMMEN; teller2++)
             {
-                if ((teller == teller2) && (matrix[teller, teller2] == 1))
+                if ((teller == teller2) && (matrix[teller, teller2] == 1) && diagonaal)
                     diagonaal = true;
-                else if (matrix[teller, teller2] == 0)
+                else if ((matrix[teller, teller2] == 0) && diagonaal)
                     diagonaal = true;
                 else
                     diagonaal = false;
