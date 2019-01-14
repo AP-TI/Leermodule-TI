@@ -820,6 +820,7 @@ class Program
 ```
 
 ### Oefening 20
+#### Versie met 2D arrays
 ```csharp
 class Program
 {
@@ -876,7 +877,63 @@ class Program
     }
 }
 ```
+#### Versie met 1D arrays
+```csharp
+class Program
+    {
+        static Random random = new Random();
+        static void Main(string[] args)
+        {
+            const int AANTAL_GETALLEN_IN_MATRIX = 6;
+            int[] matrix1 = new int[AANTAL_GETALLEN_IN_MATRIX];
+            int[] matrix2 = new int[AANTAL_GETALLEN_IN_MATRIX];
+            int[] matrix3 = new int[AANTAL_GETALLEN_IN_MATRIX];
 
+            // inlezen...
+            for (int i = 0; i < AANTAL_GETALLEN_IN_MATRIX; i++)
+            {
+                matrix1[i] = random.Next(0, 100);
+                matrix2[i] = random.Next(0, 100);
+            }
+            Console.WriteLine("--- M1");
+            //for (int i = 0; i < AANTAL_GETALLEN_IN_MATRIX; i++)
+            //{
+            //    matrix1[i] = int.Parse(Console.ReadLine());
+            //}
+            for (int i = 0; i < AANTAL_GETALLEN_IN_MATRIX; i++)
+            {
+                if (i == AANTAL_GETALLEN_IN_MATRIX / 2)
+                    Console.WriteLine();
+                Console.Write(matrix1[i] + "\t");
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("--- M2");
+            //for (int i = 0; i < AANTAL_GETALLEN_IN_MATRIX; i++)
+            //{
+            //    matrix2[i] = int.Parse(Console.ReadLine());
+            //}
+            for (int i = 0; i < AANTAL_GETALLEN_IN_MATRIX; i++)
+            {
+                if (i == AANTAL_GETALLEN_IN_MATRIX / 2)
+                    Console.WriteLine();
+                Console.Write(matrix2[i] + "\t");
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("--- M3 (= M1 + M2)");
+            for (int i = 0; i < AANTAL_GETALLEN_IN_MATRIX; i++)
+            {
+                if (i == AANTAL_GETALLEN_IN_MATRIX / 2)
+                    Console.WriteLine();
+                matrix3[i] = matrix1[i] + matrix2[i];
+                Console.Write( matrix3[i] + "\t");
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+        }
+    }
+```
 ### Oefening 21
 ```csharp
 class Program
