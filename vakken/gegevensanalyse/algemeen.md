@@ -1,1 +1,2 @@
 - [XML deel 1](xml1.md)
+- [Normalisatie regels](normalisatie.md)
