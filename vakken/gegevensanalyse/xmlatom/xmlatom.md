@@ -26,9 +26,7 @@ Open de terminal(`ctrl` + `alt` + `t`) en type het volgende commando:
 Druk op enter om uit te voeren.
 
 ### Windows
-Download [dit bestand](https://www.dropbox.com/s/xyhecziybkxlh8u/xmlvalidator.zip?dl=0)
-
-![3](3.png)
+Download [dit bestand](https://apti.ml/xmlvalidator/xmlvalidator.zip)
 
 Pak het ergens uit (er mag geen spatie in 1 van de bovenliggende mappen staan!) en navigeer vervolgens naar de `bin`-map.
 
