@@ -55,7 +55,7 @@ _Relatie (associatie):_
 - gelabeld met werkwoorden
 - Voorstelling: Symbolische uiteinden verbonden met lijn
 
-![Legende-ERD](/afb/Legende-ERD.png)
+![Legende-ERD](afb/Legende-ERD.png)
 
 **ER modeling hoofdkenmerken:**
 
@@ -249,7 +249,7 @@ Extern:
 **Commentaar:**
 - Tekst voor de XML document schrijver
 - Zoals commentaar in programmeertalen
-- Tussen <!-- en →
+- Tussen `<!--` en `-->`
 
 **Processing instructions:**
 - Genegeerd door XML parser
