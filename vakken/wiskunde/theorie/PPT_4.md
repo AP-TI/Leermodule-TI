@@ -323,3 +323,5 @@ Omwille van de cryptografische algoritmen moet Zm voorzien worden van 2 bewerkin
 _.xX- Onder voorbehoud van opmaak -Xx._
 - sub / sup nakijken (vooral bij Z<sub>m</sub> en Z<sub>m</sub><sup>*</sup>
 - asterisk al dan niet vooraf laten gaan met backslash: maalbewerking ipv schuine tekst
+
+Credits @ Luka Hendrickx voor de mooie afbeeldingen van de tabellen
