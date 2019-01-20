@@ -316,7 +316,7 @@ vb: ![vb_add_comm](../afb/H4/multiplicatieve_structuur_tabel.png)
 
 opmerking: bij de maal-bewerking is het neutraal element {1} en niet {0}.
 
-zoek je het stukje over ggd (ppt4 dia 53-56): kijk dan hier [GGD](...)
+zoek je het stukje over ggd (ppt4 dia 53-56): kijk dan hier [GGD](https://github.com/AP-TI-2018-2019/AP_2018-2019/blob/master/vakken/wiskunde/theorie/PPT_4.md#ggd)
 
 Omwille van de cryptografische algoritmen moet Zm voorzien worden van 2 bewerkingen, zodat er een rijkere structuur (Z<sub>m</sub>,+,.) ontstaat → beter algoritme
 
