@@ -1,4 +1,4 @@
-# H4
+# Hoofdstuk 4
 
 Cryptografie: beveiligen van communicatie tegen allerlei inbreuken op de privacy ervan
 
