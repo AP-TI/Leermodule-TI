@@ -11,7 +11,7 @@ Ringstructuur: de structuur met 2 bewerkingen die voldoet aan de volgende criter
 Unitaire ring: ring met eenheidselement
 
 Commutatieve ring: ring waarin de vermenigvuldiging commutatief is
-- Voorbeeld: het restsysteem (Z<sub>26s/sub>,+, \*) uitgerust met de plus- en de maal-bewerking vormt een unitaire commutatieve ring
+- Voorbeeld: het restsysteem (Z<sub>26</sub>,+, \*) uitgerust met de plus- en de maal-bewerking vormt een unitaire commutatieve ring
 
 eigenschap modulo: machten
 - (24 + 29)  mod 26 ≡ 1
