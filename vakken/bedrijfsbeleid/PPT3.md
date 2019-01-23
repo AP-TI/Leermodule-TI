@@ -11,6 +11,7 @@
 
 #### Ratio’s:
 - Verhouding van elementen uit balans en/of resultatenrekening
+
 → relatieve kengetallen die vergelijkingen mogelijk maken tussen ondernemingen van verschillende grootte
 - Evaluatie van de gezondheid van een bedrijf, sterke en zwakke punten, opportuniteiten en risico’s,...
 - Doelstellingen voor ondernemingen als geheel, per afdeling, per product
