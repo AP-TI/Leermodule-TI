@@ -14,12 +14,12 @@ select spelersnr from spelers where bondsnr is null;
 ```
 ## Oefening 2
 ```sql
-select 
+select
     naam, voorletters
 from
     spelers s
 where
-    exists( select 
+    exists( select
             spelersnr
         from
             teams t
@@ -34,12 +34,12 @@ select spelersnr, naam from spelers where spelersnr = any(select spelersnr from 
 LET OP! Wegens een bug in MySQL workbench lijkt dit een error te geven, dit is niet het geval, de query runt gewoon.
 ### 2.
 ```sql
-select 
+select
     betalingsnr, bedrag, datum
 from
     boetes b1
 where
-    bedrag >= all (select 
+    bedrag >= all (select
             bedrag
         from
             boetes b2
@@ -48,22 +48,22 @@ where
 ```
 ### 3.
 ```sql
-select 
-    (select 
+select
+    (select
             spelersnr
         from
             spelers
         where
-            spelersnr <= all (select 
+            spelersnr <= all (select
                     spelersnr
                 from
                     spelers)) as laagste,
-    (select 
+    (select
             spelersnr
         from
             spelers
         where
-            spelersnr >= all (select 
+            spelersnr >= all (select
                     spelersnr
                 from
                     spelers)) as hoogste;
@@ -71,26 +71,26 @@ select
 ## Oefening 4
 ### 1.
 ```sql
-select 
+SELECT
     spelersnr
-from
-    wedstrijden w1
-where
-    not 3 = any (select 
-            gewonnen
-        from
-            wedstrijden w2
-        where
-            w1.spelersnr = w2.spelersnr);
+FROM
+    spelers s
+WHERE
+    NOT 3 = ANY (SELECT
+            gewonnen - verloren
+        FROM
+            wedstrijden w
+        WHERE
+            s.spelersnr = w.spelersnr);
 ```
 ### 2.
 ```sql
-select 
+select
     t.teamnr, divisie
 from
     teams t
 where
-    teamnr not in (select 
+    teamnr not in (select
             teamnr
         from
             wedstrijden
@@ -100,12 +100,12 @@ where
 ## Oefening 5
 ### 1.
 ```sql
-select 
+select
     spelersnr, naam
 from
     spelers s
 where
-    s.spelersnr not in (select 
+    s.spelersnr not in (select
             w.spelersnr
         from
             wedstrijden w
@@ -115,12 +115,12 @@ where
 ```
 ### 2.
 ```sql
-SELECT 
+SELECT
     spelersnr, naam
 FROM
     spelers s
 WHERE
-    s.spelersnr IN (SELECT 
+    s.spelersnr IN (SELECT
             w.spelersnr
         FROM
             wedstrijden w
