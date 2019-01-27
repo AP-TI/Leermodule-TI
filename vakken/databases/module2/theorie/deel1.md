@@ -154,7 +154,7 @@ SPELERSNR NOT IN
 
 ### Reikwijdte van kolom bij subquery’s
 
-![gecorreleerde_subquery](../afb/gecorreleerde_subquery.png)
+![gecorreleerde_subquery](afb/gecorreleerde_subquery.png)
 
 > Q2 maakt gebruik van de tabel SPELERS (alias S) uit Q1. Dit maakt van Q2 een gecorreleerde subquery. Gebruik in zulke gevallen altijd aliases voor kolomnamen, dit maakt het veel overzichtelijker.
 
