@@ -3,7 +3,7 @@ Toevoeging: `<>` betekent hetzelfde als `!=`
 
 ### BETWEEN
 
-```
+```sql
 SELECT
 	WEDSTRIJDNR
 FROM
@@ -16,7 +16,7 @@ WHERE
 
 ### LIKE
 
-```
+```sql
 SELECT
 	NAAM, SPELERSNR
 FROM
@@ -26,7 +26,8 @@ WHERE
 ;
 ```
 > % → Wanneer de NAAM van een speler begint met ‘B’ en gevolgd wordt door 0 of meerdere willekeurige karakters, wordt de speler zijn NAAM en SPELERSNR behouden in het resultaat.
-```
+
+```sql
 SELECT
 	NAAM, SPELERSNR
 FROM
@@ -40,7 +41,7 @@ WHERE
 
 ### IS NULL
 
-```
+```sql
 SELECT
 	*
 FROM
@@ -55,24 +56,24 @@ WHERE
 
 ### EXISTS
 
-```
+```sql
 SELECT
-NAAM
+	NAAM
 FROM
-SPELERS AS S
+	SPELERS AS S
 WHERE
-EXISTS
+	EXISTS
 	(
-SELECT * FROM BOETES AS B
-    	WHERE B.SPELERSNR = S.SPELERSNR
-)
+		SELECT * FROM BOETES AS B
+    		WHERE B.SPELERSNR = S.SPELERSNR
+	)
 ;
 ```
 > Men selecteert kolom NAAM van SPELERS (alias S) en maakt hier een tussenresultaat van. Van dit tussenresultaat wordt er spelersnr per spelersnr bekeken of er een boete voor bestaat (EXISTS). Indien ja (TRUE), wordt deze rij weerhouden, en zal de naam weergegeven worden.
 
 ### ALL (and)
 
-```
+```sql
 SELECT
 	SPELERSNR, NAAM, GEB_DATUM
 FROM
@@ -92,7 +93,7 @@ WHERE
 
 ### ANY (or)
 
-```
+```sql
 SELECT
 	SPELERSNR, NAAM, GEB_DATUM
 FROM
@@ -111,7 +112,7 @@ WHERE
 ### NOT
 
 > Voorbeeld 1:
-```
+```sql
 WHERE
 	PLAATS = ‘Den Haag’
 ;
@@ -119,7 +120,7 @@ WHERE
 
 → 
 
-```
+```sql
 WHERE
 	NOT (PLAATS = ‘Den Haag’)
 ;
@@ -127,28 +128,28 @@ WHERE
 > Voorbeeld 2:
 
 > Volgende statement zal niet werken omdat SPELERSNR geen sleutel is in tabel BOETES.
-```
+```sql
 SELECT
-SPELERSNR
+	SPELERSNR
 FROM
-BOETES 
+	BOETES 
 WHERE
-NOT(BEDRAG = 25)
+	NOT(BEDRAG = 25)
 ;
 ```
 
 > Om toch het resultaat te verkrijgen, werken we via een tabel waar SPELERSNR wél een sleutel is, bijvoorbeeld tabel SPELERS.
 
-```
+```sql
 SELECT
-SPELERSNR
+	SPELERSNR
 FROM
-SPELERS
+	SPELERS
 WHERE
-SPELERSNR NOT IN
-(
+	SPELERSNR NOT IN
+	(
 		SELECT SPELERSNR FROM BOETES WHERE BEDRAG = 25
-)
+	)
 ;
 ```
 
