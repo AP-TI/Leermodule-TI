@@ -38,7 +38,8 @@ call grootste_tabel(@grootste);
 select @grootste;
 ```
 ## Oefening 3
-### 1.
+### Versie 1
+#### 1.
 ```sql
 delimiter //
 CREATE PROCEDURE hoogste_3_boetes
@@ -69,8 +70,55 @@ END //
 
 delimiter ;
 ```
-### 2.
+#### 2.
 ```sql
 CALL hoogste_3_boetes(@hoogste_1, @hoogste_2, @hoogste_3);
 SELECT @hoogste_1, @hoogste_2, @hoogste_3;
+```
+
+### Versie 2
+#### 1.
+```sql
+DELIMITER //
+
+CREATE PROCEDURE HOOGSTE_3_BOETES
+(
+	out BOETE1 DECIMAL(7,2),
+	out BOETE2 DECIMAL(7,2),
+    	out BOETE3 DECIMAL(7,2)
+)
+
+BEGIN
+	DECLARE FOUND BOOLEAN;
+    DECLARE C_BOETES CURSOR FOR
+		SELECT	 bedrag
+        FROM	 boetes
+        ORDER BY bedrag DESC;
+        
+	DECLARE CONTINUE HANDLER FOR NOT FOUND
+		SET FOUND = FALSE;
+	SET FOUND = TRUE;
+    
+    SET BOETE1 = 0;
+    SET BOETE2 = 0;
+    SET BOETE3 = 0;
+    
+    OPEN C_BOETES;
+    FETCH C_BOETES INTO BOETE1;
+    IF FOUND THEN
+		FETCH C_BOETES INTO BOETE2;
+	END IF;
+    IF FOUND THEN
+		FETCH C_BOETES INTO BOETE3;
+	END IF;
+    CLOSE C_BOETES;
+END //
+
+DELIMITER ;
+```
+
+#### 2.
+```sql
+CALL HOOGSTE_3_BOETES(@BOETE1, @BOETE2, @BOETE3);
+SELECT @BOETE1, @BOETE2, @BOETE3;
 ```
