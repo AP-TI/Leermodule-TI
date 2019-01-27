@@ -1,5 +1,6 @@
 ## Databases 2
-- [Oefeningen](/vakken/databases/module2/algemeen.md)
+- [Oefeningen](/vakken/databases/module2/algemeenOefeningen.md)
+- [Theorie](/vakken/databases/module2/algemeenTheorie.md)
 ## Programmeren 2
 - [Oefeningen](/vakken/programmeren/module2/algemeen.md)
 ## Gegevensanalyse
