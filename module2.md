@@ -1,7 +1,6 @@
 ## Databases 2
 - [Oefeningen](/vakken/databases/module2/algemeenOefeningen.md)
 - [Theorie](/vakken/databases/module2/algemeenTheorie.md)
-
 - [Sneltoetsen](/vakken/databases/module2/sneltoetsen.md)
 ## Programmeren 2
 - [Oefeningen](/vakken/programmeren/module2/algemeen.md)
