@@ -2,12 +2,12 @@
 
 ### STORED PROCEDURES
 
-#### DELIMETER
+#### DELIMITER
 
 > Bij het gebruik van stored procedures verander je best eerst de DELIMETER naar ‘//’. De DELIMETER is het karakter dat ervoor zorgt dat een instructie afgesloten wordt (de ‘;’ achter elke instructie), maar aangezien je meerdere code-blocks in 1 stored procedure gebruikt ga je dus meerdere ‘;’ nodig hebben moet dit dus aangepast worden. Anders leest mysql het einde van je stored procedure nog ver voordat hij effectief gedaan is.
 
 ```sql
-DELIMETER //
+DELIMITER //
 ```
 
 > Vergeet op het einde de DELIMETER niet terug te zetten naar ‘;’
@@ -39,7 +39,7 @@ CALL DELETE_WEDSTRIJDEN(8);
 ```sql
 SET @AANTAL = 0;
 -- 
-DELIMETER //
+DELIMITER //
 CREATE PROCEDURE AANTAL_BOETES
 (
   IN P_SPELERSNR INTEGER,
@@ -49,7 +49,7 @@ BEGIN
   SET P_AANTAL = (SELECT COUNT(*) FROM TENNIS.BOETES
                       WHERE SPELERSNR = P_SPELERSNR);
 END //
-DELIMETER ;
+DELIMITER ;
 --
 CALL AANTAL_BOETES(8,@AANTAL);
 SELECT @AANTAL;
