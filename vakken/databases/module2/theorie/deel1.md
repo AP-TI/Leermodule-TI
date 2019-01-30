@@ -36,7 +36,7 @@ WHERE
 	NAAM LIKE ‘B_’
 ;
 ```
-> _ → Wanneer de NAAM van een speler begint met ‘B’ en gevolgd wordt door 0 of 1 willekeurig karakter, wordt de speler zijn NAAM en SPELERSNR behouden in het resultaat.
+> _ → Wanneer de NAAM van een speler begint met ‘B’ en gevolgd wordt door precies 1 willekeurig karakter, wordt de speler zijn NAAM en SPELERSNR behouden in het resultaat.
 
 
 ### IS NULL
