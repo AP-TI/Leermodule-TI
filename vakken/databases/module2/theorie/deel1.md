@@ -89,7 +89,7 @@ WHERE
 
 > als GEB_DATUM niet NULL is en ALL geen resultaat geeft, is het antwoord TRUE
 
-> als ALLx niet NULL is en ALLx+1 wel NULL, is het antwoord FALSE
+> als ALL<sub>x</sub> niet NULL is en ALL<sub>x+1</sub> wel NULL, is het antwoord FALSE
 
 ### ANY (or)
 
@@ -103,11 +103,11 @@ WHERE
 ;
 ```
 
-→ geeft de speler met de recentst voorkomende geboortedatum weer.
+→ Geeft alle spelers terug, behalve diegene waarvan zijn geboortedatum het kleinste is. (want, de meegegeven geboortedatum moet groter zijn dan eender welke andere geboortedatum (zie subquery). Voor alle geboortedatums behalve de kleinste zal dit true weergeven. Want, de kleinste is niet groter dan eender welke andere geboortedatum. Deze zal dus niet weerhouden worden, al de rest wel.
 
 > GEB_DATUM mag niet NULL zijn want dan is het antwoord onbekend
 
-> als GEB_DATUM niet NULL is en S geen resultaat geeft, is het antwoord FALSE
+> als GEB_DATUM niet NULL is en ANY geen resultaat geeft, is het antwoord FALSE
 
 ### NOT
 
