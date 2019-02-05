@@ -199,3 +199,61 @@ enum Geslacht { Vrouw, Man}
         }
     }
 ```
+#### Extra 1 (extra methode om leeftijd te berekenen aan de hand van een meegegeven datum)
+### Klasse Program
+```csharp
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Persoon maxim = new Persoon("Janssens", "Maxim", new DateTime(2000, 8, 24), Geslacht.Man);
+
+            Console.WriteLine(maxim + " " + maxim.BerekenLeeftijd(DateTime.Today));
+        }
+    }
+```
+### Klasse Persoon
+```csharp
+enum Geslacht { Vrouw, Man}
+    class Persoon
+    {
+        public string Naam { get; set; }
+        public string Voornaam { get; set; }
+        public DateTime Geboortedatum { get; set; }
+        public Geslacht Geslacht { get; set; }
+
+
+        public Persoon(string naam, string voornaam, DateTime geboortedatum, Geslacht geslacht)
+        {
+            Naam = naam;
+            Voornaam = voornaam;
+            Geboortedatum = geboortedatum;
+            Geslacht = geslacht;
+        }
+        public Persoon(string naam, string voornaam) :this(naam, voornaam, new DateTime(2000,1,1), Geslacht.Vrouw)
+        {
+
+        }
+
+        public int BerekenLeeftijd(DateTime datum)
+        {
+            int leeftijd;
+            DateTime datumVerschil = datum;
+            leeftijd = DateTime.Now.Year - Geboortedatum.Year;
+            if (datumVerschil < new DateTime(datumVerschil.Year, Geboortedatum.Month, Geboortedatum.Day))
+                leeftijd--;
+            return leeftijd;
+        }
+        public int BerekenLeeftijd()
+        {
+            return BerekenLeeftijd(DateTime.Today);
+        }
+
+
+
+        public override string ToString()
+        {
+            return Voornaam + " " + Naam + " is " + BerekenLeeftijd() + " jaar oud.";
+        }
+    }
+```
