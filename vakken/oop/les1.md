@@ -97,3 +97,54 @@ class Vlucht
         }
     }
 ```
+#### Extra 2
+### Klasse Program
+```csharp
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Vlucht vlucht = new Vlucht();
+            Vlucht vlucht1 = new Vlucht(Bestemmingen.Engeland, new DateTime(2019,2,5,14,38,10), new DateTime(2019,2,5,15,54,29));
+
+            Console.WriteLine(vlucht + "\n\n" + vlucht1);
+        }
+    }
+```
+### Klasse Vlucht
+```csharp
+enum Bestemmingen { Frankrijk, Engeland, Duitsland}
+    class Vlucht
+    {
+        static private int vluchtnummer = 1;
+        public int Vluchtnummer { get; set; }
+        public Bestemmingen PlaatsBestemming { get; set; }
+        public string PlaatsVertrek { get; set; }
+        public DateTime DatumVertrek { get; set; }
+        public DateTime DatumAankomst { get; set; }
+
+        public Vlucht(Bestemmingen bestemming, DateTime vertrekDatum, DateTime aankomstDatum)
+        {
+            Vluchtnummer = vluchtnummer++;
+            PlaatsBestemming = bestemming;
+            PlaatsVertrek = "België";
+            DatumVertrek = vertrekDatum;
+            DatumAankomst = aankomstDatum;
+        }
+
+        public Vlucht() :this(Bestemmingen.Duitsland, new DateTime(2019, 5, 2, 14, 49, 20), new DateTime(2019, 5, 2, 16, 47, 30))
+        {
+
+        }
+
+        public TimeSpan Vluchtduur()
+        {
+            return DatumAankomst - DatumVertrek;
+        }
+
+        public override string ToString()
+        {
+            return "Vluchtnummer: " + Vluchtnummer + "\nVertrekplaats: " + PlaatsVertrek + "\nBestemming: " + PlaatsBestemming + "\nVertrektijd: " + DatumVertrek + "\nAankomsttijd: " + DatumAankomst + "\nVluchtdatum: " + Vluchtduur();
+        }
+    }
+```
