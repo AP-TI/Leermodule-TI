@@ -1,3 +1,4 @@
+# Module 1
 ## Databases 1
 - [Oefeningen](/vakken/databases/module1/algemeen.md)
 ## Programmeren 1

@@ -1,3 +1,4 @@
+# Module 2
 ## Databases 2
 - [Oefeningen](/vakken/databases/module2/algemeenOefeningen.md)
 - [Theorie](/vakken/databases/module2/algemeenTheorie.md)
