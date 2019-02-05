@@ -185,10 +185,8 @@ enum Geslacht { Vrouw, Man}
 
         public int Leeftijd()
         {
-            int leeftijd;
-            DateTime vandaag = DateTime.Today;
-            leeftijd = DateTime.Now.Year - Geboortedatum.Year;
-            if (vandaag < new DateTime(vandaag.Year, Geboortedatum.Month, Geboortedatum.Day))
+            int leeftijd = DateTime.Now.Year - Geboortedatum.Year;
+            if (datum < new DateTime(datum.Year, Geboortedatum.Month, Geboortedatum.Day))
                 leeftijd--;
             return leeftijd;
         }
@@ -237,10 +235,8 @@ enum Geslacht { Vrouw, Man}
 
         public int BerekenLeeftijd(DateTime datum)
         {
-            int leeftijd;
-            DateTime datumVerschil = datum;
-            leeftijd = DateTime.Now.Year - Geboortedatum.Year;
-            if (datumVerschil < new DateTime(datumVerschil.Year, Geboortedatum.Month, Geboortedatum.Day))
+            int leeftijd = DateTime.Now.Year - Geboortedatum.Year;
+            if (datum < new DateTime(datum.Year, Geboortedatum.Month, Geboortedatum.Day))
                 leeftijd--;
             return leeftijd;
         }
