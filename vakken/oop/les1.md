@@ -47,7 +47,7 @@ class Vlucht
         }
     }
 ```
-#### Extra 1
+#### Extra 1 (vluchtnummer automatisch verhogen)
 ### Klasse Program
 ```csharp
 class Program
@@ -97,7 +97,7 @@ class Vlucht
         }
     }
 ```
-#### Extra 2
+#### Extra 2 (Bestemming beperkt tot Frankrijk, Engeland en Duitsland. Vertrek enkel uit België)
 ### Klasse Program
 ```csharp
 class Program
@@ -145,6 +145,57 @@ enum Bestemmingen { Frankrijk, Engeland, Duitsland}
         public override string ToString()
         {
             return "Vluchtnummer: " + Vluchtnummer + "\nVertrekplaats: " + PlaatsVertrek + "\nBestemming: " + PlaatsBestemming + "\nVertrektijd: " + DatumVertrek + "\nAankomsttijd: " + DatumAankomst + "\nVluchtdatum: " + Vluchtduur();
+        }
+    }
+```
+## Oefening 1.2
+### Klasse Program
+```csharp
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Persoon maxim = new Persoon("Janssens", "Maxim", new DateTime(2000, 8, 24), Geslacht.Man);
+
+            Console.WriteLine(maxim);
+        }
+    }
+```
+### Klasse Persoon
+```csharp
+enum Geslacht { Vrouw, Man}
+    class Persoon
+    {
+        public string Naam { get; set; }
+        public string Voornaam { get; set; }
+        public DateTime Geboortedatum { get; set; }
+        public Geslacht Geslacht { get; set; }
+
+        public Persoon(string naam, string voornaam, DateTime geboortedatum, Geslacht geslacht)
+        {
+            Naam = naam;
+            Voornaam = voornaam;
+            Geboortedatum = geboortedatum;
+            Geslacht = geslacht;
+        }
+        public Persoon(string naam, string voornaam) :this(naam, voornaam, new DateTime(2000,1,1), Geslacht.Vrouw)
+        {
+
+        }
+
+        public int Leeftijd()
+        {
+            int leeftijd;
+            DateTime vandaag = DateTime.Today;
+            leeftijd = DateTime.Now.Year - Geboortedatum.Year;
+            if (vandaag < new DateTime(vandaag.Year, Geboortedatum.Month, Geboortedatum.Day))
+                leeftijd--;
+            return leeftijd;
+        }
+
+        public override string ToString()
+        {
+            return Voornaam + " " + Naam + " is " + Leeftijd() + " jaar oud.";
         }
     }
 ```
