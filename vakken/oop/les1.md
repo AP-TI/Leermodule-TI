@@ -163,7 +163,7 @@ class Program
 ```
 ### Klasse Persoon
 ```csharp
-enum Geslacht { Vrouw, Man}
+enum Geslacht { Vrouw, Man }
     class Persoon
     {
         public string Naam { get; set; }
@@ -178,15 +178,16 @@ enum Geslacht { Vrouw, Man}
             Geboortedatum = geboortedatum;
             Geslacht = geslacht;
         }
-        public Persoon(string naam, string voornaam) :this(naam, voornaam, new DateTime(2000,1,1), Geslacht.Vrouw)
+        public Persoon(string naam, string voornaam) : this(naam, voornaam, new DateTime(2000, 1, 1), Geslacht.Vrouw)
         {
 
         }
 
         public int Leeftijd()
         {
+            DateTime vandaag = DateTime.Today;
             int leeftijd = DateTime.Now.Year - Geboortedatum.Year;
-            if (datum < new DateTime(datum.Year, Geboortedatum.Month, Geboortedatum.Day))
+            if (vandaag < new DateTime(vandaag.Year, Geboortedatum.Month, Geboortedatum.Day))
                 leeftijd--;
             return leeftijd;
         }
