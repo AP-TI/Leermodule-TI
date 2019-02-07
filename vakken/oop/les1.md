@@ -144,7 +144,7 @@ enum Bestemmingen { Frankrijk, Engeland, Duitsland}
 
         public override string ToString()
         {
-            return "Vluchtnummer: " + Vluchtnummer + "\nVertrekplaats: " + PlaatsVertrek + "\nBestemming: " + PlaatsBestemming + "\nVertrektijd: " + DatumVertrek + "\nAankomsttijd: " + DatumAankomst + "\nVluchtdatum: " + Vluchtduur();
+            return "Vluchtnummer: " + Vluchtnummer + "\nVertrekplaats: " + PlaatsVertrek + "\nBestemming: " + PlaatsBestemming + "\nVertrektijd: " + DatumVertrek + "\nAankomsttijd: " + DatumAankomst + "\nVluchtduur: " + Vluchtduur();
         }
     }
 ```
