@@ -66,7 +66,7 @@ class Program
 class Vlucht
     {
         static private int vluchtnummer = 1;
-        private int Vluchtnummer { get; set; }
+        public int Vluchtnummer { get; private set; }
         public string PlaatsBestemming { get; set; }
         public string PlaatsVertrek { get; set; }
         public DateTime DatumVertrek { get; set; }
@@ -117,7 +117,7 @@ enum Bestemmingen { Frankrijk, Engeland, Duitsland}
     class Vlucht
     {
         static private int vluchtnummer = 1;
-        private int Vluchtnummer { get; set; }
+        public int Vluchtnummer { get; private set; }
         public Bestemmingen PlaatsBestemming { get; set; }
         public string PlaatsVertrek { get; set; }
         public DateTime DatumVertrek { get; set; }
