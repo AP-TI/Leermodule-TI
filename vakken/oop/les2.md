@@ -99,3 +99,113 @@ enum Geslacht { Man, Vrouw};
         }
     }
 ```
+## Oefening 2.2
+### Klasse Program
+```csharp
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Persoon eigenaar1 = new Persoon("Janssens", "Maxim", new DateTime(2000, 8, 24), Geslacht.Man);
+            Auto auto1 = new Auto("Tesla", "Model X", "mixxamm", 0, eigenaar1);
+            Auto auto2 = new Auto();
+
+            Console.WriteLine("{0}\n\n{1}", auto1, auto2);
+        }
+    }
+```
+### Klasse Persoon
+```csharp
+enum Geslacht { Man, Vrouw};
+    class Persoon
+    {
+        public string Naam { get; set; }
+        public string Voornaam { get; set; }
+        public DateTime Geboortedatum { get; set; }
+        public Geslacht Geslacht { get; set; }
+
+
+        public Persoon(string naam, string voornaam, DateTime geboortedatum, Geslacht geslacht)
+        {
+            Naam = naam;
+            Voornaam = voornaam;
+            Geboortedatum = geboortedatum;
+            Geslacht = geslacht;
+        }
+        public Persoon(string naam, string voornaam) : this(naam, voornaam, new DateTime(2000, 1, 1), Geslacht.Vrouw)
+        {
+
+        }
+
+        public int BerekenLeeftijd(DateTime datum)
+        {
+            int leeftijd = DateTime.Now.Year - Geboortedatum.Year;
+            if (datum < new DateTime(datum.Year, Geboortedatum.Month, Geboortedatum.Day))
+                leeftijd--;
+            return leeftijd;
+        }
+        public int BerekenLeeftijd()
+        {
+            return BerekenLeeftijd(DateTime.Today);
+        }
+
+
+
+        public override string ToString()
+        {
+            return Voornaam + " " + Naam + " is " + BerekenLeeftijd() + " jaar oud.";
+        }
+    }
+```
+### Klasse Auto
+```csharp
+internal class Auto
+    {
+        private const int KILOMETERS_PER_JAAR = 20000;
+        public string Merk { get; set; }
+        public string Type { get; set; }
+        public string Nummerplaat { get; set; }
+        public int Kilometers { get; set; }
+        public Persoon Eigenaar { get; set; }
+
+        public Auto(string merk, string type, string nummerplaat, int kilometers, Persoon eigenaar)
+        {
+            Merk = merk;
+            Type = type;
+            Nummerplaat = nummerplaat;
+            Kilometers = kilometers;
+            Eigenaar = eigenaar;
+        }
+        public Auto(string merk, string type, string nummerplaat, int kilometers) : this(merk, type, nummerplaat, kilometers, null)
+        {
+
+        }
+        public Auto() : this("ONBEKEND", "ONBEKEND", "1-AAA-000", 0, null)
+        {
+
+        }
+
+        public int BerekenKilometers(int jaren)
+        {
+            return Kilometers + jaren * KILOMETERS_PER_JAAR;
+        }
+        public int BerekenKilometers()
+        {
+            return BerekenKilometers(10);
+        }
+
+        public override string ToString()
+        {
+            if(Eigenaar != null)
+            return $"De auto met nummerplaat {Nummerplaat} heeft {Kilometers} kilometers. De gegevens van de eigenaar zijn:\n{Eigenaar}";
+            return "De auto heeft geen eigenaar.";
+
+            //Onderstaande is ook een optie die exact hetzelfde doet, maar vaak is het logischer om te checken op goede flow.
+            //Uiteraard kan je zelf kiezen hoe je hiermee omgaat
+
+            //if (Eigenaar == null)
+            //return "De auto heeft geen eigenaar.";
+            //return $"De auto met nummerplaat {Nummerplaat} heeft {Kilometers} kilometers. De gegevens van de eigenaar zijn:\n{Eigenaar}";
+        }
+    }
+```
