@@ -337,3 +337,140 @@ enum Geslacht { Man, Vrouw};
         }
     }
 ```
+## Oefening 2.4
+### Klasse Program
+```csharp
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Persoon passagier1 = new Persoon("Janssens", "Maxim", new DateTime(2000, 8, 24), Geslacht.Man);
+            Vlucht vlucht1 = new Vlucht(Bestemmingen.Duitsland, new DateTime(2019, 2, 13, 15, 17, 28), new DateTime(2019, 2, 13, 16, 54, 21));
+
+            vlucht1.PassagierToevoegen(passagier1);
+
+            Console.WriteLine(vlucht1);
+            Console.Write("Type de achternaam van een passagier om info te krijgen: ");
+            Console.WriteLine(vlucht1.PassagierOpzoeken(Console.ReadLine()));           
+        }
+    }
+```
+### Klasse Persoon
+```csharp
+enum Geslacht { Vrouw, Man }
+    class Persoon
+    {
+        public string Naam { get; set; }
+        public string Voornaam { get; set; }
+        public DateTime Geboortedatum { get; set; }
+        public Geslacht Geslacht { get; set; }
+
+
+        public Persoon(string naam, string voornaam, DateTime geboortedatum, Geslacht geslacht)
+        {
+            Naam = naam;
+            Voornaam = voornaam;
+            Geboortedatum = geboortedatum;
+            Geslacht = geslacht;
+        }
+        public Persoon(string naam, string voornaam) : this(naam, voornaam, new DateTime(2000, 1, 1), Geslacht.Vrouw)
+        {
+
+        }
+
+        public int BerekenLeeftijd(DateTime datum)
+        {
+            int leeftijd = DateTime.Now.Year - Geboortedatum.Year;
+            if (datum < new DateTime(datum.Year, Geboortedatum.Month, Geboortedatum.Day))
+                leeftijd--;
+            return leeftijd;
+        }
+        public int BerekenLeeftijd()
+        {
+            return BerekenLeeftijd(DateTime.Today);
+        }
+
+
+
+        public override string ToString()
+        {
+            return Voornaam + " " + Naam + " is " + BerekenLeeftijd() + " jaar oud.";
+        }
+    }
+```
+### Klasse Vlucht
+```csharp
+internal enum Bestemmingen { Frankrijk, Engeland, Duitsland }
+
+    internal class Vlucht
+    {
+        private static int vluchtnummer = 1;
+        private int Vluchtnummer { get; set; }
+        public Bestemmingen PlaatsBestemming { get; set; }
+        public string PlaatsVertrek { get; set; }
+        public DateTime DatumVertrek { get; set; }
+        public DateTime DatumAankomst { get; set; }
+
+        public Vlucht(Bestemmingen bestemming, DateTime vertrekDatum, DateTime aankomstDatum)
+        {
+            Vluchtnummer = vluchtnummer++;
+            PlaatsBestemming = bestemming;
+            PlaatsVertrek = "België";
+            DatumVertrek = vertrekDatum;
+            DatumAankomst = aankomstDatum;
+        }
+
+        public Vlucht() : this(Bestemmingen.Duitsland, new DateTime(2019, 5, 2, 14, 49, 20), new DateTime(2019, 5, 2, 16, 47, 30))
+        {
+
+        }
+
+        public TimeSpan Vluchtduur()
+        {
+            return DatumAankomst - DatumVertrek;
+        }
+
+        private List<Persoon> passagierLijst = new List<Persoon>();
+        public bool PassagierToevoegen(Persoon passagier)
+        {
+            if (passagier != null)
+            {
+                passagierLijst.Add(passagier);
+                return true;
+            }
+            return false;
+        }
+        public bool PassagierVerwijderen(Persoon passagier)
+        {
+            if (passagier != null)
+            {
+                passagierLijst.Remove(passagier);
+                return true;
+            }
+            return false;
+        }
+        public Persoon PassagierOpzoeken(string naam)
+        {
+            foreach (Persoon passagier in passagierLijst)
+            {
+                if (passagier.Naam == naam)
+                    return passagier;
+            }
+            return null;
+        }
+        public int BerekenPassagierAantal()
+        {
+            int result = 0;
+            foreach (Persoon passagier in passagierLijst)
+            {
+                result++;
+            }
+            return result;
+        }
+
+        public override string ToString()
+        {
+            return "Vluchtnummer: " + Vluchtnummer + "\nVertrekplaats: " + PlaatsVertrek + "\nBestemming: " + PlaatsBestemming + "\nVertrektijd: " + DatumVertrek + "\nAankomsttijd: " + DatumAankomst + "\nVluchtduur: " + Vluchtduur() + /*Vanaf hier gebruik ik het dollar-teken om variabeles binnen de string te kunnen gebruiken*/$"\n\nAantal passagiers: {BerekenPassagierAantal()}";
+        }
+    }
+```
