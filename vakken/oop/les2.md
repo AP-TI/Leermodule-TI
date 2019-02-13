@@ -209,3 +209,131 @@ internal class Auto
         }
     }
 ```
+## Oefening 2.3
+### Klasse Program
+```csharp
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Persoon eigenaar1 = new Persoon("Janssens", "Maxim", new DateTime(2000, 8, 24), Geslacht.Man);
+            Auto auto1 = new Auto("Tesla", "Model X", "mixxamm", 20);
+            Auto auto2 = new Auto();
+            eigenaar1.AutoToevoegen(auto1);
+            eigenaar1.AutoToevoegen(auto2);
+
+            Console.WriteLine(eigenaar1);
+        }
+    }
+```
+### Klasse auto
+```csharp
+internal class Auto
+    {
+        private const int KILOMETERS_PER_JAAR = 20000;
+        public string Merk { get; set; }
+        public string Type { get; set; }
+        public string Nummerplaat { get; set; }
+        public int Kilometers { get; set; }
+
+        public Auto(string merk, string type, string nummerplaat, int kilometers)
+        {
+            Merk = merk;
+            Type = type;
+            Nummerplaat = nummerplaat;
+            Kilometers = kilometers;
+        }
+        public Auto() : this("ONBEKEND", "ONBEKEND", "1-AAA-000", 0)
+        {
+
+        }
+
+        public int BerekenKilometers(int jaren)
+        {
+            return Kilometers + jaren * KILOMETERS_PER_JAAR;
+        }
+        public int BerekenKilometers()
+        {
+            return BerekenKilometers(10);
+        }
+
+        public override string ToString()
+        {
+            return $"De auto met nummerplaat {Nummerplaat} heeft {Kilometers} kilometers.";
+        }
+    }
+```
+### Klasse Persoon
+```csharp
+enum Geslacht { Man, Vrouw};
+    class Persoon
+    {
+        List<Auto> autoLijst = new List<Auto>();
+        public string Naam { get; set; }
+        public string Voornaam { get; set; }
+        public DateTime Geboortedatum { get; set; }
+        public Geslacht Geslacht { get; set; }
+
+
+        public Persoon(string naam, string voornaam, DateTime geboortedatum, Geslacht geslacht)
+        {
+            Naam = naam;
+            Voornaam = voornaam;
+            Geboortedatum = geboortedatum;
+            Geslacht = geslacht;
+        }
+        public Persoon(string naam, string voornaam) : this(naam, voornaam, new DateTime(2000, 1, 1), Geslacht.Vrouw)
+        {
+
+        }
+
+        public bool AutoToevoegen(Auto auto)
+        {
+            if(auto != null)
+            {
+                autoLijst.Add(auto);
+                return true;
+            }
+            return false;
+
+
+        }
+        public bool AutoVerwijderen(Auto auto)
+        {
+            if(auto != null)
+            {
+                autoLijst.Remove(auto);
+                return true;
+            }
+            return false;
+        }
+
+        public string AutoLijst(List<Auto> autoLijst)
+        {
+            string autoLijstString = "";
+            foreach(Auto auto in autoLijst)
+            {
+                autoLijstString += auto + "\n\n";
+            }
+            return autoLijstString;
+        }
+        public int BerekenLeeftijd(DateTime datum)
+        {
+            int leeftijd = DateTime.Now.Year - Geboortedatum.Year;
+            if (datum < new DateTime(datum.Year, Geboortedatum.Month, Geboortedatum.Day))
+                leeftijd--;
+            return leeftijd;
+        }
+        public int BerekenLeeftijd()
+        {
+            return BerekenLeeftijd(DateTime.Today);
+        }
+
+
+
+        public override string ToString()
+        {
+            return $"{Voornaam} {Naam} is {BerekenLeeftijd()} jaar oud. En heeft de volgende auto's: \n\n{AutoLijst(autoLijst)}";
+        }
+    }
+```
