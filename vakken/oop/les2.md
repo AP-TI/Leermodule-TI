@@ -474,3 +474,25 @@ internal enum Bestemmingen { Frankrijk, Engeland, Duitsland }
         }
     }
 ```
+## Oefening 2.5
+```csharp
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, string> afkortingen = new Dictionary<string, string>();
+
+            afkortingen.Add("BTW", "Belasting Over Toegevoegde waarde");
+
+            Console.Write("Geef de key van een afkorting die je wilt opzoeken: ");
+            if (afkortingen.TryGetValue(Console.ReadLine(), out string result))
+            {
+                Console.WriteLine("De waarde die bij de key hoort is: {0}", result);
+            }
+            else
+            {
+                Console.WriteLine("Er is geen waarde gevonden voor de key");
+            }
+        }
+    }
+```
