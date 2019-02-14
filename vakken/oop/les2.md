@@ -474,7 +474,7 @@ internal enum Bestemmingen { Frankrijk, Engeland, Duitsland }
         }
     }
 ```
-## Oefening 2.5 (nog niet gecontroleerd)
+## Oefening 2.5 (nog niet nagekeken)
 ```csharp
 class Program
     {
@@ -496,7 +496,7 @@ class Program
         }
     }
 ```
-## Oefening 2.6 (nog niet gecontroleerd)
+## Oefening 2.6 (nog niet nagekeken)
 ### Klasse Program
 ```csharp
 internal class Program
@@ -509,10 +509,7 @@ internal class Program
             vlucht1.PassagierToevoegen(passagier1);
 
             Console.Write("Geef een vluchtnummer: ");
-            if (Vlucht.vluchtDictionary.TryGetValue(int.Parse(Console.ReadLine()), out Vlucht vlucht))
-                Console.WriteLine($"De vluchtinformatie is: {vlucht}");
-            else
-                Console.WriteLine("Geen vluchtinformatie gevonden.");
+            Console.WriteLine(Vlucht.VluchtInfo(int.Parse(Console.ReadLine())));
         }
     }
 ```
@@ -572,7 +569,7 @@ internal enum Bestemmingen { Frankrijk, Engeland, Duitsland }
         public string PlaatsVertrek { get; set; }
         public DateTime DatumVertrek { get; set; }
         public DateTime DatumAankomst { get; set; }
-        public static Dictionary<int, Vlucht> vluchtDictionary = new Dictionary<int, Vlucht>();
+        private static Dictionary<int, Vlucht> vluchtDictionary = new Dictionary<int, Vlucht>();
 
         public Vlucht(Bestemmingen bestemming, DateTime vertrekDatum, DateTime aankomstDatum)
         {
@@ -630,6 +627,12 @@ internal enum Bestemmingen { Frankrijk, Engeland, Duitsland }
                 result++;
             }
             return result;
+        }
+        public static string VluchtInfo(int vluchtNummer)
+        {
+            if (vluchtDictionary.ContainsKey(vluchtNummer))
+                return $"De vluchtinformatie is: {vluchtDictionary[vluchtNummer]}";
+                return "Geen vluchtinformatie gevonden.";
         }
 
         public override string ToString()
