@@ -647,24 +647,96 @@ internal class Program
     {
         private static void Main(string[] args)
         {
-            Stack<char> karakterLijst = new Stack<char>();
+          Stack letters = new Stack();
+          char input = '-';
 
-            bool goOn = true;
+          do
+          {
+              bool goOn = true;
 
-            while (goOn)
-            {
-                Console.Write("Geef een karakter: ");
-                char input = char.Parse(Console.ReadLine());
-                if (input != 'Z')
-                    karakterLijst.Push(input);
-                else
-                {
-                    if (karakterLijst.Count == 2)
-                        goOn = false;
-                    karakterLijst.Pop();
-                    Console.WriteLine(karakterLijst.Peek());
-                }
-            }
-        }
+              while (goOn)
+              {
+                  try
+                  {
+                      Console.Write("Geef een character in: ");
+                      input = char.Parse(Console.ReadLine());
+                      goOn = false;
+                  }
+                  catch (Exception) { Console.WriteLine("Geef een geldige character in!"); }
+              }
+
+              if (EqualsZ(input))
+              {
+                  try
+                  {
+                      letters.Pop();
+                  }
+                  catch (InvalidOperationException)
+                  {
+                      Console.WriteLine("De stack is al leeg!");
+                  }
+
+              }
+              else
+              {
+                  letters.Push(input);
+              }
+
+              Console.WriteLine(StackToString(letters));
+          } while (!IsEmpty(letters));
+
+          Console.WriteLine("De stack is volledig leeg!");
+      }
+
+      /*
+       * Kijk of de parameter gelijk is aan 'Z' of niet.
+       */
+      public static bool EqualsZ(char a)
+      {
+          if (a == 'Z')
+          {
+              return true;
+          }
+
+          return false;
+      }
+
+      /*
+       * Kijkt of de Stack leeg/null is of niet.
+       */
+      public static bool IsEmpty(Stack list)
+      {
+          if (list.Count == 0 || list == null)
+          {
+              return true;
+          }
+
+          return false;
+      }
+
+      public static string StackToString(Stack stack)
+      {
+          StringBuilder result = new StringBuilder();
+          string strepen = "-----";
+
+          result.AppendLine("\nDe stack op dit moment:");
+
+          if (stack.Count > 0)
+          {
+              result.AppendLine(strepen);
+              foreach (char x in stack)
+              {
+                  result.AppendLine("| " + x.ToString() + " |\n" + strepen);
+              }
+          }
+
+          else
+          {
+              result.AppendLine("*EMPTY*");
+          }
+
+          return result.ToString();
+      }
     }
+  }
 ```
