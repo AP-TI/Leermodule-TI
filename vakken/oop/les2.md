@@ -641,3 +641,30 @@ internal enum Bestemmingen { Frankrijk, Engeland, Duitsland }
         }
     }
 ```
+## Oefening 2.7
+```csharp
+internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            Stack<char> karakterLijst = new Stack<char>();
+
+            bool goOn = true;
+
+            while (goOn)
+            {
+                Console.Write("Geef een karakter: ");
+                char input = char.Parse(Console.ReadLine());
+                if (input != 'Z')
+                    karakterLijst.Push(input);
+                else
+                {
+                    if (karakterLijst.Count == 2)
+                        goOn = false;
+                    karakterLijst.Pop();
+                    Console.WriteLine(karakterLijst.Peek());
+                }
+            }
+        }
+    }
+```
