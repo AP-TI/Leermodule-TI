@@ -1,48 +1,48 @@
 # Deel 6
 ## Oefening 1:
 ### 1A
-```
-SELECT 
-    betalingsnr, 
-    bedrag 
-FROM 
+```sql
+SELECT
+    betalingsnr,
+    bedrag
+FROM
     boetes;
 ```
 ### 1B
-```
-SELECT 
-    spelersnr, 
-    teamnr, 
+```sql
+SELECT
+    spelersnr,
+    teamnr,
     gewonnen-verloren
-FROM 
+FROM
     wedstrijden;
 ```
 ### 1C
-```
-SELECT 
+```sql
+SELECT
     spelersnr,
-    teamnr, 
+    teamnr,
     gewonnen-verloren AS resultaat
-FROM 
+FROM
     wedstrijden;
 ```
 ## Oefening 2:
 ### 2A
-```
-SELECT 
-    spelersnr, 
+```sql
+SELECT
+    spelersnr,
     teamnr,
     CASE
         WHEN (gewonnen - verloren) > 0 THEN 'Gewonnen'
         WHEN (gewonnen - verloren) < 0 THEN 'Verloren'
         ELSE 'Gelijk'
     END AS resultaat
-FROM 
+FROM
     wedstrijden;
 ```
 ### 2B
-```
-SELECT 
+```sql
+SELECT
     spelersnr,
     jaartoe,
     CASE
@@ -50,12 +50,12 @@ SELECT
         WHEN (jaartoe >= 1980 AND jaartoe < 1983) THEN 'Jongeren'
         ELSE 'Kinderen'
     END AS Groep
-FROM 
+FROM
     spelers;
 ```
 ### 2C
-```
-SELECT 
+```sql
+SELECT
     spelersnr,
     jaartoe,
     CASE
@@ -67,12 +67,12 @@ SELECT
         WHEN (jaartoe >= 1980 AND jaartoe < 1983) THEN 'Jongeren'
         ELSE 'Kinderen'
     END AS Groep
-FROM 
+FROM
     spelers;
 ```
 ## Oefening 3:
 ### 3A
-```
+```sql
 SELECT
     spelersnr,
     naam,
@@ -81,7 +81,7 @@ FROM
     spelers;
 ```
 ### 3B
-```
+```sql
 SELECT
     spelersnr,
     naam,
@@ -89,68 +89,68 @@ SELECT
         WHEN (MONTH(geb_datum) = MONTH(CURRENT_DATE())) AND (DAY(geb_datum) = DAY(CURRENT_DATE())) THEN 'JARIG!'
         ELSE 'niet jarig'
     END AS FEEST
-FROM 
+FROM
     spelers;
 ```
 ## Oefening 4:
 ### 4A
-```
-SELECT 
+```sql
+SELECT
     max(gewonnen-verloren) AS maximum
-FROM 
+FROM
     wedstrijden;
 ```
 ### 4B
-```
-SELECT 
+```sql
+SELECT
     count(wedstrijdnr) AS aantal
-FROM 
+FROM
     wedstrijden;
 ```
 ## EXTRA
 ### EX1
-```
-SELECT 
+```sql
+SELECT
     naam as Uitgever
-FROM 
+FROM
     tbluitgevers;
 ```
 Of uitgebreider:
-```
-SELECT 
+```sql
+SELECT
     replace(naam, ' ', '_') as Uitgever
-FROM 
+FROM
     tbluitgevers;
 ```
 ### EX2
-```
-SELECT 
+```sql
+SELECT
     lower(naam)
-FROM 
+FROM
     tblgamedefinitions
 ;
 ```
 ### EX3
-```
-SELECT 
+```sql
+SELECT
     replace(replace(lower(naam), '-', '_'), ' ', '_') as Game
-FROM 
+FROM
     tblgamedefinitions
 ;
 ```
 ### EX4
-```
+```sql
 SELECT
     /*naam, CAST(releasedatum AS CHAR(10))*/
     naam,
     concat(DAY(releasedatum), '-', MONTH(releasedatum), '-', YEAR(releasedatum)) AS releasedatum
-FROM 
+FROM
     tblconsoles
 ;
 ```
-> `naam, CAST(releasedatum AS CHAR(10))`is naar mijn mening een betere manier, maar dit geeft niet 100% het gewenste resultaat.
+--> `naam, CAST(releasedatum AS CHAR(10))`is naar mijn mening een betere manier, maar dit geeft niet 100% het gewenste resultaat.
 ### EX5
-```
+```sql
 SELECT
     naam, length(naam)
 FROM
@@ -158,7 +158,7 @@ FROM
 ;
 ```
 ### EX6
-```
+```sql
 SELECT
     MAX(price) AS Hoogste_Prijs
 FROM
@@ -166,7 +166,7 @@ FROM
 ;
 ```
 ### EX7
-```
+```sql
 SELECT
     SUM(price) AS Max_Omzet
 FROM
@@ -174,15 +174,15 @@ FROM
 ;
 ```
 ### EX8
-```
+```sql
 SELECT
     naam, MIN(releasedatum)
-FROM 
+FROM
     tblgamedefinitions
 ;
 ```
 ### EX9
-```
+```sql
 SELECT
     gd.naam,
     price,
@@ -190,12 +190,12 @@ SELECT
         WHEN (gametypeid = 1) THEN 'Nieuw'
         ELSE 'Occasie'
     END AS gametypeid
-FROM 
+FROM
     tblgames, tblgamedefinitions as gd
 ;
 ```
 ### EX10
-```
+```sql
 select
     concat(naam, ';', id, ';', uitgever, ';', releasedatum, ';')
 FROM
@@ -203,20 +203,20 @@ FROM
 ;
 ```
 ### EX11
-```
+```sql
 select
     g.price/*,
     gd.naam*/
 FROM
     tblgamedefinitions as gd, tblgames as g
 WHERE
-    gd.naam = 'Super Ghouls \'n Ghosts' 
+    gd.naam = 'Super Ghouls \'n Ghosts'
     AND
     g.gamedefinitionid = gd.id
 ;
 ```
 ### EX12
-```
+```sql
 select
     g.price,
     gd.naam,

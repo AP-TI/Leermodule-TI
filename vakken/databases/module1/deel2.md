@@ -1,10 +1,10 @@
 # Deel 2
 ## Oefening 1
 ### 1a
-```
+```sql
 create database ap;
 ```
-```
+```sql
 create table afdeling (
     afdnr char(5) unique,
     budget decimal(8 , 2 ) not null,
@@ -14,12 +14,12 @@ create table afdeling (
     gempunten decimal(5 , 2 )
 );
 ```
-```
+```sql
 insert into afdeling values('12345', 2000.25, 'Antwerpen', '(123)45 89 12', false, 12.43);
 ```
 
 ### 1b
-```
+```sql
 create table tblopleiding
 (
     opleidingscode char(10) primary key,
@@ -27,7 +27,7 @@ create table tblopleiding
     duur tinyint(4)
 );
 ```
-```
+```sql
 create table tblafdeling
 (
     afdelingnr int auto_increment primary key, /*auto_increment: default start-waarde = 1*/
@@ -35,7 +35,7 @@ create table tblafdeling
     replicatiecode char(32)
 );
 ```
-```
+```sql
 create table tblmedewerker
 (
     medewerkernr int auto_increment primary key,
@@ -45,7 +45,7 @@ create table tblmedewerker
     foreign key (afdelingnr) references tblafdeling(afdelingnr)
 );
 ```
-```
+```sql
 create table tblgevolgdeopleidingen
 (
     medewerkernr int,
@@ -58,11 +58,11 @@ create table tblgevolgdeopleidingen
 ```
 
 ### 1c
-```
+```sql
 Create database renting;
 ```
-```
-create table tblFaciliteiten 
+```sql
+create table tblFaciliteiten
 (
     Faciliteitcode char(20) primary key,
     kookgelegenheid tinyint,
@@ -70,8 +70,8 @@ create table tblFaciliteiten
     aantalkamers tinyint
 );
 ```
-```
-create table tblkamerbestand 
+```sql
+create table tblkamerbestand
 (
     kamernr int primary key,
     adres varchar(50),
@@ -81,8 +81,8 @@ create table tblkamerbestand
     foreign key (faciliteitcode) references tblfaciliteiten(faciliteitcode)
 );
 ```
-```
-create table tblstudent 
+```sql
+create table tblstudent
 (
     studentnr int primary key,
     naam varchar(50),
@@ -90,8 +90,8 @@ create table tblstudent
     studentplaats varchar(50)
 );
 ```
-```
-create table tblhuurcontract 
+```sql
+create table tblhuurcontract
 (
     studentnr int,
     foreign key (studentnr) references tblstudent(studentnr),
@@ -103,7 +103,7 @@ create table tblhuurcontract
 ```
 
 ### 1d
-```
+```sql
 create table tblstudent
 (
     studentnr int auto_increment primary key,
@@ -113,14 +113,14 @@ create table tblstudent
     geboortedatum date
 );
 ```
-```
+```sql
 create table tblcursus
 (
     cursusnr int primary key,
     cursusomschrijving varchar(1000)
 );
 ```
-```
+```sql
 create table tblmodule
 (
     cursusomschrijving varchar(500),
@@ -130,7 +130,7 @@ create table tblmodule
     omschrijving varchar(500)
 );
 ```
-```
+```sql
 create table tblresultaat
 (
     studentnr int,
@@ -144,22 +144,22 @@ create table tblresultaat
 );
 ```
 ## Oefening 2
-```
+```sql
 create table SPELERS_KOPIE
 (
     partnervan int,
     voorletters char(4)
-) 
-AS 
+)
+AS
 (
     SELECT * FROM Tennis.Spelers WHERE plaats = "Den Haag"
 );
 ```
-```
+```sql
 SELECT * FROM spelers_kopie;
 ```
 ## Oefening 3
-```
+```sql
 create table lessen
 (
     lesnr char(5) not null,
@@ -168,7 +168,7 @@ create table lessen
     lesdatum date,
     primary key(lesnr, spelersnr),
     unique(spelersnr, lesdatum),
-    foreign key(spelersnr) references spelers1(spelersnr) 
+    foreign key(spelersnr) references spelers1(spelersnr)
 	on delete cascade /*les verwijderen bij het verwijderen van een speler*/
         on update cascade /*update bij het aanpassen van een speler*/
 );

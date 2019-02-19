@@ -1,7 +1,7 @@
 # Deel 3
 ## Oefening 1
 ### 1A
-```
+```sql
 create table L2_T1
 (
     k1 char(10) not null primary key
@@ -10,7 +10,7 @@ default character set utf8
 ;
 ```
 ### 1B
-```
+```sql
 create table L2_T2
 (
     k1 char(10) not null primary key
@@ -19,44 +19,44 @@ default character set ascii
 ;
 ```
 ### 1C & D
-```
+```sql
 insert into L2_T1 value ('école');
 ```
-> dit werkt bij de UTF8 tabel, maar niet bij de ASCII tabel. Het karakter `é` is niet inbegrepen in de ASCII character set.
+--> dit werkt bij de UTF8 tabel, maar niet bij de ASCII tabel. Het karakter `é` is niet inbegrepen in de ASCII character set.
 ## Oefening 2
-```
-ALTER TABLE L2_Bestuursleden 
+```sql
+ALTER TABLE L2_Bestuursleden
 change functie bestuursfunctie char(30),
 add betaald tinyint default false,
 add primary key(spelersnr, begin_datum)
 ;
 ```
 ## Oefening 3
-```
+```sql
 CREATE TABLE WEDSTRIJDEN
 (
     wedstrijdnr int primary key,
     teamnr int,
-    spelersnr int, 
+    spelersnr int,
     gewonnen tinyint,
     verloren tinyint,
     divisie char(6)
 );
 ```
-```
-SELECT 
-	WEDSTRIJDNR, 
-	TEAMNR, 
-	DIVISIE 
-FROM 
+```sql
+SELECT
+	WEDSTRIJDNR,
+	TEAMNR,
+	DIVISIE
+FROM
 	wedstrijden
 ;
 ```
 ## oefening 4
-```
+```sql
 create database FIRMAX;
 ```
-```
+```sql
 create table /*firmax.*/klant
 (
     klantid int primary key,
@@ -65,7 +65,7 @@ create table /*firmax.*/klant
     telefoonnr char(13)
 );
 ```
-```
+```sql
 create table werknemer
 (
     werknemerid int primary key,
@@ -74,7 +74,7 @@ create table werknemer
     rsznr char(13) unique
 );
 ```
-```
+```sql
 create table product
 (
     productid int primary key,
@@ -83,7 +83,7 @@ create table product
     voorradig tinyint default false
 );
 ```
-```
+```sql
 create table leverancier
 (
     leverancierid int primary key,
@@ -92,14 +92,14 @@ create table leverancier
     telefoonnr char(13)
 );
 ```
-```
+```sql
 /*Houdt een lijst bij van alle leveranciers voor een product -> oef: e.iv. Een lijst van leveranciers die het product kunnen aanleveren*/
 create table product_leverancier
 (
-    productid int, 
+    productid int,
     leverancierid int,
     primary key(productid, leverancierid),
-    foreign key (productid) 
+    foreign key (productid)
     	references /*firmax.*/product(productid)
     	on update cascade
         on delete cascade,
@@ -109,7 +109,7 @@ create table product_leverancier
         on delete cascade
 );
 ```
-```
+```sql
 create table orders
 (
     orderid int primary key,
@@ -119,11 +119,11 @@ create table orders
     datum date not null,
     aantal dec(10,2) not null,
     unique (klantid, productid, datum),
-    foreign key (productid) 
+    foreign key (productid)
     references product(productid)
         on update cascade
         on delete restrict,
-    foreign key (werknemerid) 
+    foreign key (werknemerid)
         references werknemer(werknemerid)
         on update cascade
         on delete restrict,
