@@ -236,3 +236,131 @@ internal class Gezinswagen : Wagen
         }
     }
 ```
+## Oefening 4.3
+### Klasse Program
+```csharp
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Product product = new Product("Leverancier", "Product", 20);
+            Product food = new Food("Coca Cola", "MnM's", 8.49, new DateTime(2021, 2, 26), 18);
+            Product nonFood = new NonFood("Samsung", "Galaxy S10+", 1599.99, 24, true, true);
+
+            Winkel winkel = new Winkel("Ellermanstraat 33", "AliExpress");
+
+            winkel.VoegProductToe(product);
+            winkel.VoegProductToe(food);
+            winkel.VoegProductToe(nonFood);
+
+            Console.WriteLine(winkel);
+        }
+    }
+```
+### Klasse Winkel
+```csharp
+class Winkel
+    {
+        public string Adres { get; set; }
+        public string Naam { get; set; }
+
+        public Winkel(string adres, string naam)
+        {
+            Adres = adres;
+            Naam = naam;
+        }
+
+        private List<Product> productenlijst = new List<Product>();
+
+        public void VoegProductToe(Product product)
+        {
+            productenlijst.Add(product);
+        }
+
+        public string ProductenLijst()
+        {
+            StringBuilder result = new StringBuilder();
+            foreach(Product product in productenlijst)
+            {
+                result.Append(product + "\n\n");
+            }
+            return result.ToString();
+        }
+
+        public override string ToString()
+        {
+            return $"Deze winkel ({Naam}) heeft de volgende producten in zijn assortiment:\n\n{ProductenLijst()}";
+        }
+    }
+```
+### Klasse Product
+```csharp
+class Product
+{
+    public string Leverancier { get; set; }
+    public string Naam { get; set; }
+    public double Verkoopprijs { get; set; }
+
+    public Product(string leverancier, string naam, double verkoopprijs)
+    {
+        Leverancier = leverancier;
+        Naam = naam;
+        Verkoopprijs = verkoopprijs;
+    }
+
+    public virtual double BepaalPrijs()
+    {
+        return Verkoopprijs;
+    }
+
+    public override string ToString()
+    {
+        return $"Leverancier: {Leverancier}\nNaam: {Naam}\nVerkoopprijs: {Verkoopprijs}\n";
+    }
+}
+```
+### Klasse Food
+```csharp
+class Food : Product
+{
+    public DateTime Vervaldatum { get; set; }
+    public int Koeltemperatuur { get; set; }
+
+    public Food(string leverancier, string naam, double verkoopprijs, DateTime vervaldatum, int koeltemperatuur) : base(leverancier, naam, verkoopprijs)
+    {
+        Vervaldatum = vervaldatum;
+        Koeltemperatuur = koeltemperatuur;
+    }
+
+    public double BepaalPrijs(int gewicht)
+    {
+        return base.BepaalPrijs() * (gewicht / 1000);
+    }
+
+    public override string ToString()
+    {
+        return base.ToString() + $"Koeltemperatuur: {Koeltemperatuur}\nVervaldatum: {Vervaldatum}\nPrijs per kg: {BepaalPrijs(1000)}";
+    }
+}
+```
+### Klasse NonFood
+```csharp
+class NonFood : Product
+{
+    public int GarantiePeriode { get; set; }
+    public bool Fragiel { get; set; }
+    public bool Batterij { get; set; }
+
+    public NonFood(string leverancier, string naam, double verkoopprijs, int garantiePeriode, bool fragiel, bool batterij) : base(leverancier, naam, verkoopprijs)
+    {
+        GarantiePeriode = garantiePeriode;
+        Fragiel = fragiel;
+        Batterij = batterij;
+    }
+
+    public override string ToString()
+    {
+        return base.ToString() + $"Garantieperiode: {GarantiePeriode}\nFragiel: {Fragiel}\nBatterij: {Batterij}\nPrijs: {BepaalPrijs()}";
+    }
+}
+```
