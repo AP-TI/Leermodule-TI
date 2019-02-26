@@ -364,3 +364,145 @@ class NonFood : Product
     }
 }
 ```
+## Oefening 4.4
+### Klasse Program
+```csharp
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Artiest artiest = new Artiest("David", "Guetta", Muziekstijlen.Dance, "EDM");
+            Festivalganger festivalganger = new Festivalganger("Maxim", "Janssens", Muziekstijlen.Dance, "EDM", 18, false, "Sint-Katelijne-Waver");
+            Festival tomorrowland = new Festival("Tomorrowland", "Boom", new DateTime(2019, 7, 18));
+
+            tomorrowland.VoegArtiestToe(artiest);
+            tomorrowland.VoegFestivalgangerToe(festivalganger);
+
+            Console.WriteLine(tomorrowland);
+        }
+    }
+```
+### Klasse Festival
+```csharp
+internal class Festival
+    {
+        private const double STANDAARD_KOSTPRIJS = 129.99;
+        public string Naam { get; set; }
+        public string Plaats { get; set; }
+        private DateTime datum;
+
+        public DateTime Datum
+        {
+            get { return datum; }
+            set
+            {
+                if (value >= DateTime.Today)
+                    datum = value;
+                else
+                    datum = DateTime.Today;
+            }
+        }
+        private List<Festivalganger> festivalgangers = new List<Festivalganger>();
+        private List<Artiest> artiesten = new List<Artiest>();
+
+        public Festival(string naam, string plaats, DateTime datum)
+        {
+            Naam = naam;
+            Plaats = plaats;
+            Datum = datum;
+        }
+
+        public double BerekenInkomstPrijs(Festivalganger festivalganger)
+        {
+            if (Plaats == festivalganger.Plaats)
+                return 0;
+            if (festivalganger.Leeftijd >= 60 || festivalganger.Leeftijd <= 25 || festivalganger.HeeftHandicap)
+                return STANDAARD_KOSTPRIJS * 0.5;
+            return STANDAARD_KOSTPRIJS;
+        }
+
+        public void VoegFestivalgangerToe(Festivalganger festivalganger)
+        {
+            festivalgangers.Add(festivalganger);
+        }
+        public void VoegArtiestToe(Artiest artiest)
+        {
+            artiesten.Add(artiest);
+        }
+
+        public string Festivalgangers()
+        {
+            StringBuilder result = new StringBuilder();
+            foreach (Festivalganger festivalganger in festivalgangers)
+                result.Append(festivalganger + $"\nInkomstprijs: {BerekenInkomstPrijs(festivalganger).ToString("c")}");
+            return result.ToString();
+        }
+        public string Artiesten()
+        {
+            StringBuilder result = new StringBuilder();
+            foreach (Artiest artiest in artiesten)
+                result.Append(artiest);
+            return result.ToString();
+        }
+
+        public override string ToString()
+        {
+            return $"Naam festival: {Naam}\nPlaats: {Plaats}\nDatum: {Datum.ToShortDateString()}\n\nArtiesten:\n{Artiesten()}\n\nFestivalgangers:\n{Festivalgangers()}";
+        }
+    }
+```
+### Klasse Persoon
+```csharp
+enum Muziekstijlen { RAndB, Dance, Rock}
+    class Persoon
+    {
+        public string Voornaam { get; set; }
+        public string Naam { get; set; }
+        public Muziekstijlen Muziekstijl { get; set; }
+        public string Genre { get; set; }
+
+        public Persoon(string voornaam, string naam, Muziekstijlen muziekstijl, string genre)
+        {
+            Voornaam = voornaam;
+            Naam = naam;
+            Muziekstijl = muziekstijl;
+            Genre = genre;
+        }
+
+        public override string ToString()
+        {
+            return $"Voornaam: {Voornaam}\nNaam: {Naam}\nMuziekstijl: {Muziekstijl}, Genre: {Genre}";
+        }
+    }
+```
+### Klasse Artiest
+```csharp
+class Artiest : Persoon
+    {
+        public Artiest(string voornaam, string naam, Muziekstijlen muziekstijl, string genre) : base(voornaam, naam, muziekstijl, genre)
+        {
+        }
+    }
+```
+### Klasse Festivalganger
+```csharp
+class Festivalganger : Persoon
+    {
+        public int Leeftijd { get; set; }
+        public bool HeeftHandicap { get; set; }
+        public string Plaats { get; set; }
+        public Festivalganger(string voornaam, string naam, Muziekstijlen muziekstijl, string genre, int leeftijd, bool heeftHandicap, string plaats) : base(voornaam, naam, muziekstijl, genre)
+        {
+            Leeftijd = leeftijd;
+            HeeftHandicap = heeftHandicap;
+            Plaats = plaats;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + $"\nLeeftijd: {Leeftijd}";
+        }
+
+
+    }
+```
