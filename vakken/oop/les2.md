@@ -79,8 +79,8 @@ enum Geslacht { Man, Vrouw};
 
         public int BerekenLeeftijd(DateTime datum)
         {
-            int leeftijd = DateTime.Now.Year - Geboortedatum.Year;
-            if (datum < new DateTime(datum.Year, Geboortedatum.Month, Geboortedatum.Day))
+            int leeftijd = datum.Year - Geboortedatum.Year;
+            if (datum.DayOfYear < Geboortedatum.DayOfYear)
                 leeftijd--;
             return leeftijd;
         }
@@ -139,8 +139,8 @@ enum Geslacht { Man, Vrouw};
 
         public int BerekenLeeftijd(DateTime datum)
         {
-            int leeftijd = DateTime.Now.Year - Geboortedatum.Year;
-            if (datum < new DateTime(datum.Year, Geboortedatum.Month, Geboortedatum.Day))
+            int leeftijd = datum.Year - Geboortedatum.Year;
+            if (datum.DayOfYear < Geboortedatum.DayOfYear)
                 leeftijd--;
             return leeftijd;
         }
@@ -319,8 +319,8 @@ enum Geslacht { Man, Vrouw};
         }
         public int BerekenLeeftijd(DateTime datum)
         {
-            int leeftijd = DateTime.Now.Year - Geboortedatum.Year;
-            if (datum < new DateTime(datum.Year, Geboortedatum.Month, Geboortedatum.Day))
+            int leeftijd = datum.Year - Geboortedatum.Year;
+            if (datum.DayOfYear < Geboortedatum.DayOfYear)
                 leeftijd--;
             return leeftijd;
         }
@@ -380,8 +380,8 @@ enum Geslacht { Vrouw, Man }
 
         public int BerekenLeeftijd(DateTime datum)
         {
-            int leeftijd = DateTime.Now.Year - Geboortedatum.Year;
-            if (datum < new DateTime(datum.Year, Geboortedatum.Month, Geboortedatum.Day))
+            int leeftijd = datum.Year - Geboortedatum.Year;
+            if (datum.DayOfYear < Geboortedatum.DayOfYear)
                 leeftijd--;
             return leeftijd;
         }
@@ -539,8 +539,8 @@ internal enum Geslacht { Vrouw, Man }
 
         public int BerekenLeeftijd(DateTime datum)
         {
-            int leeftijd = DateTime.Now.Year - Geboortedatum.Year;
-            if (datum < new DateTime(datum.Year, Geboortedatum.Month, Geboortedatum.Day))
+            int leeftijd = datum.Year - Geboortedatum.Year;
+            if (datum.DayOfYear < Geboortedatum.DayOfYear)
                 leeftijd--;
             return leeftijd;
         }
