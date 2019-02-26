@@ -647,7 +647,7 @@ internal class Program
     {
         private static void Main(string[] args)
         {
-          Stack letters = new Stack();
+          Stack<char> letters = new Stack<char>();
           char input = '-';
 
           do
@@ -704,7 +704,7 @@ internal class Program
       /*
        * Kijkt of de Stack leeg/null is of niet.
        */
-      public static bool IsEmpty(Stack list)
+      public static bool IsEmpty(Stack<char> list)
       {
           if (list.Count == 0 || list == null)
           {
@@ -714,7 +714,7 @@ internal class Program
           return false;
       }
 
-      public static string StackToString(Stack stack)
+      public static string StackToString(Stack<char> stack)
       {
           StringBuilder result = new StringBuilder();
           string strepen = "-----";
