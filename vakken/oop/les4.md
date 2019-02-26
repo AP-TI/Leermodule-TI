@@ -150,7 +150,7 @@ internal class Wagen
 
         public virtual double BerekenBrandstofVerbruik()
         {
-            return VERBRUIK * (20000 * ((DateTime.Today - Ingebruiknamedatum).Days / 365.0));
+            return (VERBRUIK / 100.0) * (20000 * ((DateTime.Today - Ingebruiknamedatum).Days / 365.0));
         }
 
         public override string ToString()
@@ -163,6 +163,7 @@ internal class Wagen
 ```csharp
 class Sportwagen : Wagen
     {
+        private const double EXTRA_VERBRUIK = 1.2;
         public int PK { get; set; }
         private int aantalVitessen;
 
@@ -188,7 +189,7 @@ class Sportwagen : Wagen
         public override double BerekenBrandstofVerbruik()
         {
             if(AantalVitessen == 6)
-                return base.BerekenBrandstofVerbruik() * 1.2;
+                return base.BerekenBrandstofVerbruik() * EXTRA_VERBRUIK;
             return base.BerekenBrandstofVerbruik();
         }
 
@@ -202,6 +203,7 @@ class Sportwagen : Wagen
 ```csharp
 internal class Gezinswagen : Wagen
     {
+        private const double EXTRA_VERBRUIK = 1.1;
         public int Koffervolume { get; set; }
         private int zitPlaatsen;
 
@@ -226,7 +228,7 @@ internal class Gezinswagen : Wagen
         public override double BerekenBrandstofVerbruik()
         {
             if(ZitPlaatsen == 7)
-                return base.BerekenBrandstofVerbruik() * 1.1;
+                return base.BerekenBrandstofVerbruik() * EXTRA_VERBRUIK;
             return base.BerekenBrandstofVerbruik();
         }
 
