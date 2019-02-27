@@ -508,3 +508,252 @@ class Festivalganger : Persoon
 
     }
 ```
+## Oefening 4.5
+### Klasse Program
+```csharp
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.OutputEncoding = Encoding.UTF8;//Zodat we het Euroteken kunnen zien
+
+            Adres adres = new Adres("Bakustreet", "30", "2080", "A");
+            Adres adres1 = new Adres("Ellermanstraat", "33", "2000", "Antwerpen");
+            Bank bank = new Bank("Bread Bank", adres);
+            Klant klant = new Klant("Maxim Janssens", adres1);
+            Rekening spaarrekening = new Spaarrekening(10.00m, new DateTime(2017, 2, 27), "BE811082380", 0.01, 1, new DateTime(2017, 2, 27));
+            Rekening beleggingsrekening = new Beleggingsrekening(10.00m, new DateTime(2019, 2, 27), "BE8198382349", 2, DateTime.Today.AddYears(1));
+
+            bank.VoegKlantToe(klant);
+            klant.VoegRekeningToe(spaarrekening);
+            klant.VoegRekeningToe(beleggingsrekening);
+
+            Console.Write(bank);
+            int keuze = int.Parse(Console.ReadLine());
+            Klant keuzeKlant = bank.KlantenLijst(keuze);
+            Console.Write(keuzeKlant);
+            keuze = int.Parse(Console.ReadLine());
+            Rekening keuzeRekening = klant.RekeningenLijst(keuze);
+            Console.WriteLine(keuzeRekening);
+            keuze = int.Parse(Console.ReadLine());
+            string result = keuze == 1 ? "afhalen" : "storten";//conditional variabele gewoon omdat het kan en omda ik da anders nooit zou gebruiken, er zijn betere oplossingen zoals gewoon een enum gebruiken ofzo
+            Console.WriteLine($"U hebt gekozen voor {result}");
+            Console.Write($"Geef het bedrag dat je wil {result}: ");
+            decimal aantal = decimal.Parse(Console.ReadLine());
+
+            if (result == "afhalen")
+            {
+                if (!keuzeRekening.Afhalen(aantal))
+                    Console.WriteLine("Er is iets fout gegaan");
+            }  
+            else
+                keuzeRekening.Storten(aantal);
+
+            Console.WriteLine($"Huidig saldo: {keuzeRekening.Saldo:C}");
+            Console.Write("Voorspel saldo over aantal jaar (interest enzo): ");
+            int aantalJarenVooruit = int.Parse(Console.ReadLine());
+            Console.WriteLine($"{keuzeRekening.VoorspelSaldo(aantalJarenVooruit):C}");
+
+        }
+    }
+```
+### Klasse Adres
+```csharp
+class Adres
+    {
+        public string Straat { get; set; }
+        public string Huisnummer { get; set; }//Huisnummers kunnen ook letters bevatten (bijvoorbeeld 111A)
+        public string Postcode { get; set; }//In Nederland bevatten postcodes ook letters
+        public string Gemeente { get; set; }
+
+        public Adres(string straat, string huisnummer, string postcode, string gemeente)
+        {
+            Straat = straat;
+            Huisnummer = huisnummer;
+            Postcode = postcode;
+            Gemeente = gemeente;
+        }
+
+        public override string ToString()
+        {
+            return $"\nStraat: {Straat}\nHuisnummer: {Huisnummer}\nPostcode: {Postcode}\nGemeente: {Gemeente}";
+        }
+    }
+```
+### Klasse Bank
+```csharp
+class Bank
+    {
+        public string Naam { get; set; }
+        public Adres Adres { get; set; }
+        List<Klant> klanten = new List<Klant>();
+
+        public Bank(string naam, Adres adres)
+        {
+            Naam = naam;
+            Adres = adres;
+        }
+
+        public void VoegKlantToe(Klant klant)
+        {
+            klanten.Add(klant);
+        }
+
+        public string KlantenLijst()
+        {
+            StringBuilder result = new StringBuilder();
+            for (int i = 0; i < klanten.Count; i++)
+                result.Append($"{i + 1}) {klanten[i].Naam}\n");
+            return result.ToString();
+        }
+        public Klant KlantenLijst(int klantennummer)
+        {
+            return klanten[klantennummer - 1];
+        }
+        public override string ToString()
+        {
+            return $"Bank: {Naam}\nAdres: {Adres}\nKlanten:\n{KlantenLijst()}\n\nGeef het nummer van de klant om toegang te krijgen: ";
+        }
+    }
+```
+### Klasse Klant
+```csharp
+class Klant
+    {
+        public string Naam { get; set; }
+        public Adres Adres { get; set; }
+        private List<Rekening> rekeningen = new List<Rekening>();
+
+        public Klant(string naam, Adres adres)
+        {
+            Naam = naam;
+            Adres = adres;
+        }
+
+        public string RekeningenLijst()
+        {
+            StringBuilder result = new StringBuilder();
+            for (int i = 0; i < rekeningen.Count; i++)
+                result.Append($"{i + 1}) {rekeningen[i].Rekeningnummer}\n");
+            return result.ToString();
+        }
+
+        public Rekening RekeningenLijst(int rekeningindex)
+        {
+            return rekeningen[rekeningindex - 1];
+        }
+
+        public void VoegRekeningToe(Rekening rekening)
+        {
+            rekeningen.Add(rekening);
+        }
+
+        public override string ToString()
+        {
+            return $"Naam: {Naam}\nAdres: {Adres}\nRekeningenlijst:\n{RekeningenLijst()}Geef de nummer van de rekening om geld te kunnen storten of af te halen: ";
+        }
+    }
+```
+### Klasse Rekening
+```csharp
+class Rekening
+    {
+        public decimal Saldo { get; set; }
+        public DateTime Openingsdatum { get; set; }
+        public string Rekeningnummer { get; set; }
+        public bool Actief { get; private set; }
+        public double Interest { get; set; }
+
+        public Rekening(decimal saldo, DateTime opengingsdatum, string rekeningnummer, double interest)
+        {
+            Saldo = saldo;
+            Openingsdatum = opengingsdatum;
+            Rekeningnummer = rekeningnummer;
+            Interest = interest;
+            Actief = true;
+        }
+
+        public void Storten(decimal bedrag)
+        {
+            Saldo += bedrag;
+        }
+
+        public virtual bool Afhalen(decimal bedrag)
+        {
+            Saldo -= bedrag;
+            return true;
+        }
+
+        public void Afsluiten()
+        {
+            Actief = false;
+        }
+
+        public void Openen()
+        {
+            Actief = true;
+        }
+
+        public virtual decimal VoorspelSaldo(int jarenVooruit)
+        {
+            return Saldo += Saldo * ((decimal)Interest) / 100;
+        }
+
+        public override string ToString()
+        {
+            return $"Saldo: {Saldo}\nOpeningsdatum: {Openingsdatum}\nRekeningnummer: {Rekeningnummer}\nActief: {Actief}\nWat wil je doen? Kies uit:\n1) Afhalen\n2) Storten";
+        }
+    }
+```
+### Klasse Spaarrekening
+```csharp
+class Spaarrekening : Rekening
+    {
+        public double Getrouwheidspremie { get; set; }
+        public DateTime LaatsteAfhaling { get; set; }
+
+        public Spaarrekening(decimal saldo, DateTime openingsdatum, string rekeningnummer, double interest, double getrouwheidspremie, DateTime laatsteAfhaling) : base(saldo, openingsdatum, rekeningnummer, interest)
+        {
+            Getrouwheidspremie = getrouwheidspremie;
+            LaatsteAfhaling = laatsteAfhaling;
+        }
+
+        public override bool Afhalen(decimal bedrag)
+        {
+            LaatsteAfhaling = DateTime.Now;
+            return base.Afhalen(bedrag);
+        }
+
+        public override decimal VoorspelSaldo(int jarenVooruit)
+        {
+            if(HasGetrouwheidsPremie())
+                return base.VoorspelSaldo(jarenVooruit) + Saldo * ((decimal)Getrouwheidspremie / 100);
+            return base.VoorspelSaldo(jarenVooruit);
+        }
+
+        public bool HasGetrouwheidsPremie()
+        {
+            if ((DateTime.Today - LaatsteAfhaling).Days > 365)
+                return true;
+            return false;
+        }
+    }
+```
+### Klasse Beleggingsrekening
+```csharp
+class Beleggingsrekening : Rekening
+    {
+        public DateTime VervalDatum { get; set; }
+        public Beleggingsrekening(decimal saldo, DateTime opengingsdatum, string rekeningnummer, double interest, DateTime vervalDatum) : base(saldo, opengingsdatum, rekeningnummer, interest)
+        {
+            VervalDatum = vervalDatum;
+        }
+
+        public override bool Afhalen(decimal bedrag)
+        {
+            if (DateTime.Today > VervalDatum)
+                return base.Afhalen(bedrag);
+            return false;
+        }
+    }
+```
