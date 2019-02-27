@@ -521,8 +521,8 @@ class Program
             Adres adres1 = new Adres("Ellermanstraat", "33", "2000", "Antwerpen");
             Bank bank = new Bank("Bread Bank", adres);
             Klant klant = new Klant("Maxim Janssens", adres1);
-            Rekening spaarrekening = new Spaarrekening(10.00m, new DateTime(2017, 2, 27), "BE811082380", 0.01, 1, new DateTime(2017, 2, 27));
-            Rekening beleggingsrekening = new Beleggingsrekening(10.00m, new DateTime(2019, 2, 27), "BE8198382349", 2, DateTime.Today.AddYears(1));
+            Rekening spaarrekening = new Spaarrekening(10.00m, new DateTime(2017, 2, 27), "BE811082380", 0.01m, 1m, new DateTime(2017, 2, 27));
+            Rekening beleggingsrekening = new Beleggingsrekening(10.00m, new DateTime(2019, 2, 27), "BE8198382349", 2m, DateTime.Today.AddYears(1));
 
             bank.VoegKlantToe(klant);
             klant.VoegRekeningToe(spaarrekening);
@@ -656,15 +656,15 @@ class Klant
 ```
 ### Klasse Rekening
 ```csharp
-class Rekening
+internal class Rekening
     {
         public decimal Saldo { get; set; }
         public DateTime Openingsdatum { get; set; }
         public string Rekeningnummer { get; set; }
         public bool Actief { get; private set; }
-        public double Interest { get; set; }
+        public decimal Interest { get; set; }
 
-        public Rekening(decimal saldo, DateTime opengingsdatum, string rekeningnummer, double interest)
+        public Rekening(decimal saldo, DateTime opengingsdatum, string rekeningnummer, decimal interest)
         {
             Saldo = saldo;
             Openingsdatum = opengingsdatum;
@@ -696,7 +696,7 @@ class Rekening
 
         public virtual decimal VoorspelSaldo(int jarenVooruit)
         {
-            return Saldo += Saldo * ((decimal)Interest) / 100;
+            return Saldo + Saldo * Interest / 100;
         }
 
         public override string ToString()
@@ -709,10 +709,10 @@ class Rekening
 ```csharp
 class Spaarrekening : Rekening
     {
-        public double Getrouwheidspremie { get; set; }
+        public decimal Getrouwheidspremie { get; set; }
         public DateTime LaatsteAfhaling { get; set; }
 
-        public Spaarrekening(decimal saldo, DateTime openingsdatum, string rekeningnummer, double interest, double getrouwheidspremie, DateTime laatsteAfhaling) : base(saldo, openingsdatum, rekeningnummer, interest)
+        public Spaarrekening(decimal saldo, DateTime openingsdatum, string rekeningnummer, decimal interest, decimal getrouwheidspremie, DateTime laatsteAfhaling) : base(saldo, openingsdatum, rekeningnummer, interest)
         {
             Getrouwheidspremie = getrouwheidspremie;
             LaatsteAfhaling = laatsteAfhaling;
@@ -727,7 +727,7 @@ class Spaarrekening : Rekening
         public override decimal VoorspelSaldo(int jarenVooruit)
         {
             if(HasGetrouwheidsPremie())
-                return base.VoorspelSaldo(jarenVooruit) + Saldo * ((decimal)Getrouwheidspremie / 100);
+                return base.VoorspelSaldo(jarenVooruit) + Saldo * (Getrouwheidspremie / 100);
             return base.VoorspelSaldo(jarenVooruit);
         }
 
@@ -744,7 +744,7 @@ class Spaarrekening : Rekening
 class Beleggingsrekening : Rekening
     {
         public DateTime VervalDatum { get; set; }
-        public Beleggingsrekening(decimal saldo, DateTime opengingsdatum, string rekeningnummer, double interest, DateTime vervalDatum) : base(saldo, opengingsdatum, rekeningnummer, interest)
+        public Beleggingsrekening(decimal saldo, DateTime opengingsdatum, string rekeningnummer, decimal interest, DateTime vervalDatum) : base(saldo, opengingsdatum, rekeningnummer, interest)
         {
             VervalDatum = vervalDatum;
         }
