@@ -173,3 +173,288 @@ class Bankrekening
         }
     }
 ```
+## Oefening 5.3
+Bij alle oefeningen hiervoor was het maken van een layout nog redelijk simpel. Nu komt er echter een extra moeilijkheidsgraad. Je moet namelijk verschillende elementen verbergen of tonen afhankelijk van wat de gebruiker wilt doen.
+
+Om te beginnen moet je scherm er ongeveer zo uitzien om series toe te kunnen voegen;
+
+![startpagina imdb series](afbeeldingen/imdb.png)
+
+En voor films;
+
+![startpagina imdb films](afbeeldingen/imdb1.png)
+
+In de designer ziet dat er dan als volgt uit;
+
+![imdb designer](afbeeldingen/imdb2.png)
+
+Natuurlijk is er ook code nodig om de zichtbaarheid van elementen aan te passen, deze schrijven we allemaal in de klasse die gelinked is aan onze form. In dit geval de (partial) klasse Imdb.
+
+Nog een bijkomende aanpassing tegenover de Console-versie van deze oefening is dat de gebruiker altijd informatie moet kunnen opvragen over Films & Series. Hiervoor maken we gebruik van een `ComboBox`.
+
+![combobox](afbeeldingen/imdb3.png)
+
+Bovendien moet je een beoordeling kunnen toevoegen aan de geselecteerde Film of Serie
+
+![beoordeling](afbeeldingen/imdb4.png)
+
+### Klasse Imdb (Form1.cs)
+```csharp
+public partial class Imdb : Form
+    {
+        private List<Film> films = new List<Film>();
+        private List<Serie> series = new List<Serie>();
+
+        public Imdb()
+        {
+            InitializeComponent();
+        }
+
+        private void CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonFilm.Checked)
+            {
+                ChangeVisibility(true, false);
+                FilmsUpdaten();
+            }
+            else
+            {
+                ChangeVisibility(false, true);
+                SeriesUpdaten();
+            }
+
+
+        }
+
+        private void VoegToe(object sender, EventArgs e)
+        {
+            if (radioButtonFilm.Checked && IsFilled())
+            {
+                films.Add(new Film(textBoxFilmTitel.Text, textBoxFilmProducer.Text, textBoxFilmRegisseur.Text, textBoxFilmGenre.Text, int.Parse(textBoxFilmJaar.Text)));
+                EmptyTextBoxes();
+                FilmsUpdaten();
+            }
+            else if (IsFilled())
+            {
+                series.Add(new Serie(textBoxSerieTitel.Text, int.Parse(textBoxSerieSeizoenen.Text)));
+                EmptyTextBoxes();
+                SeriesUpdaten();
+            }
+            else
+                MessageBox.Show("Niet alle velden zijn gevuld", "Opgelet!", MessageBoxButtons.OK);
+        }
+
+        private void KeuzeVeranderd(object sender, EventArgs e)
+        {
+            if (radioButtonFilm.Checked)
+                UpdateFilmRating();
+            else
+                UpdateSerieRating();
+        }
+
+        private bool IsFilled()
+        {
+            if (radioButtonFilm.Checked)
+                return textBoxFilmGenre.Text.Length != 0 && textBoxFilmJaar.Text.Length != 0 && textBoxFilmProducer.Text.Length != 0 && textBoxFilmRegisseur.Text.Length != 0 && textBoxFilmTitel.Text.Length != 0;
+            else
+                return textBoxSerieSeizoenen.Text.Length != 0 && textBoxSerieTitel.Text.Length != 0;
+        }
+
+        private void FilmsUpdaten()
+        {
+            comboBoxKeuze.Items.Clear();
+            foreach (Film film in films)
+                comboBoxKeuze.Items.Add(film);
+        }
+
+        private void SeriesUpdaten()
+        {
+            comboBoxKeuze.Items.Clear();
+            foreach (Serie serie in series)
+                comboBoxKeuze.Items.Add(serie);
+        }
+
+        private void UpdateFilmRating()
+        {
+            Film keuze = (Film)comboBoxKeuze.SelectedItem;
+            labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
+            labelRating.Visible = true;
+            labelNieuweRating.Visible = true;
+            buttonVoegRatingToe.Visible = true;
+            textBoxRating.Visible = true;
+        }
+
+        private void UpdateSerieRating()
+        {
+            Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
+            labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
+            labelRating.Visible = true;
+            labelNieuweRating.Visible = true;
+            buttonVoegRatingToe.Visible = true;
+            textBoxRating.Visible = true;
+        }
+
+        private void EmptyTextBoxes()
+        {
+            textBoxFilmGenre.Text = "";
+            textBoxFilmJaar.Text = "";
+            textBoxFilmProducer.Text = "";
+            textBoxFilmRegisseur.Text = "";
+            textBoxFilmGenre.Text = "";
+            textBoxFilmTitel.Text = "";
+            textBoxSerieSeizoenen.Text = "";
+            textBoxSerieTitel.Text = "";
+        }
+        private void ChangeVisibility(bool film, bool serie)
+        {
+            labelFilmGenre.Visible = film;
+            labelFilmJaar.Visible = film;
+            labelFilmProducer.Visible = film;
+            labelFilmRegisseur.Visible = film;
+            labelFilmTitel.Visible = film;
+            textBoxFilmGenre.Visible = film;
+            textBoxFilmJaar.Visible = film;
+            textBoxFilmProducer.Visible = film;
+            textBoxFilmRegisseur.Visible = film;
+            textBoxFilmTitel.Visible = film;
+
+            labelSerieSeizoenen.Visible = serie;
+            labelSerieTitel.Visible = serie;
+            textBoxSerieSeizoenen.Visible = serie;
+            textBoxSerieTitel.Visible = serie;
+        }
+
+        private void ButtonVoegRatingToe_Click(object sender, EventArgs e)
+        {
+            if (radioButtonFilm.Checked)
+            {
+                Film keuze = (Film)comboBoxKeuze.SelectedItem;
+                keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
+                textBoxRating.Text = "";
+                labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
+            }
+            else
+            {
+                Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
+                keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
+                textBoxRating.Text = "";
+                labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
+            }
+
+        }
+    }
+```
+### Klasse Film
+```csharp
+class Film
+    {
+        List<double> ratings = new List<double>();
+        public string Titel { get; set; }
+        public string Producer { get; set; }
+        public string Regisseur { get; set; }
+        public string Genre { get; set; }
+        public int Jaar { get; set; }
+        private double rating;
+
+        public double Rating
+        {
+            get { return rating; }
+            set
+            {
+                if (value <= 5 && value >= 1)
+                    rating = value;
+                else
+                    rating = 2.5;
+            }
+        }
+
+        public Film(string titel, string producer, string regisseur, string genre, int jaar, double rating)
+        {
+            Titel = titel;
+            Producer = producer;
+            Regisseur = regisseur;
+            Genre = genre;
+            Jaar = jaar;
+            Rating = rating;//Zo heeft de default rating geen impact op de ratings die werden ingevoerd door de gebruiker
+        }
+        public Film(string titel, string producer, string regisseur, string genre, int jaar) : this(titel, producer, regisseur, genre, jaar, 2.5) { }
+
+        public bool VoegRatingToe(double rating)
+        {
+            if (rating >= 1 && rating <= 5)
+            {
+                ratings.Add(rating);
+                BerekenGemiddelde();
+                return true;
+            }
+            return false;
+        }
+
+        public void BerekenGemiddelde()
+        {
+            Rating = ratings.Average();
+        }
+
+        public override string ToString()
+        {
+            return $"{Titel} - {Jaar}";
+        }
+
+    }
+```
+### Klasse Serie
+```csharp
+class Serie
+    {
+        List<double> ratings = new List<double>();
+        public string Titel { get; set; }
+        public int Seizoenen { get; set; }
+        private double rating;
+
+        public double Rating
+        {
+            get { return rating; }
+            set
+            {
+                if (value <= 5 && value >= 1)
+                    rating = value;
+                else
+                    rating = 2.5;
+            }
+        }
+
+
+
+        public Serie(string titel, int seizoenen, double rating)
+        {
+            Titel = titel;
+            Seizoenen = seizoenen;
+            Rating = rating;//Zo heeft de default rating geen impact op de ratings die werden ingevoerd door de gebruiker
+        }
+
+        public Serie(string titel, int seizoenen) : this(titel, seizoenen, 2.5) { }
+
+        public bool VoegRatingToe(double rating)
+        {
+            if (rating >= 1 && rating <= 5)
+            {
+                ratings.Add(rating);
+                BerekenGemiddelde();
+                return true;
+            }
+            return false;
+        }
+
+        public void BerekenGemiddelde()
+        {
+            Rating = ratings.Average();
+        }
+
+        public override string ToString()
+        {
+            return $"{Titel} - {Seizoenen}";
+        }
+
+    }
+```
+Zoals je misschien al hebt gemerkt, zit er enorm veel dubbele code in deze oefening. Dit komt omdat deze oefening gebaseerd is op [oefening 3.1](https://github.com/AP-TI-2018-2019/AP_2018-2019/blob/master/vakken/oop/les3.md), de onderliggende code is (bijna) volledig hetzelfde, met als enige verschil dat er een GUI aan verbonden is. Dit toont nog maar eens het nut van polymorfisme, een begrip dat we nog niet kenden in les 3, aan.
