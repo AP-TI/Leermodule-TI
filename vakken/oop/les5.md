@@ -458,3 +458,251 @@ class Serie
     }
 ```
 Zoals je misschien al hebt gemerkt, zit er enorm veel dubbele code in deze oefening. Dit komt omdat deze oefening gebaseerd is op [oefening 3.1](https://github.com/AP-TI-2018-2019/AP_2018-2019/blob/master/vakken/oop/les3.md), de onderliggende code is (bijna) volledig hetzelfde, met als enige verschil dat er een GUI aan verbonden is. Dit toont nog maar eens het nut van polymorfisme, een begrip dat we nog niet kenden in les 3, aan.
+## Oefening 5.4
+Net zoals in de vorige oefening moeten we de zichtbaarheid van bepaalde `Control`s aanpassen afhankelijk van wat de gebruiker wilt doen. Het hoofdscherm zou er ongeveer zo moeten uitzien;
+
+![garage gezinswagen](afbeeldingen/garage.png)
+
+![garage sportwagen](afbeeldingen/garage1.png)
+
+Het is je misschien al opgevallen dat sommige velden voor andere invoer dienen, maar dat ze wel op dezelfde plek staan, maar niet tegelijk zichtbaar zijn. In dit geval gaat het over de velden voor zitplaatsen, koffervolume, pk en vitessen. Omdat het programma opstart met Gezinswagen geselecteerd, zorgen we ervoor dat enkel de velden die voor een gezinswagen dienen zichtbaar zijn; we zetten de `Visible` property bij labelPk, textBoxPk, labelVitessen en textBoxVitessen op 'false'. Merk ook op dat 1 van de `TextBox`es geen normale `TextBox` is, maar wel een `MaskedTextBox`, zodat de gebruiker enkel een datum kan meegeven.
+
+![properties textBox](afbeeldingen/garage3.png)
+
+Eens alles is aangemaakt, zou het er in de designer als volgt moeten uitzien;
+
+![designer garage](afbeeldingen/garage2.png)
+
+Werking van het programma:
+Je kan auto's toevoegen door alle velden in te vullen en vervolgens op 'Voeg gezinswagen/sportwagen toe' te klikken
+
+![garage voeg gezinswagen toe](afbeeldingen/garage4.png)
+
+![garage voeg sportwagen toe](afbeeldingen/garage5.png)
+
+Deze auto's worden dan aan een `List` toegevoegd en aan de gebruiker getoond via een CheckedListBox
+
+![lijst auto's](afbeeldingen/garage6.png)
+
+Indien je een auto uit de lijst selecteert, wordt de verwijder-knop aangezet.
+
+![verwijderknop](afbeeldingen/garage7.png)
+
+En door op de verwijder-knop te drukken wordt de auto uiteraard uit de lijst verwijderd.
+
+![lijst](afbeeldingen/garage8.png)
+
+Oké, tijd voor de code die alles laat werken.
+
+### Klasse Garage (Form1.cs)
+```csharp
+public partial class Garage : Form
+    {
+        private List<Wagen> autoLijst = new List<Wagen>();
+        public Garage()
+        {
+            InitializeComponent();
+        }
+
+        private void CheckedChanged(object sender, EventArgs e)
+        {
+            if (IsGezin())
+                ChangeVisibility(false, true);
+            else
+                ChangeVisibility(true, false);
+        }
+
+        private void ButtonToevoegen_Click(object sender, EventArgs e)
+        {
+            if (IsGezin())
+                VoegWagenToe(new Gezinswagen(textBoxMerk.Text, textBoxType.Text, int.Parse(textBoxKilometers.Text), DateTime.Parse(maskedTextBoxIngebruiknamedatum.Text), textBoxNummerplaat.Text, int.Parse(textBoxKoffervolume.Text), int.Parse(textBoxZitplaatsen.Text)));
+            else
+                VoegWagenToe(new Sportwagen(textBoxMerk.Text, textBoxType.Text, int.Parse(textBoxKilometers.Text), DateTime.Parse(maskedTextBoxIngebruiknamedatum.Text), textBoxNummerplaat.Text, int.Parse(textBoxPk.Text), int.Parse(textBoxVitessen.Text)));
+        }
+
+        private void VoegWagenToe(Wagen wagen)
+        {
+            autoLijst.Add(wagen);
+            VulListBox();
+            foreach (Control c in groupBoxAutoGegevens.Controls)
+                if (c is TextBox || c is MaskedTextBox)
+                    c.Text = "";
+        }
+
+        private void VulListBox()
+        {
+            checkedListBoxAutos.Items.Clear();
+            foreach (Wagen wagen in autoLijst)
+                checkedListBoxAutos.Items.Add(wagen);
+        }
+
+        private void ChangeVisibility(bool sport, bool gezin)
+        {
+            labelVitessen.Visible = sport;
+            textBoxVitessen.Visible = sport;
+            labelPk.Visible = sport;
+            textBoxPk.Visible = sport;
+
+            labelKoffervolume.Visible = gezin;
+            textBoxKoffervolume.Visible = gezin;
+            labelZitplaatsen.Visible = gezin;
+            textBoxZitplaatsen.Visible = gezin;
+
+            if (gezin)
+                buttonToevoegen.Text = "Voeg gezinswagen toe";
+            else
+                buttonToevoegen.Text = "Voeg sportwagen toe";
+        }
+
+        public bool IsGezin()
+        {
+            return radioButtonGezinswagen.Checked;
+        }
+
+        private void ButtonVerwijder_Click(object sender, EventArgs e)
+        {
+            foreach (Wagen wagen in checkedListBoxAutos.CheckedItems)
+                autoLijst.Remove(wagen);
+            VulListBox();
+            buttonVerwijder.Enabled = false;
+        }
+
+        private void ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            buttonVerwijder.Enabled = true;
+        }
+    }
+```
+### Klasse Wagen
+```csharp
+internal class Wagen
+    {
+        protected const int VERBRUIK = 5;
+        public string Merk { get; set; }
+        public string Type { get; set; }
+        public int Kilometers { get; set; }
+        private DateTime ingebruiknamedatum;
+
+        public DateTime Ingebruiknamedatum
+        {
+            get { return ingebruiknamedatum; }
+            set
+            {
+                if (value >= new DateTime(1886, 1, 1) && value <= DateTime.Today)
+                    ingebruiknamedatum = value;
+            }
+        }
+
+        private string nummerplaat;
+
+        public string Nummerplaat
+        {
+            get { return nummerplaat; }
+            set
+            {
+                if (value.Length >= 1 && value.Length <= 9)
+                    nummerplaat = value;
+                else
+                    nummerplaat = "1-AAA-000";
+            }
+        }
+
+        public Wagen(string merk, string type, int kilometers, DateTime ingebruiknamedatum, string nummerplaat)
+        {
+            Merk = merk;
+            Type = type;
+            Kilometers = kilometers;
+            Ingebruiknamedatum = ingebruiknamedatum;
+            Nummerplaat = nummerplaat;
+        }
+
+        public virtual double BerekenBrandstofVerbruik()
+        {
+            return (VERBRUIK / 100.0) * (20000 * ((DateTime.Today - Ingebruiknamedatum).Days / 365.0));
+        }
+
+        public override string ToString()
+        {
+            return $"Merk: {Merk}, Type: {Type}, Kilometers: {Kilometers}, Nummerplaat: {Nummerplaat}, Brandstofverbruik: {BerekenBrandstofVerbruik()}\n";
+        }
+    }
+```
+### Klasse Gezinswagen
+```csharp
+internal class Gezinswagen : Wagen
+{
+    private const double EXTRA_VERBRUIK = 1.1;
+    public int Koffervolume { get; set; }
+    private int zitPlaatsen;
+
+    public int ZitPlaatsen
+    {
+        get { return zitPlaatsen; }
+        set
+        {
+            if (value >= 4 && value <= 7)
+                zitPlaatsen = value;
+            else
+                zitPlaatsen = 5;
+        }
+    }
+
+    public Gezinswagen(string merk, string type, int kilometers, DateTime ingebruiknamedatum, string nummerplaat, int kofferVolume, int zitPlaatsen) : base(merk, type, kilometers, ingebruiknamedatum, nummerplaat)
+    {
+        Koffervolume = kofferVolume;
+        ZitPlaatsen = zitPlaatsen;
+    }
+
+    public override double BerekenBrandstofVerbruik()
+    {
+        if (ZitPlaatsen == 7)
+            return base.BerekenBrandstofVerbruik() * EXTRA_VERBRUIK;
+        return base.BerekenBrandstofVerbruik();
+    }
+
+    public override string ToString()
+    {
+        return base.ToString() + $"Zitplaatsen: {ZitPlaatsen}, Koffervolume: {Koffervolume}";
+    }
+}
+```
+### Klasse Sportwagen
+```csharp
+class Sportwagen : Wagen
+{
+    private const double EXTRA_VERBRUIK = 1.2;
+    public int PK { get; set; }
+    private int aantalVitessen;
+
+    public int AantalVitessen
+    {
+        get { return aantalVitessen; }
+        set
+        {
+            if (value <= 6 && value >= 1)
+                aantalVitessen = value;
+            else
+                aantalVitessen = 5;
+        }
+    }
+
+
+    public Sportwagen(string merk, string type, int kilometers, DateTime ingebruiknamedatum, string nummerplaat, int pk, int aantalVitessen) : base(merk, type, kilometers, ingebruiknamedatum, nummerplaat)
+    {
+        PK = pk;
+        AantalVitessen = aantalVitessen;
+    }
+
+    public override double BerekenBrandstofVerbruik()
+    {
+        if (AantalVitessen == 6)
+            return base.BerekenBrandstofVerbruik() * EXTRA_VERBRUIK;
+        return base.BerekenBrandstofVerbruik();
+    }
+
+    public override string ToString()
+    {
+        return base.ToString() + $"PK: {PK}, Aantal vitessen: {AantalVitessen}";
+    }
+}
+```
