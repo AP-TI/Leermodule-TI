@@ -106,3 +106,70 @@ class Dobbelsteen
 Het uiteindelijke resultaat zou er ongeveer zo moeten uitzien;
 ![worp](afbeeldingen/knipsel3.png)
 ![geld op](afbeeldingen/knipsel4.png)
+
+## Oefening 5.2
+Maak gebruik van Knoppen, Een Textbox en een Label om het programma er als volgt uit te laten zien;
+
+![bankrekening](afbeeldingen/bankrekening.png)
+
+### Klasse Bank (Form1.cs)
+```csharp
+public partial class Bank : Form
+    {
+        Bankrekening bankrekening = new Bankrekening(100.00m);
+        public Bank()
+        {
+            InitializeComponent();
+            UpdateSaldo();
+        }
+
+
+        private void KnopStorten_Click(object sender, EventArgs e)
+        {
+            bankrekening.WijzigSaldo(decimal.Parse(textBoxHoeveelheid.Text));
+            UpdateSaldo();
+        }
+
+        private void KnopAfhalen_Click(object sender, EventArgs e)
+        {
+            bankrekening.WijzigSaldo(-decimal.Parse(textBoxHoeveelheid.Text));
+            UpdateSaldo();
+        }
+
+        private void UpdateSaldo()
+        {
+            if (bankrekening.Saldo < 0)
+            {
+                labelSaldo.ForeColor = Color.Red;
+                MessageBox.Show("Je bankrekenign staat negatief!", "Opgelet!", MessageBoxButtons.OK);
+            }
+
+            else
+                labelSaldo.ForeColor = Color.Black;
+            labelSaldo.Text = bankrekening.ToString();//Iemand die weet waarom ik hier .ToString() moet doen? Pls leg uit thanks
+        }
+    }
+```
+De `MessageBox` zorgt ervoor dat er een melding wordt getoond aan de gebruiker als zijn bankrekening negatief staat. Het zou er ongeveer zo moeten uitzien;
+![bankrekening foutmelding](afbeeldingen/bankrekening1.png)
+### Klasse Bankrekening
+```csharp
+class Bankrekening
+    {
+        public decimal Saldo { get; private set; }
+        public Bankrekening(decimal saldo)
+        {
+            Saldo = saldo;
+        }
+
+        public void WijzigSaldo(decimal hoeveelheid)
+        {
+            Saldo += hoeveelheid;
+        }
+
+        public override string ToString()
+        {
+            return $"Huidig saldo: {Saldo}";
+        }
+    }
+```
