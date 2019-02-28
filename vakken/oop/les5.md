@@ -2,16 +2,16 @@
 ## Oefening 5.1
 Om te beginnen; zorg ervoor dat je Toolbox zichtbaar is. Standaard is dit niet het geval, zoals in onderstaand screenshot
 
-![geen toolbox](knipsel.png)
+![geen toolbox](afbeeldingen/knipsel.png)
 
 Om de Toolbox te openen, maak je gebruik van de sneltoets `ctrl` + `alt` + `x`.
 Je kan deze dan ook vastpinnen door op de pinknop te drukken.
 
-![toolbox](knipsel0.png)
+![toolbox](afbeeldingen/knipsel0.png)
 
 Sleep nu een Button uit de Toolbox naar de Form. Eens dit gebeurd is kan je de naam en andere eigenschappen ervan aanpassen. Dit doe je rechtsonder;
 
-![properties knop](knipsel1.png)
+![properties knop](afbeeldingen/knipsel1.png)
 
 De tekst die op de knop zelf staat kan je aanpassen als je naar onder scrollt, en zoekt achter de property `Text`.
 
@@ -19,7 +19,7 @@ Sleep nu ook een Label vanuit de Toolbox naar de Form en pas hiervan ook de naam
 
 Als je het programma start, zou dat er ongeveer zo moeten uitzien;
 
-![programma](knipsel2.png)
+![programma](afbeeldingen/knipsel2.png)
 
 Maar dan zonder het Saldo, want de code daarvoor moeten we nog aanmaken.
 
@@ -103,3 +103,6 @@ class Dobbelsteen
         }
     }
 ```
+Het uiteindelijke resultaat zou er ongeveer zo moeten uitzien;
+![worp](afbeeldingen/knipsel3.png)
+![geld op](afbeeldingen/knipsel4.png)
