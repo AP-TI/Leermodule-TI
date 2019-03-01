@@ -114,3 +114,66 @@ internal class Program
         }
     }
 ```
+## Oefening Oefening 2
+### Klasse Program
+```csharp
+class Program
+    {
+        static void Main(string[] args)
+        {
+            try
+            {
+                Persoon persoon = new Persoon("Maxim", new DateTime(2000, 8, 24));
+                /*Persoon persoon1 = new Persoon("Maxim", new DateTime(2001, 8, 24));
+                Console.WriteLine(persoon1);*/
+                //Uncomment bovenstaande 2 lijnen om een exception te laten throwen
+                Console.WriteLine(persoon);
+
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+```
+### Klasse Persoon
+```csharp
+internal class Persoon
+{
+    public Persoon(string firstName, DateTime birthday)
+    {
+        FirstName = firstName;
+        Birthday = birthday;
+    }
+    public string FirstName { get; set; }
+    private DateTime birthday;
+
+    public DateTime Birthday
+    {
+        get => birthday;
+        set
+        {
+            Exception e = new Exception("Je mag geen minderjarig persoon aanmaken.");
+            if (Age(value) >= 18)
+                birthday = value;
+            else
+                throw e;
+
+        }
+    }
+
+    public int Age(DateTime date)
+    {
+        int age = DateTime.Today.Year - date.Year;
+        if (DateTime.Today.DayOfYear < date.DayOfYear)
+            age--;
+        return age;
+    }
+
+    public override string ToString()
+    {
+        return $"Voornaam: {FirstName}\nLeeftijd: {Age(Birthday)}";
+    }
+}
+```
