@@ -81,19 +81,17 @@ internal class Program
         private static void Main(string[] args)
         {
             bool getalOk = false;
-
-            int[] getallen = new int[3];
+            int som = 0;
             for (int i = 0; i < 3; i++)
             {
                 int getal;
                 Console.Write($"Geef getal {i + 1}/3: ");
-
                 do
                 {
                     try
                     {
                         getal = int.Parse(Console.ReadLine());
-                        getallen[i] = getal;
+                        som += getal;
                         getalOk = true;
                     }
                     catch (FormatException)
@@ -106,9 +104,6 @@ internal class Program
                     }
                 } while (!getalOk);
                 getalOk = false;
-                int som = 0;
-                foreach (int x in getallen)
-                    som += x;
                 Console.WriteLine(som);
             }
         }
