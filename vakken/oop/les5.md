@@ -141,7 +141,7 @@ public partial class Bank : Form
             if (bankrekening.Saldo < 0)
             {
                 labelSaldo.ForeColor = Color.Red;
-                MessageBox.Show("Je bankrekenign staat negatief!", "Opgelet!", MessageBoxButtons.OK);
+                MessageBox.Show("Je bankrekening staat negatief!", "Opgelet!", MessageBoxButtons.OK);
             }
 
             else
