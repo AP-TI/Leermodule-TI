@@ -16,7 +16,7 @@ class Program
 ```csharp
 class Vlucht
     {
-        public int Vluchtnummer { get; set; }
+        public uint Vluchtnummer { get; set; }
         public string PlaatsBestemming { get; set; }
         public string PlaatsVertrek { get; set; }
         public DateTime DatumVertrek { get; set; }
@@ -65,8 +65,8 @@ class Program
 ```csharp
 class Vlucht
     {
-        static private int vluchtnummer = 1;
-        public int Vluchtnummer { get; private set; }
+        static private uint vluchtnummer = 1;
+        public uint Vluchtnummer { get; private set; }
         public string PlaatsBestemming { get; set; }
         public string PlaatsVertrek { get; set; }
         public DateTime DatumVertrek { get; set; }
@@ -116,8 +116,8 @@ class Program
 enum Bestemmingen { Frankrijk, Engeland, Duitsland}
     class Vlucht
     {
-        static private int vluchtnummer = 1;
-        public int Vluchtnummer { get; private set; }
+        static private uint vluchtnummer = 1;
+        private uint Vluchtnummer { get; set; }
         public Bestemmingen PlaatsBestemming { get; set; }
         public string PlaatsVertrek { get; set; }
         public DateTime DatumVertrek { get; set; }
@@ -268,38 +268,38 @@ class Program
 ```
 ### Klasse Auto
 ```csharp
-class Auto
+internal class Auto
+{
+    private const uint KILOMETERS_PER_JAAR = 20000;
+    public string Merk { get; set; }
+    public string Type { get; set; }
+    public string Nummerplaat { get; set; }
+    public uint Kilometers { get; set; }
+
+    public Auto(string merk, string type, string nummerplaat, uint kilometers)
     {
-        const int KILOMETERS_PER_JAAR = 20000;
-        public string Merk { get; set; }
-        public string Type { get; set; }
-        public string Nummerplaat { get; set; }
-        public int Kilometers { get; set; }
-
-        public Auto(string merk, string type, string nummerplaat, int kilometers)
-        {
-            Merk = merk;
-            Type = type;
-            Nummerplaat = nummerplaat;
-            Kilometers = kilometers;
-        }
-        public Auto() :this("ONBEKEND", "ONBEKEND", "1-AAA-000", 0)
-        {
-
-        }
-
-        public int BerekenKilometers(int jaren)
-        {
-            return Kilometers + jaren * KILOMETERS_PER_JAAR;
-        }
-        public int BerekenKilometers()
-        {
-            return BerekenKilometers(10);
-        }
-
-        public override string ToString()
-        {
-            return "De auto met nummerplaat " + Nummerplaat + " heeft " + Kilometers + " kilometers.";
-        }
+        Merk = merk;
+        Type = type;
+        Nummerplaat = nummerplaat;
+        Kilometers = kilometers;
     }
+    public Auto() : this("ONBEKEND", "ONBEKEND", "1-AAA-000", 0)
+    {
+
+    }
+
+    public uint BerekenKilometers(uint jaren)
+    {
+        return Kilometers + jaren * KILOMETERS_PER_JAAR;
+    }
+    public uint BerekenKilometers()
+    {
+        return BerekenKilometers(10);
+    }
+
+    public override string ToString()
+    {
+        return "De auto met nummerplaat " + Nummerplaat + " heeft " + Kilometers + " kilometers.";
+    }
+}
 ```
