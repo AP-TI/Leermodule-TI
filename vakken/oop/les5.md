@@ -262,48 +262,52 @@ public partial class Imdb : Form
 
         private void FilmsUpdaten()
         {
-            comboBoxKeuze.Items.Clear();
-            foreach (Film film in films)
-                comboBoxKeuze.Items.Add(film);
+            comboBoxKeuze.DataSource = null;
+            comboBoxKeuze.DataSource = films;
         }
 
         private void SeriesUpdaten()
         {
-            comboBoxKeuze.Items.Clear();
-            foreach (Serie serie in series)
-                comboBoxKeuze.Items.Add(serie);
+            comboBoxKeuze.DataSource = null;
+            comboBoxKeuze.DataSource = series;
         }
 
         private void UpdateFilmRating()
         {
             Film keuze = (Film)comboBoxKeuze.SelectedItem;
-            labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
-            labelRating.Visible = true;
-            labelNieuweRating.Visible = true;
-            buttonVoegRatingToe.Visible = true;
-            textBoxRating.Visible = true;
+            try
+            {
+                labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
+                ChangeRatingVisibility(true);
+            }
+            catch (Exception)
+            {
+                ChangeRatingVisibility(false);
+            }
         }
 
         private void UpdateSerieRating()
         {
             Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
-            labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
-            labelRating.Visible = true;
-            labelNieuweRating.Visible = true;
-            buttonVoegRatingToe.Visible = true;
-            textBoxRating.Visible = true;
+            try
+            {
+                labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
+                ChangeRatingVisibility(true);
+            }
+            catch (Exception)
+            {
+                ChangeRatingVisibility(false);
+            }
+
         }
 
         private void EmptyTextBoxes()
         {
-            textBoxFilmGenre.Text = "";
-            textBoxFilmJaar.Text = "";
-            textBoxFilmProducer.Text = "";
-            textBoxFilmRegisseur.Text = "";
-            textBoxFilmGenre.Text = "";
-            textBoxFilmTitel.Text = "";
-            textBoxSerieSeizoenen.Text = "";
-            textBoxSerieTitel.Text = "";
+            foreach (Control control in Controls)//We loopen over elke Control die op onze form staat (een Control is een TextBox, Button, of iets anders waarmee de gebruiker interactie kan hebben)
+            {
+                if (control is TextBox)//We checken ofdat de Control van het type TextBox is
+                    control.ResetText();//We resetten de Text-property naar de standaard waarde (in dit geval leeg)
+            }
         }
         private void ChangeVisibility(bool film, bool serie)
         {
@@ -324,20 +328,32 @@ public partial class Imdb : Form
             textBoxSerieTitel.Visible = serie;
         }
 
+        /// <summary>
+        /// Verander de zichtbaarheid van alle controls die te maken hebben met het toevoegen van een Rating.
+        /// </summary>
+        /// <param name="visibility">true voor zichtbaar, false voor onzichtbaar</param>
+        private void ChangeRatingVisibility(bool visibility)
+        {
+            labelRating.Visible = visibility;
+            labelNieuweRating.Visible = visibility;
+            buttonVoegRatingToe.Visible = visibility;
+            textBoxRating.Visible = visibility;
+        }
+
         private void ButtonVoegRatingToe_Click(object sender, EventArgs e)
         {
             if (radioButtonFilm.Checked)
             {
                 Film keuze = (Film)comboBoxKeuze.SelectedItem;
                 keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
-                textBoxRating.Text = "";
+                textBoxRating.ResetText();
                 labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
             }
             else
             {
                 Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
                 keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
-                textBoxRating.Text = "";
+                textBoxRating.ResetText();
                 labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
             }
 
