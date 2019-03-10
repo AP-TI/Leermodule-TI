@@ -309,7 +309,7 @@ public partial class Imdb : Form
                     control.ResetText();//We resetten de Text-property naar de standaard waarde (in dit geval leeg)
             }
         }
-        private void ChangeVisibility(bool film, bool serie)
+        private void ChangeVisibility(bool film, bool serie)//Of maak het uzelf makkelijk en gebruik iets als een groupbox, zo hoef je enkel de zichtbaarheid daarvan aan te passen.
         {
             labelFilmGenre.Visible = film;
             labelFilmJaar.Visible = film;
