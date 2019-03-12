@@ -32,12 +32,14 @@ Opgelet: dit is enkel het code-deel van de klasse (daarvan partial class). Het d
 public partial class Dobbelspel : Form
     {
         private const decimal START_GELD = 100.00m;
-        private Geld geld = new Geld(START_GELD);
-        private Dobbelsteen dobbelsteen = new Dobbelsteen();
+        private Geld geld;
+        private Dobbelsteen dobbelsteen;
         public Dobbelspel()
         {
             InitializeComponent();
-            labelSaldo.Text = geld.ToString();//Om een reden moet ik dit converteren ondanks dat er een ToString()-methode is overridden in de klasse Geld.
+            geld = new Geld(START_GELD);
+            labelSaldo.Text = geld.ToString();//ToString-methode moet omdat de Text-property een string verwacht
+            dobbelsteen = new Dobbelsteen();
         }
 
         private void KnopGooi_Click(object sender, EventArgs e)
@@ -50,7 +52,6 @@ public partial class Dobbelspel : Form
                 labelSaldo.Text = "Geld is op.";
                 KnopGooi.Enabled = false;
             }
-
         }
     }
 ```
@@ -96,7 +97,7 @@ internal class Geld
 ```csharp
 class Dobbelsteen
     {
-        Random random = new Random();
+        static Random random = new Random();
         public int Gooi()
         {
             return random.Next(1, 7);

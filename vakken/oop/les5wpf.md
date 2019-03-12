@@ -29,28 +29,30 @@ Het voordeel van WPF tegenover Windows Forms is dat je de layout in xaml maakt. 
 ### Klasse MainWindow (MainWindow.xaml.cs)
 ```csharp
 public partial class MainWindow : Window
-   {
-       private const decimal START_GELD = 100.00m;
-       private Geld geld = new Geld(START_GELD);
-       private Dobbelsteen dobbelsteen = new Dobbelsteen();
-       public MainWindow()
-       {
-           InitializeComponent();
-           labelSaldo.Content = geld;
-       }
+    {
+        private const decimal START_GELD = 100.00m;
+        private Geld geld;
+        private Dobbelsteen dobbelsteen;
+        public MainWindow()
+        {
+            InitializeComponent();
+            geld = new Geld(START_GELD);
+            dobbelsteen = new Dobbelsteen();
+            labelSaldo.Content = geld;
+        }
 
-       private void Gooien(object sender, RoutedEventArgs e)
-       {
-           int worp = dobbelsteen.Gooi();
-           if (geld.PasSaldoAan(worp) && geld.Saldo != 0)
-               labelSaldo.Content = $"U hebt {worp} gegooid. {geld.ToString()}";
-           else
-           {
-               labelSaldo.Content = "Geld is op.";
-               knopGooi.IsEnabled = false;
-           }
-       }
-   }
+        private void Gooien(object sender, RoutedEventArgs e)
+        {
+            int worp = dobbelsteen.Gooi();
+            if (geld.PasSaldoAan(worp) && geld.Saldo != 0)
+                labelSaldo.Content = $"U hebt {worp} gegooid. {geld.ToString()}";
+            else
+            {
+                labelSaldo.Content = "Geld is op.";
+                knopGooi.IsEnabled = false;
+            }
+        }
+    }
 ```
 ### Klasse Geld
 ```csharp
@@ -94,7 +96,7 @@ internal class Geld
 ```csharp
 class Dobbelsteen
     {
-        Random random = new Random();
+        static Random random = new Random();
         public int Gooi()
         {
             return random.Next(1, 7);
