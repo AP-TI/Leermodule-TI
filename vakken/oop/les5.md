@@ -45,6 +45,7 @@ public partial class Dobbelspel : Form
         private void KnopGooi_Click(object sender, EventArgs e)
         {
             int worp = dobbelsteen.Gooi();
+            pictureBox1.Image = Image.FromFile(@"../../afbeeldingen/" + worp + ".png");
             if (geld.PasSaldoAan(worp) && geld.Saldo != 0)
                 labelSaldo.Text = $"U hebt {worp} gegooid. {geld.ToString()}";
             else
@@ -119,40 +120,41 @@ Maak gebruik van Knoppen, Een Textbox en een Label om het programma er als volgt
 ### Klasse Bank (Form1.cs)
 ```csharp
 public partial class Bank : Form
+{
+    Bankrekening bankrekening;
+    public Bank()
     {
-        Bankrekening bankrekening = new Bankrekening(100.00m);
-        public Bank()
-        {
-            InitializeComponent();
-            UpdateSaldo();
-        }
-
-
-        private void KnopStorten_Click(object sender, EventArgs e)
-        {
-            bankrekening.WijzigSaldo(decimal.Parse(textBoxHoeveelheid.Text));
-            UpdateSaldo();
-        }
-
-        private void KnopAfhalen_Click(object sender, EventArgs e)
-        {
-            bankrekening.WijzigSaldo(-decimal.Parse(textBoxHoeveelheid.Text));
-            UpdateSaldo();
-        }
-
-        private void UpdateSaldo()
-        {
-            if (bankrekening.Saldo < 0)
-            {
-                labelSaldo.ForeColor = Color.Red;
-                MessageBox.Show("Je bankrekening staat negatief!", "Opgelet!", MessageBoxButtons.OK);
-            }
-
-            else
-                labelSaldo.ForeColor = Color.Black;
-            labelSaldo.Text = bankrekening.ToString();//Iemand die weet waarom ik hier .ToString() moet doen? Pls leg uit thanks
-        }
+        InitializeComponent();
+        bankrekening = new Bankrekening(100.00m);
+        UpdateSaldo();
     }
+
+
+    private void KnopStorten_Click(object sender, EventArgs e)
+    {
+        bankrekening.WijzigSaldo(decimal.Parse(textBoxHoeveelheid.Text));
+        UpdateSaldo();
+    }
+
+    private void KnopAfhalen_Click(object sender, EventArgs e)
+    {
+        bankrekening.WijzigSaldo(-decimal.Parse(textBoxHoeveelheid.Text));
+        UpdateSaldo();
+    }
+
+    private void UpdateSaldo()
+    {
+        if (bankrekening.Saldo < 0)
+        {
+            labelSaldo.ForeColor = Color.Red;
+            MessageBox.Show("Je bankrekening staat negatief!", "Opgelet!", MessageBoxButtons.OK);
+        }
+
+        else
+            labelSaldo.ForeColor = Color.Black;
+        labelSaldo.Text = bankrekening.ToString();//Iemand die weet waarom ik hier .ToString() moet doen? Pls leg uit thanks
+    }
+}
 ```
 De `MessageBox` zorgt ervoor dat er een melding wordt getoond aan de gebruiker als zijn bankrekening negatief staat. Het zou er ongeveer zo moeten uitzien;
 ![bankrekening foutmelding](afbeeldingen/bankrekening1.png)
@@ -205,164 +207,166 @@ Bovendien moet je een beoordeling kunnen toevoegen aan de geselecteerde Film of 
 ### Klasse Imdb (Form1.cs)
 ```csharp
 public partial class Imdb : Form
+{
+    private List<Film> films;
+    private List<Serie> series;
+
+    public Imdb()
     {
-        private List<Film> films = new List<Film>();
-        private List<Serie> series = new List<Serie>();
+        InitializeComponent();
+        films = new List<Film>();
+        series = new List<Serie>();
+    }
 
-        public Imdb()
+    private void CheckedChanged(object sender, EventArgs e)
+    {
+        if (radioButtonFilm.Checked)
         {
-            InitializeComponent();
+            ChangeVisibility(true, false);
+            FilmsUpdaten();
+        }
+        else
+        {
+            ChangeVisibility(false, true);
+            SeriesUpdaten();
         }
 
-        private void CheckedChanged(object sender, EventArgs e)
+
+    }
+
+    private void VoegToe(object sender, EventArgs e)
+    {
+        if (radioButtonFilm.Checked && IsFilled())
         {
-            if (radioButtonFilm.Checked)
-            {
-                ChangeVisibility(true, false);
-                FilmsUpdaten();
-            }
-            else
-            {
-                ChangeVisibility(false, true);
-                SeriesUpdaten();
-            }
-
-
+            films.Add(new Film(textBoxFilmTitel.Text, textBoxFilmProducer.Text, textBoxFilmRegisseur.Text, textBoxFilmGenre.Text, int.Parse(textBoxFilmJaar.Text)));
+            EmptyTextBoxes();
+            FilmsUpdaten();
         }
-
-        private void VoegToe(object sender, EventArgs e)
+        else if (IsFilled())
         {
-            if (radioButtonFilm.Checked && IsFilled())
-            {
-                films.Add(new Film(textBoxFilmTitel.Text, textBoxFilmProducer.Text, textBoxFilmRegisseur.Text, textBoxFilmGenre.Text, int.Parse(textBoxFilmJaar.Text)));
-                EmptyTextBoxes();
-                FilmsUpdaten();
-            }
-            else if (IsFilled())
-            {
-                series.Add(new Serie(textBoxSerieTitel.Text, int.Parse(textBoxSerieSeizoenen.Text)));
-                EmptyTextBoxes();
-                SeriesUpdaten();
-            }
-            else
-                MessageBox.Show("Niet alle velden zijn gevuld", "Opgelet!", MessageBoxButtons.OK);
+            series.Add(new Serie(textBoxSerieTitel.Text, int.Parse(textBoxSerieSeizoenen.Text)));
+            EmptyTextBoxes();
+            SeriesUpdaten();
         }
+        else
+            MessageBox.Show("Niet alle velden zijn gevuld", "Opgelet!", MessageBoxButtons.OK);
+    }
 
-        private void KeuzeVeranderd(object sender, EventArgs e)
+    private void KeuzeVeranderd(object sender, EventArgs e)
+    {
+        if (radioButtonFilm.Checked)
+            UpdateFilmRating();
+        else
+            UpdateSerieRating();
+    }
+
+    private bool IsFilled()
+    {
+        if (radioButtonFilm.Checked)
+            return textBoxFilmGenre.Text.Length != 0 && textBoxFilmJaar.Text.Length != 0 && textBoxFilmProducer.Text.Length != 0 && textBoxFilmRegisseur.Text.Length != 0 && textBoxFilmTitel.Text.Length != 0;
+        else
+            return textBoxSerieSeizoenen.Text.Length != 0 && textBoxSerieTitel.Text.Length != 0;
+    }
+
+    private void FilmsUpdaten()
+    {
+        comboBoxKeuze.DataSource = null;
+        comboBoxKeuze.DataSource = films;
+    }
+
+    private void SeriesUpdaten()
+    {
+        comboBoxKeuze.DataSource = null;
+        comboBoxKeuze.DataSource = series;
+    }
+
+    private void UpdateFilmRating()
+    {
+        Film keuze = (Film)comboBoxKeuze.SelectedItem;
+        try
         {
-            if (radioButtonFilm.Checked)
-                UpdateFilmRating();
-            else
-                UpdateSerieRating();
+            labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
+            ChangeRatingVisibility(true);
         }
-
-        private bool IsFilled()
+        catch (Exception)
         {
-            if (radioButtonFilm.Checked)
-                return textBoxFilmGenre.Text.Length != 0 && textBoxFilmJaar.Text.Length != 0 && textBoxFilmProducer.Text.Length != 0 && textBoxFilmRegisseur.Text.Length != 0 && textBoxFilmTitel.Text.Length != 0;
-            else
-                return textBoxSerieSeizoenen.Text.Length != 0 && textBoxSerieTitel.Text.Length != 0;
-        }
-
-        private void FilmsUpdaten()
-        {
-            comboBoxKeuze.DataSource = null;
-            comboBoxKeuze.DataSource = films;
-        }
-
-        private void SeriesUpdaten()
-        {
-            comboBoxKeuze.DataSource = null;
-            comboBoxKeuze.DataSource = series;
-        }
-
-        private void UpdateFilmRating()
-        {
-            Film keuze = (Film)comboBoxKeuze.SelectedItem;
-            try
-            {
-                labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
-                ChangeRatingVisibility(true);
-            }
-            catch (Exception)
-            {
-                ChangeRatingVisibility(false);
-            }
-        }
-
-        private void UpdateSerieRating()
-        {
-            Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
-            try
-            {
-                labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
-                ChangeRatingVisibility(true);
-            }
-            catch (Exception)
-            {
-                ChangeRatingVisibility(false);
-            }
-
-        }
-
-        private void EmptyTextBoxes()
-        {
-            foreach (Control control in Controls)//We loopen over elke Control die op onze form staat (een Control is een TextBox, Button, of iets anders waarmee de gebruiker interactie kan hebben)
-            {
-                if (control is TextBox)//We checken ofdat de Control van het type TextBox is
-                    control.ResetText();//We resetten de Text-property naar de standaard waarde (in dit geval leeg)
-            }
-        }
-        private void ChangeVisibility(bool film, bool serie)//Of maak het uzelf makkelijk en gebruik iets als een groupbox, zo hoef je enkel de zichtbaarheid daarvan aan te passen.
-        {
-            labelFilmGenre.Visible = film;
-            labelFilmJaar.Visible = film;
-            labelFilmProducer.Visible = film;
-            labelFilmRegisseur.Visible = film;
-            labelFilmTitel.Visible = film;
-            textBoxFilmGenre.Visible = film;
-            textBoxFilmJaar.Visible = film;
-            textBoxFilmProducer.Visible = film;
-            textBoxFilmRegisseur.Visible = film;
-            textBoxFilmTitel.Visible = film;
-
-            labelSerieSeizoenen.Visible = serie;
-            labelSerieTitel.Visible = serie;
-            textBoxSerieSeizoenen.Visible = serie;
-            textBoxSerieTitel.Visible = serie;
-        }
-
-        /// <summary>
-        /// Verander de zichtbaarheid van alle controls die te maken hebben met het toevoegen van een Rating.
-        /// </summary>
-        /// <param name="visibility">true voor zichtbaar, false voor onzichtbaar</param>
-        private void ChangeRatingVisibility(bool visibility)
-        {
-            labelRating.Visible = visibility;
-            labelNieuweRating.Visible = visibility;
-            buttonVoegRatingToe.Visible = visibility;
-            textBoxRating.Visible = visibility;
-        }
-
-        private void ButtonVoegRatingToe_Click(object sender, EventArgs e)
-        {
-            if (radioButtonFilm.Checked)
-            {
-                Film keuze = (Film)comboBoxKeuze.SelectedItem;
-                keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
-                textBoxRating.ResetText();
-                labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
-            }
-            else
-            {
-                Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
-                keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
-                textBoxRating.ResetText();
-                labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
-            }
-
+            ChangeRatingVisibility(false);
         }
     }
+
+    private void UpdateSerieRating()
+    {
+        Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
+        try
+        {
+            labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
+            ChangeRatingVisibility(true);
+        }
+        catch (Exception)
+        {
+            ChangeRatingVisibility(false);
+        }
+
+    }
+
+    private void EmptyTextBoxes()
+    {
+        foreach (Control control in Controls)//We loopen over elke Control die op onze form staat (een Control is een TextBox, Button, of iets anders waarmee de gebruiker interactie kan hebben)
+        {
+            if (control is TextBox)//We checken ofdat de Control van het type TextBox is
+                control.ResetText();//We resetten de Text-property naar de standaard waarde (in dit geval leeg)
+        }
+    }
+    private void ChangeVisibility(bool film, bool serie)//Of maak het uzelf makkelijk en gebruik iets als een panel, zo hoef je enkel de zichtbaarheid daarvan aan te passen.
+    {
+        labelFilmGenre.Visible = film;
+        labelFilmJaar.Visible = film;
+        labelFilmProducer.Visible = film;
+        labelFilmRegisseur.Visible = film;
+        labelFilmTitel.Visible = film;
+        textBoxFilmGenre.Visible = film;
+        textBoxFilmJaar.Visible = film;
+        textBoxFilmProducer.Visible = film;
+        textBoxFilmRegisseur.Visible = film;
+        textBoxFilmTitel.Visible = film;
+
+        labelSerieSeizoenen.Visible = serie;
+        labelSerieTitel.Visible = serie;
+        textBoxSerieSeizoenen.Visible = serie;
+        textBoxSerieTitel.Visible = serie;
+    }
+
+    /// <summary>
+    /// Verander de zichtbaarheid van alle controls die te maken hebben met het toevoegen van een Rating.
+    /// </summary>
+    /// <param name="visibility">true voor zichtbaar, false voor onzichtbaar</param>
+    private void ChangeRatingVisibility(bool visibility)
+    {
+        labelRating.Visible = visibility;
+        labelNieuweRating.Visible = visibility;
+        buttonVoegRatingToe.Visible = visibility;
+        textBoxRating.Visible = visibility;
+    }
+
+    private void ButtonVoegRatingToe_Click(object sender, EventArgs e)
+    {
+        if (radioButtonFilm.Checked)
+        {
+            Film keuze = (Film)comboBoxKeuze.SelectedItem;
+            keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
+            textBoxRating.ResetText();
+            labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
+        }
+        else
+        {
+            Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
+            keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
+            textBoxRating.ResetText();
+            labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
+        }
+
+    }
+}
 ```
 ### Klasse Film
 ```csharp
@@ -517,81 +521,82 @@ Oké, tijd voor de code die alles laat werken.
 ### Klasse Garage (Form1.cs)
 ```csharp
 public partial class Garage : Form
+{
+    private List<Wagen> autoLijst;
+    public Garage()
     {
-        private List<Wagen> autoLijst = new List<Wagen>();
-        public Garage()
-        {
-            InitializeComponent();
-        }
-
-        private void CheckedChanged(object sender, EventArgs e)
-        {
-            if (IsGezin())
-                ChangeVisibility(false, true);
-            else
-                ChangeVisibility(true, false);
-        }
-
-        private void ButtonToevoegen_Click(object sender, EventArgs e)
-        {
-            if (IsGezin())
-                VoegWagenToe(new Gezinswagen(textBoxMerk.Text, textBoxType.Text, int.Parse(textBoxKilometers.Text), DateTime.Parse(maskedTextBoxIngebruiknamedatum.Text), textBoxNummerplaat.Text, int.Parse(textBoxKoffervolume.Text), int.Parse(textBoxZitplaatsen.Text)));
-            else
-                VoegWagenToe(new Sportwagen(textBoxMerk.Text, textBoxType.Text, int.Parse(textBoxKilometers.Text), DateTime.Parse(maskedTextBoxIngebruiknamedatum.Text), textBoxNummerplaat.Text, int.Parse(textBoxPk.Text), int.Parse(textBoxVitessen.Text)));
-        }
-
-        private void VoegWagenToe(Wagen wagen)
-        {
-            autoLijst.Add(wagen);
-            VulListBox();
-            foreach (Control c in groupBoxAutoGegevens.Controls)
-                if (c is TextBox || c is MaskedTextBox)
-                    c.Text = "";
-        }
-
-        private void VulListBox()
-        {
-            checkedListBoxAutos.Items.Clear();
-            foreach (Wagen wagen in autoLijst)
-                checkedListBoxAutos.Items.Add(wagen);
-        }
-
-        private void ChangeVisibility(bool sport, bool gezin)
-        {
-            labelVitessen.Visible = sport;
-            textBoxVitessen.Visible = sport;
-            labelPk.Visible = sport;
-            textBoxPk.Visible = sport;
-
-            labelKoffervolume.Visible = gezin;
-            textBoxKoffervolume.Visible = gezin;
-            labelZitplaatsen.Visible = gezin;
-            textBoxZitplaatsen.Visible = gezin;
-
-            if (gezin)
-                buttonToevoegen.Text = "Voeg gezinswagen toe";
-            else
-                buttonToevoegen.Text = "Voeg sportwagen toe";
-        }
-
-        public bool IsGezin()
-        {
-            return radioButtonGezinswagen.Checked;
-        }
-
-        private void ButtonVerwijder_Click(object sender, EventArgs e)
-        {
-            foreach (Wagen wagen in checkedListBoxAutos.CheckedItems)
-                autoLijst.Remove(wagen);
-            VulListBox();
-            buttonVerwijder.Enabled = false;
-        }
-
-        private void ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            buttonVerwijder.Enabled = true;
-        }
+        InitializeComponent();
+        autoLijst = new List<Wagen>();
     }
+
+    private void CheckedChanged(object sender, EventArgs e)
+    {
+        if (IsGezin())
+            ChangeVisibility(false, true);
+        else
+            ChangeVisibility(true, false);
+    }
+
+    private void ButtonToevoegen_Click(object sender, EventArgs e)
+    {
+        if (IsGezin())
+            VoegWagenToe(new Gezinswagen(textBoxMerk.Text, textBoxType.Text, int.Parse(textBoxKilometers.Text), DateTime.Parse(maskedTextBoxIngebruiknamedatum.Text), textBoxNummerplaat.Text, int.Parse(textBoxKoffervolume.Text), int.Parse(textBoxZitplaatsen.Text)));
+        else
+            VoegWagenToe(new Sportwagen(textBoxMerk.Text, textBoxType.Text, int.Parse(textBoxKilometers.Text), DateTime.Parse(maskedTextBoxIngebruiknamedatum.Text), textBoxNummerplaat.Text, int.Parse(textBoxPk.Text), int.Parse(textBoxVitessen.Text)));
+    }
+
+    private void VoegWagenToe(Wagen wagen)
+    {
+        autoLijst.Add(wagen);
+        VulListBox();
+        foreach (Control c in groupBoxAutoGegevens.Controls)
+            if (c is TextBox || c is MaskedTextBox)
+                c.Text = "";
+    }
+
+    private void VulListBox()
+    {
+        checkedListBoxAutos.Items.Clear();
+        foreach (Wagen wagen in autoLijst)
+            checkedListBoxAutos.Items.Add(wagen);
+    }
+
+    private void ChangeVisibility(bool sport, bool gezin)
+    {
+        labelVitessen.Visible = sport;
+        textBoxVitessen.Visible = sport;
+        labelPk.Visible = sport;
+        textBoxPk.Visible = sport;
+
+        labelKoffervolume.Visible = gezin;
+        textBoxKoffervolume.Visible = gezin;
+        labelZitplaatsen.Visible = gezin;
+        textBoxZitplaatsen.Visible = gezin;
+
+        if (gezin)
+            buttonToevoegen.Text = "Voeg gezinswagen toe";
+        else
+            buttonToevoegen.Text = "Voeg sportwagen toe";
+    }
+
+    public bool IsGezin()
+    {
+        return radioButtonGezinswagen.Checked;
+    }
+
+    private void ButtonVerwijder_Click(object sender, EventArgs e)
+    {
+        foreach (Wagen wagen in checkedListBoxAutos.CheckedItems)
+            autoLijst.Remove(wagen);
+        VulListBox();
+        buttonVerwijder.Enabled = false;
+    }
+
+    private void ItemCheck(object sender, ItemCheckEventArgs e)
+    {
+        buttonVerwijder.Enabled = true;
+    }
+}
 ```
 ### Klasse Wagen
 ```csharp
