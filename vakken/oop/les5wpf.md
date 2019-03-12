@@ -101,3 +101,85 @@ class Dobbelsteen
         }
     }
 ```
+## Oefening 5.2
+
+![bankrekening](afbeeldingen/bankrekeningwpf.png)
+
+### Het Design (MainWindow.xaml)
+```xml
+<Window x:Class="WpfApp1_5._2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1_5._2"
+        mc:Ignorable="d"
+        Title="Bankrekening" Height="450" Width="800">
+    <Grid>
+        <Label Name="labelSaldo" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,50"></Label>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Width="100px" Height="25px" Click="Storten">Storten</Button>
+            <TextBox Width="100px" Height="25px" Margin="10,0,0,0" Name="textBoxHoeveelheid"></TextBox>
+            <Button Width="100px" Height="25px" Margin="10,0,0,0" Click="Afhalen">Afhalen</Button>
+        </StackPanel>
+    </Grid>
+</Window>
+```
+### Klasse MainWindow
+```csharp
+public partial class MainWindow : Window
+    {
+        Bankrekening bankrekening = new Bankrekening(100.00m);
+        public MainWindow()
+        {
+            InitializeComponent();
+            UpdateSaldo();
+        }
+
+        private void Storten(object sender, RoutedEventArgs e)
+        {
+            bankrekening.WijzigSaldo(decimal.Parse(textBoxHoeveelheid.Text));
+            UpdateSaldo();
+        }
+
+        private void Afhalen(object sender, RoutedEventArgs e)
+        {
+            bankrekening.WijzigSaldo(-decimal.Parse(textBoxHoeveelheid.Text));
+            UpdateSaldo();
+        }
+
+        private void UpdateSaldo()
+        {
+            if (bankrekening.Saldo < 0)
+            {
+                labelSaldo.Foreground = Brushes.Red;
+                MessageBox.Show("Je bankrekening staat negatief!", "Opgelet!", MessageBoxButton.OK);
+            }
+
+            else
+                labelSaldo.Foreground = Brushes.Black;
+            labelSaldo.Content = bankrekening.ToString();//Iemand die weet waarom ik hier .ToString() moet doen? Pls leg uit thanks
+        }
+    }
+```
+### Klasse Bankrekening
+```csharp
+class Bankrekening
+    {
+        public decimal Saldo { get; private set; }
+        public Bankrekening(decimal saldo)
+        {
+            Saldo = saldo;
+        }
+
+        public void WijzigSaldo(decimal hoeveelheid)
+        {
+            Saldo += hoeveelheid;
+        }
+
+        public override string ToString()
+        {
+            return $"Huidig saldo: {Saldo}";
+        }
+    }
+```
