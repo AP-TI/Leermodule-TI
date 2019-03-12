@@ -107,6 +107,9 @@ Het uiteindelijke resultaat zou er ongeveer zo moeten uitzien;
 ![worp](afbeeldingen/knipsel3.png)
 ![geld op](afbeeldingen/knipsel4.png)
 
+#### Nieuw:
+[WPF-versie](les5wpf.md) van deze oefening
+
 ## Oefening 5.2
 Maak gebruik van Knoppen, Een Textbox en een Label om het programma er als volgt uit te laten zien;
 

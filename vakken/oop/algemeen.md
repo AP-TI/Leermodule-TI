@@ -6,3 +6,4 @@
 - [les4](les4.md)
 - [les5](les5.md)
 - [les exceptions](lesexceptions.md)
+- [7 - Herhalingsoefening met GUI](7.md)
