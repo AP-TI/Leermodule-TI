@@ -185,3 +185,339 @@ class Bankrekening
         }
     }
 ```
+## Oefening 5.3
+
+![imdb design](afbeeldingen/imdbwpf.png)
+
+### Het design (MainWindow.xaml)
+```xml
+<Window x:Class="WpfApp1_5._3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1_5._3"
+        mc:Ignorable="d"
+        Title="IMDb" Height="450" Width="800">
+    <Grid>
+        <Label Margin="7, 0, 0, 0">Wat wil je toevoegen?</Label>
+        <StackPanel Margin="10, 20, 10, 10" Name="keuzePanel" >
+            <RadioButton IsChecked="True" Name="serie" Click="CheckedChanged">Serie</RadioButton>
+            <RadioButton Name="film" Click="CheckedChanged">Film</RadioButton>
+        </StackPanel>
+        <WrapPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,10,0,0" Name="PanelSerie">
+            <WrapPanel Orientation="Vertical">
+                <Label>Titel</Label>
+                <TextBox Width="100px" Height="20px" Name="textBoxSerieTitel"></TextBox>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical" Margin="10,0,0,0">
+                <Label>Aantal seizoenen</Label>
+                <TextBox Width="100px" Height="20px" Name="textBoxSerieSeizoenen"></TextBox>
+            </WrapPanel>
+        </WrapPanel>
+        <WrapPanel Visibility="Hidden" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,10,0,0" Name="PanelFilm">
+            <WrapPanel Orientation="Vertical">
+                <Label>Titel</Label>
+                <TextBox Width="100px" Height="20px" Name="textBoxFilmTitel"></TextBox>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical" Margin="10,0,0,0">
+                <Label>Producer</Label>
+                <TextBox Width="100px" Height="20px" Name="textBoxFilmProducer"></TextBox>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical" Margin="10,0,0,0">
+                <Label>Regisseur</Label>
+                <TextBox Width="100px" Height="20px" Name="textBoxFilmRegisseur"></TextBox>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical" Margin="10,0,0,0">
+                <Label>Genre</Label>
+                <TextBox Width="100px" Height="20px" Name="textBoxFilmGenre"></TextBox>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical" Margin="10,0,0,0">
+                <Label>Jaar</Label>
+                <TextBox Width="100px" Height="20px" Name="textBoxFilmJaar"></TextBox>
+            </WrapPanel>
+        </WrapPanel>
+        <Button Height="25px" Width="300px" Click="VoegToe">Voeg toe</Button>
+        <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,100">
+            <ComboBox Height="25px" Width="200px" Name="comboBoxKeuze" SelectionChanged="ComboBoxKeuze_SelectionChanged"></ComboBox>
+            <Label Name="labelRating" Margin="10,0,0,0"></Label>
+        </WrapPanel>
+        <Label HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="7,0,0,70" Name="labelNieuweRating" Visibility="Hidden">Geef een score van 1 tot 5</Label>
+        <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,48" Name="panelRating" Visibility="Hidden">
+            <TextBox Height="25px" Width="95px" Name="textBoxRating"></TextBox>
+            <Button Width="95px" Height="25px" Margin="10,0,0,0" Name="buttonVoegRatingToe" Click="ButtonVoegRatingToe_Click">Beoordeel</Button>
+        </WrapPanel>
+    </Grid>
+</Window>
+```
+### Klasse MainWindow (MainWindow.xaml.cs)
+```csharp
+public partial class MainWindow : Window
+{
+    List<Film> films;
+    List<Serie> series;
+    public MainWindow()
+    {
+        InitializeComponent();
+        films = new List<Film>();
+        series = new List<Serie>();
+    }
+
+    private void CheckedChanged(object sender, RoutedEventArgs e)
+    {
+        if ((bool)serie.IsChecked)
+        {
+            PanelSerie.Visibility = Visibility.Visible;
+            PanelFilm.Visibility = Visibility.Hidden;
+            SeriesUpdaten();
+        }
+        else
+        {
+            PanelSerie.Visibility = Visibility.Hidden;
+            PanelFilm.Visibility = Visibility.Visible;
+            FilmsUpdaten();
+        }
+    }
+
+    private void VoegToe(object sender, RoutedEventArgs e)
+    {
+        if ((bool)film.IsChecked && IsFilled())
+        {
+            films.Add(new Film(textBoxFilmTitel.Text, textBoxFilmProducer.Text, textBoxFilmRegisseur.Text, textBoxFilmGenre.Text, int.Parse(textBoxFilmJaar.Text)));
+            EmptyTextBoxes();
+            FilmsUpdaten();
+        }
+        else if (IsFilled())
+        {
+            series.Add(new Serie(textBoxSerieTitel.Text, int.Parse(textBoxSerieSeizoenen.Text)));
+            EmptyTextBoxes();
+            SeriesUpdaten();
+        }
+        else
+            MessageBox.Show("Niet alle velden zijn gevuld", "Opgelet!", MessageBoxButton.OK);
+    }
+
+    private bool IsFilled()
+    {
+        if ((bool)film.IsChecked)
+            return textBoxFilmGenre.Text.Length != 0 && textBoxFilmJaar.Text.Length != 0 && textBoxFilmProducer.Text.Length != 0 && textBoxFilmRegisseur.Text.Length != 0 && textBoxFilmTitel.Text.Length != 0;
+        else
+            return textBoxSerieSeizoenen.Text.Length != 0 && textBoxSerieTitel.Text.Length != 0;
+    }
+    private void EmptyTextBoxes()
+    {
+        if(PanelSerie.IsVisible)
+            foreach (WrapPanel wrapPanel in PanelSerie.Children.OfType<WrapPanel>())
+            {
+                foreach (TextBox textBox in wrapPanel.Children.OfType<TextBox>())
+                    textBox.Text = "";
+            }
+        else
+            foreach (WrapPanel wrapPanel in PanelFilm.Children.OfType<WrapPanel>())
+            {
+                foreach (TextBox textBox in wrapPanel.Children.OfType<TextBox>())
+                    textBox.Text = "";
+            }
+    }
+    private void SeriesUpdaten()
+    {
+        comboBoxKeuze.ItemsSource = null;
+        comboBoxKeuze.ItemsSource = series;
+    }
+    private void FilmsUpdaten()
+    {
+        comboBoxKeuze.ItemsSource = null;
+        comboBoxKeuze.ItemsSource = films;
+    }
+
+    private void UpdateFilmRating()
+    {
+        Film keuze = (Film)comboBoxKeuze.SelectedItem;
+        try
+        {
+            labelRating.Content = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
+            ChangeRatingVisibility(Visibility.Visible);
+        }
+        catch (Exception)
+        {
+            ChangeRatingVisibility(Visibility.Hidden);
+        }
+    }
+
+    private void UpdateSerieRating()
+    {
+        Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
+        try
+        {
+            labelRating.Content = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
+            ChangeRatingVisibility(Visibility.Visible);
+        }
+        catch (Exception)
+        {
+            ChangeRatingVisibility(Visibility.Hidden);
+        }
+    }
+    /// <summary>
+    /// Verander de zichtbaarheid van alle controls die te maken hebben met het toevoegen van een Rating.
+    /// </summary>
+    /// <param name="visibility">Visibility.Visible voor zichtbaar, Visibility.Hidden voor onzichtbaar</param>
+    private void ChangeRatingVisibility(Visibility visibility)
+    {
+        labelRating.Visibility = visibility;
+        labelNieuweRating.Visibility = visibility;
+        buttonVoegRatingToe.Visibility = visibility;
+        textBoxRating.Visibility = visibility;
+        panelRating.Visibility = visibility;
+    }
+
+    private void ComboBoxKeuze_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if ((bool)serie.IsChecked)
+            UpdateSerieRating();
+        else
+            UpdateFilmRating();
+    }
+
+    private void ButtonVoegRatingToe_Click(object sender, RoutedEventArgs e)
+    {
+        if ((bool)film.IsChecked)
+        {
+            Film keuze = (Film)comboBoxKeuze.SelectedItem;
+            keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
+            textBoxRating.Text = "";
+            labelRating.Content = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
+        }
+        else
+        {
+            Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
+            try
+            {
+                keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
+            }
+            catch (System.FormatException)
+            {
+                MessageBox.Show("Kijk invoer na", "Ej!", MessageBoxButton.OK);
+            }
+            textBoxRating.Text = "";
+            labelRating.Content = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
+        }
+    }
+}
+```
+De summary boven de methode `ChangeRatingVisibility` zorgt ervoor dat je een korte omschrijving krijgt van wat de methode doet en waarvoor de parameters dienen als je de methode ergens in het programma probeert op te roepen.
+
+![summary](afbeeldingen/summary.png)
+
+### Klasse Film
+```csharp
+class Film
+    {
+        List<double> ratings = new List<double>();
+        public string Titel { get; set; }
+        public string Producer { get; set; }
+        public string Regisseur { get; set; }
+        public string Genre { get; set; }
+        public int Jaar { get; set; }
+        private double rating;
+
+        public double Rating
+        {
+            get { return rating; }
+            set
+            {
+                if (value <= 5 && value >= 1)
+                    rating = value;
+                else
+                    rating = 2.5;
+            }
+        }
+
+        public Film(string titel, string producer, string regisseur, string genre, int jaar, double rating)
+        {
+            Titel = titel;
+            Producer = producer;
+            Regisseur = regisseur;
+            Genre = genre;
+            Jaar = jaar;
+            Rating = rating;//Zo heeft de default rating geen impact op de ratings die werden ingevoerd door de gebruiker
+        }
+        public Film(string titel, string producer, string regisseur, string genre, int jaar) : this(titel, producer, regisseur, genre, jaar, 2.5) { }
+
+        public bool VoegRatingToe(double rating)
+        {
+            if (rating >= 1 && rating <= 5)
+            {
+                ratings.Add(rating);
+                BerekenGemiddelde();
+                return true;
+            }
+            return false;
+        }
+
+        public void BerekenGemiddelde()
+        {
+            Rating = ratings.Average();
+        }
+
+        public override string ToString()
+        {
+            return $"{Titel} - {Jaar}";
+        }
+
+    }
+```
+### Klasse Serie
+```csharp
+class Serie
+{
+    List<double> ratings = new List<double>();
+    public string Titel { get; set; }
+    public int Seizoenen { get; set; }
+    private double rating;
+
+    public double Rating
+    {
+        get { return rating; }
+        set
+        {
+            if (value <= 5 && value >= 1)
+                rating = value;
+            else
+                rating = 2.5;
+        }
+    }
+
+
+
+    public Serie(string titel, int seizoenen, double rating)
+    {
+        Titel = titel;
+        Seizoenen = seizoenen;
+        Rating = rating;//Zo heeft de default rating geen impact op de ratings die werden ingevoerd door de gebruiker
+    }
+
+    public Serie(string titel, int seizoenen) : this(titel, seizoenen, 2.5) { }
+
+    public bool VoegRatingToe(double rating)
+    {
+        if (rating >= 1 && rating <= 5)
+        {
+            ratings.Add(rating);
+            BerekenGemiddelde();
+            return true;
+        }
+        return false;
+    }
+
+    public void BerekenGemiddelde()
+    {
+        Rating = ratings.Average();
+    }
+
+    public override string ToString()
+    {
+        return $"{Titel} - {Seizoenen}";
+    }
+
+}
+```
