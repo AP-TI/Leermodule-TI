@@ -207,166 +207,171 @@ Bovendien moet je een beoordeling kunnen toevoegen aan de geselecteerde Film of 
 ### Klasse Imdb (Form1.cs)
 ```csharp
 public partial class Imdb : Form
-{
-    private List<Film> films;
-    private List<Serie> series;
-
-    public Imdb()
     {
-        InitializeComponent();
-        films = new List<Film>();
-        series = new List<Serie>();
-    }
+        private string rating = "De huidige rating voor {0} is {1}";
+        private List<Film> films;
+        private List<Serie> series;
 
-    private void CheckedChanged(object sender, EventArgs e)
-    {
-        if (radioButtonFilm.Checked)
+        public Imdb()
         {
-            ChangeVisibility(true, false);
-            FilmsUpdaten();
-        }
-        else
-        {
-            ChangeVisibility(false, true);
-            SeriesUpdaten();
+            InitializeComponent();
+            films = new List<Film>();
+            series = new List<Serie>();
         }
 
-
-    }
-
-    private void VoegToe(object sender, EventArgs e)
-    {
-        if (radioButtonFilm.Checked && IsFilled())
+        private void CheckedChanged(object sender, EventArgs e)
         {
-            films.Add(new Film(textBoxFilmTitel.Text, textBoxFilmProducer.Text, textBoxFilmRegisseur.Text, textBoxFilmGenre.Text, int.Parse(textBoxFilmJaar.Text)));
-            EmptyTextBoxes();
-            FilmsUpdaten();
-        }
-        else if (IsFilled())
-        {
-            series.Add(new Serie(textBoxSerieTitel.Text, int.Parse(textBoxSerieSeizoenen.Text)));
-            EmptyTextBoxes();
-            SeriesUpdaten();
-        }
-        else
-            MessageBox.Show("Niet alle velden zijn gevuld", "Opgelet!", MessageBoxButtons.OK);
-    }
+            if (radioButtonFilm.Checked)
+            {
+                ChangeVisibility(true);
+                FilmsUpdaten();
+            }
+            else
+            {
+                ChangeVisibility(false);
+                SeriesUpdaten();
+            }
 
-    private void KeuzeVeranderd(object sender, EventArgs e)
-    {
-        if (radioButtonFilm.Checked)
-            UpdateFilmRating();
-        else
-            UpdateSerieRating();
-    }
 
-    private bool IsFilled()
-    {
-        if (radioButtonFilm.Checked)
-            return textBoxFilmGenre.Text.Length != 0 && textBoxFilmJaar.Text.Length != 0 && textBoxFilmProducer.Text.Length != 0 && textBoxFilmRegisseur.Text.Length != 0 && textBoxFilmTitel.Text.Length != 0;
-        else
-            return textBoxSerieSeizoenen.Text.Length != 0 && textBoxSerieTitel.Text.Length != 0;
-    }
-
-    private void FilmsUpdaten()
-    {
-        comboBoxKeuze.DataSource = null;
-        comboBoxKeuze.DataSource = films;
-    }
-
-    private void SeriesUpdaten()
-    {
-        comboBoxKeuze.DataSource = null;
-        comboBoxKeuze.DataSource = series;
-    }
-
-    private void UpdateFilmRating()
-    {
-        Film keuze = (Film)comboBoxKeuze.SelectedItem;
-        try
-        {
-            labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
-            ChangeRatingVisibility(true);
-        }
-        catch (Exception)
-        {
-            ChangeRatingVisibility(false);
-        }
-    }
-
-    private void UpdateSerieRating()
-    {
-        Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
-        try
-        {
-            labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
-            ChangeRatingVisibility(true);
-        }
-        catch (Exception)
-        {
-            ChangeRatingVisibility(false);
         }
 
-    }
-
-    private void EmptyTextBoxes()
-    {
-        foreach (Control control in Controls)//We loopen over elke Control die op onze form staat (een Control is een TextBox, Button, of iets anders waarmee de gebruiker interactie kan hebben)
+        private void VoegToe(object sender, EventArgs e)
         {
-            if (control is TextBox)//We checken ofdat de Control van het type TextBox is
-                control.ResetText();//We resetten de Text-property naar de standaard waarde (in dit geval leeg)
+            if (radioButtonFilm.Checked && IsFilled())
+            {
+                films.Add(new Film(textBoxFilmTitel.Text, textBoxFilmProducer.Text, textBoxFilmRegisseur.Text, textBoxFilmGenre.Text, int.Parse(textBoxFilmJaar.Text)));
+                EmptyTextBoxes();
+                FilmsUpdaten();
+            }
+            else if (IsFilled())
+            {
+                series.Add(new Serie(textBoxSerieTitel.Text, int.Parse(textBoxSerieSeizoenen.Text)));
+                EmptyTextBoxes();
+                SeriesUpdaten();
+            }
+            else
+                MessageBox.Show("Niet alle velden zijn gevuld", "Opgelet!", MessageBoxButtons.OK);
         }
-    }
-    private void ChangeVisibility(bool film, bool serie)//Of maak het uzelf makkelijk en gebruik iets als een panel, zo hoef je enkel de zichtbaarheid daarvan aan te passen.
-    {
-        labelFilmGenre.Visible = film;
-        labelFilmJaar.Visible = film;
-        labelFilmProducer.Visible = film;
-        labelFilmRegisseur.Visible = film;
-        labelFilmTitel.Visible = film;
-        textBoxFilmGenre.Visible = film;
-        textBoxFilmJaar.Visible = film;
-        textBoxFilmProducer.Visible = film;
-        textBoxFilmRegisseur.Visible = film;
-        textBoxFilmTitel.Visible = film;
 
-        labelSerieSeizoenen.Visible = serie;
-        labelSerieTitel.Visible = serie;
-        textBoxSerieSeizoenen.Visible = serie;
-        textBoxSerieTitel.Visible = serie;
-    }
+        private void KeuzeVeranderd(object sender, EventArgs e)
+        {
+            if (radioButtonFilm.Checked)
+                UpdateFilmRating();
+            else
+                UpdateSerieRating();
+        }
 
-    /// <summary>
-    /// Verander de zichtbaarheid van alle controls die te maken hebben met het toevoegen van een Rating.
-    /// </summary>
-    /// <param name="visibility">true voor zichtbaar, false voor onzichtbaar</param>
-    private void ChangeRatingVisibility(bool visibility)
-    {
-        labelRating.Visible = visibility;
-        labelNieuweRating.Visible = visibility;
-        buttonVoegRatingToe.Visible = visibility;
-        textBoxRating.Visible = visibility;
-    }
+        private bool IsFilled()
+        {
+            if (radioButtonFilm.Checked)
+                return textBoxFilmGenre.Text.Length != 0 && textBoxFilmJaar.Text.Length != 0 && textBoxFilmProducer.Text.Length != 0 && textBoxFilmRegisseur.Text.Length != 0 && textBoxFilmTitel.Text.Length != 0;
+            else
+                return textBoxSerieSeizoenen.Text.Length != 0 && textBoxSerieTitel.Text.Length != 0;
+        }
 
-    private void ButtonVoegRatingToe_Click(object sender, EventArgs e)
-    {
-        if (radioButtonFilm.Checked)
+        private void FilmsUpdaten()
+        {
+            comboBoxKeuze.DataSource = null;
+            comboBoxKeuze.DataSource = films;
+        }
+
+        private void SeriesUpdaten()
+        {
+            comboBoxKeuze.DataSource = null;
+            comboBoxKeuze.DataSource = series;
+        }
+
+        private void UpdateFilmRating()
         {
             Film keuze = (Film)comboBoxKeuze.SelectedItem;
-            keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
-            textBoxRating.ResetText();
-            labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
-        }
-        else
-        {
-            Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
-            keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
-            textBoxRating.ResetText();
-            labelRating.Text = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
+            try
+            {
+                labelRating.Text = string.Format(rating, keuze.Titel, keuze.Rating);
+                ChangeRatingVisibility(true);
+            }
+            catch (Exception)
+            {
+                ChangeRatingVisibility(false);
+            }
         }
 
+        private void UpdateSerieRating()
+        {
+            Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
+            try
+            {
+                labelRating.Text = string.Format(rating, keuze.Titel, keuze.Rating);
+                ChangeRatingVisibility(true);
+            }
+            catch (Exception)
+            {
+                ChangeRatingVisibility(false);
+            }
+
+        }
+
+        private void EmptyTextBoxes()
+        {
+            foreach (Control control in Controls)//We loopen over elke Control die op onze form staat (een Control is een TextBox, Button, of iets anders waarmee de gebruiker interactie kan hebben)
+            {
+                if (control is TextBox)//We checken ofdat de Control van het type TextBox is
+                    control.ResetText();//We resetten de Text-property naar de standaard waarde (in dit geval leeg)
+            }
+        }
+        /// <summary>
+        /// Verandert de zichtbaarheid van de velden voor Film & Serie
+        /// </summary>
+        /// <param name="film">Op true om film zichtbaar te maken en serie onzichtbaar. False voor het omgekeerde effect</param>
+        private void ChangeVisibility(bool film)
+        {
+            labelFilmGenre.Visible = film;
+            labelFilmJaar.Visible = film;
+            labelFilmProducer.Visible = film;
+            labelFilmRegisseur.Visible = film;
+            labelFilmTitel.Visible = film;
+            textBoxFilmGenre.Visible = film;
+            textBoxFilmJaar.Visible = film;
+            textBoxFilmProducer.Visible = film;
+            textBoxFilmRegisseur.Visible = film;
+            textBoxFilmTitel.Visible = film;
+
+            labelSerieSeizoenen.Visible = !film;
+            labelSerieTitel.Visible = !film;
+            textBoxSerieSeizoenen.Visible = !film;
+            textBoxSerieTitel.Visible = !film;
+        }
+
+        /// <summary>
+        /// Verander de zichtbaarheid van alle controls die te maken hebben met het toevoegen van een Rating.
+        /// </summary>
+        /// <param name="visibility">true voor zichtbaar, false voor onzichtbaar</param>
+        private void ChangeRatingVisibility(bool visibility)
+        {
+            labelRating.Visible = visibility;
+            labelNieuweRating.Visible = visibility;
+            buttonVoegRatingToe.Visible = visibility;
+            textBoxRating.Visible = visibility;
+        }
+
+        private void ButtonVoegRatingToe_Click(object sender, EventArgs e)
+        {
+            if (radioButtonFilm.Checked)
+            {
+                Film keuze = (Film)comboBoxKeuze.SelectedItem;
+                keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
+                textBoxRating.ResetText();
+                labelRating.Text = string.Format(rating, keuze.Titel, keuze.Rating);
+            }
+            else
+            {
+                Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
+                keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
+                textBoxRating.ResetText();
+                labelRating.Text = string.Format(rating, keuze.Titel, keuze.Rating);
+            }
+
+        }
     }
-}
 ```
 ### Klasse Film
 ```csharp
