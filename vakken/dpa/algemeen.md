@@ -7,6 +7,8 @@
 ### Deel 5
 - [IK VIND SQL Server Data Tools 2015 NIET HELPPPPPPPPP](ssdt.md)
 - [SQL Server Native Client 11.0 is niet zichtbaar bij Choose a Destination in de SQL Server Import and Export Wizard](les5sqlservernativeclient.md)
+### Deel 6
+- [WAAROM KAN IK MIJN ZELFGESCHREVEN FUNCTIE NIET SELECTEREN?](functie.md)
 
 
 Niet gevonden wat je zocht? Stuur me gerust op discord @mixxamm.
