@@ -488,196 +488,199 @@ class Serie
 ```
 Zoals je misschien al hebt gemerkt, zit er enorm veel dubbele code in deze oefening. Dit komt omdat deze oefening gebaseerd is op [oefening 3.1](https://github.com/AP-TI-2018-2019/AP_2018-2019/blob/master/vakken/oop/les3.md), de onderliggende code is (bijna) volledig hetzelfde, met als enige verschil dat er een GUI aan verbonden is. Dit toont nog maar eens het nut van polymorfisme, een begrip dat we nog niet kenden in les 3, aan.
 ## Oefening 5.3 - Extra
-Een leuke extra die je kan maken is een affiche van de film tonen aan de hand van de titel, door een zoekopdracht te maken en de eerste afbeelding te nemen. Ik heb ervoor gekozen om gebruik te maken van de API van duckduckgo (een alternatief voor google, want google vereist een API-key en limiteert het aantal verzoeken per dag tot 100). Het enige wat je moet doen is een extra pictureBox maken en de code in de Imdb-klasse (Form1.cs) aanpassen. Al de andere klasses blijven gewoon hetzelfde.
+Een leuke extra die je kan maken is een affiche van de film tonen aan de hand van de titel, door een zoekopdracht te maken en de eerste afbeelding te nemen. Ik heb ervoor gekozen om gebruik te maken van de API van IMDb. Het enige wat je moet doen is een extra pictureBox maken en de code in de Imdb-klasse (Form1.cs) aanpassen. Al de andere klasses blijven gewoon hetzelfde.
 
 Om te begrijpen hoe dit allemaal werkt is het belangrijk dat je eerst weet hoe JSON werkt. [Hier](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) is een goede uitleg.
 ### Klasse Imdb (Form1.cs)
 ```csharp
 public partial class Imdb : Form
+{
+    private string rating = "De huidige rating voor {0} is {1}";
+    private List<Film> films;
+    private List<Serie> series;
+
+    public Imdb()
     {
-        private string rating = "De huidige rating voor {0} is {1}";
-        private List<Film> films;
-        private List<Serie> series;
+        InitializeComponent();
+        films = new List<Film>();
+        series = new List<Serie>();
+    }
 
-        public Imdb()
+    private void CheckedChanged(object sender, EventArgs e)
+    {
+        if (radioButtonFilm.Checked)
         {
-            InitializeComponent();
-            films = new List<Film>();
-            series = new List<Serie>();
+            ChangeVisibility(true);
+            FilmsUpdaten();
+        }
+        else
+        {
+            ChangeVisibility(false);
+            SeriesUpdaten();
         }
 
-        private void CheckedChanged(object sender, EventArgs e)
+
+    }
+
+    private void VoegToe(object sender, EventArgs e)
+    {
+        if (radioButtonFilm.Checked && IsFilled())
         {
-            if (radioButtonFilm.Checked)
-            {
-                ChangeVisibility(true);
-                FilmsUpdaten();
-            }
-            else
-            {
-                ChangeVisibility(false);
-                SeriesUpdaten();
-            }
-
-
+            films.Add(new Film(textBoxFilmTitel.Text, textBoxFilmProducer.Text, textBoxFilmRegisseur.Text, textBoxFilmGenre.Text, int.Parse(textBoxFilmJaar.Text)));
+            EmptyTextBoxes();
+            FilmsUpdaten();
         }
-
-        private void VoegToe(object sender, EventArgs e)
+        else if (IsFilled())
         {
-            if (radioButtonFilm.Checked && IsFilled())
-            {
-                films.Add(new Film(textBoxFilmTitel.Text, textBoxFilmProducer.Text, textBoxFilmRegisseur.Text, textBoxFilmGenre.Text, int.Parse(textBoxFilmJaar.Text)));
-                EmptyTextBoxes();
-                FilmsUpdaten();
-            }
-            else if (IsFilled())
-            {
-                series.Add(new Serie(textBoxSerieTitel.Text, int.Parse(textBoxSerieSeizoenen.Text)));
-                EmptyTextBoxes();
-                SeriesUpdaten();
-            }
-            else
-                MessageBox.Show("Niet alle velden zijn gevuld", "Opgelet!", MessageBoxButtons.OK);
+            series.Add(new Serie(textBoxSerieTitel.Text, int.Parse(textBoxSerieSeizoenen.Text)));
+            EmptyTextBoxes();
+            SeriesUpdaten();
         }
+        else
+            MessageBox.Show("Niet alle velden zijn gevuld", "Opgelet!", MessageBoxButtons.OK);
+    }
 
-        private void KeuzeVeranderd(object sender, EventArgs e)
-        {
-            if (radioButtonFilm.Checked)
-                UpdateFilmRating();
-            else
-                UpdateSerieRating();
-        }
+    private void KeuzeVeranderd(object sender, EventArgs e)
+    {
+        if (radioButtonFilm.Checked)
+            UpdateFilmRating();
+        else
+            UpdateSerieRating();
+    }
 
-        private bool IsFilled()
-        {
-            if (radioButtonFilm.Checked)
-                return textBoxFilmGenre.Text.Length != 0 && textBoxFilmJaar.Text.Length != 0 && textBoxFilmProducer.Text.Length != 0 && textBoxFilmRegisseur.Text.Length != 0 && textBoxFilmTitel.Text.Length != 0;
-            else
-                return textBoxSerieSeizoenen.Text.Length != 0 && textBoxSerieTitel.Text.Length != 0;
-        }
+    private bool IsFilled()
+    {
+        if (radioButtonFilm.Checked)
+            return textBoxFilmGenre.Text.Length != 0 && textBoxFilmJaar.Text.Length != 0 && textBoxFilmProducer.Text.Length != 0 && textBoxFilmRegisseur.Text.Length != 0 && textBoxFilmTitel.Text.Length != 0;
+        else
+            return textBoxSerieSeizoenen.Text.Length != 0 && textBoxSerieTitel.Text.Length != 0;
+    }
 
-        private void FilmsUpdaten()
-        {
-            comboBoxKeuze.DataSource = null;
-            comboBoxKeuze.DataSource = films;
-        }
+    private void FilmsUpdaten()
+    {
+        comboBoxKeuze.DataSource = null;
+        comboBoxKeuze.DataSource = films;
+    }
 
-        private void SeriesUpdaten()
-        {
-            comboBoxKeuze.DataSource = null;
-            comboBoxKeuze.DataSource = series;
-        }
+    private void SeriesUpdaten()
+    {
+        comboBoxKeuze.DataSource = null;
+        comboBoxKeuze.DataSource = series;
+    }
 
-        private void UpdateFilmRating()
+    private void UpdateFilmRating()
+    {
+        Film keuze = (Film)comboBoxKeuze.SelectedItem;
+        try
         {
-            Film keuze = (Film)comboBoxKeuze.SelectedItem;
+            labelRating.Text = string.Format(rating, keuze.Titel, keuze.Rating);
+            ChangeRatingVisibility(true);
             try
             {
-                labelRating.Text = string.Format(rating, keuze.Titel, keuze.Rating);
-                ChangeRatingVisibility(true);
-                try
+                string result;
+                using (WebClient client = new WebClient())
                 {
-                    string result;
-                    using (WebClient client = new WebClient())
-                    {
-                        result = client.DownloadString("https://api.duckduckgo.com/?q=" + keuze.Titel + "&format=json&pretty=1");
-                    }
-                    dynamic search = JsonConvert.DeserializeObject(result);
-                    string url = search.RelatedTopics[0].Icon.URL;
-                    pictureBox1.Load(url);
+                    result = client.DownloadString("https://sg.media-imdb.com/suggests/" + keuze.Titel.Substring(0, 1).ToLower() + "/" + keuze.Titel + ".json");
                 }
-                catch (System.InvalidOperationException)
-                {
-                    labelRating.Text = labelRating.Text + "      |      Geen afbeelding gevonden :(";
-                }
-                catch (Exception)
-                {
-                    labelRating.Text = labelRating.Text + "      |      Er is iets fout gegaan tijdens het ophalen van de afbeelding.";
-                }
+                result = result.Substring(result.IndexOf("{"), result.Length - result.IndexOf("{") - 1);
+
+                dynamic search = JsonConvert.DeserializeObject(result);
+                string url = search.d[0].i[0];
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox1.Load(url);
             }
-            catch (Exception)
+            catch (System.InvalidOperationException e)
             {
-                ChangeRatingVisibility(false);
+                labelRating.Text = labelRating.Text + "      |      Geen afbeelding gevonden :(";
+            }
+            catch (Exception e)
+            {
+                labelRating.Text = labelRating.Text + "      |      Er is iets fout gegaan tijdens het ophalen van de afbeelding.";
             }
         }
-
-        private void UpdateSerieRating()
+        catch (Exception)
         {
-            Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
-            try
-            {
-                labelRating.Text = string.Format(rating, keuze.Titel, keuze.Rating);
-                ChangeRatingVisibility(true);
-            }
-            catch (Exception)
-            {
-                ChangeRatingVisibility(false);
-            }
-
-        }
-
-        private void EmptyTextBoxes()
-        {
-            foreach (Control control in Controls)//We loopen over elke Control die op onze form staat (een Control is een TextBox, Button, of iets anders waarmee de gebruiker interactie kan hebben)
-            {
-                if (control is TextBox)//We checken ofdat de Control van het type TextBox is
-                    control.ResetText();//We resetten de Text-property naar de standaard waarde (in dit geval leeg)
-            }
-        }
-        /// <summary>
-        /// Verandert de zichtbaarheid van de velden voor Film & Serie
-        /// </summary>
-        /// <param name="film">Op true om film zichtbaar te maken en serie onzichtbaar. False voor het omgekeerde effect</param>
-        private void ChangeVisibility(bool film)
-        {
-            labelFilmGenre.Visible = film;
-            labelFilmJaar.Visible = film;
-            labelFilmProducer.Visible = film;
-            labelFilmRegisseur.Visible = film;
-            labelFilmTitel.Visible = film;
-            textBoxFilmGenre.Visible = film;
-            textBoxFilmJaar.Visible = film;
-            textBoxFilmProducer.Visible = film;
-            textBoxFilmRegisseur.Visible = film;
-            textBoxFilmTitel.Visible = film;
-
-            labelSerieSeizoenen.Visible = !film;
-            labelSerieTitel.Visible = !film;
-            textBoxSerieSeizoenen.Visible = !film;
-            textBoxSerieTitel.Visible = !film;
-        }
-
-        /// <summary>
-        /// Verander de zichtbaarheid van alle controls die te maken hebben met het toevoegen van een Rating.
-        /// </summary>
-        /// <param name="visibility">true voor zichtbaar, false voor onzichtbaar</param>
-        private void ChangeRatingVisibility(bool visibility)
-        {
-            labelRating.Visible = visibility;
-            labelNieuweRating.Visible = visibility;
-            buttonVoegRatingToe.Visible = visibility;
-            textBoxRating.Visible = visibility;
-        }
-
-        private void ButtonVoegRatingToe_Click(object sender, EventArgs e)
-        {
-            if (radioButtonFilm.Checked)
-            {
-                Film keuze = (Film)comboBoxKeuze.SelectedItem;
-                keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
-                textBoxRating.ResetText();
-                labelRating.Text = string.Format(rating, keuze.Titel, keuze.Rating);
-            }
-            else
-            {
-                Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
-                keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
-                textBoxRating.ResetText();
-                labelRating.Text = string.Format(rating, keuze.Titel, keuze.Rating);
-            }
-
+            ChangeRatingVisibility(false);
         }
     }
+
+    private void UpdateSerieRating()
+    {
+        Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
+        try
+        {
+            labelRating.Text = string.Format(rating, keuze.Titel, keuze.Rating);
+            ChangeRatingVisibility(true);
+        }
+        catch (Exception)
+        {
+            ChangeRatingVisibility(false);
+        }
+
+    }
+
+    private void EmptyTextBoxes()
+    {
+        foreach (Control control in Controls)//We loopen over elke Control die op onze form staat (een Control is een TextBox, Button, of iets anders waarmee de gebruiker interactie kan hebben)
+        {
+            if (control is TextBox)//We checken ofdat de Control van het type TextBox is
+                control.ResetText();//We resetten de Text-property naar de standaard waarde (in dit geval leeg)
+        }
+    }
+    /// <summary>
+    /// Verandert de zichtbaarheid van de velden voor Film & Serie
+    /// </summary>
+    /// <param name="film">Op true om film zichtbaar te maken en serie onzichtbaar. False voor het omgekeerde effect</param>
+    private void ChangeVisibility(bool film)
+    {
+        labelFilmGenre.Visible = film;
+        labelFilmJaar.Visible = film;
+        labelFilmProducer.Visible = film;
+        labelFilmRegisseur.Visible = film;
+        labelFilmTitel.Visible = film;
+        textBoxFilmGenre.Visible = film;
+        textBoxFilmJaar.Visible = film;
+        textBoxFilmProducer.Visible = film;
+        textBoxFilmRegisseur.Visible = film;
+        textBoxFilmTitel.Visible = film;
+
+        labelSerieSeizoenen.Visible = !film;
+        labelSerieTitel.Visible = !film;
+        textBoxSerieSeizoenen.Visible = !film;
+        textBoxSerieTitel.Visible = !film;
+    }
+
+    /// <summary>
+    /// Verander de zichtbaarheid van alle controls die te maken hebben met het toevoegen van een Rating.
+    /// </summary>
+    /// <param name="visibility">true voor zichtbaar, false voor onzichtbaar</param>
+    private void ChangeRatingVisibility(bool visibility)
+    {
+        labelRating.Visible = visibility;
+        labelNieuweRating.Visible = visibility;
+        buttonVoegRatingToe.Visible = visibility;
+        textBoxRating.Visible = visibility;
+    }
+
+    private void ButtonVoegRatingToe_Click(object sender, EventArgs e)
+    {
+        if (radioButtonFilm.Checked)
+        {
+            Film keuze = (Film)comboBoxKeuze.SelectedItem;
+            keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
+            textBoxRating.ResetText();
+            labelRating.Text = string.Format(rating, keuze.Titel, keuze.Rating);
+        }
+        else
+        {
+            Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
+            keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
+            textBoxRating.ResetText();
+            labelRating.Text = string.Format(rating, keuze.Titel, keuze.Rating);
+        }
+
+    }
+}
 ```
 Deze code gaat niet meteen werken, omdat je nog referenties mist. Om dit op te lossen klik je rechts op `References` en vervolgens op `Add Reference`.
 
