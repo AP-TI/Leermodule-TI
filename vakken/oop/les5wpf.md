@@ -247,160 +247,183 @@ class Bankrekening
             <TextBox Height="25px" Width="95px" Name="textBoxRating"></TextBox>
             <Button Width="95px" Height="25px" Margin="10,0,0,0" Name="buttonVoegRatingToe" Click="ButtonVoegRatingToe_Click">Beoordeel</Button>
         </WrapPanel>
+        <Image Height="320" Width="180" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,40,40" Name="affiche"></Image>
     </Grid>
 </Window>
+
 ```
 ### Klasse MainWindow (MainWindow.xaml.cs)
 ```csharp
 public partial class MainWindow : Window
+{
+    private string rating = "De huidige rating voor {0} is {1}";
+    private List<Film> films;
+    private List<Serie> series;
+    public MainWindow()
     {
-        private List<Film> films;
-        private List<Serie> series;
-        public MainWindow()
-        {
-            InitializeComponent();
-            films = new List<Film>();
-            series = new List<Serie>();
-        }
+        InitializeComponent();
+        films = new List<Film>();
+        series = new List<Serie>();
+    }
 
-        private void CheckedChanged(object sender, RoutedEventArgs e)
+    private void CheckedChanged(object sender, RoutedEventArgs e)
+    {
+        if ((bool)serie.IsChecked)
         {
-            if ((bool)serie.IsChecked)
-            {
-                PanelSerie.Visibility = Visibility.Visible;
-                PanelFilm.Visibility = Visibility.Hidden;
-                SeriesUpdaten();
-            }
-            else
-            {
-                PanelSerie.Visibility = Visibility.Hidden;
-                PanelFilm.Visibility = Visibility.Visible;
-                FilmsUpdaten();
-            }
+            PanelSerie.Visibility = Visibility.Visible;
+            PanelFilm.Visibility = Visibility.Hidden;
+            SeriesUpdaten();
         }
+        else
+        {
+            PanelSerie.Visibility = Visibility.Hidden;
+            PanelFilm.Visibility = Visibility.Visible;
+            FilmsUpdaten();
+        }
+    }
 
-        private void VoegToe(object sender, RoutedEventArgs e)
+    private void VoegToe(object sender, RoutedEventArgs e)
+    {
+        if ((bool)film.IsChecked && IsFilled())
         {
-            if ((bool)film.IsChecked && IsFilled())
-            {
-                films.Add(new Film(textBoxFilmTitel.Text, textBoxFilmProducer.Text, textBoxFilmRegisseur.Text, textBoxFilmGenre.Text, int.Parse(textBoxFilmJaar.Text)));
-                EmptyTextBoxes();
-                FilmsUpdaten();
-            }
-            else if (IsFilled())
-            {
-                series.Add(new Serie(textBoxSerieTitel.Text, int.Parse(textBoxSerieSeizoenen.Text)));
-                EmptyTextBoxes();
-                SeriesUpdaten();
-            }
-            else
-                MessageBox.Show("Niet alle velden zijn gevuld", "Opgelet!", MessageBoxButton.OK);
+            films.Add(new Film(textBoxFilmTitel.Text, textBoxFilmProducer.Text, textBoxFilmRegisseur.Text, textBoxFilmGenre.Text, int.Parse(textBoxFilmJaar.Text)));
+            EmptyTextBoxes();
+            FilmsUpdaten();
         }
+        else if (IsFilled())
+        {
+            series.Add(new Serie(textBoxSerieTitel.Text, int.Parse(textBoxSerieSeizoenen.Text)));
+            EmptyTextBoxes();
+            SeriesUpdaten();
+        }
+        else
+            MessageBox.Show("Niet alle velden zijn gevuld", "Opgelet!", MessageBoxButton.OK);
+    }
 
-        private bool IsFilled()
-        {
-            if ((bool)film.IsChecked)
-                return textBoxFilmGenre.Text.Length != 0 && textBoxFilmJaar.Text.Length != 0 && textBoxFilmProducer.Text.Length != 0 && textBoxFilmRegisseur.Text.Length != 0 && textBoxFilmTitel.Text.Length != 0;
-            else
-                return textBoxSerieSeizoenen.Text.Length != 0 && textBoxSerieTitel.Text.Length != 0;
-        }
-        private void EmptyTextBoxes()
-        {
-            if (PanelSerie.IsVisible)
-                foreach (WrapPanel wrapPanel in PanelSerie.Children.OfType<WrapPanel>())
-                {
-                    foreach (TextBox textBox in wrapPanel.Children.OfType<TextBox>())
-                        textBox.Clear();
-                }
-            else
-                foreach (WrapPanel wrapPanel in PanelFilm.Children.OfType<WrapPanel>())
-                {
-                    foreach (TextBox textBox in wrapPanel.Children.OfType<TextBox>())
-                        textBox.Clear();
-                }
-        }
-        private void SeriesUpdaten()
-        {
-            comboBoxKeuze.ItemsSource = null;
-            comboBoxKeuze.ItemsSource = series;
-        }
-        private void FilmsUpdaten()
-        {
-            comboBoxKeuze.ItemsSource = null;
-            comboBoxKeuze.ItemsSource = films;
-        }
+    private bool IsFilled()
+    {
+        if ((bool)film.IsChecked)
+            return textBoxFilmGenre.Text.Length != 0 && textBoxFilmJaar.Text.Length != 0 && textBoxFilmProducer.Text.Length != 0 && textBoxFilmRegisseur.Text.Length != 0 && textBoxFilmTitel.Text.Length != 0;
+        else
+            return textBoxSerieSeizoenen.Text.Length != 0 && textBoxSerieTitel.Text.Length != 0;
+    }
+    private void EmptyTextBoxes()
+    {
+        if (PanelSerie.IsVisible)
+            foreach (WrapPanel wrapPanel in PanelSerie.Children.OfType<WrapPanel>())
+            {
+                foreach (TextBox textBox in wrapPanel.Children.OfType<TextBox>())
+                    textBox.Clear();
+            }
+        else
+            foreach (WrapPanel wrapPanel in PanelFilm.Children.OfType<WrapPanel>())
+            {
+                foreach (TextBox textBox in wrapPanel.Children.OfType<TextBox>())
+                    textBox.Clear();
+            }
+    }
+    private void SeriesUpdaten()
+    {
+        comboBoxKeuze.ItemsSource = null;
+        comboBoxKeuze.ItemsSource = series;
+    }
+    private void FilmsUpdaten()
+    {
+        comboBoxKeuze.ItemsSource = null;
+        comboBoxKeuze.ItemsSource = films;
+    }
 
-        private void UpdateFilmRating()
+    private void UpdateFilmRating()
+    {
+        Film keuze = (Film)comboBoxKeuze.SelectedItem;
+        try
         {
-            Film keuze = (Film)comboBoxKeuze.SelectedItem;
+            labelRating.Content = string.Format(rating, keuze.Titel, keuze.Rating);
+            ChangeRatingVisibility(Visibility.Visible);
             try
             {
-                labelRating.Content = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
-                ChangeRatingVisibility(Visibility.Visible);
+                string result;
+                using (WebClient client = new WebClient())
+                {
+                    result = client.DownloadString("https://sg.media-imdb.com/suggests/" + keuze.Titel.Substring(0, 1).ToLower() + "/" + keuze.Titel + ".json");
+                }
+                result = result.Substring(result.IndexOf("{"), result.Length - result.IndexOf("{") - 1);
+
+                dynamic search = JsonConvert.DeserializeObject(result);
+                string url = search.d[0].i[0];
+                affiche.Source = new BitmapImage(new Uri(url));
             }
-            catch (Exception)
+            catch (System.InvalidOperationException e)
             {
-                ChangeRatingVisibility(Visibility.Hidden);
+                labelRating.Content += "      |      Geen afbeelding gevonden :(";
+            }
+            catch (Exception e)
+            {
+                labelRating.Content += "      |      Er is iets fout gegaan tijdens het ophalen van de afbeelding.";
             }
         }
+        catch (Exception)
+        {
+            ChangeRatingVisibility(Visibility.Hidden);
+        }
+    }
 
-        private void UpdateSerieRating()
+    private void UpdateSerieRating()
+    {
+        Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
+        try
+        {
+            labelRating.Content = string.Format(rating, keuze.Titel, keuze.Rating);
+            ChangeRatingVisibility(Visibility.Visible);
+        }
+        catch (Exception)
+        {
+            ChangeRatingVisibility(Visibility.Hidden);
+        }
+    }
+    /// <summary>
+    /// Verander de zichtbaarheid van alle controls die te maken hebben met het toevoegen van een Rating.
+    /// </summary>
+    /// <param name="visibility">Visibility.Visible voor zichtbaar, Visibility.Hidden voor onzichtbaar</param>
+    private void ChangeRatingVisibility(Visibility visibility)
+    {
+        labelRating.Visibility = visibility;
+        labelNieuweRating.Visibility = visibility;
+        buttonVoegRatingToe.Visibility = visibility;
+        textBoxRating.Visibility = visibility;
+        panelRating.Visibility = visibility;
+    }
+
+    private void ComboBoxKeuze_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if ((bool)serie.IsChecked)
+            UpdateSerieRating();
+        else
+            UpdateFilmRating();
+    }
+
+    private void ButtonVoegRatingToe_Click(object sender, RoutedEventArgs e)
+    {
+        if ((bool)film.IsChecked)
+        {
+            Film keuze = (Film)comboBoxKeuze.SelectedItem;
+            keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
+            textBoxRating.Clear();
+            labelRating.Content = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
+        }
+        else
         {
             Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
             try
             {
-                labelRating.Content = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
-                ChangeRatingVisibility(Visibility.Visible);
-            }
-            catch (Exception)
-            {
-                ChangeRatingVisibility(Visibility.Hidden);
-            }
-        }
-        /// <summary>
-        /// Verander de zichtbaarheid van alle controls die te maken hebben met het toevoegen van een Rating.
-        /// </summary>
-        /// <param name="visibility">Visibility.Visible voor zichtbaar, Visibility.Hidden voor onzichtbaar</param>
-        private void ChangeRatingVisibility(Visibility visibility)
-        {
-            labelRating.Visibility = visibility;
-            labelNieuweRating.Visibility = visibility;
-            buttonVoegRatingToe.Visibility = visibility;
-            textBoxRating.Visibility = visibility;
-            panelRating.Visibility = visibility;
-        }
-
-        private void ComboBoxKeuze_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if ((bool)serie.IsChecked)
-                UpdateSerieRating();
-            else
-                UpdateFilmRating();
-        }
-
-        private void ButtonVoegRatingToe_Click(object sender, RoutedEventArgs e)
-        {
-            if ((bool)film.IsChecked)
-            {
-                Film keuze = (Film)comboBoxKeuze.SelectedItem;
                 keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
-                textBoxRating.Clear();
-                labelRating.Content = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
             }
-            else
+            catch (System.FormatException)
             {
-                Serie keuze = (Serie)comboBoxKeuze.SelectedItem;
-                try
-                {
-                    keuze.VoegRatingToe(double.Parse(textBoxRating.Text));
-                }
-                catch (System.FormatException)
-                {
-                    MessageBox.Show("Kijk invoer na", "Ej!", MessageBoxButton.OK);
-                }
-                textBoxRating.Clear();
-                labelRating.Content = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
+                MessageBox.Show("Kijk invoer na", "Ej!", MessageBoxButton.OK);
             }
+            textBoxRating.Clear();
+            labelRating.Content = $"De huidige rating voor {keuze.Titel} is {keuze.Rating}";
         }
     }
 ```
