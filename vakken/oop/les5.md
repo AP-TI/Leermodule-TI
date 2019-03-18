@@ -591,11 +591,11 @@ public partial class Imdb : Form
             }
             catch (System.InvalidOperationException e)
             {
-                labelRating.Text = labelRating.Text + "      |      Geen afbeelding gevonden :(";
+                labelRating.Text += "      |      Geen afbeelding gevonden :(";
             }
             catch (Exception e)
             {
-                labelRating.Text = labelRating.Text + "      |      Er is iets fout gegaan tijdens het ophalen van de afbeelding.";
+                labelRating.Text += "      |      Er is iets fout gegaan tijdens het ophalen van de afbeelding.";
             }
         }
         catch (Exception)
