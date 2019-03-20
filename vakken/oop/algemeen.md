@@ -7,5 +7,4 @@
 - [les5](les5.md)
   - [Uitbreiding: WPF (geen leerstof)](les5wpf.md)
 - [les exceptions](lesexceptions.md)
-
 - [7 - herhalingsoefening met GUI](7.md)
