@@ -5,7 +5,7 @@
 
 ![error](afbeeldingen/functionerror.png)
 
-Als je `select` typt en vervolgens de gewenste function uit de Object Explorer naar het query-venster sleept, dan zie je een rood lijntje. Om dit op te lossen doe je gewoon de vierkante haakjes weg.
+Je bent vergeten een parameterlijst mee te geven. In dit geval verwacht de functie geen parameters, dus geven we gewoon een lege parameterlijst mee door achter de functie `()` te typen.
 
 ![error fixed](afbeeldingen/errorfixed.png)
 
