@@ -13,5 +13,3 @@
 ## Wiskunde
 - [Theorie](/vakken/wiskunde/algemeen_theorie.md)
 - [Oefeningen](/vakken/wiskunde/algemeen_oefeningen.md)
-## Bedrijfsbeleid
-- [Theorie](/vakken/bedrijfsbeleid/algemeen.md)

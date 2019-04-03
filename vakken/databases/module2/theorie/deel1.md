@@ -12,7 +12,7 @@ WHERE
 	GEWONNEN + VERLOREN BETWEEN 2 AND 4
 ;
 ```
-> GEWONNEN + VERLOREN geeft een variabele integer. Enkel wanneer deze som tussen de constante 2 en constante 4 uitkomt (2 en 4 inbegrepen) wordt de wedstrijdnummer behouden in het resultaat. 
+> GEWONNEN + VERLOREN geeft een variabele integer. Enkel wanneer deze som tussen de constante 2 en constante 4 uitkomt (2 en 4 inbegrepen) wordt de wedstrijdnummer behouden in het resultaat.
 
 ### LIKE
 
@@ -118,7 +118,7 @@ WHERE
 ;
 ```
 
-→ 
+→
 
 ```sql
 WHERE
@@ -132,7 +132,7 @@ WHERE
 SELECT
 	SPELERSNR
 FROM
-	BOETES 
+	BOETES
 WHERE
 	NOT(BEDRAG = 25)
 ;
@@ -152,15 +152,3 @@ WHERE
 	)
 ;
 ```
-
-### Reikwijdte van kolom bij subquery’s
-
-![gecorreleerde_subquery](afb/gecorreleerde_subquery.png)
-
-> Q2 maakt gebruik van de tabel SPELERS (alias S) uit Q1. Dit maakt van Q2 een gecorreleerde subquery. Gebruik in zulke gevallen altijd aliases voor kolomnamen, dit maakt het veel overzichtelijker.
-
-> Q1 haalt kolommen SPELERSNR en NAAM uit tabel SPELERS, en steekt dit in een tussenresultaat.
-
-> Q2 kijkt voor elk SPELERSNR in het tussenresultaat of dit voorkomt in kolom SPELERSNR van tabel BOETES (dit betekent zoveel als: kijk voor elke spelersnummer in het tussenresultaat of die een boete heeft gehad). Wanneer dit het geval is, wordt de spelersnummer weerhouden in het eindresultaat. Zoniet, wordt de spelersnummer niet weerhouden. Zo krijgt men uiteindelijk een lijst van spelersnummers en namen van alle spelers met een boete.
-
-

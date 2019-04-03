@@ -6,5 +6,3 @@
 ## Systeemanalyse
 - [Oefeningen](/vakken/systeemanalyse/module1/algemeen.md)
 - [Het grote systeemanalyse afkijkblad module 1](/vakken/systeemanalyse/module1/afkijkblad.md)
-## Systeembeheer
-- [Samenvattingen](/vakken/systeembeheer/algemeen.md)

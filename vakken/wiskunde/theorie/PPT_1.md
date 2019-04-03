@@ -148,5 +148,3 @@ Conversie naar een macht van 2:
 - Omgekeerd net hetzelfde. Converteer elk cijfer om naar zijn binaire waarde , voeg voorloop- en naloopnullen toe en plak alles aan elkaar. Vergeet de komma niet.
 
 ! Steeds werken via het binair formaat, NIET decimaal
-
-Oefeningen: /\* COMING \*/
