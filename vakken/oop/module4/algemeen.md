@@ -1,2 +1,2 @@
 # OOP
-- [les1 (nog niet gecontroleerd)](les1.md)
+- [les1](les1.md)
