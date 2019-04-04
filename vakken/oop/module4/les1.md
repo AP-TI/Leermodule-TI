@@ -293,10 +293,7 @@ public partial class Form1 : Form
 
     private void CheckedChanged(object sender, EventArgs e)
     {
-        if (radioButtonKatoen.Checked)
-            ChangeVisibility(true);
-        else
-            ChangeVisibility(false);
+        ChangeVisibility(radioButtonKatoen.Checked);
     }
 
     /// <summary>
@@ -311,13 +308,9 @@ public partial class Form1 : Form
 
     private void ClearGroupBox()
     {
-        foreach(Control control in groupBoxGegevensStof.Controls)
+        foreach(TextBox textBox in groupBoxGegevensStof.Controls.OfType<TextBox>())
         {
-            if(control.GetType() == typeof(TextBox))
-            {
-                TextBox textBox = (TextBox)control;
-                textBox.Clear();
-            }
+            textBox.Clear();
         }
     }
 
@@ -337,14 +330,9 @@ public partial class Form1 : Form
         else
             MessageBox.Show(bericht, "Er is iets fout gegaan", MessageBoxButtons.OK, MessageBoxIcon.Error);
     }
-
-    private void Form1_Load(object sender, EventArgs e)
-    {
-
-    }
 }
 ```
-### Klasse winkel
+### Klasse Winkel
 ```csharp
 class Winkel
 {
@@ -402,98 +390,96 @@ In principe zijn deze alledrie hetzelfde als in oefening 4, maar ik heb echter e
 ### Klasse Stof
 ```csharp
 enum Kwaliteitslabels { A, B, C }
-class Stof
-{
-    public decimal PrijsPerMeter { get; set; }
-    public decimal KrimpPercentage { get; set; }
-    public string Naam { get; set; }
-    public string Designer { get; set; }
-    public Kwaliteitslabels Kwaliteitslabel { get; set; }
-
-    public Stof(decimal prijsPerMeter, decimal krimpPercentage, string naam, string designer, Kwaliteitslabels kwaliteitslabel)
+    class Stof
     {
-        PrijsPerMeter = prijsPerMeter;
-        KrimpPercentage = krimpPercentage;
-        Naam = naam;
-        Designer = designer;
-        Kwaliteitslabel = kwaliteitslabel;
-    }
-    public Stof(decimal prijsPerMeter, string naam, string designer) :this(prijsPerMeter, 1, naam, designer, Kwaliteitslabels.C)
-    {
+        public decimal PrijsPerMeter { get; set; }
+        public decimal KrimpPercentage { get; set; }
+        public string Naam { get; set; }
+        public string Designer { get; set; }
+        public Kwaliteitslabels Kwaliteitslabel { get; set; }
 
-    }
+        public Stof(decimal prijsPerMeter, decimal krimpPercentage, string naam, string designer, Kwaliteitslabels kwaliteitslabel)
+        {
+            PrijsPerMeter = prijsPerMeter;
+            KrimpPercentage = krimpPercentage;
+            Naam = naam;
+            Designer = designer;
+            Kwaliteitslabel = kwaliteitslabel;
+        }
+        public Stof(decimal prijsPerMeter, string naam, string designer) :this(prijsPerMeter, 1, naam, designer, Kwaliteitslabels.C)
+        {
 
-    public virtual string Inkorten()
-    {
-        return "Geen knipmethode gedefinieerd";
-    }
+        }
 
-    public override string ToString()
-    {
-        return $"Prijs per meter: {PrijsPerMeter}\nNaam: {Naam}\nDesigner: {Designer}\nKwaliteitslabel: {Kwaliteitslabel}\nKnipmethode: {Inkorten()}";
+        public virtual string Inkorten()
+        {
+            return "Geen knipmethode gedefinieerd";
+        }
+
+        public override string ToString()
+        {
+            return $"Prijs per meter: {PrijsPerMeter:C}\nNaam: {Naam}\nDesigner: {Designer}\nKwaliteitslabel: {Kwaliteitslabel}\nKnipmethode: {Inkorten()}";
+        }
     }
-}
 ```
 ### Klasse Stretchstof
 ```csharp
 class Stretchstof : Stof
-{
-    public decimal Stretchpercentage { get; set; }
-    public bool MagInDroogkast { get; set; }
+    {
+        public decimal Stretchpercentage { get; set; }
+        public bool MagInDroogkast { get; set; }
 
-    public Stretchstof(decimal prijsPerMeter, decimal krimpPercentage, string naam, string designer, Kwaliteitslabels kwaliteitslabel, decimal stretchpercentage, bool magInDroogkast) : base(prijsPerMeter, krimpPercentage, naam, designer, kwaliteitslabel)
-    {
-        Stretchpercentage = stretchpercentage;
-        MagInDroogkast = magInDroogkast;
-    }
-    public Stretchstof(decimal prijsPerMeter, string naam, string designer, decimal stretchpercentage, bool magInDroogkast) : this(prijsPerMeter, 1, naam, designer, Kwaliteitslabels.B, stretchpercentage, magInDroogkast)
-    {
-    }
-    public override string Inkorten()
-    {
-        return Knippen();
-    }
+        public Stretchstof(decimal prijsPerMeter, decimal krimpPercentage, string naam, string designer, Kwaliteitslabels kwaliteitslabel, decimal stretchpercentage, bool magInDroogkast) : base(prijsPerMeter, krimpPercentage, naam, designer, kwaliteitslabel)
+        {
+            Stretchpercentage = stretchpercentage;
+            MagInDroogkast = magInDroogkast;
+        }
+        public Stretchstof(decimal prijsPerMeter, string naam, string designer, decimal stretchpercentage, bool magInDroogkast) : this(prijsPerMeter, 1, naam, designer, Kwaliteitslabels.B, stretchpercentage, magInDroogkast)
+        {
+        }
+        public override string Inkorten()
+        {
+            return Knippen();
+        }
 
-    public string Knippen()
-    {
-        return "Knippen";
-    }
+        public string Knippen()
+        {
+            return "Knippen";
+        }
 
-    public override string ToString()
-    {
-        string droogkast = MagInDroogkast ? "Deze stof mag in de droogkast" : "Deze stof mag niet in de droogkast";
-        return base.ToString() + $"\nStretchpercentage: {Stretchpercentage}\n{droogkast}";
+        public override string ToString()
+        {
+            return base.ToString() + $"\nStretchpercentage: {Stretchpercentage:P}\n{(MagInDroogkast ? "Deze stof mag in de droogkast" : "Deze stof mag niet in de droogkast")}";
+        }
     }
-}
 ```
 ### Klasse Katoen
 ```csharp
 internal class Katoen : Stof
-{
-    public bool Bio { get; set; }
+    {
+        public bool IsBio { get; set; }
 
-    public Katoen(decimal prijsPerMeter, decimal krimpPercentage, string naam, string designer, Kwaliteitslabels kwaliteitslabel, bool bio) : base(prijsPerMeter, krimpPercentage, naam, designer, kwaliteitslabel)
-    {
-        Bio = bio;
-    }
-    public Katoen(decimal prijsPerMeter, string naam, string designer, bool bio) : this(prijsPerMeter, 0, naam, designer, Kwaliteitslabels.A, bio)
-    {
+        public Katoen(decimal prijsPerMeter, decimal krimpPercentage, string naam, string designer, Kwaliteitslabels kwaliteitslabel, bool isBio) : base(prijsPerMeter, krimpPercentage, naam, designer, kwaliteitslabel)
+        {
+            IsBio = isBio;
+        }
+        public Katoen(decimal prijsPerMeter, string naam, string designer, bool isBio) : this(prijsPerMeter, 0, naam, designer, Kwaliteitslabels.A, isBio)
+        {
 
-    }
+        }
 
-    public override string Inkorten()
-    {
-        return Scheuren();
-    }
+        public override string Inkorten()
+        {
+            return Scheuren();
+        }
 
-    public string Scheuren()
-    {
-        return "Scheuren";
+        public string Scheuren()
+        {
+            return "Scheuren";
+        }
+        public override string ToString()
+        {
+            return base.ToString() + $"\n{(IsBio ? "Biologisch" : "Niet biologisch")}";
+        }
     }
-    public override string ToString()
-    {
-        string bio = Bio ? "Biologisch" : "Niet biologisch";
-        return base.ToString() + $"\n{bio}";
-    }
-}
 ```
