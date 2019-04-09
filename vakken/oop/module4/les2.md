@@ -1,8 +1,8 @@
 # Les 2
 ## Oefening 1
-![Oefening 1](les2_oefening1.png)
+![Oefening 1](afbeeldingen/les2_oefening1.png)
 
-![Vertraging toegevoegd messagebox](les2_oefening1_messagebox.png)
+![Vertraging toegevoegd messagebox](afbeeldingen/les2_oefening1_messagebox.png)
 
 ### Klasse Form1
 ```csharp
