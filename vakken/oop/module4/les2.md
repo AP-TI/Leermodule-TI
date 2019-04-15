@@ -182,3 +182,129 @@ class Goederentrein : Trein
     }
 }
 ```
+## Oefening 3
+![oefening 3](afbeeldingen/les2_oefening3.png)
+### Klasse Form1
+```csharp
+public partial class Form1 : Form
+    {
+        List<Trein> treinen;
+        List<Passagier> passagiers;
+        public Form1()
+        {
+            InitializeComponent();
+            treinen = new List<Trein>
+            {
+                new Passagierstrein(1, Eindbestemmingen.AntwerpenCentraal, new DateTime(2019, 4, 9, 21, 26, 14), 1200),
+                new Goederentrein(2, Eindbestemmingen.BrusselZuid, new DateTime(2019, 4, 9, 21, 29, 16), 100000, 140000, true),
+                new Passagierstrein(3, Eindbestemmingen.Mechelen, new DateTime(2019, 4, 9, 22, 50, 14), 400)
+            };
+            passagiers = new List<Passagier>
+            {
+                new EersteKlassePassagier("Tabatabaie", "Dana", new Adres("Ellermanstraat", "33", "2000", "Antwerpen"), "230205024040410841820"),
+                new TweedeKlassePassagier("Janssens", "Maxim", new Adres("Lange Nieuwstraat", "101", "2000", "Antwerpen"), "3882323297923572928981")
+            };
+
+            listBoxTreinen.DataSource = treinen;
+        }
+
+        private void ButtonVertragingToevoegen_Click(object sender, EventArgs e)
+        {
+            Trein geselecteerdeTrein = (Trein)listBoxTreinen.SelectedItem;
+            geselecteerdeTrein.VoegVertragingToe(int.Parse(textBoxVertraging.Text));
+            MessageBox.Show($"De aankomst in {geselecteerdeTrein.Eindbestemming} van trein {geselecteerdeTrein.Nummer} was gepland om {geselecteerdeTrein.Aankomst.ToLongTimeString()} en wordt verwacht om {geselecteerdeTrein.Aankomst.AddMinutes(geselecteerdeTrein.Vertraging).ToLongTimeString()}. Er is momenteel een totale vertraging van {geselecteerdeTrein.Vertraging} minuten.", "Vertraging toegevoegd", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            listBoxTreinen.DataSource = null;
+            listBoxTreinen.DataSource = treinen;
+        }
+
+        private void ListBoxTreinen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxTreinen.SelectedItem is Goederentrein trein)
+                labelInfoGoederenTrein.Text = $"Brutogewicht: {trein.BrutoGewicht}\nNettogewicht: {trein.NettoGewicht}\nTarragewicht: {trein.BerekenTarraGewicht()}";
+            else
+                labelInfoGoederenTrein.ResetText();
+        }
+
+        private void TextBoxPassagierOpzoeken_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                string result = "Geen passagier met opgegeven rijksregisternummer gevonden.";
+                foreach(Passagier passagier in passagiers)
+                {
+                    if (passagier.Rijksregisternummer == textBoxZoekPassagier.Text)
+                        result = $"De passagier {passagier.Voornaam} {passagier.Naam} heeft de volgende privileges: {passagier.Privileges()}";
+                }
+                MessageBox.Show(result);
+            }
+        }
+    }
+```
+### Klasse Adres
+```csharp
+class Adres
+{
+    public string Straat { get; set; }
+    public string Huisnummer { get; set; }
+    public string Postcode { get; set; }
+    public string Gemeente { get; set; }
+
+    public Adres(string straat, string huisnummer, string postcode, string gemeente)
+    {
+        Straat = straat;
+        Huisnummer = huisnummer;
+        Postcode = postcode;
+        Gemeente = gemeente;
+    }
+
+    public override string ToString() => $"{Straat} {Huisnummer}\n{Postcode} {Gemeente}";
+}
+```
+### Klasse Passagier
+```csharp
+class Passagier
+{
+    public string Naam { get; set; }
+    public string Voornaam { get; set; }
+    public Adres Adres { get; set; }
+    public string Rijksregisternummer { get; set; }
+
+    public Passagier(string naam, string voornaam, Adres adres, string rijksregisternummer)
+    {
+        Naam = naam;
+        Voornaam = voornaam;
+        Adres = adres;
+        Rijksregisternummer = rijksregisternummer;
+    }
+
+    public virtual string Privileges() => "Geen extra privileges";
+
+    public override string ToString() => $"{Voornaam} {Naam}\n\n{Adres}";
+}
+```
+### Klasse EersteKlassePassagier
+```csharp
+class EersteKlassePassagier : Passagier
+{
+    public EersteKlassePassagier(string naam, string voornaam, Adres adres, string rijksregisternummer) : base(naam, voornaam, adres, rijksregisternummer)
+    {
+    }
+
+    public override string Privileges() => $"Stille ruimte, plaats voor een laptop en aansluiting op het elektriciteitsnet.";
+
+    public override string ToString() => "(1) " + base.ToString();
+}
+```
+### Klasse TweedeKlassePassagier
+```csharp
+class TweedeKlassePassagier : Passagier
+{
+    public TweedeKlassePassagier(string naam, string voornaam, Adres adres, string rijksregisternummer) : base(naam, voornaam, adres, rijksregisternummer)
+    {
+    }
+
+    public override string ToString() => "(2) " + base.ToString();
+}
+```
+### Klasse Trein, Passagierstrein en Goederentrein
+Blijven hetzelfde als in oefening 2.
