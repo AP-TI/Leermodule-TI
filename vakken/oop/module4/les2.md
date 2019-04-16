@@ -308,3 +308,168 @@ class TweedeKlassePassagier : Passagier
 ```
 ### Klasse Trein, Passagierstrein en Goederentrein
 Blijven hetzelfde als in oefening 2.
+## Oefening 4
+### Klasse Form1
+```csharp
+public partial class Form1 : Form
+{
+    List<Trein> treinen;
+    List<Passagier> passagiers;
+    public Form1()
+    {
+        InitializeComponent();
+        treinen = new List<Trein>
+        {
+            new Passagierstrein(1, Eindbestemmingen.AntwerpenCentraal, new DateTime(2019, 4, 9, 21, 26, 14), 1200),
+            new Goederentrein(2, Eindbestemmingen.BrusselZuid, new DateTime(2019, 4, 9, 21, 29, 16), 100000, 140000, true),
+            new Passagierstrein(3, Eindbestemmingen.Mechelen, new DateTime(2019, 4, 9, 22, 50, 14), 400)
+        };
+        passagiers = new List<Passagier>
+        {
+            new EersteKlassePassagier("Tabatabaie", "Dana", new Adres("Ellermanstraat", "33", "2000", "Antwerpen"), new DateTime(2000, 8, 24), Geslachten.Man, "230.2050.240--418.20"),//fout rijksregisternummer, zal door property worden veranderd naar 00.00.00-000.00
+            new TweedeKlassePassagier("Janssens", "Maxim", new Adres("Lange Nieuwstraat", "101", "2000", "Antwerpen"), new DateTime(2000, 8, 24), Geslachten.Man, "00.08.24-125.16"),
+            new TweedeKlassePassagier("De Peuter", "Kobe", new Adres("Ellermanstraat", "33", "2000", "Antwerpen"), new DateTime(1999, 8, 4), Geslachten.Man, "B"),//Geeft bisnummer 99.48.04-001.34
+            new TweedeKlassePassagier("Szapinszky", "Yanu", new Adres("Ellermanstraat", "33", "2000", "Antwerpen"), new DateTime(1999, 8, 4), Geslachten.Man, "B"),//Geeft bisnummer 99.48.04-003.36
+            new TweedeKlassePassagier("Withaegels", "Justin", new Adres("Ellermanstraat", "33", "2000", "Antwerpen"), new DateTime(1999, 8, 4), Geslachten.Man, "B"),//Geeft bisnummer 99.48.04-005.38
+            new TweedeKlassePassagier("Fz", "Yalda", new Adres("Ellermanstraat", "33", "2000", "Antwerpen"), new DateTime(1999, 8, 4), Geslachten.Vrouw, "B"),//Geeft bisnummer 99.48.04-002.35
+            new TweedeKlassePassagier("Deron", "Evelien", new Adres("Ellermanstraat", "33", "2000", "Antwerpen"), new DateTime(1999, 8, 4), Geslachten.Vrouw, "B")//Geeft bisnummer 99.48.04-004.37
+        };
+
+        listBoxTreinen.DataSource = treinen;
+    }
+
+    private void ButtonVertragingToevoegen_Click(object sender, EventArgs e)
+    {
+        Trein geselecteerdeTrein = (Trein)listBoxTreinen.SelectedItem;
+        geselecteerdeTrein.VoegVertragingToe(int.Parse(textBoxVertraging.Text));
+        MessageBox.Show($"De aankomst in {geselecteerdeTrein.Eindbestemming} van trein {geselecteerdeTrein.Nummer} was gepland om {geselecteerdeTrein.Aankomst.ToLongTimeString()} en wordt verwacht om {geselecteerdeTrein.Aankomst.AddMinutes(geselecteerdeTrein.Vertraging).ToLongTimeString()}. Er is momenteel een totale vertraging van {geselecteerdeTrein.Vertraging} minuten.", "Vertraging toegevoegd", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        listBoxTreinen.DataSource = null;
+        listBoxTreinen.DataSource = treinen;
+    }
+
+    private void ListBoxTreinen_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (listBoxTreinen.SelectedItem is Goederentrein trein)
+            labelInfoGoederenTrein.Text = $"Brutogewicht: {trein.BrutoGewicht}\nNettogewicht: {trein.NettoGewicht}\nTarragewicht: {trein.BerekenTarraGewicht()}";
+        else
+            labelInfoGoederenTrein.ResetText();
+    }
+
+    private void TextBoxPassagierOpzoeken_KeyUp(object sender, KeyEventArgs e)
+    {
+        if(e.KeyCode == Keys.Enter)
+        {
+            string result = "Geen passagier met opgegeven rijksregisternummer gevonden.";
+            foreach(Passagier passagier in passagiers)
+            {
+                if (passagier.Rijksregisternummer == textBoxZoekPassagier.Text)
+                    result = $"De passagier {passagier.Voornaam} {passagier.Naam} heeft de volgende privileges: {passagier.Privileges()}";
+            }
+            MessageBox.Show(result);
+        }
+    }
+}
+```
+### Klasse Passagier
+```csharp
+enum Geslachten { Man, Vrouw, Onbekend}
+    class Passagier
+    {
+        public string Naam { get; set; }
+        public string Voornaam { get; set; }
+        public Adres Adres { get; set; }
+        public DateTime Geboortedatum { get; set; }
+        public Geslachten Geslacht { get; set; }
+        private string rijksregisternummer;
+
+        static Dictionary<DateTime, int> bisMan = new Dictionary<DateTime, int>();
+        static Dictionary<DateTime, int> bisVrouw = new Dictionary<DateTime, int>();
+
+        public string Rijksregisternummer
+        {
+            get { return rijksregisternummer; }
+            set
+            {
+                if(value == "B")
+                {
+                    StringBuilder stringBuilder = new StringBuilder();
+                    if (Geslacht == Geslachten.Man && bisMan.TryGetValue(Geboortedatum, out int dagteller))
+                    {
+                        dagteller += 2;
+                        bisMan[Geboortedatum] = dagteller;
+                    }
+                    else if ((Geslacht == Geslachten.Vrouw || Geslacht == Geslachten.Onbekend) && bisVrouw.TryGetValue(Geboortedatum, out dagteller))
+                    {
+                        dagteller += 2;
+                        bisVrouw[Geboortedatum] = dagteller;
+                    }
+                    else if (Geslacht == Geslachten.Man)
+                    {
+                        dagteller = 1;
+                        bisMan.Add(Geboortedatum, dagteller);
+                    }
+                    else
+                    {
+                        dagteller = 2;
+                        bisVrouw.Add(Geboortedatum, dagteller);
+                    }
+                    int maandExtra = Geslacht == Geslachten.Onbekend ? 20 : 40;
+                    stringBuilder.Append($"{Geboortedatum.Year.ToString().Substring(2)}.{Geboortedatum.Month + maandExtra}.{Geboortedatum.Day.ToString("00")}-{dagteller.ToString("000")}.{(Geboortedatum.Year >= 2000 ? ((2 + int.Parse(Geboortedatum.Year.ToString().Substring(2) + (Geboortedatum.Month + maandExtra).ToString() + Geboortedatum.Day.ToString("00") + dagteller.ToString("000"))) % 97).ToString("00") : (int.Parse(Geboortedatum.Year.ToString().Substring(2) + (Geboortedatum.Month + maandExtra).ToString() + Geboortedatum.Day.ToString("00") + dagteller.ToString("000")) % 97).ToString("00"))}");
+                    rijksregisternummer = stringBuilder.ToString();
+                }
+                else if (Regex.IsMatch(value, @"\d{2}\.(0[0-9]|1[0-2])\.(0[0-9]|1[0-9]|2[0-9]|3[0-1])[-](99[0-8]|[0-9][0-8][0-9]|[0-8][0-9][0-9])\.\d{2}"))
+                {
+                    string zonderScheidingsTekens = Geboortedatum.Year >= 2000 ? 2 + value.Replace(".", "").Replace("-", "").Substring(0, 9) : value.Replace(".", "").Replace("-", "").Substring(0, 9);
+                    int rijksregisternummerGetal = int.Parse(zonderScheidingsTekens);
+                    if (97 - rijksregisternummerGetal % 97 == int.Parse(value.Substring(13, 2)))
+                        rijksregisternummer = value;
+                }
+                else
+                    rijksregisternummer = "00.00.00-000.00";
+            }
+        }
+
+
+        public Passagier(string naam, string voornaam, Adres adres, DateTime geboorteDatum, Geslachten geslacht, string rijksregisternummer)
+        {
+            Naam = naam;
+            Voornaam = voornaam;
+            Adres = adres;
+            Geboortedatum = geboorteDatum;
+            Geslacht = geslacht;
+            Rijksregisternummer = rijksregisternummer;
+        }
+
+        public virtual string Privileges() => "Geen extra privileges";
+
+        public override string ToString() => $"{Voornaam} {Naam}\n\n{Adres}";
+    }
+```
+### Klasse EersteKlassePassagier
+```csharp
+class EersteKlassePassagier : Passagier
+{
+    public EersteKlassePassagier(string naam, string voornaam, Adres adres, DateTime geboorteDatum, Geslachten geslacht, string rijksregisternummer) : base(naam, voornaam, adres, geboorteDatum, geslacht, rijksregisternummer)
+    {
+    }
+
+    public override string Privileges() => $"Stille ruimte, plaats voor een laptop en aansluiting op het elektriciteitsnet.";
+
+    public override string ToString() => "(1) " + base.ToString();
+}
+```
+### Klasse TweedeKlassePassagier
+```csharp
+class TweedeKlassePassagier : Passagier
+{
+    public TweedeKlassePassagier(string naam, string voornaam, Adres adres, DateTime geboorteDatum, Geslachten geslacht, string rijksregisternummer) : base(naam, voornaam, adres, geboorteDatum, geslacht, rijksregisternummer)
+    {
+    }
+
+    public override string ToString() => "(2) " + base.ToString();
+}
+```
+### Klasse Adres
+Blijft hetzelfde als in oefening 3.
+### Klasse Trein, Passagierstrein en Goederentrein
+Blijven hetzelfde als in oefening 2.
