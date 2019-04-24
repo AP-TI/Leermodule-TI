@@ -382,53 +382,10 @@ class Passagier
     public Geslachten Geslacht { get; set; }
     private string rijksregisternummer;
 
-    static Dictionary<DateTime, int> bisMan = new Dictionary<DateTime, int>();
-    static Dictionary<DateTime, int> bisVrouw = new Dictionary<DateTime, int>();
-
     public string Rijksregisternummer
     {
         get { return rijksregisternummer; }
-        set
-        {
-            if(value == "B")
-            {
-                StringBuilder stringBuilder = new StringBuilder();
-                if (Geslacht == Geslachten.Man && bisMan.TryGetValue(Geboortedatum, out int dagteller))
-                {
-                    dagteller += 2;
-                    bisMan[Geboortedatum] = dagteller;
-                }
-                else if ((Geslacht == Geslachten.Vrouw || Geslacht == Geslachten.Onbekend) && bisVrouw.TryGetValue(Geboortedatum, out dagteller))
-                {
-                    dagteller += 2;
-                    bisVrouw[Geboortedatum] = dagteller;
-                }
-                else if (Geslacht == Geslachten.Man)
-                {
-                    dagteller = 1;
-                    bisMan.Add(Geboortedatum, dagteller);
-                }
-                else
-                {
-                    dagteller = 2;
-                    bisVrouw.Add(Geboortedatum, dagteller);
-                }
-                int maandExtra = Geslacht == Geslachten.Onbekend ? 20 : 40;
-                stringBuilder.Append($"{Geboortedatum.Year.ToString().Substring(2)}.{Geboortedatum.Month + maandExtra}.{Geboortedatum.Day.ToString("00")}-{dagteller.ToString("000")}.{(Geboortedatum.Year >= 2000 ? ((2 + int.Parse(Geboortedatum.Year.ToString().Substring(2) + (Geboortedatum.Month + maandExtra).ToString() + Geboortedatum.Day.ToString("00") + dagteller.ToString("000"))) % 97).ToString("00") : (int.Parse(Geboortedatum.Year.ToString().Substring(2) + (Geboortedatum.Month + maandExtra).ToString() + Geboortedatum.Day.ToString("00") + dagteller.ToString("000")) % 97).ToString("00"))}");
-                rijksregisternummer = stringBuilder.ToString();
-            }
-            else if (Regex.IsMatch(value, @"^\d{2}\.(0[0-9]|1[0-2])\.(0[0-9]|1[0-9]|2[0-9]|3[0-1])[-](99[0-8]|[0-9][0-8][0-9]|[0-8][0-9][0-9])\.\d{2}$"))
-            {
-                string zonderScheidingsTekens = Geboortedatum.Year >= 2000 ? 2 + value.Replace(".", "").Replace("-", "").Substring(0, 9) : value.Replace(".", "").Replace("-", "").Substring(0, 9);
-                int rijksregisternummerGetal = int.Parse(zonderScheidingsTekens);
-                if (97 - rijksregisternummerGetal % 97 == int.Parse(value.Substring(13, 2)))
-                    rijksregisternummer = value;
-                else
-                    rijksregisternummer = "00.00.00-000.00";
-            }
-            else
-                rijksregisternummer = "00.00.00-000.00";
-        }
+        set { rijksregisternummer = VerifieerRijksRegisterNummer.Verwerk(value, Geslacht, Geboortedatum); }
     }
 
 
@@ -446,6 +403,58 @@ class Passagier
 
     public override string ToString() => $"{Voornaam} {Naam}\n\n{Adres}";
 }
+```
+### Klasse VerifieerRijksRegisterNummer
+```csharp
+static class VerifieerRijksRegisterNummer
+    {
+        static readonly Dictionary<DateTime, int> bisMan = new Dictionary<DateTime, int>();
+        static readonly Dictionary<DateTime, int> bisVrouw = new Dictionary<DateTime, int>();
+
+        public static string Verwerk(string input, Geslachten geslacht, DateTime geboortedatum)
+        {
+            string output;
+            if (input == "B")
+            {
+                StringBuilder stringBuilder = new StringBuilder();
+                if (geslacht == Geslachten.Man && bisMan.TryGetValue(geboortedatum, out int dagteller))
+                {
+                    dagteller += 2;
+                    bisMan[geboortedatum] = dagteller;
+                }
+                else if ((geslacht == Geslachten.Vrouw || geslacht == Geslachten.Onbekend) && bisVrouw.TryGetValue(geboortedatum, out dagteller))
+                {
+                    dagteller += 2;
+                    bisVrouw[geboortedatum] = dagteller;
+                }
+                else if (geslacht == Geslachten.Man)
+                {
+                    dagteller = 1;
+                    bisMan.Add(geboortedatum, dagteller);
+                }
+                else
+                {
+                    dagteller = 2;
+                    bisVrouw.Add(geboortedatum, dagteller);
+                }
+                int maandExtra = geslacht == Geslachten.Onbekend ? 20 : 40;
+                stringBuilder.Append($"{geboortedatum.Year.ToString().Substring(2)}.{geboortedatum.Month + maandExtra}.{geboortedatum.Day.ToString("00")}-{dagteller.ToString("000")}.{(geboortedatum.Year >= 2000 ? ((2 + int.Parse(geboortedatum.Year.ToString().Substring(2) + (geboortedatum.Month + maandExtra).ToString() + geboortedatum.Day.ToString("00") + dagteller.ToString("000"))) % 97).ToString("00") : (int.Parse(geboortedatum.Year.ToString().Substring(2) + (geboortedatum.Month + maandExtra).ToString() + geboortedatum.Day.ToString("00") + dagteller.ToString("000")) % 97).ToString("00"))}");
+                output = stringBuilder.ToString();
+            }
+            else if (Regex.IsMatch(input, @"^\d{2}\.(0[0-9]|1[0-2])\.(0[0-9]|1[0-9]|2[0-9]|3[0-1])[-](99[0-8]|[0-9][0-8][0-9]|[0-8][0-9][0-9])\.\d{2}$"))
+            {
+                string zonderScheidingsTekens = $"{(geboortedatum.Year >= 2000 ? "2" : "")}{input.Replace(".", "").Replace("-", "").Substring(0, 9)}";
+                int outputGetal = int.Parse(zonderScheidingsTekens);
+                if (97 - outputGetal % 97 == int.Parse(input.Substring(13, 2)))
+                    output = input;
+                else
+                    output = "00.00.00-000.00";
+            }
+            else
+                output = "00.00.00-000.00";
+            return output;
+        }
+    }
 ```
 ### Klasse EersteKlassePassagier
 ```csharp
