@@ -170,3 +170,26 @@ Daarna sorteren we gewoon onze lijst van passagiers, en geven we onze lijst even
 passagiers.Sort();
 listBoxPassagiers.DataSource = passagiers;
 ```
+## Oefening 3
+```csharp
+static void Main(string[] args)
+{
+    int[] numbers = new int[2];
+
+    try
+    {
+        numbers[0] = 23;
+        numbers[1] = 32;
+        numbers[2] = 42;
+    }
+    catch (IndexOutOfRangeException e)
+    {
+        Console.WriteLine(e.Message);
+    }
+
+
+    foreach (int i in numbers)
+        Console.WriteLine(i);
+    Console.ReadLine();
+}
+```
