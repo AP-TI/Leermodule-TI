@@ -193,3 +193,49 @@ static void Main(string[] args)
     Console.ReadLine();
 }
 ```
+## Oefening 4
+### Klasse Program
+```csharp
+class Program
+{
+    static void Main(string[] args)
+    {
+        try
+        {
+            Console.Write("Geef merk: ");
+            string merk = Console.ReadLine();
+            Console.Write("Geef kilometerstand: ");
+            int kilometers = int.Parse(Console.ReadLine());
+            Console.Write("Geef datum van ingebruikname: ");
+            DateTime ingebruiknamedatum = DateTime.Parse(Console.ReadLine());
+            Auto auto = new Auto(merk, kilometers, ingebruiknamedatum);
+            Console.WriteLine(auto);
+        }
+        catch (FormatException e)
+        {
+            Console.WriteLine(e.Message);
+        }
+    }
+}
+```
+### Klasse Auto
+```csharp
+class Auto
+    {
+        public string Merk { get; set; }
+        public decimal Kilometerstand { get; set; }
+        public DateTime Ingebruiknamedatum { get; set; }
+
+        public Auto(string merk, decimal kilometerstand, DateTime ingebruiknamedatum)
+        {
+            Merk = merk;
+            Kilometerstand = kilometerstand;
+            Ingebruiknamedatum = ingebruiknamedatum;
+        }
+
+        public override string ToString()
+        {
+            return $"Merk: {Merk}\nKilometerstand: {Kilometerstand}\nIngebruiknamedatum: {Ingebruiknamedatum}";
+        }
+    }
+```
