@@ -239,3 +239,28 @@ class Auto
         }
     }
 ```
+## Oefening 5
+### Klasse Form1
+```csharp
+public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void ButtonToevoegen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Auto auto = new Auto(textBoxMerk.Text, decimal.Parse(textBoxKilometerstand.Text), DateTime.Parse(textBoxIngebruiknamedatum.Text));
+                MessageBox.Show(auto.ToString());
+            }catch(FormatException ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+    }
+```
+### Klasse Auto
+Blijft hetzelfde als in oefening 4.
