@@ -6,78 +6,69 @@ De rest van de klasse blijft hetzelfde.
 Hetzelfde voor oefening 5.4 van module 3. `internal abstract class Wagen`
 ## Oefening 2
 ![oefening 2](afbeeldingen/streaming.png)
-### Interface IMedium
+### Abstracte klasse Medium
 ```csharp
-interface IMedium
+abstract class Medium
 {
-    string Naam { get; set; }
-    string Regisseur { get; set; }
-    List<Acteur> Acteurs { get; set; }
+    public string Naam { get; set; }
+    public string Regisseur { get; set; }
+    public List<Acteur> Acteurs { get; set; }
 
-    string Afspelen();
-    string Stoppen();
+    public abstract string Afspelen();
+    public abstract string Stoppen();
 }
 ```
 ### Klasse Film
 ```csharp
-class Film : IMedium
+class Film : Medium
 {
-    public string Naam { get; set; }
-    public string Regisseur { get; set; }
-    public List<Acteur> Acteurs { get; set; }
+      public Film(string naam, string regisseur, List<Acteur> acteurs)
+      {
+          Naam = naam;
+          Regisseur = regisseur;
+          Acteurs = acteurs;
+      }
 
-    public Film(string naam, string regisseur, List<Acteur> acteurs)
-    {
-        Naam = naam;
-        Regisseur = regisseur;
-        Acteurs = acteurs;
-    }
+      public override string Afspelen()
+      {
+          return "Gestart vanaf het begin.";
+      }
 
+      public override string Stoppen()
+      {
+          return "Gestopt met spelen.";
+      }
 
-
-    public string Afspelen()
-    {
-        return "Gestart vanaf het begin.";
-    }
-
-    public string Stoppen()
-    {
-        return "Gestopt met spelen.";
-    }
-
-    public override string ToString() => $"Film - {Naam}";
+      public override string ToString() => $"Film - {Naam}";
 }
 ```
 ### Klasse Serie
 ```csharp
-class Serie : IMedium
+class Serie : Medium
 {
-    public string Naam { get; set; }
-    public string Regisseur { get; set; }
-    public List<Acteur> Acteurs { get; set; }
-    public int AantalAfleveringen { get; set; }
-    public int HuidigeAflevering { get; set; }
+      public int AantalAfleveringen { get; set; }
+      public int HuidigeAflevering { get; set; }
 
-    public Serie(string naam, string regisseur, int aantalAfleveringen, List<Acteur> acteurs)
-    {
-        Naam = naam;
-        Regisseur = regisseur;
-        AantalAfleveringen = aantalAfleveringen;
-        HuidigeAflevering = 1;
-        Acteurs = acteurs;
-    }
+      public Serie(string naam, string regisseur, int aantalAfleveringen, List<Acteur> acteurs)
+      {
+          Naam = naam;
+          Regisseur = regisseur;
+          AantalAfleveringen = aantalAfleveringen;
+          HuidigeAflevering = 1;
+          Acteurs = acteurs;
+      }
 
-    public string Afspelen()
-    {
-        if(HuidigeAflevering < AantalAfleveringen + 1)
-            return $"Gestart vanaf aflevering {HuidigeAflevering++}";
-        HuidigeAflevering = 1;
-        return $"Terug opnieuw begonnen vanaf aflevering {HuidigeAflevering++}";
-    }
+      public override string Afspelen()
+      {
+          if(HuidigeAflevering < AantalAfleveringen + 1)
+              return $"Gestart vanaf aflevering {HuidigeAflevering++}";
+          HuidigeAflevering = 1;
+          return $"Terug opnieuw begonnen vanaf aflevering {HuidigeAflevering++}";
+      }
 
-    public string Stoppen() => $"Gestopt met spelen van aflevering {HuidigeAflevering - 1}";
+      public override string Stoppen() => $"Gestopt met spelen van aflevering {HuidigeAflevering - 1}";
 
-    public override string ToString() => $"Serie - {Naam}";
+      public override string ToString() => $"Serie - {Naam}";
 }
 ```
 ### Klasse Acteur
@@ -100,20 +91,19 @@ class Acteur
 ```csharp
 public partial class StreamingApplicatie : Form
 {
-    List<IMedium> media;
+    List<Medium> media;
     List<string> kanSpelenIn;
     public StreamingApplicatie()
     {
         InitializeComponent();
-        media = new List<IMedium>
+        media = new List<Medium>
         {
-            new Film("Interstellar", "Christopher Nolan", new List<Acteur>{ new Acteur("Matthew", "McConaughey"), new Acteur("Anne", "Hathaway") }),
-            new Serie("Spongebob", "Stephen Hillenburg", 20, new List<Acteur>{new Acteur("Tom", "Kenny"), new Acteur("Bill", "Fagerbakke"), new Acteur("Clancy", "Brown") })
+            new Serie("Spongebob", "Stephen Hillenburg", 20, new List<Acteur>{new Acteur("Tom", "Kenny"), new Acteur("Bill", "Fagerbakke"), new Acteur("Clancy", "Brown") }),
+            new Film("Interstellar", "Christopher Nolan", new List<Acteur>{ new Acteur("Matthew", "McConaughey"), new Acteur("Anne", "Hathaway") })
         };
         kanSpelenIn = new List<string>
         {
-            //Uncomment onderstaand lijntje om de applicatie te laten werken.
-            //"België",
+            "België",
             "Nederland",
             "Frankrijk"
         };
@@ -121,6 +111,7 @@ public partial class StreamingApplicatie : Form
         if (kanSpelenIn.Contains(huidigLand))
         {
             labelLand.Text = $"U bevindt zich momenteel in {huidigLand}";
+            media.Sort();
             listBoxMedia.DataSource = media;
         }
         else
@@ -133,13 +124,13 @@ public partial class StreamingApplicatie : Form
 
     private void ButtonStart_Click(object sender, EventArgs e)
     {
-        IMedium geselecteerdMedium = (IMedium)listBoxMedia.SelectedItem;
+        Medium geselecteerdMedium = (Medium)listBoxMedia.SelectedItem;
         labelResultaat.Text = geselecteerdMedium.Afspelen();
     }
 
     private void ButtonStop_Click(object sender, EventArgs e)
     {
-        IMedium geselecteerdMedium = (IMedium)listBoxMedia.SelectedItem;
+        Medium geselecteerdMedium = (Medium)listBoxMedia.SelectedItem;
         labelResultaat.Text = geselecteerdMedium.Stoppen();
     }
 }
