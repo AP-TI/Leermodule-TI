@@ -1,4 +1,4 @@
-# AP_2018-2019
+# ![](assets/apti.png) APTI 2018-2019
 - [Module 1](module1.md)
 - [Module 2](module2.md)
 - [Module 3](module3.md)
