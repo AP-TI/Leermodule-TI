@@ -6,7 +6,7 @@
 ## Programmeren 2
 - [Oefeningen](/vakken/programmeren/module2/algemeen.md)
 ## Gegevensanalyse
-- [Oefeningen](/vakken/gegevensanalyse/algemeen.md)
+- [Oefeningen](/vakken/gegevensanalyse/oefeningen.md)
 - [Normalisatie regels](/vakken/gegevensanalyse/normalisatie.md)
 - [Samenvatting](/vakken/gegevensanalyse/Samenvatting.md)
 - [XML-validator in Atom (AKA nooit meer kopieren en plakken naar die ene site)](/vakken/gegevensanalyse/xmlatom/xmlatom.md)
