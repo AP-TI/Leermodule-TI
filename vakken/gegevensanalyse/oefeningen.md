@@ -1,4 +1,5 @@
 - [Normalisatie voorbeeld powerpoint](oefeningen/norm0.md)
 - [Normalisatie Deel 1](oefeningen/norm1.md)
 - [Normalisatie Deel 2](oefeningen/norm2.md)
+- [ERD](oefeningen/erd.md)
 - [XML deel 1](oefeningen/xml1.md)
