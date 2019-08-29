@@ -324,3 +324,35 @@ Deze oefening diende enkel om te tonen hoe slechte XML eruit zag. Je kan hiervoo
 	</adminRole>
 </security>
 ```
+#### DTD kan ook anders...
+```xml
+<?xml version="1.0"?>
+<!DOCTYPE security[
+<!ELEMENT security (userRole, managerRole, adminRole)>
+<!ELEMENT userRole (logon, insert, create)>
+<!ELEMENT managerRole (userRole, update)>
+<!ELEMENT adminRole (managerRole, delete)>
+
+<!ELEMENT logon EMPTY>
+<!ELEMENT insert EMPTY>
+<!ELEMENT create EMPTY>
+<!ELEMENT update EMPTY>
+<!ELEMENT delete EMPTY>
+]>
+```
+#### OF
+```xml
+<?xml version="1.0"?>
+<!DOCTYPE security[
+<!ELEMENT security (userRole, managerRole, adminRole)>
+<!ELEMENT userRole (logon, insert, create)>
+<!ELEMENT managerRole (userRole, update)>
+<!ELEMENT adminRole (userRole, update, delete)>
+
+<!ELEMENT logon EMPTY>
+<!ELEMENT insert EMPTY>
+<!ELEMENT create EMPTY>
+<!ELEMENT update EMPTY>
+<!ELEMENT delete EMPTY>
+]>
+```
