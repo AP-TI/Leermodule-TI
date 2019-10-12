@@ -1,4 +1,4 @@
-# Oefening 3: MiniDuckSimulator
+# Oefening 1: MiniDuckSimulator
 > We maken gebruik van een abstract 'Duck'-class, waarvan de classes 'RubberDuck', 'DecoyDuck', 'MallardDuck' en 'RedheadDuck' overerven.
 
 > Om deze eendjes te laten vliegen en geluid te laten maken, maken we de 'FlyBehavior'-interface en de 'QuackBehavior'-interface.
