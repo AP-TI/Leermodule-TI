@@ -9,7 +9,7 @@
 - [Oefeningen](/vakken/J1/gegevensanalyse/oefeningen.md)
 - [Normalisatie regels](/vakken/J1/gegevensanalyse/normalisatie.md)
 - [Samenvatting](/vakken/J1/gegevensanalyse/Samenvatting.md)
-- [XML-validator in Atom (AKA nooit meer kopieren en plakken naar die ene site)](/vakken/gegevensanalyse/xmlatom/xmlatom.md)
+- [XML-validator in Atom (AKA nooit meer kopieren en plakken naar die ene site)](/vakken/J1/gegevensanalyse/xmlatom/xmlatom.md)
 ## Wiskunde
 - [Theorie](/vakken/J1/wiskunde/algemeen_theorie.md)
 - [Oefeningen](/vakken/J1/wiskunde/algemeen_oefeningen.md)
