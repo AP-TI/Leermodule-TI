@@ -1,7 +1,7 @@
 # Module 3
 ## OOP - Object Oriented Programming
-- [Oefeningen](vakken/oop/module3/algemeen.md)
+- [Oefeningen](vakken/J1/oop/module3/algemeen.md)
 ## DPA - Database Programming and Administration
-- [Het grote "ik doe niks verkeerd maar da werkt hier ni"-kennissysteem](vakken/dpa/algemeen.md)
+- [Het grote "ik doe niks verkeerd maar da werkt hier ni"-kennissysteem](vakken/J1/dpa/algemeen.md)
 ## IN - Introductie Netwerken
-- [Theorie](vakken/in/algemeen.md)
+- [Theorie](vakken/J1/in/algemeen.md)
