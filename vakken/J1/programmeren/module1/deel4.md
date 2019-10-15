@@ -1063,7 +1063,173 @@ class Program
     }
 ```
 
-## Oefening 32: ---
+## Oefening 32: Strings
+```csharp
+class Program
+    {
+        static readonly char[] alphabet = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+                'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+        static readonly char[] klinkers = new char[] { 'a', 'e', 'i', 'o', 'u' };
+        static readonly char[] separator = new char[] { ' ', ',', '?', '!', ':', ';', '.' };
+
+        static void Main(string[] args)
+        {
+
+        }
+
+        static bool CheckPalindroom(string word)
+        {
+            string reverseString = "";
+            for (int i = word.Length - 1; i >= 0; i--)
+            {
+                reverseString += word[i];
+            }
+            return reverseString == word;
+        }
+        static int CountWords(string sentence)
+        {
+            string[] words = sentence.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+            return words.Length;
+        }
+
+        static int CountLetter(char input, string sentence)
+        {
+            int counter = 0;
+            for (int i = 0; i < sentence.Length; i++)
+            {
+                if (sentence[i] == input)
+                {
+                    counter++;
+                }
+            }
+            return counter;
+        }
+
+        static int CountKlinker(string sentence)
+        {
+
+            int counter = 0;
+
+            for (int i = 0; i < sentence.Length; i++)
+            {
+                for (int j = 0; j < klinkers.Length; j++)
+                {
+                    if (sentence[i] == klinkers[j])
+                    {
+                        counter++;
+                    }
+                }
+            }
+            return counter;
+        }
+        static int[] CountEachLetter(string sentence)
+        {
+            int[] countList = new int[alphabet.Length];
+
+            for (int i = 0; i < sentence.Length; i++)
+            {
+                for (int j = 0; j < alphabet.Length; j++)
+                {
+                    if (sentence[i] == alphabet[j])
+                    {
+                        countList[j] += 1;
+                    }
+                }
+            }
+            return countList;
+        }
+        static Dictionary<string, int> CountEachWord(string sentence)
+        {
+            Dictionary<string, int> dict = new Dictionary<string, int>();
+            string[] words = sentence.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < words.Length; i++)
+            {
+                if (!dict.ContainsKey(words[i]))
+                {
+
+                    dict.Add(words[i], 1);
+                }
+                else
+                {
+                    dict[words[i]] += 1;
+                }
+            }
+            return dict;
+        }
+        static string ReplaceString(string toReplace, string replacer)
+        {
+            StringBuilder str = new StringBuilder(toReplace);
+            str.Replace(toReplace, replacer);
+            return str.ToString();
+        }
+        static string ReverseWordsSentence(string sentence)
+        {
+            string[] words = sentence.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+            StringBuilder reversed = new StringBuilder();
+
+            for (int i = words.Length - 1; i >= 0; i--)
+            {
+                reversed.Append(words[i] + " ");
+            }
+
+            return reversed.ToString();
+        }
+        static string ReverseLettersSentence(string sentence)
+        {
+            StringBuilder reversed = new StringBuilder();
+            for (int i = sentence.Length - 1; i >= 0; i--)
+            {
+                if (char.IsWhiteSpace(sentence[i]))
+                {
+                    reversed.Append(" ");
+                }
+                reversed.Append(sentence[i]);
+            }
+            return reversed.ToString();
+        }
+        static string SortWordsSentence(string sentence)
+        {
+            string[] words = sentence.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+            StringBuilder sortedWords = new StringBuilder();
+            string temp;
+            for (int i = 0; i < words.Length - 1; i++)
+            {
+                for (int j = 0; j < words.Length - 1; j++)
+                {
+                    if (words[j].CompareTo(words[j + 1]) > 0)
+                    {
+                        temp = words[j + 1];
+                        words[j + 1] = words[j];
+                        words[j] = temp;
+                    }
+                }
+            }
+            for (int i = 0; i < words.Length; i++)
+            {
+                sortedWords.Append(words[i]);
+            }
+            return sortedWords.ToString();
+        }
+        static string SortLettersSentence(string sentence)
+        {
+            char temp;
+            StringBuilder str = new StringBuilder(sentence);
+            for (int i = 0; i < str.Length - 1; i++)
+            {
+                for (int j = 0; j < str.Length - 1; j++)
+                {
+                    if (str[j].CompareTo(str[j + 1]) > 0)
+                    {
+                        temp = str[j + 1];
+                        str[j + 1] = str[j];
+                        str[j] = temp;
+                    }
+                }
+            }
+            return str.ToString();
+        }
+    }
+```
 ## Oefening 33: Delers van een positief getal
 ```csharp
 class Program
