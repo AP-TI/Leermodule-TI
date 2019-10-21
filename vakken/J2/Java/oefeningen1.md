@@ -306,3 +306,62 @@ public class Zender {
     }
 }
 ```
+## 1.4
+### Klasse Main
+```java
+public class Main {
+    public static void main(String[] args) {
+        NietAlcoholischeDrank water = new NietAlcoholischeDrank(2.50, "Chaudfontaine", false);
+        AlcoholischeDrank vodka = new AlcoholischeDrank(8.99, "Krupnik", 30);
+        System.out.println(water);
+        System.out.println(vodka);
+    }
+}
+```
+### Klasse Drank
+```java
+public class Drank {
+    private double prijs;
+    private String naam;
+    
+    public Drank(double prijs, String naam){
+        this.prijs = prijs;
+        this.naam = naam;
+    }
+    
+    @Override
+    public String toString(){
+        return "Prijs: " + prijs + "\nNaam: " + naam;
+    }
+}
+```
+### Klasse AlcoholischeDrank
+```java
+public class AlcoholischeDrank extends Drank{
+    private double alcoholpercentage;
+    public AlcoholischeDrank(double prijs, String naam, double alcoholpercentage) {
+        super(prijs, naam);
+        this.alcoholpercentage = alcoholpercentage;
+    }
+    
+    @Override
+    public String toString(){
+        return super.toString() + "\nAlcoholpercentage: " + alcoholpercentage;
+    }
+}
+```
+### Klasse NietAlcoholischeDrank
+```java
+public class NietAlcoholischeDrank extends Drank{
+    private boolean prik;
+    public NietAlcoholischeDrank(double prijs, String naam, boolean prik) {
+        super(prijs, naam);
+        this.prik = prik;
+    }
+    
+    @Override
+    public String toString(){
+        return super.toString() + "\nPrik: " + (prik ? "ja" : "nee");
+    }
+}
+```
