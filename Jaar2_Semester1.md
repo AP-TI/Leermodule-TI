@@ -6,6 +6,7 @@
 - [Cursus Intro-BI](https://github.com/ddhaese/Intro_BI)
 ## Introduction ERP
 ## Java
+- [Oefeningen](vakken/J2/Java/algemeen.md)
 ## Project Management En Analyse
 ## System And Application Design
 - [Oefeningen SAAP](vakken/J2/SAAP/oefeningen.md)
