@@ -550,3 +550,56 @@ public class Garage {
     }
 }
 ```
+## 1.8
+Om te kunnen sorteren op prijs, moeten we eerst een aanpassing maken in de klasse `Drank`. Daar implementeren we de `interface` `Comparable`. Deze werkt vergelijkbaar met de `IComparable` `interface` uit C#.
+### Klasse Drank
+```java
+public abstract class Drank implements Comparable<Drank>{
+    private double prijs;
+    private String naam;
+    
+    public Drank(double prijs, String naam){
+        this.prijs = prijs;
+        this.naam = naam;
+    }
+    
+    @Override
+    public String toString(){
+        return "Prijs: " + prijs + "\nNaam: " + naam;
+    }
+
+    @Override
+    public int compareTo(Drank drank) {
+        if(prijs == drank.prijs)
+            return naam.compareTo(drank.naam);
+        if(prijs < drank.prijs)
+            return -1;
+        return 1;
+    }
+}
+```
+Hierna kunnen we in de klasse `Cafe` heel gemakkelijk de lijst van dranken sorteren op prijs.
+### Klasse Cafe
+```java
+public class Cafe {
+    private ArrayList<Drank> dranken = new ArrayList<>();
+    
+    public void addDrank(Drank drank){
+        dranken.add(drank);
+    }
+    
+    public String drankenToString(){
+        Collections.sort(dranken);
+        String result = "";
+        for(Drank drank : dranken){
+            result += "\n" + drank;
+        }
+        return result;
+    }
+    
+    @Override
+    public String toString(){
+        return drankenToString();
+    }
+}
+```
