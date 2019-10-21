@@ -90,6 +90,103 @@ public class Vlucht {
     }
 }
 ```
+## Oefening 1.2
+### Klasse Main
+```java
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
+
+/**
+ *
+ * @author maxim
+ */
+public class Main {
+    public static void main(String[] args) {
+        Vlucht vlucht = new Vlucht(Locatie.PARIJS, LocalDateTime.of(2019, Month.OCTOBER, 6, 11, 50, 0), "BE99109");
+        Passagier passagier = new Passagier("Janssens", "Maxim", "00.08.000-30321");
+        Passagier passagier2 = new Passagier("test", "test", "00.080.--0923032", LocalDate.of(2000, Month.AUGUST, 24));
+        passagier.setGeboortedatum(LocalDate.of(2000, Month.AUGUST, 24));
+        vlucht.addPassagier(passagier);
+        vlucht.addPassagier(passagier2);
+        System.out.println("Vlucht: " + vlucht.toString());
+    }
+}
+```
+### Klasse Vlucht
+```java
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author maxim
+ */
+public class Vlucht {
+    private Locatie bestemming;
+    private Locatie vertrek = Locatie.BRUSSEL;
+    private LocalDateTime tijdstipVertrek;
+    private String vluchtnummer;
+    private ArrayList<Passagier> passagiers = new ArrayList<>();
+    
+    public Vlucht(Locatie bestemming, LocalDateTime tijdstipVertrek, String vluchtnummer){
+        this.bestemming = bestemming;
+        this.tijdstipVertrek = tijdstipVertrek;
+        this.vluchtnummer = vluchtnummer;
+    }
+    
+    public void addPassagier(Passagier passagier){
+        passagiers.add(passagier);
+    }
+    
+    public String passagiersToString(){
+        String result = "";
+        for(Passagier passagier : passagiers){
+            result += passagier.toString();
+        }
+        return result;
+    }
+    
+    @Override
+    public String toString(){
+        return "Bestemming: " + bestemming + "\nVertrek: " + vertrek + "\nTijdstip vertrek: " + tijdstipVertrek + "\nVluchtnummer: " + vluchtnummer + "\n\nPassagiers: " + passagiersToString();
+    }
+}
+```
+### Enumeratie Locatie
+Blijft hetzelfde als in oefening 1.1
+### Klasse Passagier
+```java
+import java.time.LocalDate;
+
+/**
+ *
+ * @author maxim
+ */
+public class Passagier {
+    private String naam, voornaam, rijksregisternummer;
+    private LocalDate geboortedatum;
+    
+    public void setGeboortedatum(LocalDate geboortedatum) {
+        this.geboortedatum = geboortedatum;
+    }
+    
+    public Passagier(String naam, String voornaam, String rijksregisternummer){
+        this(naam, voornaam, rijksregisternummer, null);
+    }
+    
+    public Passagier(String naam, String voornaam, String rijksregisternummer, LocalDate geboortedatum){
+        this.naam = naam;
+        this.voornaam = voornaam;
+        this.rijksregisternummer = rijksregisternummer;
+        this.geboortedatum = geboortedatum;
+    }
+    
+    public String toString(){
+        return "Naam: " + naam + "\nVoornaam: " + voornaam + "\nRijksregisternummer: " + rijksregisternummer + "\nGeboortedatum: " + geboortedatum;
+    }
+}
+```
 ## Oefening 1.3
 ### Klasse Main
 ```java
