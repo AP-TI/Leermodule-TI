@@ -365,3 +365,22 @@ public class NietAlcoholischeDrank extends Drank{
     }
 }
 ```
+## Oefening 1.5
+### Klasse Drank
+Om deze klasse abstract te maken, zet je gewoon het `abstract`-keyword achter `public`.
+```java
+public abstract class Drank {
+    private double prijs;
+    private String naam;
+    
+    public Drank(double prijs, String naam){
+        this.prijs = prijs;
+        this.naam = naam;
+    }
+    
+    @Override
+    public String toString(){
+        return "Prijs: " + prijs + "\nNaam: " + naam;
+    }
+}
+```
