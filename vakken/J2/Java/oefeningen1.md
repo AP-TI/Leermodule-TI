@@ -603,3 +603,138 @@ public class Cafe {
     }
 }
 ```
+## 1.9
+### Klasse Main
+Zelfde code als oefening 1.4, maar met extra testvariabelen.
+```java
+public class Main {
+
+    public static void main(String[] args) {
+        NietAlcoholischeDrank water = new NietAlcoholischeDrank(2.50, "Chaudfontaine", false);
+        NietAlcoholischeDrank waterBruis = new NietAlcoholischeDrank(2.50, "Chaidfontaine", true);
+        AlcoholischeDrank vodka = new AlcoholischeDrank(8.99, "Krupnik", 30);
+        AlcoholischeDrank passoa = new AlcoholischeDrank(9.99, "Passoã", 17);
+        AlcoholischeDrank vodka1 = new AlcoholischeDrank(28.99, "Bizon Grass", 40);
+        Cafe cafe = new Cafe();
+        cafe.addDrank(vodka);
+        cafe.addDrank(water);
+        cafe.addDrank(vodka1);
+        cafe.addDrank(passoa);
+        cafe.addDrank(waterBruis);
+        System.out.println(cafe);
+    }
+}
+```
+### Klasse Drank
+Blijft exact hetzelfde als 1.8
+### Klasse SortByAlcoholPercentage
+```java
+public class SortByAlcoholPercentage implements Comparator<Drank> {
+
+    @Override
+    public int compare(Drank t, Drank t1) {
+        if (t instanceof AlcoholischeDrank && t1 instanceof AlcoholischeDrank) {
+            AlcoholischeDrank ad = (AlcoholischeDrank)t;
+            AlcoholischeDrank ad1 = (AlcoholischeDrank)t1;
+            if (ad.getAlcoholpercentage() == ad1.getAlcoholpercentage()) {
+                return 0;
+            }
+            if (ad.getAlcoholpercentage() < ad1.getAlcoholpercentage()) {
+                return -1;
+            }
+            return 1;
+        }
+        return 0;
+    }
+}
+```
+### Klasse SortByPrik
+```java
+public class SortByPrik implements Comparator<Drank> {
+
+    @Override
+    public int compare(Drank t, Drank t1) {
+        if (t instanceof NietAlcoholischeDrank && t1 instanceof NietAlcoholischeDrank) {
+            NietAlcoholischeDrank nad = (NietAlcoholischeDrank) t;
+            NietAlcoholischeDrank nad1 = (NietAlcoholischeDrank) t1;
+            if (nad.isPrik() == nad1.isPrik()) {
+                return 0;
+            }
+            if (nad.isPrik() == false) {
+                return -1;
+            }
+            return 1;
+        }
+        return 0;
+    }
+
+}
+```
+### Klasse AlcoholischeDrank
+```java
+public class AlcoholischeDrank extends Drank {
+
+    private double alcoholpercentage;
+
+    public double getAlcoholpercentage() {
+        return alcoholpercentage;
+    }
+
+    public AlcoholischeDrank(double prijs, String naam, double alcoholpercentage) {
+        super(prijs, naam);
+        this.alcoholpercentage = alcoholpercentage;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nAlcoholpercentage: " + alcoholpercentage;
+    }
+}
+```
+### Klasse NietAlcoholischeDrank
+```java
+public class NietAlcoholischeDrank extends Drank {
+
+    private boolean prik;
+
+    public boolean isPrik() {
+        return prik;
+    }
+
+    public NietAlcoholischeDrank(double prijs, String naam, boolean prik) {
+        super(prijs, naam);
+        this.prik = prik;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nPrik: " + (prik ? "ja" : "nee");
+    }
+}
+```
+### Klasse Cafe
+```java
+public class Cafe {
+    private ArrayList<Drank> dranken = new ArrayList<>();
+    
+    public void addDrank(Drank drank){
+        dranken.add(drank);
+    }
+    
+    public String drankenToString(){
+        Collections.sort(dranken);
+        dranken.sort(new SortByAlcoholPercentage());
+        dranken.sort(new SortByPrik());
+        String result = "";
+        for(Drank drank : dranken){
+            result += "\n" + drank;
+        }
+        return result;
+    }
+    
+    @Override
+    public String toString(){
+        return drankenToString();
+    }
+}
+```
