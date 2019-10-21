@@ -428,3 +428,125 @@ public class Cafe {
 }
 ```
 De andere klasses blijven hetzelfde.
+## 1.7
+### Klasse Main
+```java
+public class Main {
+
+    public static void main(String[] args) {
+        Sportauto sportauto = new Sportauto(Type.Benzine, Merk.Mercedes, 29010, 8, "WDD1173431N122434", "1-XYZ-139", 340);
+        Gezinswagen gezinswagen = new Gezinswagen(Type.Diesel, Merk.Citroën, 78091, 7, "DSFG00FG0001", "1-ABC-862", 5, false);
+        Garage garage = new Garage();
+        garage.addAuto(sportauto);
+        garage.addAuto(gezinswagen);
+        System.out.println(garage);
+    }
+}
+```
+### Klasse Auto
+```java
+public abstract class Auto {
+
+    static int teller = 0;
+    private int volgnummer;
+    private Type type;
+    private Merk merk;
+    private double kilometerstand;
+    private double kilometerfactor;
+    private String chassisnummer;
+    private String nummerplaat;
+
+    public void setKilometerstand(double kilometerstand) {
+        this.kilometerstand = kilometerstand;
+    }
+
+    public void setNummerplaat(String nummerplaat) {
+        this.nummerplaat = nummerplaat;
+    }
+
+    public Auto(Type type, Merk merk, double kilometerstand, double kilometerfactor, String chassisnummer, String nummerplaat) {
+        volgnummer = teller++;
+        this.type = type;
+        this.merk = merk;
+        this.kilometerstand = kilometerstand;
+        this.kilometerfactor = kilometerfactor;
+        this.chassisnummer = chassisnummer;
+        this.nummerplaat = nummerplaat;
+    }
+
+    @Override
+    public String toString() {
+        return "\n\nVolgnummer: " + volgnummer + "\nType: " + type + "\nMerk: " + merk + "\nType: " + type + "\nKilometerstand: " + kilometerstand + "\nKilometerfactor: " + kilometerfactor + "\nChassisnummer: " + chassisnummer;
+    }
+}
+```
+### Klasse Gezinswagen
+```java
+public class Gezinswagen extends Auto {
+
+    private int zitplaatsen;
+    private boolean trekhaak;
+
+    public Gezinswagen(Type type, Merk merk, double kilometerstand, double kilometerfactor, String chassisnummer, String nummerplaat, int zitplaatsen, boolean trekhaak) {
+        super(type, merk, kilometerstand, kilometerfactor, chassisnummer, nummerplaat);
+        this.zitplaatsen = zitplaatsen;
+        this.trekhaak = trekhaak;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nZitplaatsen: " + zitplaatsen + "\nTrekhaak: " + (trekhaak ? "ja" : "nee");
+    }
+}
+```
+### Klasse Sportauto
+```java
+public class Sportauto extends Auto {
+    private int pk;
+    public Sportauto(Type type, Merk merk, double kilometerstand, double kilometerfactor, String chassisnummer, String nummerplaat, int pk) {
+        super(type, merk, kilometerstand, kilometerfactor, chassisnummer, nummerplaat);
+        this.pk = pk;
+    }
+    
+    @Override
+    public String toString(){
+        return super.toString() + "\nPk: " + pk;
+    }
+}
+```
+### Enumeratie Merk
+```java
+public enum Merk {
+    Mercedes, Audi, Tesla, Citroën, Jaguar, Peugot;
+}
+```
+### Enumeratie Type
+```java
+public enum Type {
+    Diesel, Benzine, LPG, CNG, Elektrisch;
+}
+```
+### Klasse Garage
+```java
+public class Garage {
+
+    ArrayList<Auto> autolijst = new ArrayList<>();
+
+    public void addAuto(Auto auto) {
+        autolijst.add(auto);
+    }
+
+    public String autolijstToString() {
+        String result = "";
+        for (Auto auto : autolijst) {
+            result += auto;
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return autolijstToString();
+    }
+}
+```
