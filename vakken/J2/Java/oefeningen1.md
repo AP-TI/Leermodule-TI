@@ -738,3 +738,129 @@ public class Cafe {
     }
 }
 ```
+## 1.10
+### Klasse Main
+```java
+public class Main {
+
+    public static void main(String[] args) {
+        Sportauto sportauto = new Sportauto(Type.Benzine, Merk.Mercedes, 29010, 8, "WDD1173431N122434", "1-XYZ-139", 340);
+        Gezinswagen gezinswagen = new Gezinswagen(Type.Diesel, Merk.Citroën, 78091, 7, "DSFG00FG0001", "1-ABC-862", 5, false);
+        Garage garage = new Garage();
+        garage.addAuto(gezinswagen);
+        garage.addAuto(sportauto);
+        //uncomment volgend lijntje om op kilometerstand te sorteren (hoog naar laag)
+        //garage.sorteerOpKm();
+        System.out.println(garage);
+    }
+}
+```
+### Klasse Auto
+```java
+public abstract class Auto implements Comparable<Auto>{
+
+    static int teller = 0;
+    private int volgnummer;
+    private Type type;
+    private Merk merk;
+    private double kilometerstand;
+    private double kilometerfactor;
+    private String chassisnummer;
+    private String nummerplaat;
+
+    public void setKilometerstand(double kilometerstand) {
+        this.kilometerstand = kilometerstand;
+    }
+
+    public double getKilometerstand() {
+        return kilometerstand;
+    }
+
+    public void setNummerplaat(String nummerplaat) {
+        this.nummerplaat = nummerplaat;
+    }
+
+    public Auto(Type type, Merk merk, double kilometerstand, double kilometerfactor, String chassisnummer, String nummerplaat) {
+        volgnummer = teller++;
+        this.type = type;
+        this.merk = merk;
+        this.kilometerstand = kilometerstand;
+        this.kilometerfactor = kilometerfactor;
+        this.chassisnummer = chassisnummer;
+        this.nummerplaat = nummerplaat;
+    }
+
+    @Override
+    public String toString() {
+        return "\n\nVolgnummer: " + volgnummer + "\nType: " + type + "\nMerk: " + merk + "\nType: " + type + "\nKilometerstand: " + kilometerstand + "\nKilometerfactor: " + kilometerfactor + "\nChassisnummer: " + chassisnummer + "\nNummerplaat: " + nummerplaat;
+    }
+    
+    @Override
+    public int compareTo(Auto auto){
+        if(chassisnummer == auto.chassisnummer)
+            return 0;
+        if(volgnummer < auto.volgnummer)
+            return -1;
+        return 1;
+    }
+}
+```
+### Klasse SortByKm
+```java
+import java.util.Comparator;
+
+/**
+ *
+ * @author maxim
+ */
+public class SortByKm implements Comparator<Auto> {
+
+    @Override
+    public int compare(Auto t, Auto t1) {
+        if (t.getKilometerstand() == t1.getKilometerstand()) {
+            return 0;
+        }
+        if (t.getKilometerstand() < t1.getKilometerstand()) {
+            return 1;
+        }
+        return -1;
+    }
+
+}
+```
+### Klasse Garage
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+
+/**
+ *
+ * @author maxim
+ */
+public class Garage {
+
+    ArrayList<Auto> autolijst = new ArrayList<>();
+
+    public void addAuto(Auto auto) {
+        autolijst.add(auto);
+        Collections.sort(autolijst);
+    }
+
+    public void sorteerOpKm(){
+        Collections.sort(autolijst, new SortByKm());
+    }
+    
+    public String autolijstToString() {
+        String result = "";
+        for (Auto auto : autolijst) {
+            result += auto;
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return autolijstToString();
+    }
+}
+```
