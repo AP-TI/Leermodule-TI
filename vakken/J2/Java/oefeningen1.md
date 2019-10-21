@@ -384,3 +384,47 @@ public abstract class Drank {
     }
 }
 ```
+## Oefening 1.6
+### Klasse Main
+```java
+public class Main {
+    public static void main(String[] args) {
+        NietAlcoholischeDrank water = new NietAlcoholischeDrank(2.50, "Chaudfontaine", false);
+        AlcoholischeDrank vodka = new AlcoholischeDrank(8.99, "Krupnik", 30);
+        Cafe cafe = new Cafe();
+        cafe.addDrank(vodka);
+        cafe.addDrank(water);
+        System.out.println(cafe);
+    }
+}
+```
+### Klasse Cafe
+```java
+import java.util.ArrayList;
+
+/**
+ *
+ * @author maxim
+ */
+public class Cafe {
+    private ArrayList<Drank> dranken = new ArrayList<>();
+    
+    public void addDrank(Drank drank){
+        dranken.add(drank);
+    }
+    
+    public String drankenToString(){
+        String result = "";
+        for(Drank drank : dranken){
+            result += "\n" + drank;
+        }
+        return result;
+    }
+    
+    @Override
+    public String toString(){
+        return drankenToString();
+    }
+}
+```
+De andere klasses blijven hetzelfde.
