@@ -90,3 +90,122 @@ public class Vlucht {
     }
 }
 ```
+## Oefening 1.3
+### Klasse Main
+```java
+import java.time.LocalDateTime;
+import java.time.Month;
+import javafx.util.Duration;
+
+/**
+ *
+ * @author maxim
+ */
+public class Main {
+    public static void main(String[] args) {
+        Presentator erik = new Presentator("Van Looy", "Erik");
+        Programma deSlimsteMens = new Programma("De Slimste mens", erik, Duration.hours(1), LocalDateTime.of(2019, Month.MARCH, 2, 20, 30), Genre.KOMEDIE);
+        Zender vier = new Zender("Vier");
+        vier.addProgramma(deSlimsteMens);
+        
+        System.out.println(vier);
+    }
+}
+```
+### Klasse Presentator
+```java
+public class Presentator {
+    private String naam, voornaam;
+    
+    public Presentator(String naam, String voornaam){
+        this.naam = naam;
+        this.voornaam = voornaam;
+    }
+    
+    @Override
+    public String toString(){
+        return voornaam + " " + naam;
+    }
+}
+```
+### Klasse Programma
+```java
+import java.time.LocalDateTime;
+import javafx.util.Duration;
+
+/**
+ *
+ * @author maxim
+ */
+public class Programma {
+    private String naam;
+    private Presentator presentator;
+    private Duration tijdsduur;
+    private LocalDateTime uitzendTijdstip;
+    private Genre genre;
+    
+    public Programma(String naam, Presentator presentator, Duration tijdsduur, LocalDateTime uitzendTijdstip, Genre genre){
+        this.naam = naam;
+        this.presentator = presentator;
+        this.tijdsduur = tijdsduur;
+        this.uitzendTijdstip = uitzendTijdstip;
+        this.genre = genre;
+    }
+    
+    @Override
+    public String toString(){
+        return "Naam: " + naam + "\nPresentator: " + presentator + "\nTijdsduur: " + tijdsduur.toHours() + "h\nUitzend tijdstip: " + uitzendTijdstip + "\n" + genre.getBeschrijving();
+    }
+}
+```
+### Enumeratie Genre
+In de volgende enumeratie zie je al één van de extra functionaliteiten van enums binnen Java. Enumeraties gedragen zich eigenlijk gewoon als klasses. Hier hebben we een beschrijving toegevoegd, en via de `private`(!) constructor, kunnen we de beschrijving instellen.
+```java
+public enum Genre {
+    ACTIE("Een programma vol actie"), THRILLER("Een spannend programma"), ROMANTIEK("Een programma vol romantiek"), KOMEDIE("Een grappig programma");
+    
+    private String beschrijving;
+    
+    private Genre(String beschrijving){
+        this.beschrijving = beschrijving;
+    }
+    
+    public String getBeschrijving(){
+        return beschrijving;
+    }
+}
+```
+### Klasse Zender
+```java
+import java.util.ArrayList;
+
+/**
+ *
+ * @author maxim
+ */
+public class Zender {
+    private String naam;
+    private ArrayList<Programma> programmas = new ArrayList<Programma>();
+    
+    public Zender(String naam){
+        this.naam = naam;
+    }
+    
+    public void addProgramma(Programma programma){
+        programmas.add(programma);
+    }
+    
+    public String programmasToString(){
+        String result = "";
+        for(Programma programma : programmas){
+            result += "\n" + programma;
+        }
+        return result;
+    }
+    
+    @Override
+    public String toString(){
+        return "Zender: " + naam + "\nProgramma's: " + programmasToString();
+    }
+}
+```
