@@ -626,48 +626,29 @@ public class Main {
 }
 ```
 ### Klasse Drank
-Blijft exact hetzelfde als 1.8
-### Klasse SortByAlcoholPercentage
 ```java
-public class SortByAlcoholPercentage implements Comparator<Drank> {
-
-    @Override
-    public int compare(Drank t, Drank t1) {
-        if (t instanceof AlcoholischeDrank && t1 instanceof AlcoholischeDrank) {
-            AlcoholischeDrank ad = (AlcoholischeDrank)t;
-            AlcoholischeDrank ad1 = (AlcoholischeDrank)t1;
-            if (ad.getAlcoholpercentage() == ad1.getAlcoholpercentage()) {
-                return 0;
-            }
-            if (ad.getAlcoholpercentage() < ad1.getAlcoholpercentage()) {
-                return -1;
-            }
-            return 1;
-        }
-        return 0;
+public abstract class Drank implements Comparable<Drank>{
+    private double prijs;
+    private String naam;
+    
+    public Drank(double prijs, String naam){
+        this.prijs = prijs;
+        this.naam = naam;
     }
-}
-```
-### Klasse SortByPrik
-```java
-public class SortByPrik implements Comparator<Drank> {
-
+    
     @Override
-    public int compare(Drank t, Drank t1) {
-        if (t instanceof NietAlcoholischeDrank && t1 instanceof NietAlcoholischeDrank) {
-            NietAlcoholischeDrank nad = (NietAlcoholischeDrank) t;
-            NietAlcoholischeDrank nad1 = (NietAlcoholischeDrank) t1;
-            if (nad.isPrik() == nad1.isPrik()) {
-                return 0;
-            }
-            if (nad.isPrik() == false) {
-                return -1;
-            }
-            return 1;
-        }
-        return 0;
+    public String toString(){
+        return "Prijs: " + prijs + "\nNaam: " + naam;
     }
 
+    @Override
+    public int compareTo(Drank drank) {
+        if(prijs == drank.prijs)
+            return naam.compareTo(drank.naam);
+        if(prijs < drank.prijs)
+            return -1;
+        return 1;
+    }
 }
 ```
 ### Klasse AlcoholischeDrank
@@ -689,6 +670,16 @@ public class AlcoholischeDrank extends Drank {
     public String toString() {
         return super.toString() + "\nAlcoholpercentage: " + alcoholpercentage;
     }
+
+    @Override
+    public int compareTo(Drank drank) {
+        if (drank instanceof AlcoholischeDrank) {
+            AlcoholischeDrank ad = (AlcoholischeDrank) drank;
+            return Double.compare(getAlcoholpercentage(), ad.getAlcoholpercentage());
+        }
+        return super.compareTo(drank);
+    }
+
 }
 ```
 ### Klasse NietAlcoholischeDrank
@@ -710,6 +701,22 @@ public class NietAlcoholischeDrank extends Drank {
     public String toString() {
         return super.toString() + "\nPrik: " + (prik ? "ja" : "nee");
     }
+
+    @Override
+    public int compareTo(Drank drank) {
+        if (drank instanceof NietAlcoholischeDrank) {
+            NietAlcoholischeDrank nad = (NietAlcoholischeDrank) drank;
+            if (isPrik() == nad.isPrik()) {
+                return 0;
+            }
+            if (nad.isPrik() == false) {
+                return 1;
+            }
+            return -1;
+        }
+        return super.compareTo(drank);
+    }
+
 }
 ```
 ### Klasse Cafe
@@ -723,8 +730,6 @@ public class Cafe {
     
     public String drankenToString(){
         Collections.sort(dranken);
-        dranken.sort(new SortByAlcoholPercentage());
-        dranken.sort(new SortByPrik());
         String result = "";
         for(Drank drank : dranken){
             result += "\n" + drank;
