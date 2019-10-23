@@ -799,10 +799,37 @@ public abstract class Auto implements Comparable<Auto>{
     public String toString() {
         return "\n\nVolgnummer: " + volgnummer + "\nType: " + type + "\nMerk: " + merk + "\nType: " + type + "\nKilometerstand: " + kilometerstand + "\nKilometerfactor: " + kilometerfactor + "\nChassisnummer: " + chassisnummer + "\nNummerplaat: " + nummerplaat;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 83 * hash + Objects.hashCode(this.chassisnummer);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Auto other = (Auto) obj;
+        if (!Objects.equals(this.chassisnummer, other.chassisnummer)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
     
     @Override
     public int compareTo(Auto auto){
-        if(chassisnummer == auto.chassisnummer)
+        if(volgnummer == auto.volgnummer)
             return 0;
         if(volgnummer < auto.volgnummer)
             return -1;
