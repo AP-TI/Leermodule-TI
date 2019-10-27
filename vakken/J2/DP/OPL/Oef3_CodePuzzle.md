@@ -1,11 +1,11 @@
 # Oefening 3: Code Puzzle
 > We maken gebruik van een abstract 'Character'-class, waarvan de classes 'King', 'Queen', 'Knight' en 'Troll' overerven.
 
-> Om deze karakters van wapens te voorzien, gebruiken we de 'WeaponBehavior'-interface. Deze bevat de 'useWeapon()'-methode.
+> Om deze karakters van wapens te voorzien, maken we de 'WeaponBehavior'-interface. Deze bevat de 'useWeapon()'-methode.
 
-> De vier behaviorclasses 'SwordBehavior', 'KnifeBehavior', 'BowAndArrowBehavior' en 'AxeBehavior' implementeren de 'WeaponBehavior'-interface. Ze hebben ook een override van 'useWeapon()'-methode en 'ToString()'-override.
+> De vier behaviorclasses 'SwordBehavior', 'KnifeBehavior', 'BowAndArrowBehavior' en 'AxeBehavior' implementeren de 'WeaponBehavior'-interface. Ze hebben ook een override van de 'useWeapon()'-methode en 'ToString()'-methode.
 
-> De class 'Character' heeft de interface 'WeaponBehavior' als property. Dit zorgt ervoor dat een karakter een wapen kan gebruiken. Verder hebben we een constructor die een defaultbehavior instelt voor ons karakter., een 'setWeapon()'-methode, een 'fight()'-methode en een 'ToString()'-override.
+> De class 'Character' heeft de interface 'WeaponBehavior' als property. Dit zorgt ervoor dat een karakter een wapen kan gebruiken. Verder hebben we een constructor die een defaultbehavior instelt voor ons karakter, een 'setWeapon()'-methode, een 'fight()'-methode en een 'ToString()'-override.
 
 ## Code:
 > Bij het copy pasten: vergeet je package niet toe te voegen!
