@@ -1,4 +1,4 @@
-# Oefening Observerpattern
+# Oefening Observer Pattern
 > We maken gebruik van twee interfaces: 'Observer' en 'Observable'. Daarnaast hebben we de observers: de mensen die onze data `observeren`. Uiteraard hebben we ook de data zelf.
 
 > We hebben meerdere observers, dus we hebben een lijst van observers en functies om observers toe te voegen en te verwijderen. Dit staat in de 'Observer'-interface.

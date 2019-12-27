@@ -1,4 +1,4 @@
-# Oefening 1: MiniDuckSimulator
+# Oefening Strategy Pattern: MiniDuckSimulator
 > We maken gebruik van een abstract 'Duck'-class, waarvan de classes 'RubberDuck', 'DecoyDuck', 'MallardDuck' en 'RedheadDuck' overerven.
 
 > Om deze eendjes te laten vliegen en geluid te laten maken, maken we de 'FlyBehavior'-interface en de 'QuackBehavior'-interface.
@@ -15,7 +15,7 @@
 
 ## Code:
 > Bij het copy pasten: vergeet je package niet toe te voegen!
-> Voorbeeld: `package edu.ap.mathiasvs.dp_ducksimulator;`
+> Voorbeeld: `package edu.ap.mathiasvs.dp_strategyducksimulator;`
 
 ### Main
 ```java

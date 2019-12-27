@@ -4,3 +4,4 @@
 - [Les 2: Observer Pattern: Oefening WeatherStation](OPL/ObserverObservable.md)
 - [Les 3: Singleton Pattern: Oefening ChocolateBoiler](OPL/SingletonChocolateBoiler.md)
 - [Les 5: Command Pattern: Voorbeeldcode](https://github.com/AP-TI/Command-Pattern-Voorbeeldcode)
+- [Les 5: Command Pattern: Eigen oefening Garagedoor & Lights](OPL/CommandDomotics.md)

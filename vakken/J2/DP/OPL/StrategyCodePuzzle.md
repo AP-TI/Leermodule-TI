@@ -1,4 +1,4 @@
-# Oefening 3: Code Puzzle
+# Oefening Strategy Pattern: Code Puzzle
 > We maken gebruik van een abstract 'Character'-class, waarvan de classes 'King', 'Queen', 'Knight' en 'Troll' overerven.
 
 > Om deze karakters van wapens te voorzien, maken we de 'WeaponBehavior'-interface. Deze bevat de 'useWeapon()'-methode.
@@ -9,7 +9,7 @@
 
 ## Code:
 > Bij het copy pasten: vergeet je package niet toe te voegen!
-> Voorbeeld: `package edu.ap.mathiasv.dp_01;`
+> Voorbeeld: `package edu.ap.mathiasv.dp_strategyCodePuzzle;`
 ### Main
 ```java
 public class Main {
