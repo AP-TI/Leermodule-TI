@@ -7,7 +7,7 @@
 
 > Als laatste hebben we de displays die deze data observeren. We gebruiken er hier slechts één: 'ForecastDisplay'. Uiteraard is het mogelijk om meerdere soorten te maken. Dit zijn de `Observers`.
 
-> We maken eerst een weerstation aan. Daarna een display die de data van het weerstation gebruikt. Nu kunnen we initiële data doorgeven die normaalgezien van het weerstation zou komen.
+> We maken eerst een weerstation aan. Daarna een display die de data van het weerstation gebruikt. Nu kunnen we initiële data doorgeven die normaalgezien van het weerstation zou komen. Daarna kunnen we ook nieuwe data doorgeven. Zorg er wel voor dat alle observers op de hoogte worden gebracht van de nieuwe data door 'notifyObservers()' uit te voeren!
 
 ## Code:
 > Bij het copy pasten: vergeet je package niet toe te voegen!
@@ -19,9 +19,11 @@ public class Main {
     public static void main(String[] args) {
         WeatherData data = new WeatherData(); // Maak weerstation aan
         ForecastDisplay forecastDisplay = new ForecastDisplay(data); // maak display aan die gebruikmaakt van de data van ons weerstation
-        data.UpdateData(25, 5, 12); // Initiële data
+        data.setInitialData(25, 5, 12); // Initiële data
+        data.notifyObservers(); // Update alle observers
         System.out.println(forecastDisplay); // Print data (Display nieuwe data)
-        data.UpdateData(30, 6, 13); // *weerstation heeft nieuwe data* --> update data!
+	   	data.setTemperature(30); // *weerstation heeft nieuwe data* --> update data!
+	   	data.notifyObservers(); // Update alle observers
         System.out.println(forecastDisplay); // Print nieuwe data (Display nieuwe data)
     }
 }
@@ -73,7 +75,6 @@ public class WeatherData implements Observable{
         for(Observer observer : observers){
             observer.update();
         }
-        
     }
     
     public float getTemperature(){
@@ -88,22 +89,22 @@ public class WeatherData implements Observable{
         return this.pressure;
     }
     
-    private void setTemperature(float temperature){
+    public void setTemperature(float temperature){
        this.temperature = temperature;
     }
     
-    private void setHumidity(float humidity){
+    public void setHumidity(float humidity){
        this.humidity = humidity;
     }
     
-    private void setPressure(float pressure){
+    public void setPressure(float pressure){
        this.pressure = pressure;
     }
     
-    public void UpdateData(float temperature, float humidity, float pressure){
-        this.setTemperature(temperature);
-        this.setHumidity(humidity);
-        this.setPressure(pressure);
+    public void setInitialData(float temperature, float humidity, float pressure){
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.pressure = pressure;
     }
 }
 ```
