@@ -1,4 +1,7 @@
 # Design Patterns
+## Kort overzicht (Theorie)
+- [Summary](DP_Summary.md)
+## Oefeningen (Praktijk)
 - [Les 1: Strategy Pattern: Oef1 DuckSimulator](OPL/StrategyDuckSim.md)
 - [Les 1: Strategy Pattern: Oef3 Code Puzzle](OPL/StrategyCodePuzzle.md)
 - [Les 2: Observer Pattern: Oefening WeatherStation](OPL/ObserverObservable.md)
