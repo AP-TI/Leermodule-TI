@@ -9,3 +9,5 @@
 - [Les 4: Decorator Pattern: Oefening Coffee](OPL/DecoratorCoffee.md)
 - [Les 5: Command Pattern: Voorbeeldcode](https://github.com/AP-TI/Command-Pattern-Voorbeeldcode)
 - [Les 5: Command Pattern: Eigen oefening Garagedoor & Lights](OPL/CommandDomotics.md)
+> Les 6: geen nieuw pattern
+- [Les 7: State Pattern: GumballMachine](OPL/StateGumballMachine.md)
