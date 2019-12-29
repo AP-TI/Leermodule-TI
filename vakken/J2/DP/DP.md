@@ -11,3 +11,4 @@
 - [Les 5: Command Pattern: Eigen oefening Garagedoor & Lights](OPL/CommandDomotics.md)
 > Les 6: geen nieuw pattern
 - [Les 7: State Pattern: GumballMachine](OPL/StateGumballMachine.md)
+- [Les 8: Factory Pattern: PizzaStore](OPL/FactoryPizza.md)
