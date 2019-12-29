@@ -80,3 +80,21 @@ Interface ‘Command’: execute & undo methods
 Class Light: methods ‘On()’ and ‘Off()’
 LightOnCommand (execute() -> On()) and LightOfCommand (execute() -> Off()). Undo does the opposite of execute.
 Remote has a list with commands. You can add commands with the ‘setCommand(Command command, int slot)’-method and then execute them with the ‘buttonWasPressed(int slot)’-method.
+
+## State Pattern
+
+> Summary:
+
+Interface State: basic methods
+Specific classes which implements the State interface
+(possible abstract classes for states with code duplication)
+Item with states as property, setState method, state-getters…
+Easy to add state: make new state class which implements State interface and add the state as a property to the item.
+
+> Example:
+
+Interface State: basic methods
+Specific classes which implement State interface: NoQuarterState, HasQuarterState, SoldOutState and the abstract class GumballSoldOutState
+GumballSoldState as an abstract class. SoldState and Winnerstate inherit from it (so they don’t need to implement the State interface because GumballSoldState already implements it)
+GumballMachine as out item. It has properties of each state (not GumballSoldState but its ‘children’). It has a method setState to change the machines state. It has getters for each state. In this case it contains a count, company and model. We also need a getter for count to know the amount of gumballs outside the class. 
+New state? Make new class which implements State interface, add is as a property to GumballMachine, create a getter and you’re ready to crank.
