@@ -58,8 +58,8 @@ public class Main {
 ### Class Duck
 ```java
 public abstract class Duck {
-    public FlyBehavior flyBehavior;
-    public QuackBehavior quackBehavior;
+    private FlyBehavior flyBehavior;
+    private QuackBehavior quackBehavior;
     
     public Duck(FlyBehavior flyBehavior, QuackBehavior quackBehavior){
         this.quackBehavior = quackBehavior;
