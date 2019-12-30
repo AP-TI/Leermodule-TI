@@ -20,10 +20,8 @@ public class Main {
         WeatherData data = new WeatherData(); // Maak weerstation aan
         ForecastDisplay forecastDisplay = new ForecastDisplay(data); // maak display aan die gebruikmaakt van de data van ons weerstation
         data.setInitialData(25, 5, 12); // Initiële data
-        data.notifyObservers(); // Update alle observers
         System.out.println(forecastDisplay); // Print data (Display nieuwe data)
 	   	data.setTemperature(30); // *weerstation heeft nieuwe data* --> update data!
-	   	data.notifyObservers(); // Update alle observers
         System.out.println(forecastDisplay); // Print nieuwe data (Display nieuwe data)
     }
 }
