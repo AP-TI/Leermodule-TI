@@ -1,5 +1,5 @@
 # Oefening Observer Pattern
-> We maken gebruik van twee interfaces: 'Observer' en 'Observable'. Daarnaast hebben we de observers: de mensen die onze data `observeren`. Uiteraard hebben we ook de data zelf.
+> We maken gebruik van twee interfaces: 'Observer' en 'Observable'. Daarnaast hebben we de observers: de objecten die wijzigingen aan onze data `observeren`. Uiteraard hebben we ook de data zelf.
 
 > We hebben meerdere observers, dus we hebben een lijst van observers en functies om observers toe te voegen en te verwijderen. Dit staat in de 'Observer'-interface.
 
@@ -8,7 +8,9 @@
 > Als laatste hebben we de displays die deze data observeren. We gebruiken er hier slechts één: 'ForecastDisplay'. Uiteraard is het mogelijk om meerdere soorten te maken. Dit zijn de `Observers`.
 
 > We maken eerst een weerstation aan. Daarna een display die de data van het weerstation gebruikt. Nu kunnen we initiële data doorgeven die normaalgezien van het weerstation zou komen. Daarna kunnen we ook nieuwe data doorgeven. Zorg er wel voor dat alle observers op de hoogte worden gebracht van de nieuwe data door 'notifyObservers()' uit te voeren!
-
+## Klassediagram
+Dit diagram biedt een overzichtelijke weergave van alle Has-A & Is-A relaties in onze applicatie.
+![Klassediagram](assets/Class&#32;Diagram_Observer.svg)
 ## Code:
 > Bij het copy pasten: vergeet je package niet toe te voegen!
 > Voorbeeld: 'package edu.ap.mathiasv.dp_observerpattern;'
@@ -21,7 +23,7 @@ public class Main {
         ForecastDisplay forecastDisplay = new ForecastDisplay(data); // maak display aan die gebruikmaakt van de data van ons weerstation
         data.setInitialData(25, 5, 12); // Initiële data
         System.out.println(forecastDisplay); // Print data (Display nieuwe data)
-	   	data.setTemperature(30); // *weerstation heeft nieuwe data* --> update data!
+	   	data.setTemp(30); // *weerstation heeft nieuwe data* --> update data!
         System.out.println(forecastDisplay); // Print nieuwe data (Display nieuwe data)
     }
 }
@@ -48,7 +50,7 @@ public interface Observable {
 public class WeatherData implements Observable{
     
     private final ArrayList<Observer> observers;
-    private float temperature;
+    private float temp;
     private float humidity;
     private float pressure;
 
@@ -75,8 +77,8 @@ public class WeatherData implements Observable{
         }
     }
     
-    public float getTemperature(){
-       return this.temperature;
+    public float getTemp(){
+       return this.temp;
     }
     
     public float getHumidity(){
@@ -87,8 +89,8 @@ public class WeatherData implements Observable{
         return this.pressure;
     }
     
-    public void setTemperature(float temperature){
-       this.temperature = temperature;
+    public void setTemp(float temp){
+       this.temp = temp;
        notifyObservers();
     }
     
@@ -102,8 +104,8 @@ public class WeatherData implements Observable{
        notifyObservers();
     }
     
-    public void setInitialData(float temperature, float humidity, float pressure){
-        this.temperature = temperature;
+    public void setInitialData(float temp, float humidity, float pressure){
+        this.temp = temp;
         this.humidity = humidity;
         this.pressure = pressure;
         notifyObservers();
@@ -116,7 +118,7 @@ public class WeatherData implements Observable{
 ```java
 public class ForecastDisplay implements Observer{
     private WeatherData data;
-    private float temperature;
+    private float temp;
     private float humidity;
     private float pressure;
     
@@ -126,7 +128,7 @@ public class ForecastDisplay implements Observer{
     
     @Override
     public void update(){
-        temperature = data.getTemperature();
+        temp = data.getTemp();
         humidity = data.getHumidity();
         pressure = data.getPressure();
     }
@@ -134,7 +136,7 @@ public class ForecastDisplay implements Observer{
     @Override
     public String toString() {
         this.update();
-        String summary = temperature + "°C, " + humidity + " humidity, " + pressure + " pressure.";
+        String summary = temp + "°C, " + humidity + " humidity, " + pressure + " pressure.";
         return summary;
     }
 }
