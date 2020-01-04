@@ -11,7 +11,7 @@
 public class Main {
 
     public static void main(String[] args) {
-        final String REMATCHMESSAGE = "Rematch? Enter a random character. Else enter: '/'";
+        final String rematchMessage = "Rematch? Enter a random character. Else enter: '/'";
 
         King julian = new King("King Julian");
         Troll theElder = new Troll("The elder one");
@@ -19,10 +19,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println(fight1.performFight());
 
-        System.out.println(REMATCHMESSAGE);
+        System.out.println(rematchMessage);
         while (!"/".equals(scanner.next())) {
             System.out.println(fight1.performRematch());
-            System.out.println(REMATCHMESSAGE);
+            System.out.println(rematchMessage);
         }
     }
 }
