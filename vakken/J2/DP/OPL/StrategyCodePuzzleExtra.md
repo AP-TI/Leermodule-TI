@@ -407,7 +407,7 @@ public abstract class WeaponBehavior {
     public String useWeaponOn(Character victim) {
         String message = victim.toString() + " gets attacked: ";
 
-        if (isMis()) {
+        if (!isMis()) {
             message += "The attacker did not miss! ";
             double totalDamage = this.getDamage();
 
