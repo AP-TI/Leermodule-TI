@@ -6,7 +6,7 @@
 
 # ![](assets/apti.png) APTI 2019-2020 (Jaar 2)
 - [Semester 1](Jaar2_Semester1.md)
-- [Semester 2](Jaar2_Semester2.md)
+- [Module 3](Jaar2_Semester2.md)
 
  [![](assets/yt.png)](https://apti.ml/youtube)
  [![](assets/dc.png)](https://apti.ml/discord)
