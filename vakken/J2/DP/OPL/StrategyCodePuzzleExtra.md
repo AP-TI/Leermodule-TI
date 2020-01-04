@@ -1,6 +1,6 @@
 # Oefening Strategy Pattern: Code Puzzle Extra
 
-> Zelfde uitleg als [de normale opgave](./StategyCodePuzzle.md) echter met een extra class genaamd fight.
+> Zelfde uitleg als [de normale opgave](./StrategyCodePuzzle.md) echter met een extra class genaamd fight.
 
 ## Code
 
