@@ -311,7 +311,7 @@ public class Queen extends Character {
 }
 ```
 
-````java
+```java
 public class SwordBehavior extends WeaponBehavior {
 
     public SwordBehavior() {
