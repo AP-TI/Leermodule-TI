@@ -12,7 +12,7 @@
 > De modelduck kan in dit voorbeeld standaard niet vliegen, maar dankzij de setFlyBehavior()-methode kunnen we dit dynamisch wijzigen en deze eend laten vliegen met raketten, cool!
 ## Code:
 > Bij het copy pasten: vergeet je package niet toe te voegen!
-> Voorbeeld: `package edu.ap.mathiasvs.dp_strategyducksimulator;`
+> Voorbeeld: `package edu.ap.maximj.dp_strategyducksimulator;`
 
 ### MiniDuckSimulator (Main)
 ```java
@@ -75,7 +75,6 @@ public class ModelDuck extends Duck {
     }
 }
 ```
-
 #### MallardDuck
 ```java
 public class MallardDuck extends Duck{
@@ -104,7 +103,6 @@ public interface QuackBehavior {
     public void quack();
 }
 ```
-
 ### FlyBehaviorclasses
 #### FlyWithWings
 ```java
@@ -116,7 +114,6 @@ public class FlyWithWings implements FlyBehavior{
     }
 }
 ```
-
 #### FlyNoWay
 ```java
 public class FlyNoWay implements FlyBehavior{
@@ -137,7 +134,6 @@ public class FlyRocketPowered implements FlyBehavior {
     }
 }
 ```
-
 ### QuackBehaviorclasses
 #### Quack
 ```java
@@ -149,7 +145,6 @@ public class Quack implements QuackBehavior {
     }
 }
 ```
-
 #### Squeak
 ```java
 public class Squeak implements QuackBehavior{
@@ -160,7 +155,6 @@ public class Squeak implements QuackBehavior{
     }
 }
 ```
-
 #### MuteQuack
 ```java
 public class MuteQuack implements QuackBehavior{
