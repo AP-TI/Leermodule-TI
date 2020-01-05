@@ -1,18 +1,4 @@
 # Oefening Strategy Pattern: MiniDuckSimulator
-> We maken gebruik van een abstract 'Duck'-class, waarvan de classes 'RubberDuck', 'DecoyDuck', 'MallardDuck' en 'RedheadDuck' overerven.
-
-> Om deze eendjes te laten vliegen en geluid te laten maken, maken we de 'FlyBehavior'-interface en de 'QuackBehavior'-interface.
-> De 'FlyBehavior'-interface bevat een methode 'fly()'.
-> De 'QuackBehavior'-interface bevat een methode 'quack()'.
-
-> De twee 'FlyBehavior'-classes 'FlyWithWings' en 'FlyNoWay' implementeren de 'FlyBehavior'-interface. Ze hebben ook een override van de 'fly()'-methode en de 'ToString()'-methode.
-
-> De drie 'QuackBehavior'-classes 'Quack', 'Squeak' en 'MuteQuack' implementeren de 'QuackBehavior'-interface. Ze hebben ook een override van de 'quack()'-methode en de 'ToString()'-methode.
-
-> De class 'Duck' heeft de interfaces 'FlyBehavior' en 'QuackBehavior' als properties. Dit zorgt ervoor dat een eend kan vliegstatus en een quackstatus heeft. Verder hebben we een constructor die een defaultbehaviors instelt voor ons eendje, een 'fly()'-methode, een 'quack()'-methode en een 'ToString()'-override.
-
-> De class 'RubberDuck' heeft een extra property, een boolean die bijhoudt of het rubbere eendje kan vliegen of niet. Natuurlijk hebben we dan ook de methodes 'setFlyable()' en 'setUnflyable()', en een andere 'fly()'-methode.
-
 ## Code:
 > Bij het copy pasten: vergeet je package niet toe te voegen!
 > Voorbeeld: `package edu.ap.mathiasvs.dp_strategyducksimulator;`
