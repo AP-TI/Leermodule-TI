@@ -21,10 +21,6 @@ We have classes that inherit from Pizza: CheesePizza, ClamPizza, PepperoniPizza 
 > Enkel het NY gedeelte is uitgewerkt. Je kan als oefening proberen om zelf het Chicago-gedeelte uit te werken.
 > Enkel de Dough- en Veggiescomponent worden hier uitgewerkt. Dough is de standaard, dus die methode kan je kopiëren naar Clams, Sauce, Pepperoni... Veggies is een beetje specialer omdat het een array is, vandaar dat ik er enkele groentes bij zet. Je kan in de code zien hoe de aparte groentes in de veggies-array worden gestoken.
 
-### Main
-```java
-
-```
 ### PizzaStore
 #### Abstract class PizzaStore
 ```java
@@ -62,6 +58,54 @@ public class NYPizzaStore extends PizzaStore {
             pizza.setName("New York Style Pepperoni Pizza");
         }
         return pizza;
+    }
+}
+```
+### PizzaIngredientFactory
+#### Interface PizzaIngredientFactory
+```java
+interface PizzaIngredientFactory {
+    public Dough createDough();
+    public Sauce createSauce();
+    public Cheese createCheese();
+    public Veggies[] createVeggies();
+    public Pepperoni createPepperoni();
+    public Clams createClams();
+}
+```
+#### Class NYPizzaIngredientFactory
+```java
+public class NYPizzaIngredientFactory implements PizzaIngredientFactory {
+
+    @Override
+    public Dough createDough() {
+        return new ThinCrustDough();
+    }
+
+    @Override
+    public Sauce createSauce() {
+        return new MarinaraSauce();
+    }
+
+    @Override
+    public Cheese createCheese() {
+        return new ReggianoCheese();
+    }
+
+    @Override
+    public Veggies[] createVeggies() {
+        Veggies veggies[] = { new Garlic(), new Onion(), new Mushroom(), new RedPepper() };
+        return veggies;
+    }
+
+    @Override
+    public Pepperoni createPepperoni() {
+        return new SlicedPepperoni();
+    }
+
+    @Override
+    public Clams createClams() {
+        return new FreshClams();
     }
 }
 ```
