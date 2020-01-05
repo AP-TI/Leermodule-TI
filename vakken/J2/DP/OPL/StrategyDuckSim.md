@@ -41,10 +41,6 @@ public abstract class Duck {
     public void setQuackBehavior(QuackBehavior quackBehavior) {
         this.quackBehavior = quackBehavior;
     }  
-    
-    public Duck(){
-        
-    }
 
     public abstract void display();
     
