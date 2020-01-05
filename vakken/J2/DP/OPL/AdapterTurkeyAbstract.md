@@ -11,21 +11,26 @@
 
 ### Main
 ```java
-public class Main {
+public class TurkeyMain {
     public static void main(String[] args) {
         Turkey wildturkey = new WildTurkey();
         Duck turkey = new TurkeyAdapter(wildturkey);
-		turkey.quack();
+        turkey.quack();
+        turkey.fly();
     }
 }
 ```
 ### Abstract class Turkey
 ```java
 public abstract class Turkey {
-    public final String gobble(){
-        return "Gobble gobble";
+    final int FLY_DISTANCE = 5;
+    public final void gobble(){
+        System.out.println("Gobble gobble");
     }
-    abstract String fly();
+    abstract void fly();
+    public int getFlyDistance(){
+        return FLY_DISTANCE;
+    }
 }
 ```
 
@@ -33,8 +38,10 @@ public abstract class Turkey {
 ```java
 public class WildTurkey extends Turkey{
     public WildTurkey(){}
-    public String fly(){
-        return "I'm flying a short distance";
+    public void fly(){
+        for (int i = 0; i < 5; i++) {
+            System.out.println("I'm flying a short distance");
+        }
     }
 }
 ```
@@ -50,12 +57,14 @@ public class TurkeyAdapter extends Duck {
     
     @Override
     public String quack() {
-        return this.turkey.gobble();
+        this.turkey.gobble();
+        return "";
     }
 
     @Override
     public String fly() {
-        return this.turkey.fly();
+        this.turkey.fly();
+        return "";
     }
 }
 ```
