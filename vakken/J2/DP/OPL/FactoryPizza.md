@@ -1,4 +1,4 @@
-# Oefening Factory Method Pattern
+# Oefening Abstract Factory Pattern
 >Deze keer in het engels omdat ik het eerst in het Engels heb geschreven bij Summary en ik heb geen zin om het terug te vertalen... Moest je het toch niet snappen: pm Mathias op Discord of maak een Issue aan op Github.
 
 >Here’s our hero: PIZZA. We’ve got Cheesepizza, Clampizza, Pepperonipizza and Veggiepizza. Pizza can be made in New York (NY) and Chicago. Pizza exists of Dough, Sauce, Cheese, Veggies, Pepperoni and Clams. We have different doughs, sauces, cheeses, veggies, pepperonis and clams.
