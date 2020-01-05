@@ -28,9 +28,9 @@ public interface Duck {
 ```
 ### Interface Turkey
 ```java
-public interface Turkey {
-    public void gobble();
+public interface Turkey {    
     public void fly();
+    public void gobble();
 }
 ```
 ### Class WildTurkey
