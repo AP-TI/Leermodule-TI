@@ -15,7 +15,8 @@ public class Main {
     public static void main(String[] args) {
         Turkey wildturkey = new WildTurkey();
         Duck turkey = new TurkeyAdapter(wildturkey);
-		turkey.quack();
+        turkey.quack();
+        turkey.fly();
     }
 }
 ```
@@ -42,8 +43,10 @@ public class WildTurkey implements Turkey{
         System.out.println("Gobble gobble");
     }
     @Override
-    public void fly(){
-        System.out.println("I'm flying a short distance");
+    public void fly() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("I'm flying a short distance");
+        }
     }
 }
 ```
