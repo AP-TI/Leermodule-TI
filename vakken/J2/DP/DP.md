@@ -17,3 +17,4 @@
 - [Les 9: Adapter Pattern: TurkeyAdapter (interface versie)](OPL/AdapterTurkeyInterface.md)
 - [Les 9: Adapter Pattern: TurkeyAdapter (Abstract class versie)](OPL/AdapterTurkeyAbstract.md)
 - [Les 10: Facade Pattern: Garagepoort](OPL/FacadeGarage.md)
+- [Les 11: Template Pattern: CaffeineBeverage](OPL/TemplateBeverage.md)
