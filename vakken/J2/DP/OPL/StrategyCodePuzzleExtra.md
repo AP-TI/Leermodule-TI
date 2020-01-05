@@ -432,9 +432,5 @@ public abstract class WeaponBehavior {
     private boolean isCritical() {
         return RANDOM.nextInt(CRITICAL_CHANCE) == CRITICAL_VALUE;
     }
-
-    public void miss() {
-        System.out.println("You missed!");
-    }
 }
 ```
