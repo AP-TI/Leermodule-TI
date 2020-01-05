@@ -38,16 +38,16 @@ public interface State {
 ### GumballMachine
 ```java
 public class GumballMachine {
-    String company;
-    String model;
-    State soldOutState;
-    State noQuarterState;
-    State hasQuarterState;
-    State soldState;
-    State winnerState;
-    State state = soldOutState;
-    int count = 0;
-    final static int WINNER_PERCENTAGE_ON_100 = 10;
+    private String company;
+    private String model;
+    private State soldOutState;
+    private State noQuarterState;
+    private State hasQuarterState;
+    private State soldState;
+    private State winnerState;
+    private State state = soldOutState;
+    private int count = 0;
+    private final int WINNER_PERCENTAGE_ON_100 = 10;
 
     public GumballMachine(String company, String model, int numberGumballs) {
         this.company = company;
@@ -105,6 +105,10 @@ public class GumballMachine {
     
     public State getWinnerState(){
         return winnerState;
+    }
+    
+    public State getState(){
+        return this.state;
     }
     
     public int getCount(){
@@ -188,15 +192,12 @@ public class HasQuarterState implements State {
     public void turnCrank() {
         System.out.println("You turned...");
         int winner = randomWinner.nextInt(gumballMachine.getWinnerPercentage());
-        GumballSoldState state;
         if((winner == 0) && (gumballMachine.getCount() > 1)){
             gumballMachine.setState(gumballMachine.getWinnerState());
-            state = new WinnerState(gumballMachine);
         } else {
             gumballMachine.setState(gumballMachine.getSoldState());
-            state = new SoldState(gumballMachine);
         }
-        state.dispense();
+        gumballMachine.getState().dispense();
     }
 
     @Override
