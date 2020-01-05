@@ -14,3 +14,6 @@
 > Les 6: geen nieuw pattern
 - [Les 7: State Pattern: GumballMachine](OPL/StateGumballMachine.md)
 - [Les 8: Factory Pattern: PizzaStore](OPL/FactoryPizza.md)
+- [Les 9: Adapter Pattern: TurkeyAdapter (interface versie)](OPL/AdapterTurkeyInterface.md)
+- [Les 9: Adapter Pattern: TurkeyAdapter (Abstract class versie)](OPL/AdapterTurkeyAbstract.md)
+- [Les 10: Facade Pattern: Garagepoort](OPL/FacadeGarage.md)
