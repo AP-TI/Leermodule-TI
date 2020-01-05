@@ -228,6 +228,7 @@ public class VeggiePizza extends Pizza{
 }
 ```
 ### Ingredients
+> De volgende classes zijn gewoon leeg. Dit omdat het maar een voorbeeld is. In het echt zou je mis de hoeveelheid, de dikte van een laag ... als properties kunnen hebben, en uiteraard een 'toString()'.
 #### Dough
 ##### Interface Dough
 ```java
