@@ -1,6 +1,7 @@
 # Design Patterns
 ## Kort overzicht (Theorie)
 - [Summary](DP_Summary.md)
+- [Summary](DP_Crossword.md)
 ## Oefeningen (Praktijk)
 - [Les 1: Strategy Pattern: Oef1 DuckSimMaxim](OPL/StrategyDuckSimMaxim.md)
 - [Les 1: Strategy Pattern: Oef1 DuckSimMathias](OPL/StrategyDuckSimMathias.md)
