@@ -200,7 +200,7 @@ public class Fight {
 
             setWinnerAndLoser();
 
-            message = this.toString();
+            message += "\n" + this.toString();
         }
 
         return message;
