@@ -31,8 +31,8 @@ public class MiniDuckSimulator {
 ### Class Duck
 ```java
 public abstract class Duck {
-    FlyBehavior flyBehavior;
-    QuackBehavior quackBehavior;
+    private FlyBehavior flyBehavior;
+    private QuackBehavior quackBehavior;
     
     public void setFlyBehavior(FlyBehavior flyBehavior) {
         this.flyBehavior = flyBehavior;
@@ -41,7 +41,12 @@ public abstract class Duck {
     public void setQuackBehavior(QuackBehavior quackBehavior) {
         this.quackBehavior = quackBehavior;
     }  
-
+    
+    public Duck(FlyBehavior flyBehavior, QuackBehavior quackBehavior){
+        this.flyBehavior = flyBehavior;
+        this.quackBehavior = quackBehavior;
+    }
+    
     public abstract void display();
     
     public void performFly(){
@@ -61,8 +66,7 @@ public abstract class Duck {
 public class ModelDuck extends Duck {
 
     public ModelDuck(){
-        flyBehavior = new FlyNoWay();
-        quackBehavior = new Quack();
+        super(new FlyNoWay(), new Quack());
     }
     
     @Override
@@ -70,7 +74,6 @@ public class ModelDuck extends Duck {
         System.out.println("I'm a model duck");
     }
 }
-
 ```
 
 #### MallardDuck
@@ -78,8 +81,7 @@ public class ModelDuck extends Duck {
 public class MallardDuck extends Duck{
 
     public MallardDuck(){
-        quackBehavior = new Quack();
-        flyBehavior = new FlyWithWings();
+        super(new FlyWithWings(), new Quack());
     }
     
     @Override
@@ -125,7 +127,7 @@ public class FlyNoWay implements FlyBehavior{
     }
 }
 ```
-#### FlyRocketPowered
+### FlyRocketPowered
 ```java
 public class FlyRocketPowered implements FlyBehavior {
 
