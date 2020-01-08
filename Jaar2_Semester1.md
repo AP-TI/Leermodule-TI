@@ -8,8 +8,8 @@
 ## Java
 - [Oefeningen](vakken/J2/Java/algemeen.md)
 ## Project Management En Analyse
-## System Application Design
-- [Oefeningen SAD](vakken/J2/SAD/oefeningen.md)
+## System and Application Design
+- [Oefeningen SAAD](vakken/J2/SAD/oefeningen.md)
 ## Webframeworks
 - [Cursus Webframeworks](https://github.com/ddhaese/Web_Frameworks_I)
 ## Design And Usability
