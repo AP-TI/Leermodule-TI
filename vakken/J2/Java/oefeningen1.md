@@ -1,4 +1,5 @@
 # Oefeningen 1
+[Video met uitleg oefeningen 1-7](https://youtu.be/25XicakeLAw)
 ## 1.1
 ### Klasse Main
 ```java
