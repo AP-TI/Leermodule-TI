@@ -550,7 +550,7 @@ public class Garage {
     }
 }
 ```
-## 1.8
+<!-- ## 1.8
 Om te kunnen sorteren op prijs, moeten we eerst een aanpassing maken in de klasse `Drank`. Daar implementeren we de `interface` `Comparable`. Deze werkt vergelijkbaar met de `IComparable` `interface` uit C#.
 ### Klasse Drank
 ```java
@@ -895,4 +895,4 @@ public class Garage {
         return autolijstToString();
     }
 }
-```
+``` -->
