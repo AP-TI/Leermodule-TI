@@ -1,3 +1,3 @@
-# Java
+# Java theorie
 
 - [Sorteeralgoritmen](sorteeralgoritmen.md)
