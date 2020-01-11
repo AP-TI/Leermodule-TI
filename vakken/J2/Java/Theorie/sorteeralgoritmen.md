@@ -1,5 +1,7 @@
 # Sorteeralgoritmen
 
+> Maven project van de [algoritmen](Algoritmen.zip).
+
 ## Overzichtje
 
 | naam          | stabiel? | in-place? | best-case    | average-case | worst-case   | geheugengebruik | efficiënt?                     | complexiteit constant? |
