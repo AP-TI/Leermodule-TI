@@ -19,3 +19,4 @@
 - [Les 9: Adapter Pattern: TurkeyAdapter (Abstract class versie)](OPL/AdapterTurkeyAbstract.md)
 - [Les 10: Facade Pattern: Garagepoort](OPL/FacadeGarage.md)
 - [Les 11: Template Pattern: CaffeineBeverage](OPL/TemplateBeverage.md)
+> Les 12: Examenstructuur overlopen
