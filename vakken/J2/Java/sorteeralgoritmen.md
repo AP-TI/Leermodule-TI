@@ -21,7 +21,9 @@ public void swap(int[] arr, int i, int j){
 }
 ```
 
-## Bubblesort
+## Standaard algoritmen
+
+### Bubblesort
 
 ```java
 for (int i = 0; i < array.length; i++) {
@@ -33,7 +35,7 @@ for (int i = 0; i < array.length; i++) {
 }
 ```
 
-## Selectionsort
+### Selectionsort
 
 ```java
 int min;
@@ -48,7 +50,7 @@ for(int i = 0; i < arr.length; i++) {
 }
 ```
 
-## Insertionsort
+### Insertionsort
 
 ```java
 public void sort(int[] array) {
@@ -62,7 +64,7 @@ public void sort(int[] array) {
 }
 ```
 
-## Quicksort algoritme
+### Quicksort algoritme
 
 ```java
     public void sort(int[] array) {
@@ -138,4 +140,73 @@ public void mergesort(int[] arr) {
             cResult++;
         }
     }
+```
+
+## Geoptimaliseerde algoritmen
+
+### Geoptimaliseerde bubblesort
+
+```java
+public void sort(int[] array) {
+    boolean swapped;
+    for (int i = 0; i < array.length; i++) {
+        swapped = true;
+        for (int j = 1; j < array.length - i; j++) {
+            if (array[j] < array[j - 1]) {
+                swap(array, j, j - 1);
+                swapped = false;
+            }
+        }
+
+        if (swapped) {
+            break;
+        }
+    }
+}
+```
+
+### Geoptimaliseerde quicksort
+
+```java
+public void quicksort(int[] arr, int lo, int hi) {
+    if (hi - lo <= 5) {
+        insertion(arr, lo, hi);
+    } else {
+
+        int pivot = lo + (hi - lo) / 2;
+        int i = lo, j = hi;
+
+        while (i <= j) {
+            while (arr[i] < arr[pivot]) {
+                i++;
+            }
+            while (arr[j] > arr[pivot]) {
+                j--;
+            }
+
+            if (i <= j) {
+                swap(arr, i, j);
+                j--;
+                i++;
+            }
+        }
+
+        if (i < hi) {
+            quicksort(arr, i, hi);
+        }
+        if (j > lo) {
+             quicksort(arr, lo, j);
+        }
+    }
+}
+
+public void insertion(int[] arr, int start, int end){
+    for (int i = start; i < end; i++) {
+        for (int j = i; j > start; j--) {
+            if (arr[j] > arr[j - 1]) {
+                swap(arr, j, j - 1);
+            }
+        }
+    }
+}
 ```
