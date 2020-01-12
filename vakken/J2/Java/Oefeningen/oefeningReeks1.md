@@ -768,69 +768,68 @@ public class NietAlcoholischeDrank extends Drank{
     }
 }
 ```
-<!--
+
 ## 1.10
+
 ### Klasse Main
+
 ```java
 public class Main {
-
     public static void main(String[] args) {
-        Sportauto sportauto = new Sportauto(Type.Benzine, Merk.Mercedes, 29010, 8, "WDD1173431N122434", "1-XYZ-139", 340);
-        Gezinswagen gezinswagen = new Gezinswagen(Type.Diesel, Merk.Citroën, 78091, 7, "DSFG00FG0001", "1-ABC-862", 5, false);
+        Auto auto = new Gezinswagen(Type.BENZINE, Merk.BMW, "02820802824082", "1-ABC-123", 1200, 5, false, 6);
+        Auto auto2 = new Sportwagen(Type.DIESEL, Merk.MERCEDES, "8223808238230823", "1-XYZ-789", 5821, 12, 500);
         Garage garage = new Garage();
-        garage.addAuto(gezinswagen);
-        garage.addAuto(sportauto);
-        //uncomment volgend lijntje om op kilometerstand te sorteren (hoog naar laag)
-        //garage.sorteerOpKm();
+        garage.addAuto(auto2);
+        garage.addAuto(auto);
+        garage.sort(new SortByKM());
         System.out.println(garage);
     }
 }
 ```
+
 ### Klasse Auto
+
 ```java
 public abstract class Auto implements Comparable<Auto>{
-
-    static int teller = 0;
+    private static int teller = 0;
     private int volgnummer;
-    private Type type;
-    private Merk merk;
-    private double kilometerstand;
-    private double kilometerfactor;
-    private String chassisnummer;
-    private String nummerplaat;
-
-    public void setKilometerstand(double kilometerstand) {
-        this.kilometerstand = kilometerstand;
-    }
+    private double kilometerFactor;
 
     public double getKilometerstand() {
         return kilometerstand;
     }
+    private Type type;
+    private Merk merk;
+    private String chassisnummer;
+    private String nummerplaat;
+    private double kilometerstand;
 
     public void setNummerplaat(String nummerplaat) {
         this.nummerplaat = nummerplaat;
     }
 
-    public Auto(Type type, Merk merk, double kilometerstand, double kilometerfactor, String chassisnummer, String nummerplaat) {
-        volgnummer = teller++;
+    public void setKilometerstand(double kilometerstand) {
+        this.kilometerstand = kilometerstand;
+    }
+    
+    public Auto(Type type, Merk merk, String chassisnummer, String nummerplaat, double kilometerstand, double kilometerFactor){
+        volgnummer = ++teller;
         this.type = type;
         this.merk = merk;
-        this.kilometerstand = kilometerstand;
-        this.kilometerfactor = kilometerfactor;
         this.chassisnummer = chassisnummer;
         this.nummerplaat = nummerplaat;
+        this.kilometerstand = kilometerstand;
+        this.kilometerFactor = kilometerFactor;
+    }
+    
+    @Override
+    public String toString(){
+        return "Volgnummer: " + volgnummer + "\nType: " + type + "\nVerbruik: " + kilometerFactor + "/100km" + "\nMerk: " + merk + "\nChassisnummer: " + chassisnummer + "\nNummerplaat: " + nummerplaat + "\nKilometerstand: " + kilometerstand;
     }
 
     @Override
-    public String toString() {
-        return "\n\nVolgnummer: " + volgnummer + "\nType: " + type + "\nMerk: " + merk + "\nType: " + type + "\nKilometerstand: " + kilometerstand + "\nKilometerfactor: " + kilometerfactor + "\nChassisnummer: " + chassisnummer + "\nNummerplaat: " + nummerplaat;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 83 * hash + Objects.hashCode(this.chassisnummer);
-        return hash;
+    public int compareTo(Auto t) {
+        return t.getClass().toString().compareTo(this.getClass().toString());
     }
 
     @Override
@@ -850,75 +849,68 @@ public abstract class Auto implements Comparable<Auto>{
         }
         return true;
     }
-    
-    
-    
-    @Override
-    public int compareTo(Auto auto){
-        if(volgnummer == auto.volgnummer)
-            return 0;
-        if(volgnummer < auto.volgnummer)
-            return -1;
-        return 1;
-    }
 }
 ```
-### Klasse SortByKm
-```java
-import java.util.Comparator;
 
-/**
- *
- * @author maxim
- */
-public class SortByKm implements Comparator<Auto> {
+### Klasse SortByKm
+
+```java
+public class SortByKM implements Comparator<Auto>{
 
     @Override
     public int compare(Auto t, Auto t1) {
-        if (t.getKilometerstand() == t1.getKilometerstand()) {
-            return 0;
-        }
-        if (t.getKilometerstand() < t1.getKilometerstand()) {
-            return 1;
-        }
-        return -1;
-    }
-
-}
-```
-### Klasse Garage
-```java
-import java.util.ArrayList;
-import java.util.Collections;
-
-/**
- *
- * @author maxim
- */
-public class Garage {
-
-    ArrayList<Auto> autolijst = new ArrayList<>();
-
-    public void addAuto(Auto auto) {
-        autolijst.add(auto);
-        Collections.sort(autolijst);
-    }
-
-    public void sorteerOpKm(){
-        Collections.sort(autolijst, new SortByKm());
+        return Double.compare(t.getKilometerstand(), t1.getKilometerstand());
     }
     
-    public String autolijstToString() {
-        String result = "";
-        for (Auto auto : autolijst) {
-            result += auto;
-        }
-        return result;
-    }
+}
+```
 
+### Klasse Garage
+
+```java
+public class Garage {
+    private ArrayList<Auto> autolijst;
+    
+    public Garage(){
+        autolijst = new ArrayList<Auto>();
+    }
+    
+    public void addAuto(Auto auto){
+        autolijst.add(auto);
+    }
+    
+    public boolean removeAuto(Auto auto){
+        return autolijst.remove(auto);
+    }
+    
+    public String autolijstSportwagenToString(){
+        StringBuffer result = new StringBuffer();
+        for(Auto auto: autolijst){
+            if(auto instanceof Sportwagen)
+            result.append("\n\n\n" + auto);
+        }
+        return result.toString();
+    }
+    public String autolijstGezinswagenToString(){
+        StringBuffer result = new StringBuffer();
+        for(Auto auto: autolijst){
+            if(auto instanceof Gezinswagen)
+            result.append("\n\n\n" + auto);
+        }
+        return result.toString();
+    }
+    
+    public void sort(){
+        Collections.sort(autolijst);
+    }
+    
+    public void sort(Comparator comparator){
+        Collections.sort(autolijst, comparator);
+    }
+    
     @Override
-    public String toString() {
-        return autolijstToString();
+    public String toString(){
+        return "Auto's in deze garage: " + autolijstGezinswagenToString() + autolijstSportwagenToString();
     }
 }
-``` -->
+```
