@@ -1,4 +1,4 @@
-# Sorteeralgoritmen
+# Zoekalgoritmen
 
 > Maven project van de [algoritmen](Algoritmen.zip).
 > Bij vragen stuur een DM naar Dana.
