@@ -28,6 +28,7 @@ public void swap(int[] arr, int i, int j){
 
 ### Bubblesort
 
+[Video](https://youtu.be/KreRJBsZkaI)
 ```java
 for (int i = 0; i < array.length; i++) {
     for (int j = 1; j < array.length - i; j++) {
@@ -40,6 +41,7 @@ for (int i = 0; i < array.length; i++) {
 
 ### Selectionsort
 
+[Video](https://youtu.be/Gp-t_eGc1ec)
 ```java
 int min;
 for(int i = 0; i < arr.length; i++) {
@@ -55,6 +57,7 @@ for(int i = 0; i < arr.length; i++) {
 
 ### Insertionsort
 
+[Video](https://youtu.be/pJouYrHd5Xc)
 ```java
 public void sort(int[] array) {
     for (int i = 1; i < 10; i++) {
