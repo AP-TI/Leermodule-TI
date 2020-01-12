@@ -5,11 +5,11 @@
 ## Easy
 
 1) Je krijgt een getal binnen. Als het 100 is, laat je “D” zien, als het 120 is “C” en als het 140 is “B”. Als het een ander getal is “A”.
-![E1](AfbeeldingNSE1.jpg)
+![E1](afb/AfbeeldingNSE1.jpg)
 2) Begin bij 1 en tel er telkens 1 bij op tot je 10 komt (dus zonder 10). Toon telkens de nieuwe waarde die je hebt gekregen.
-![E1](AfbeeldingNSE2.jpg)
+![E1](afb/AfbeeldingNSE2.jpg)
 3) Lees een willekeurig aantal getallen in met als afsluitwaarde 32786. Bereken de som en druk die af.
-![E1](AfbeeldingNSE1.jpg)3
+![E1](afb/AfbeeldingNSE1.jpg)
 
 ## Gevorderd
 
