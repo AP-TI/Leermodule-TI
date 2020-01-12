@@ -1,15 +1,15 @@
 # Oefeningen sorteeralgoritmen
 
 1) Controleer de tijdscomplexiteit van de bubblesort. Pas de bubble sort aan zodat het algoritme stopt als er niets meer te sorteren is. Dit zal het algoritme veel efficiënter maken bij gedeeltelijk gesorteerde array’s.
-> De complexiteit van bubblesort is O(N²).
-> De complexiteit kan geoptimaliseerd worden naar O(N) in de best-case scenario indien we een boolean bijhouden om te zien of er een swap is gedaan of niet. Indien er geen swap is gedaan, betekent dit dat de input al gesorteerd staat. Hierdoor is er geen nood om meer dan eenmaal over de array te loopen.
+> De complexiteit van bubblesort in de average- en worst-case is O(N²). In de best-case scenario is dit O(N).
+> De performantie kan geoptimaliseerd worden indien we een boolean bijhouden om te zien of er een swap is gedaan of niet. Indien er geen swap is gedaan, betekent dit dat de input al gesorteerd staat. Hierdoor is er geen nood om meer dan eenmaal over de array te loopen.
 
 [Voor code zie theorie](../Theorie/sorteeralgoritmen.md)
 
 2) Wat is de best case tijdscomplexiteit nu de bubble sort geoptimaliseerd is ?
 Best case is (in het geoptimaliseerde algoritme) wanneer de array reeds gesorteerd aangeboden wordt aan de bubble sort.
 
-> Zoals eerder vermeld, is zal de best-case scenario een complexiteit van O(N) kennen.
+> Zoals eerder vermeld, is zal de best-case scenario een complexiteit van T(N)=O(N) kennen.
 
 3) Is de bubblesort een in-place algoritme ?
 
