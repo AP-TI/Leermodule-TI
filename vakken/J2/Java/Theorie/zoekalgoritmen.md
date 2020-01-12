@@ -13,7 +13,9 @@
 | binary search tree            | O(1)      | O(log(n))    | O(log(n))  | ^                                                | ^                                          |
 | HashSearch                    | O(1)      | O(1)         | O(1)       | Snel                                             | Collissions kunnen voor vertraging zorgen. |
 
-## Linear Search met for-loop
+## Standaard algoritmen
+
+### Linear Search met for-loop
 
 ```java
 public int linearSearchMetForLoop(int[] array, int value) {
@@ -29,7 +31,7 @@ public int linearSearchMetForLoop(int[] array, int value) {
 }
 ```
 
-## Linear Search met while-loopen
+### Linear Search met while-loop
 
 ```java
 public int linearSearchMetWhileLoop(int[] array, int value) {
@@ -52,7 +54,7 @@ public int linearSearchMetWhileLoop(int[] array, int value) {
     }
 ```
 
-## Binary Search Tree
+### Binary Search Tree
 
 ```java
 public class Node{
@@ -91,4 +93,48 @@ public class BinaryTree{
   // search, add, remove methods
   // ToString()
 }
+```
+
+## Linear Search met for-loop Optimized
+
+```java
+public int search(int[] array, int value) {
+        int idx = -1;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == value) {
+                return i;
+            }
+            if (array[i] > value) {
+                break;
+            }
+        }
+
+        return idx;
+    }
+```
+
+> Werkt dus enkel bij gesorteerde lijsten deze optimalisatie.
+
+## Linear Search met while-loop Optimized
+
+```java
+public int search(int[] array, int value) {
+        int idx = 0;
+        boolean found = false;
+
+        while (!found && idx < array.length && array[idx] <= value) {
+            if (array[idx] == value) {
+                found = true;
+            } else {
+                idx++;
+            }
+        }
+
+        if (found) {
+            return idx;
+        } else {
+            return -1;
+        }
+    }
 ```
