@@ -17,7 +17,7 @@ Best case is (in het geoptimaliseerde algoritme) wanneer de array reeds gesortee
 
 4) Is de selection sort een in-place algoritme ?
 
-> Ja. Het gebruikt O(2) extra geheugengebruik (een int voor de swap en een int voor de min idx) en volgens de classificatie is elk algoritme dat <= O(log(n)) geheugen gebruikt een in-place algoritme.
+> Ja. Het gebruikt O(1) extra geheugengebruik (een int voor de swap en een int voor de min idx) en volgens de classificatie is elk algoritme dat <= O(log(n)) geheugen gebruikt een in-place algoritme.
 
 5) Wat is de complexiteit van de selection sort bij een volledig gesortereerde array ? Waarom heeft dit deze complexiteit ?
 
