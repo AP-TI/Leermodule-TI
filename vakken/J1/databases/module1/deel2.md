@@ -1,9 +1,13 @@
 # Deel 2
+
 ## Oefening 1
+
 ### 1a
+
 ```sql
 create database ap;
 ```
+
 ```sql
 create table afdeling (
     afdnr char(5) unique,
@@ -11,14 +15,16 @@ create table afdeling (
     locatie varchar(30),
     telcontact char(13),
     isactief tinyint(1) default 0,
-    gempunten decimal(5 , 2 )
+    gempunten decimal(5 , 2 )x  
 );
 ```
+
 ```sql
 insert into afdeling values('12345', 2000.25, 'Antwerpen', '(123)45 89 12', false, 12.43);
 ```
 
 ### 1b
+
 ```sql
 create table tblopleiding
 (
@@ -27,6 +33,7 @@ create table tblopleiding
     duur tinyint(4)
 );
 ```
+
 ```sql
 create table tblafdeling
 (
@@ -35,6 +42,7 @@ create table tblafdeling
     replicatiecode char(32)
 );
 ```
+
 ```sql
 create table tblmedewerker
 (
@@ -45,6 +53,7 @@ create table tblmedewerker
     foreign key (afdelingnr) references tblafdeling(afdelingnr)
 );
 ```
+
 ```sql
 create table tblgevolgdeopleidingen
 (
@@ -58,9 +67,11 @@ create table tblgevolgdeopleidingen
 ```
 
 ### 1c
+
 ```sql
 Create database renting;
 ```
+
 ```sql
 create table tblFaciliteiten
 (
@@ -70,6 +81,7 @@ create table tblFaciliteiten
     aantalkamers tinyint
 );
 ```
+
 ```sql
 create table tblkamerbestand
 (
@@ -81,6 +93,7 @@ create table tblkamerbestand
     foreign key (faciliteitcode) references tblfaciliteiten(faciliteitcode)
 );
 ```
+
 ```sql
 create table tblstudent
 (
@@ -90,6 +103,7 @@ create table tblstudent
     studentplaats varchar(50)
 );
 ```
+
 ```sql
 create table tblhuurcontract
 (
@@ -103,6 +117,7 @@ create table tblhuurcontract
 ```
 
 ### 1d
+
 ```sql
 create table tblstudent
 (
@@ -113,6 +128,7 @@ create table tblstudent
     geboortedatum date
 );
 ```
+
 ```sql
 create table tblcursus
 (
@@ -120,6 +136,7 @@ create table tblcursus
     cursusomschrijving varchar(1000)
 );
 ```
+
 ```sql
 create table tblmodule
 (
@@ -130,6 +147,7 @@ create table tblmodule
     omschrijving varchar(500)
 );
 ```
+
 ```sql
 create table tblresultaat
 (
@@ -143,7 +161,9 @@ create table tblresultaat
     resultaat dec(4,2)
 );
 ```
+
 ## Oefening 2
+
 ```sql
 create table SPELERS_KOPIE
 (
@@ -155,10 +175,13 @@ AS
     SELECT * FROM Tennis.Spelers WHERE plaats = "Den Haag"
 );
 ```
+
 ```sql
 SELECT * FROM spelers_kopie;
 ```
+
 ## Oefening 3
+
 ```sql
 create table lessen
 (
@@ -169,7 +192,7 @@ create table lessen
     primary key(lesnr, spelersnr),
     unique(spelersnr, lesdatum),
     foreign key(spelersnr) references spelers1(spelersnr)
-	on delete cascade /*les verwijderen bij het verwijderen van een speler*/
+    on delete cascade /*les verwijderen bij het verwijderen van een speler*/
         on update cascade /*update bij het aanpassen van een speler*/
 );
 ```

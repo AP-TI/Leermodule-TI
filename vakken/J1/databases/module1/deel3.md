@@ -1,6 +1,9 @@
 # Deel 3
+
 ## Oefening 1
+
 ### 1A
+
 ```sql
 create table L2_T1
 (
@@ -9,7 +12,9 @@ create table L2_T1
 default character set utf8
 ;
 ```
+
 ### 1B
+
 ```sql
 create table L2_T2
 (
@@ -18,12 +23,17 @@ create table L2_T2
 default character set ascii
 ;
 ```
+
 ### 1C & D
+
 ```sql
 insert into L2_T1 value ('école');
 ```
+
 --> dit werkt bij de UTF8 tabel, maar niet bij de ASCII tabel. Het karakter `é` is niet inbegrepen in de ASCII character set.
+
 ## Oefening 2
+
 ```sql
 ALTER TABLE L2_Bestuursleden
 change functie bestuursfunctie char(30),
@@ -31,7 +41,9 @@ add betaald tinyint default false,
 add primary key(spelersnr, begin_datum)
 ;
 ```
+
 ## Oefening 3
+
 ```sql
 CREATE TABLE WEDSTRIJDEN
 (
@@ -43,19 +55,23 @@ CREATE TABLE WEDSTRIJDEN
     divisie char(6)
 );
 ```
+
 ```sql
 SELECT
-	WEDSTRIJDNR,
-	TEAMNR,
-	DIVISIE
+    WEDSTRIJDNR,
+    TEAMNR,
+    DIVISIE
 FROM
-	wedstrijden
+    wedstrijden
 ;
 ```
+
 ## oefening 4
+
 ```sql
 create database FIRMAX;
 ```
+
 ```sql
 create table /*firmax.*/klant
 (
@@ -65,6 +81,7 @@ create table /*firmax.*/klant
     telefoonnr char(13)
 );
 ```
+
 ```sql
 create table werknemer
 (
@@ -74,6 +91,7 @@ create table werknemer
     rsznr char(13) unique
 );
 ```
+
 ```sql
 create table product
 (
@@ -83,6 +101,7 @@ create table product
     voorradig tinyint default false
 );
 ```
+
 ```sql
 create table leverancier
 (
@@ -92,6 +111,7 @@ create table leverancier
     telefoonnr char(13)
 );
 ```
+
 ```sql
 /*Houdt een lijst bij van alle leveranciers voor een product -> oef: e.iv. Een lijst van leveranciers die het product kunnen aanleveren*/
 create table product_leverancier
@@ -100,8 +120,8 @@ create table product_leverancier
     leverancierid int,
     primary key(productid, leverancierid),
     foreign key (productid)
-    	references /*firmax.*/product(productid)
-    	on update cascade
+        references /*firmax.*/product(productid)
+        on update cascade
         on delete cascade,
     foreign key (leverancierid)
         references leverancier(leverancierid)
@@ -109,6 +129,7 @@ create table product_leverancier
         on delete cascade
 );
 ```
+
 ```sql
 create table orders
 (
