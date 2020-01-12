@@ -13,7 +13,7 @@ import java.time.Month;
  */
 public class Main {
     public static void main(String[] args) {
-        Vlucht vlucht = new Vlucht(Locatie.PARIJS, LocalDateTime.of(2019, Month.OCTOBER, 6, 11, 50, 0), "BE99109");
+        Vlucht vlucht = new Vlucht(Locatie.Parijs, LocalDateTime.of(2019, Month.OCTOBER, 6, 11, 50, 0), "BE99109");
         Passagier passagier = new Passagier("Janssens", "Maxim", "00.08.000-30321", vlucht);
         passagier.setGeboortedatum(LocalDate.of(2000, Month.AUGUST, 24));
         System.out.println("Passagier: " + passagier.toString());
@@ -24,7 +24,7 @@ public class Main {
 Enumeraties in Java zijn een stuk veelzijdiger dan in C#, en het is bijgevolg gebruikelijk dat deze worden gedeclareerd in een apart bestand. De extra functionaliteiten van enums worden gebruikt in oefening 3.
 ```java
 public enum Locatie {
-    PARIJS, ROME, KEULEN, BRUSSEL;
+    Parijs, Rome, Keulen, Brussel;
 }
 ```
 ### Klasse Passagier
@@ -75,7 +75,7 @@ import java.time.LocalDateTime;
  */
 public class Vlucht {
     private Locatie bestemming;
-    private Locatie vertrek = Locatie.BRUSSEL;
+    private Locatie vertrek = Locatie.Brussel;
     private LocalDateTime tijdstipVertrek;
     private String vluchtnummer;
     
@@ -104,7 +104,7 @@ import java.time.Month;
  */
 public class Main {
     public static void main(String[] args) {
-        Vlucht vlucht = new Vlucht(Locatie.PARIJS, LocalDateTime.of(2019, Month.OCTOBER, 6, 11, 50, 0), "BE99109");
+        Vlucht vlucht = new Vlucht(Locatie.Parijs, LocalDateTime.of(2019, Month.OCTOBER, 6, 11, 50, 0), "BE99109");
         Passagier passagier = new Passagier("Janssens", "Maxim", "00.08.000-30321");
         Passagier passagier2 = new Passagier("test", "test", "00.080.--0923032", LocalDate.of(2000, Month.AUGUST, 24));
         passagier.setGeboortedatum(LocalDate.of(2000, Month.AUGUST, 24));
@@ -125,7 +125,7 @@ import java.util.ArrayList;
  */
 public class Vlucht {
     private Locatie bestemming;
-    private Locatie vertrek = Locatie.BRUSSEL;
+    private Locatie vertrek = Locatie.Brussel;
     private LocalDateTime tijdstipVertrek;
     private String vluchtnummer;
     private ArrayList<Passagier> passagiers = new ArrayList<>();
@@ -202,7 +202,7 @@ import javafx.util.Duration;
 public class Main {
     public static void main(String[] args) {
         Presentator erik = new Presentator("Van Looy", "Erik");
-        Programma deSlimsteMens = new Programma("De Slimste mens", erik, Duration.hours(1), LocalDateTime.of(2019, Month.MARCH, 2, 20, 30), Genre.KOMEDIE);
+        Programma deSlimsteMens = new Programma("De Slimste mens", erik, Duration.hours(1), LocalDateTime.of(2019, Month.MARCH, 2, 20, 30), Genre.Komedie);
         Zender vier = new Zender("Vier");
         vier.addProgramma(deSlimsteMens);
         
@@ -260,7 +260,7 @@ public class Programma {
 In de volgende enumeratie zie je al één van de extra functionaliteiten van enums binnen Java. Enumeraties gedragen zich eigenlijk gewoon als klasses. Hier hebben we een beschrijving toegevoegd, en via de `private`(!) constructor, kunnen we de beschrijving instellen.
 ```java
 public enum Genre {
-    ACTIE("Een programma vol actie"), THRILLER("Een spannend programma"), ROMANTIEK("Een programma vol romantiek"), KOMEDIE("Een grappig programma");
+    Actie("Een programma vol actie"), Thriller("Een spannend programma"), Romantiek("Een programma vol romantiek"), Komedie("Een grappig programma");
     
     private String beschrijving;
     
