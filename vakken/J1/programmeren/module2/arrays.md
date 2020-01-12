@@ -1,6 +1,9 @@
 # Programmeren 2
+
 ## Arrays
+
 ### Oefening 1
+
 ```csharp
 static void Main(string[] args)
         {
@@ -18,7 +21,9 @@ static void Main(string[] args)
             }
         }
 ```
+
 ### Oefening 2
+
 ```csharp
 static void Main(string[] args)
         {
@@ -37,7 +42,9 @@ static void Main(string[] args)
             }
         }
 ```
+
 ### Oefening 3
+
 ```csharp
 static void Main(string[] args)
         {
@@ -56,7 +63,9 @@ static void Main(string[] args)
             }
         }
 ```
+
 ### Oefening 4
+
 ```csharp
 static void Main(string[] args)
         {
@@ -76,7 +85,9 @@ static void Main(string[] args)
             }
         }
 ```
+
 ### Oefening 5
+
 ```csharp
 static Random random = new Random();
 static void Main(string[] args)
@@ -129,6 +140,7 @@ static void Main(string[] args)
 ```
 
 ### Oefening 6
+
 ```csharp
 class Program
     {
@@ -171,6 +183,7 @@ class Program
         }
     }
 ```
+
 We checken in de laatste if-structuur of de lengte van de array waarvan een item moet worden afgedrukt groter is dan de teller, zodat we geen items die niet bestaan proberen af te drukken wat in een error zou resulteren.
 
 Enkele voorbeelden om aan te tonen dat dit altijd werkt:
@@ -182,6 +195,7 @@ Echter, als we kijken naar de tweede array, die maar 33 elementen heeft, zien we
 [Alternatieve oplossing voor deze oefening](https://github.com/MrDanaT/Module-2/blob/master/Programmeren_2/Oefeningen/Dana/Arrays/1.06_100Getallen/1.06_100Getallen/Program.cs)(met grootste verschil in de voorlaatste for-loop)
 
 ### Oefening 7
+
 ```csharp
 class Program
     {
@@ -217,7 +231,9 @@ class Program
         }
     }
 ```
-#### Kortere, eenvoudigere versie:
+
+#### Kortere, eenvoudigere versie
+
 ```csharp
 class MainClass
     {
@@ -240,8 +256,11 @@ class MainClass
 ```
 
 ### Oefening 8
+
 Aangezien de beschrijving van deze oefening een beetje vaag was, staan hier de oplossingen van de twee mogelijke interpretaties.
+
 #### Optie 1 (Items omkeren zonder een tweede array aan te maken)
+
 ```csharp
 class MainClass
     {
@@ -266,7 +285,9 @@ class MainClass
         }
     }
 ```
-#### Optie 2 (Items willekeurig plaatsen):
+
+#### Optie 2 (Items willekeurig plaatsen)
+
 ```csharp
 class Program
     {
@@ -308,6 +329,7 @@ class Program
 ```
 
 ### Oefening 9
+
 ```csharp
 class MainClass
     {
@@ -333,7 +355,9 @@ class MainClass
         }
     }
 ```
+
 ### Oefening 10
+
 ```csharp
 class Program
     {
@@ -371,7 +395,9 @@ class Program
         }
     }
 ```
-#### Kortere versie:
+
+#### Kortere versie
+
 ```csharp
 class MainClass
     {
@@ -393,7 +419,9 @@ class MainClass
         }
     }
 ```
+
 ### Oefening 11
+
 ```csharp
 class MainClass
     {
@@ -414,8 +442,11 @@ class MainClass
         }
     }
 ```
+
 ### Oefening 12
+
 Danku [@MrDanaT](https://github.com/MrDanaT) om deze oefening te maken! [Dana's repository](https://github.com/MrDanaT/Module-2)
+
 ```csharp
 internal class Program
     {
@@ -457,8 +488,11 @@ internal class Program
         }
     }
 ```
+
 ### Oefening 13, 14
+
 > Voeg het stukje met Array.Sort() toe om oef. 14 te verkrijgen.
+
 ```csharp
 class Program
     {
@@ -532,7 +566,9 @@ class Program
 ```
 
 ### Oefening 15, 16
+
 > oefening 15 en 16 gecombineerd (zelfde principe). Met invoercorrectie.
+
 ```csharp
 class Program
     {
@@ -624,6 +660,7 @@ class Program
 ```
 
 ### Oefening 17
+
 ```csharp
 class Program
     {
@@ -672,6 +709,7 @@ class Program
 ```
 
 ### Oefening 18
+
 ```csharp
 class Program
     {
@@ -712,6 +750,7 @@ class Program
 ```
 
 ### Oefening 19, a,b,c,d,e (work in progress)
+
 ```csharp
 class Program
     {
@@ -820,7 +859,9 @@ class Program
 ```
 
 ### Oefening 20
+
 #### Versie met 2D arrays
+
 ```csharp
 class Program
 {
@@ -877,7 +918,9 @@ class Program
     }
 }
 ```
+
 #### Versie met 1D arrays
+
 ```csharp
 class Program
     {
@@ -934,8 +977,11 @@ class Program
         }
     }
 ```
+
 ### Oefening 21
+
 #### Manier 1
+
 ```csharp
 class Program
 {
@@ -984,7 +1030,9 @@ class Program
     }
 }
 ```
-#### Manier 2: Korter (maar juister: ?) IDK wat getransponeerd is, volgens mij bestaat dat woord niet.
+
+#### Manier 2: Korter (maar juister: ?) IDK wat getransponeerd is, volgens mij bestaat dat woord niet
+
 ```csharp
 class Program
     {
@@ -1017,7 +1065,9 @@ class Program
         }
     }
 ```
+
 ### Oefening 22
+
 ```csharp
 class Program
 {
@@ -1066,6 +1116,7 @@ class Program
 ```
 
 ### Oefening 23
+
 ```csharp
 class Program
 {
@@ -1118,6 +1169,7 @@ class Program
 ```
 
 ### Oefening 26, 27
+
 ```csharp
 class Program
 {
@@ -1205,7 +1257,9 @@ class Program
 ```
 
 ### Oefening 28
+
 #### Class Program
+
 ```csharp
 class Program
 {
@@ -1266,7 +1320,9 @@ class Program
     }
 }
 ```
+
 #### Class Matrix
+
 ```csharp
 enum Bewerkingen { Sum, Difference, Product };
 class Matrix
@@ -1394,6 +1450,7 @@ class Matrix
 ```
 
 ### Oefening 29
+
 ```csharp
 class Program
 {
@@ -1449,7 +1506,9 @@ class Program
 ```
 
 ### Oefening 30
+
 #### Class Program
+
 ```csharp
 class Program
 {
@@ -1469,7 +1528,9 @@ class Program
     }
 }
 ```
+
 #### Class CheckTabel
+
 ```csharp
 class CheckTabel
 {

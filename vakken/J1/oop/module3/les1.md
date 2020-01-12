@@ -1,6 +1,9 @@
 # Les 1
+
 ## Oefening 1.1
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -12,7 +15,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Vlucht
+
 ```csharp
 class Vlucht
     {
@@ -47,8 +52,11 @@ class Vlucht
         }
     }
 ```
+
 #### Extra 1 (vluchtnummer automatisch verhogen)
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -61,7 +69,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Vlucht
+
 ```csharp
 class Vlucht
     {
@@ -97,8 +107,11 @@ class Vlucht
         }
     }
 ```
+
 #### Extra 2 (Bestemming beperkt tot Frankrijk, Engeland en Duitsland. Vertrek enkel uit België)
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -111,7 +124,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Vlucht
+
 ```csharp
 enum Bestemmingen { Frankrijk, Engeland, Duitsland}
     class Vlucht
@@ -148,8 +163,11 @@ enum Bestemmingen { Frankrijk, Engeland, Duitsland}
         }
     }
 ```
+
 ## Oefening 1.2
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -161,7 +179,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Persoon
+
 ```csharp
 enum Geslacht { Vrouw, Man }
     class Persoon
@@ -198,8 +218,11 @@ enum Geslacht { Vrouw, Man }
         }
     }
 ```
+
 #### Extra 1 (extra methode om leeftijd te berekenen aan de hand van een meegegeven datum)
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -211,7 +234,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Persoon
+
 ```csharp
 enum Geslacht { Vrouw, Man}
     class Persoon
@@ -254,8 +279,11 @@ enum Geslacht { Vrouw, Man}
         }
     }
 ```
+
 ## Oefening 1.3 (nog niet nagekeken)
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -266,7 +294,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Auto
+
 ```csharp
 internal class Auto
 {

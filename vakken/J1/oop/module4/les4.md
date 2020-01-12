@@ -1,7 +1,11 @@
 # Les 4
+
 ## Oefening 1
+
 De eerste stap is de Interface `IComparable` implementeren in de klasses Serie & Film. Daarna passen we de `CompareTo()`-methode aan zodat we op basis van de naam kunnen vergelijken.
+
 ### Klasse Serie
+
 ```csharp
 class Serie : Medium, IComparable
 {
@@ -36,7 +40,9 @@ class Serie : Medium, IComparable
     }
 }
 ```
+
 ### Klasse Film
+
 ```csharp
 class Film : Medium, IComparable
 {
@@ -68,8 +74,11 @@ class Film : Medium, IComparable
     }
 }
 ```
+
 Vervolgens sorteren we de films en series door de lijst te sorteren. Gewoon `media.Sort();` toevoegen dus.
+
 ### Klasse StreamingApplicatie (Form)
+
 ```csharp
 public partial class StreamingApplicatie : Form
 {
@@ -117,9 +126,13 @@ public partial class StreamingApplicatie : Form
     }
 }
 ```
+
 ## Oefening 2
+
 Opnieuw implementeren we de interface `IComparable`. Dit keer in de klasse passagier.
+
 ### Klasse Passagier
+
 ```csharp
 enum Geslachten { Man, Vrouw, Onbekend }
 class Passagier : IComparable
@@ -158,12 +171,16 @@ class Passagier : IComparable
     }
 }
 ```
+
 Daarna sorteren we gewoon onze lijst van passagiers, en geven we onze lijst eventueel weer in een listBox zodat we kunnen controleren of alles juist is gesorteerd.
+
 ```csharp
 passagiers.Sort();
 listBoxPassagiers.DataSource = passagiers;
 ```
+
 ## Oefening 3
+
 ```csharp
 static void Main(string[] args)
 {
@@ -186,8 +203,11 @@ static void Main(string[] args)
     Console.ReadLine();
 }
 ```
+
 ## Oefening 4
+
 ### Klasse Program
+
 ```csharp
 class Program
 {
@@ -211,7 +231,9 @@ class Program
     }
 }
 ```
+
 ### Klasse Auto
+
 ```csharp
 class Auto
     {
@@ -232,8 +254,11 @@ class Auto
         }
     }
 ```
+
 ## Oefening 5
+
 ### Klasse Form1
+
 ```csharp
 public partial class Form1 : Form
     {
@@ -255,5 +280,7 @@ public partial class Form1 : Form
         }
     }
 ```
+
 ### Klasse Auto
+
 Blijft hetzelfde als in oefening 4.

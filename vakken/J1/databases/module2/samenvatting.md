@@ -1,6 +1,7 @@
 # Belangrijk
+
 - NOT = negatie
-      select moet kandidaatsleutel zijn van where                
+      select moet kandidaatsleutel zijn van where
       om juiste resultaat te geven (bij NOT)
 - X [NOT] BETWEEN Y AND Z
 - X  [NOT] LIKE ```'%F'``` of ```'_F'```

@@ -1,6 +1,9 @@
 # Deel 6
-## Oefening 1:
+
+## Oefening 1
+
 ### 1A
+
 ```sql
 SELECT
     betalingsnr,
@@ -8,7 +11,9 @@ SELECT
 FROM
     boetes;
 ```
+
 ### 1B
+
 ```sql
 SELECT
     spelersnr,
@@ -17,7 +22,9 @@ SELECT
 FROM
     wedstrijden;
 ```
+
 ### 1C
+
 ```sql
 SELECT
     spelersnr,
@@ -26,8 +33,11 @@ SELECT
 FROM
     wedstrijden;
 ```
-## Oefening 2:
+
+## Oefening 2
+
 ### 2A
+
 ```sql
 SELECT
     spelersnr,
@@ -40,7 +50,9 @@ SELECT
 FROM
     wedstrijden;
 ```
+
 ### 2B
+
 ```sql
 SELECT
     spelersnr,
@@ -53,7 +65,9 @@ SELECT
 FROM
     spelers;
 ```
+
 ### 2C
+
 ```sql
 SELECT
     spelersnr,
@@ -70,8 +84,11 @@ SELECT
 FROM
     spelers;
 ```
-## Oefening 3:
+
+## Oefening 3
+
 ### 3A
+
 ```sql
 SELECT
     spelersnr,
@@ -80,7 +97,9 @@ SELECT
 FROM
     spelers;
 ```
+
 ### 3B
+
 ```sql
 SELECT
     spelersnr,
@@ -92,37 +111,49 @@ SELECT
 FROM
     spelers;
 ```
-## Oefening 4:
+
+## Oefening 4
+
 ### 4A
+
 ```sql
 SELECT
     max(gewonnen-verloren) AS maximum
 FROM
     wedstrijden;
 ```
+
 ### 4B
+
 ```sql
 SELECT
     count(wedstrijdnr) AS aantal
 FROM
     wedstrijden;
 ```
+
 ## EXTRA
+
 ### EX1
+
 ```sql
 SELECT
     naam as Uitgever
 FROM
     tbluitgevers;
 ```
+
 Of uitgebreider:
+
 ```sql
 SELECT
     replace(naam, ' ', '_') as Uitgever
 FROM
     tbluitgevers;
 ```
+
 ### EX2
+
 ```sql
 SELECT
     lower(naam)
@@ -130,7 +161,9 @@ FROM
     tblgamedefinitions
 ;
 ```
+
 ### EX3
+
 ```sql
 SELECT
     replace(replace(lower(naam), '-', '_'), ' ', '_') as Game
@@ -138,7 +171,9 @@ FROM
     tblgamedefinitions
 ;
 ```
+
 ### EX4
+
 ```sql
 SELECT
     /*naam, CAST(releasedatum AS CHAR(10))*/
@@ -148,8 +183,11 @@ FROM
     tblconsoles
 ;
 ```
+
 --> `naam, CAST(releasedatum AS CHAR(10))`is naar mijn mening een betere manier, maar dit geeft niet 100% het gewenste resultaat.
+
 ### EX5
+
 ```sql
 SELECT
     naam, length(naam)
@@ -157,7 +195,9 @@ FROM
     tblgamedefinitions
 ;
 ```
+
 ### EX6
+
 ```sql
 SELECT
     MAX(price) AS Hoogste_Prijs
@@ -165,7 +205,9 @@ FROM
     tblgames
 ;
 ```
+
 ### EX7
+
 ```sql
 SELECT
     SUM(price) AS Max_Omzet
@@ -173,7 +215,9 @@ FROM
     tblgames
 ;
 ```
+
 ### EX8
+
 ```sql
 SELECT
     naam, MIN(releasedatum)
@@ -181,7 +225,9 @@ FROM
     tblgamedefinitions
 ;
 ```
+
 ### EX9
+
 ```sql
 SELECT
     gd.naam,
@@ -194,7 +240,9 @@ FROM
     tblgames, tblgamedefinitions as gd
 ;
 ```
+
 ### EX10
+
 ```sql
 select
     concat(naam, ';', id, ';', uitgever, ';', releasedatum, ';')
@@ -202,7 +250,9 @@ FROM
     tblgamedefinitions
 ;
 ```
+
 ### EX11
+
 ```sql
 select
     g.price/*,
@@ -215,7 +265,9 @@ WHERE
     g.gamedefinitionid = gd.id
 ;
 ```
+
 ### EX12
+
 ```sql
 select
     g.price,

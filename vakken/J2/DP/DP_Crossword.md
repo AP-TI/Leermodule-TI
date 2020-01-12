@@ -1,8 +1,11 @@
 # Crossword data
+
 > Made by Luka & Mathias
 
 ## P1 Strategy
+
 ### Across
+
 2 Encapsulate what varies
 (To achieve encapsulation in Java −
 Declare the variables of a class as private.
@@ -16,7 +19,9 @@ Provide public setter and getter methods to modify and view the variables values
 18 Learn from the other guy’s Successes
 19 Development constant Change
 20 Patterns give us a shared Vocabulary
+
 ### Down
+
 1 Patterns Recur in many applications
 3 Favor this over inheritance Composition
 (Inheritance = A cat is an animal. Composition = A car has an engine.)
@@ -32,7 +37,9 @@ Provide public setter and getter methods to modify and view the variables values
 16 Duck demo was located in Maui
 
 ## P2 Observer
+
 ### Across
+
 1 Observerable is a Class, not an interface IN ‘java.utils’, als ge het zelf maakt -> interface
 3 Devil and angel are Listening to the button
 4 Implements this method to get notified Update
@@ -42,13 +49,15 @@ Provide public setter and getter methods to modify and view the variables values
 8 How to get yourself off the observer list Removeobserver
 12 You forgot this if you’re not getting notified when you think you should be Setchanged
 -> setChanged als er iets veranderd is. setChanged roept notifyObservers aan.
-15 One subject likes to talk to Many observers 
+15 One subject likes to talk to Many observers
 18 Don’t count on this for notification Order (java.utils)
 19 Temperature, humidity and Pressure
 20 Observers are Dependant on the subject (inhoud van observers hangt af van de data die het subject doorgeeft)
 21 Program to an Interface not an implementation (interface bevat functies)
 22 A subject is similar to a Publisher. (publisher als in iemand die data publiceert)
+
 ### Down
+
 2 Ron was both an Observer and a Subject
 3 You want to keep your coupling Loose.
 7 He says you should go for it Devillistener
@@ -63,7 +72,9 @@ Provide public setter and getter methods to modify and view the variables values
 19 Subject initially wanted to Push all the data to Observer
 
 ## P3 Singleton
+
 ### Across
+
 1 It was one of a kind Car
 2 added to chocolate in the boiler Milk
 8 an incorrect implementation caused this to overflow Boiler
@@ -73,7 +84,9 @@ Provide public setter and getter methods to modify and view the variables values
 14 one advantage over global variables: Lazy creation
 15 company that produces boilers Choc-O-Holic
 16 to totally defeat the new constructor we have to declare the constructor Private
+
 ### Down
+
 1 Multiple Classloaders can cause problems.
 3 A Singleton is a class that manages an instance of Itself
 4 If you don’t need to worry about lazy instantiation, you can create your instance Statically
@@ -84,9 +97,11 @@ Provide public setter and getter methods to modify and view the variables values
 11 The Singleton Pattern has one Class
 
 ## P4 Decorator
+
 /
 
 ## P5 Command
+
 Across
 3 the waitress was one Invoker
 4 A command Binds a set of actions and a receiver
@@ -108,13 +123,17 @@ Down
 16 Waitress didn’t do this Cook
 
 ## P6 BESTAAT NIET
+
 /
 
 ## P7 State
+
 /
 
 ## P8 Factory
+
 ### Across
+
 1 In Factory Method, each franchise is a concrete creator
 4 In Factory Method, who decides which class to instantiate? PizzaStore
 6 Role of PizzaStore in Factory Method Pattern Creator
@@ -126,14 +145,18 @@ Down
 13 In Factory Method, the PizzaStore and the concrete Pizzas all depend on this abstraction Pizza
 14 When a class instantiates an object from a concrete class, it’s Dependent on that object
 15 All factory patterns allow us to Encapsulate object creation
+
 ### Down
+
 2 We used ObjectComposition in Simple Factory and abstract factory, and inheritance in Factory Method
 3 Abstract Factory creates a Family of products
 5 Not a real factory pattern, but handy nonetheless SimpleFactory
 10 Ethan likes this kind of pizza NYStyle
 
 ## P9 Adapter & P10 Facade
+
 ### Across
+
 1 True or false, Adapters can only wrap one object False
 5 An Adapter Converts an interface
 6 Movie we watched RaidersOfTheLostArk
@@ -144,7 +167,9 @@ Down
 16 Disadvantage of the Principle of Least Knowledge: too many Wrappers
 17 A Facade simplifies an interface
 19 New American dream HomeTheater
+
 ### Down
+
 2 Decorator called adapter this SimplePassthrough
 3 One advantage of facade Decoupling
 4 Principle that wasn’t easy as it sounded Least Knowledge
@@ -156,7 +181,9 @@ Down
 18 An Adapter and a decorator can be said to wrap an object
 
 ## P11 Template
+
 ### Across
+
 1 Strategy uses Composition rather than inheritance
 4 Type of sort used in Arrays MergeSort
 5 The JFrame hook method that we overrode to print “I Rule” Paint
@@ -167,7 +194,9 @@ Down
 13 In this chapter we gave you more Caffeine
 14 The template method is usually defined in an Abstract class
 16 Class that likes web pages Applet
+
 ### Down
+
 2 Optional algorithm steps are implemented by hook methods
 3 Factory Method is a Specialization of Template Method
 7 The steps in the algorithm that must be supplied by the subclasses are usually declared Abstract
@@ -178,6 +207,7 @@ Down
 15 The arrays class implements template method as a Static method
 
 ## Belangrijkste items (volgens ons)
+
 Encapsulate what varies
 (To achieve encapsulation in Java −
 Declare the variables of a class as private.
@@ -194,7 +224,7 @@ CurrentConditionsDisplay implements this interface Observer
 How to get yourself off the observer list Removeobserver
 You forgot this if you’re not getting notified when you think you should be Setchanged
 -> setChanged als er iets veranderd is. setChanged roept notifyObservers aan.
-One subject likes to talk to Many observers 
+One subject likes to talk to Many observers
 Don’t count on this for notification Order (java.utils)
 Observers are Dependant on the subject (inhoud van observers hangt af van de data die het subject doorgeeft)
 Program to an Interface not an implementation (interface bevat functies)

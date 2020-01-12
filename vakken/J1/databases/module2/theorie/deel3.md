@@ -13,9 +13,7 @@ ORDER BY
 ```
 
 > Selecteer BETALINGSNR en SPELERSNR van tabel BOETES en orden op SPELERSNR.
-
 > Je kan ordenen op meerdere velden. Bijvoorbeeld: ORDER BY SPELERSNR, BEDRAG zal je resultaat eerst ordenen op SPELERSNR, en indien er dubbele spelersnummers zijn zal hij die op BEDRAG ordenen.
-
 > Je kan ordenen op velden die niet in de SELECT staan. Bijvoorbeeld:
 
 ```sql
@@ -29,13 +27,9 @@ ORDER BY
 ```
 
 > Dit zal ordenen op SPELERSNR en dan op BEDRAG, ook al staat SPELERSNR niet in de SELECT.
-
 > Je kan ook ordenen op scalaire expressies, bijvoorbeeld: ORDER BY BEDRAG – (SELECT AVG(BEDRAG) FROM BOETES). Dir rekent eerst de scalaire expressie uit, en zal dan sorteren op het resultaat (hier dus bedrag - avg(bedrag))
-
 > Je kan ook ordenen op kolomnummer. Bijvoorbeeld kolom nr 2 is BEDRAG. Dan kan je zowel ORDER BY BEDRAG als ORDER BY 2. Al is naar mijn mening de kolomnaam wel duidelijker.
-
 > Per element bij ORDER BY is er de keuze om er DESC / ASC bij te zetten.
-
 > NULL is het kleinste element. Wanneer je dus ASC sorteert komen de NULL waarden bovenaan, en bij DESC achteraan.
 
 ### UNION
@@ -80,45 +74,45 @@ FROM
 > Selecteer het SPELERSNR van elke speler die een boete betaalt heeft, aanvoerder is van een team, of voor wie beide geldt.
 
 ### UNION REGELS
+
 #### GELIJK TYPE
+
 > Zorg er steeds voor dat element(X) in het SELECT-blok van het eerste query steeds van hetzelfde type is als element(X) van het tweede SELECT-blok enz. Voorbeelden:
 
 ```sql
-SELECT 
+SELECT
         SPELERSNR, PLAATS
-FROM 
+FROM
         SPELERS
 
 
 UNION
 
 
-SELECT 
+SELECT
         SPELERSNR, BEDRAG
-FROM 
+FROM
         BOETES
 ;
 ```
 
 > element(0) select-blok 1 = SPELERSNR en element(0) select-blok 2 = SPELERSNR → komen overeen
-
 > element(1) select-blok 1 = PLAATS en element(1) select-blok 2 = BEDRAG → komt NIET overeen!
-
 > FOUTIEF STATEMENT! oplossing:
 
 ```sql
-SELECT 
+SELECT
         SPELERSNR, PLAATS
-FROM 
+FROM
         SPELERS
 
 
 UNION
 
 
-SELECT 
+SELECT
         SPELERSNR, CAST(BEDRAG AS CHAR(6))
-FROM 
+FROM
         BOETES
 ;
 ```
@@ -127,7 +121,8 @@ FROM
 
 #### ORDER BY
 
-> LET OP: ORDER BY slaat op het gehele resultaat. Zet het daarom ALTIJD helemaal als laatste in het statement. Voorbeeld: 
+> LET OP: ORDER BY slaat op het gehele resultaat. Zet het daarom ALTIJD helemaal als laatste in het statement. Voorbeeld:
+
 ```sql
 SELECT
         SPELERSNR, GEB_DATUM

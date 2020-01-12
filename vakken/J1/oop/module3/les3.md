@@ -1,6 +1,9 @@
 # Les 3
+
 ## Oefening 3.1 (nog niet gecontroleerd)
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -15,7 +18,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Film
+
 ```csharp
 class Film
     {
@@ -57,7 +62,9 @@ class Film
 
     }
 ```
+
 ### Klasse Serie
+
 ```csharp
 class Serie
     {
@@ -93,8 +100,11 @@ class Serie
 
     }
 ```
+
 #### Extra oefening 1: ratings toevoegen
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -118,7 +128,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Film
+
 ```csharp
 class Film
     {
@@ -161,7 +173,7 @@ class Film
                 BerekenGemiddelde();
                 return true;
             }
-            return false;            
+            return false;
         }
 
         public void BerekenGemiddelde()
@@ -176,7 +188,9 @@ class Film
 
     }
 ```
+
 ### Klasse Serie
+
 ```csharp
 class Serie
     {
@@ -231,8 +245,11 @@ class Serie
 
     }
 ```
+
 #### Extra oefening 2: laagste en hoogste ratings niet laten meetellen
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -255,7 +272,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Film
+
 ```csharp
 internal class Film
     {
@@ -328,7 +347,9 @@ internal class Film
 
     }
 ```
+
 ### Klasse Serie
+
 ```csharp
 internal class Serie
     {
@@ -398,8 +419,11 @@ internal class Serie
 
     }
 ```
+
 #### Extra oefening 3: functionaliteit om acteurs toe te voegen aan films/series
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -426,7 +450,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Acteur
+
 ```csharp
 class Acteur
     {
@@ -445,7 +471,9 @@ class Acteur
         }
     }
 ```
+
 ### Klasse Film
+
 ```csharp
 internal class Film
     {
@@ -540,7 +568,9 @@ internal class Film
 
     }
 ```
+
 ### Klasse Serie
+
 ```csharp
 internal class Serie
     {
@@ -632,9 +662,13 @@ internal class Serie
 
     }
 ```
+
 ## Oefening 3.2 (Nog niet nagekeken)
-#### Met alle extra's:
+
+#### Met alle extra's
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -659,7 +693,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Werknemer
+
 ```csharp
 public enum Prestaties { Onvoldoende, Voldoende, Goed}
     class Werknemer
@@ -703,7 +739,9 @@ public enum Prestaties { Onvoldoende, Voldoende, Goed}
         }
     }
 ```
+
 ### Klasse Departement
+
 ```csharp
 internal class Departement
     {

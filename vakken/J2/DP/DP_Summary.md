@@ -21,7 +21,6 @@ Duck has property of each Behavior
 Duck sets Behavior in constructor via properties
 Subduck constructor takes variable of each behavior and sends them to parent-class Duck
 
-
 ## Observer Pattern
 
 > Summary:
@@ -96,7 +95,7 @@ Easy to add state: make new state class which implements State interface and add
 Interface State: basic methods
 Specific classes which implement State interface: NoQuarterState, HasQuarterState, SoldOutState and the abstract class GumballSoldOutState
 GumballSoldState as an abstract class. SoldState and Winnerstate inherit from it (so they don’t need to implement the State interface because GumballSoldState already implements it)
-GumballMachine as out item. It has properties of each state (not GumballSoldState but its ‘children’). It has a method setState to change the machines state. It has getters for each state. In this case it contains a count, company and model. We also need a getter for count to know the amount of gumballs outside the class. 
+GumballMachine as out item. It has properties of each state (not GumballSoldState but its ‘children’). It has a method setState to change the machines state. It has getters for each state. In this case it contains a count, company and model. We also need a getter for count to know the amount of gumballs outside the class.
 New state? Make new class which implements State interface, add is as a property to GumballMachine, create a getter and you’re ready to crank.
 
 ## Factory Pattern
@@ -104,7 +103,7 @@ New state? Make new class which implements State interface, add is as a property
 > Summary:
 
 You’ve got a product which has many different species. Each species can be made on different locations, where they use different components made out of different ingredients. We’ve got five grades: the item, the species, the location, the components and the ingredients.
-For the item, we’ve got an abstract class with basic methods and other classes which inherit from it to form species. 
+For the item, we’ve got an abstract class with basic methods and other classes which inherit from it to form species.
 Next, an abstract class ‘Store’ where the species is made. This class has a method to be able to order a species and an abstract method to create a species. We do have classes which inherit from this abstract class. They override the create method to be able to create each species in another way (with other ingredients).
 Now we need an interface for the components. We basically create a factory where they select the right ingredients for that component.
 Last but not least, we need interfaces for EACH ingredient and classes which implement one interface and then specify it.

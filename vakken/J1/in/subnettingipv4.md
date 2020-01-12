@@ -1,4 +1,5 @@
 # Subnetting in IPv4
+
 Een IP-adres is opgedeeld ik 4 octets (4 groepen van 8 bits). Om het leesbaar te maken voor mensen worden IP-adressen decimaal weergegeven (bijvoorbeeld `192.168.0.1`).
 
 Een netwerk behoort altijd tot een klasse. Je kan zien welke klasse door naar het eerste octet te kijken.
@@ -8,7 +9,6 @@ Indien een netwerk-adres begint met een getal van 1 t.e.m. 127 (bijvoorbeeld `10
 Vanaf 128 t.e.m. 191 spreken we over klasse B.  Hier is het standaard netmasker `255.255.0.0`.
 
 En tot slot hebben we van 192 t.e.m. 223 klasse C. Door het netmasker van `255.255.255.0` zijn netwerken van klasse C de kleinste netwerken (maximaal 253 hosts).
-
 
 Oke, maar wat doet dit netmasker nu juist? Wel, het netmasker geeft aan welke bits tot het netwerk-deel behoren, en welke beschikbaar zijn voor individuele hosts. Je kan dit het best zien door het subnetmasker en het ip-adres om te zetten naar binair. Dit is echter niet de snelste manier, maar wel essentieel om het te begrijpen. Daarna leg ik uit hoe je gebruik kan maken van trucjes zoals de magic number.
 

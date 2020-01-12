@@ -1,5 +1,7 @@
 # XML Oefeningen 1
+
 ## Oefening 1
+
 ```xml
 <?xml version="1.0"?>
 <persoon>
@@ -7,9 +9,12 @@
    <naam>Van Saksen - Coburg</naam>
 </persoon>
 ```
+
 Deze is niet wellformed omdat de sluitende `</voorNaam>` een hoofdletter N heeft.
 Is ook niet valid aangezien er geen DTD (document type definition) is.
+
 ## Oefening 2
+
 ```xml
 <?xml version="1.0"?>
 <persoon>
@@ -18,8 +23,11 @@ Is ook niet valid aangezien er geen DTD (document type definition) is.
    <leeftijd>  >20 jaar & < 90 jaar </leeftijd>
 </persoon>
 ```
+
 Is niet wellformed aangezien er een & staat, om een & te weergeven zet je `&amp;`.
+
 ## Oefening 3
+
 ```xml
 <?xml version="1.0"?>
 <!DOCTYPE note [<!ELEMENT note (to,from,heading,body)>
@@ -28,14 +36,17 @@ Is niet wellformed aangezien er een & staat, om een & te weergeven zet je `&amp;
 <!ELEMENT heading (#PCDATA)>
 <!ELEMENT body (#PCDATA)>]>
 <note>
-	<tol>owner@work.be</tol>
-	<from>dog@home.be</from>
-	<heading>Reminder</heading>
-	<body>Don't forget me this weekend</body>
+ <tol>owner@work.be</tol>
+ <from>dog@home.be</from>
+ <heading>Reminder</heading>
+ <body>Don't forget me this weekend</body>
 </note>
 ```
+
 Wel wellformed, niet valid aangezien er 'tol' in plaats van 'to' staat.
-### Juiste versie:
+
+### Juiste versie
+
 ```xml
 <?xml version="1.0"?>
 <!DOCTYPE note [<!ELEMENT note (to,from,heading,body)>
@@ -44,13 +55,15 @@ Wel wellformed, niet valid aangezien er 'tol' in plaats van 'to' staat.
 <!ELEMENT heading (#PCDATA)>
 <!ELEMENT body (#PCDATA)>]>
 <note>
-	<to>owner@work.be</to>
-	<from>dog@home.be</from>
-	<heading>Reminder</heading>
-	<body>Don't forget me this weekend</body>
+ <to>owner@work.be</to>
+ <from>dog@home.be</from>
+ <heading>Reminder</heading>
+ <body>Don't forget me this weekend</body>
 </note>
 ```
+
 ## Oefening 4
+
 ```xml
 <?xml version="1.0"?>
 <!DOCTYPE personen [
@@ -60,17 +73,19 @@ Wel wellformed, niet valid aangezien er 'tol' in plaats van 'to' staat.
 <!ELEMENT achternaam (#PCDATA)>
 ]>
 <personen>
-	<persoon>
-		<voornaam>Jos</voornaam>
-		<achternaam>Van De Walle</achternaam>
-	</persoon>
-	<persoon>
+ <persoon>
+  <voornaam>Jos</voornaam>
+  <achternaam>Van De Walle</achternaam>
+ </persoon>
+ <persoon>
 <voornaam>Saïda</voornaam>
 <achternaam>Thrari</achternaam>
-	</persoon>
+ </persoon>
 </personen>
 ```
+
 ## Oefening 5
+
 ```xml
 <?xml version="1.0"?>
 <!DOCTYPE huisdieren [
@@ -94,7 +109,9 @@ Wel wellformed, niet valid aangezien er 'tol' in plaats van 'to' staat.
   </huisdier>
 </huisdieren>
 ```
+
 ### Oefening 6
+
 ```xml
 <?xml version="1.0"?>
 <!DOCTYPE bank [
@@ -113,9 +130,13 @@ Wel wellformed, niet valid aangezien er 'tol' in plaats van 'to' staat.
   <klant klant-naam="Hanne" klant-straat="Oyalelelaan" klant-stad="Bergen"></klant>
 </bank>
 ```
+
 ### Oefening 7
+
 Mondeling gedaan
+
 ### Oefening 8
+
 ```xml
 <?xml version="1.0"?>
 <!DOCTYPE student [
@@ -133,30 +154,32 @@ Mondeling gedaan
 <!ELEMENT date (#PCDATA)>
 <!ATTLIST courses year CDATA #REQUIRED>
 ]>
-	 <student>
-		<firstName>John</firstName>
-		<lastName>Van Kerckhove</lastName>
-		<id>281283</id>
-		<plan>
-			<courses year="1">
-				 <course>
-					<name>Systeemanalyse</name>
-					<shortName>SA</shortName>
-					<record>
-						<grade>14</grade>
-						<date>13/06/11</date>
-					</record>
-				</course>
-				<course>
-					<name>Gegevensanalyse</name>
-					<shortName>GA</shortName>
-				 </course>
-			</courses>
-		</plan>
-	</student>
+  <student>
+  <firstName>John</firstName>
+  <lastName>Van Kerckhove</lastName>
+  <id>281283</id>
+  <plan>
+   <courses year="1">
+     <course>
+     <name>Systeemanalyse</name>
+     <shortName>SA</shortName>
+     <record>
+      <grade>14</grade>
+      <date>13/06/11</date>
+     </record>
+    </course>
+    <course>
+     <name>Gegevensanalyse</name>
+     <shortName>GA</shortName>
+     </course>
+   </courses>
+  </plan>
+ </student>
 
 ```
+
 ### Extra Oefening DTD
+
 ```xml
 <?xml version="1.0" ?>
 <!DOCTYPE TVPLANNING[
@@ -210,7 +233,9 @@ Mondeling gedaan
     </KANAAL>
 </TVPLANNING>
 ```
+
 ### Oefening 9
+
 ```xml
 <?xml version="1.0"?>
 <!DOCTYPE personen[
@@ -223,28 +248,32 @@ Mondeling gedaan
 <!ATTLIST persoon id CDATA #REQUIRED>
 ]>
 <personen>
-	<persoon id="p1">
-		<voornaam>Jos</voornaam>
-		<achternaam>Van De Walle</achternaam>
-	</persoon>
-	<persoon id="p2">
-		<achternaam>Thrari</achternaam>
-		<voornaam>Saïda</voornaam>
-		<geboortedatum>02/11/1980</geboortedatum>
-		<vrijeTekst>
-			<![CDATA[Zij houdt van speciale tekens zoals &<> en ]]>
-		</vrijeTekst>
-	</persoon>
-	<persoon id="p3">
-		<achternaam>Johnson</achternaam>
-		<voornaam>Thomas</voornaam>
-		<geboortedatum>02/12/1982</geboortedatum>
-	</persoon>
+ <persoon id="p1">
+  <voornaam>Jos</voornaam>
+  <achternaam>Van De Walle</achternaam>
+ </persoon>
+ <persoon id="p2">
+  <achternaam>Thrari</achternaam>
+  <voornaam>Saïda</voornaam>
+  <geboortedatum>02/11/1980</geboortedatum>
+  <vrijeTekst>
+   <![CDATA[Zij houdt van speciale tekens zoals &<> en ]]>
+  </vrijeTekst>
+ </persoon>
+ <persoon id="p3">
+  <achternaam>Johnson</achternaam>
+  <voornaam>Thomas</voornaam>
+  <geboortedatum>02/12/1982</geboortedatum>
+ </persoon>
 </personen>
 ```
+
 ### Oefening 10
+
 Deze oefening diende enkel om te tonen hoe slechte XML eruit zag. Je kan hiervoor geen zinvol DTD maken.
+
 ### Scouts
+
 ```xml
 <?xml version="1.0" ?>
 
@@ -288,7 +317,9 @@ Deze oefening diende enkel om te tonen hoe slechte XML eruit zag. Je kan hiervoo
    </PATROUILLE>
 </SCOUTS>
 ```
+
 ### Oefening 11
+
 ```xml
 <?xml version="1.0"?>
 <!DOCTYPE security[
@@ -304,39 +335,41 @@ Deze oefening diende enkel om te tonen hoe slechte XML eruit zag. Je kan hiervoo
 <!ELEMENT delete EMPTY>
 ]>
 <security>
-	<userRole>
-		<logon />
-		<insert />
-		<create />
-	</userRole>
-	<managerRole>
-		<logon />
-		<insert />
-		<create />
-		<update />
-	</managerRole>
-	<adminRole>
-		<logon />
-		<insert />
-		<create />
-		<update />
-		<delete />
-	</adminRole>
+ <userRole>
+  <logon />
+  <insert />
+  <create />
+ </userRole>
+ <managerRole>
+  <logon />
+  <insert />
+  <create />
+  <update />
+ </managerRole>
+ <adminRole>
+  <logon />
+  <insert />
+  <create />
+  <update />
+  <delete />
+ </adminRole>
 </security>
 ```
-#### DTD kan ook anders...
+
+#### DTD kan ook anders
+
 ```xml
 <?xml version="1.0"?>
 <!DOCTYPE security [
 <!ELEMENT security (userRole, managerRole, adminRole)>
 <!ENTITY % defaultRole "(logon, insert, create)">
-	<!ELEMENT userRole (%defaultRole;)>
-		<!ELEMENT logon EMPTY>
-		<!ELEMENT insert EMPTY>
-		<!ELEMENT create EMPTY>
-	<!ELEMENT managerRole (%defaultRole;, update)>
-		<!ELEMENT update EMPTY>
-	<!ELEMENT adminRole (%defaultRole;, update, delete)>
-		<!ELEMENT delete EMPTY>
+ <!ELEMENT userRole (%defaultRole;)>
+  <!ELEMENT logon EMPTY>
+  <!ELEMENT insert EMPTY>
+  <!ELEMENT create EMPTY>
+ <!ELEMENT managerRole (%defaultRole;, update)>
+  <!ELEMENT update EMPTY>
+ <!ELEMENT adminRole (%defaultRole;, update, delete)>
+  <!ELEMENT delete EMPTY>
 ]>
 ```

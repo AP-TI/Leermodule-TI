@@ -1,6 +1,9 @@
 # Les 1
+
 ## Oefening 1
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -14,7 +17,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Stof
+
 ```csharp
 enum Kwaliteitslabels { A, B, C, Onbekend}
 class Stof
@@ -50,7 +55,9 @@ class Stof
     }
 }
 ```
+
 ### Klasse Stretchstof
+
 ```csharp
 class Stretchstof : Stof
 {
@@ -75,7 +82,9 @@ class Stretchstof : Stof
     }
 }
 ```
+
 ### Klasse Katoen
+
 ```csharp
 internal class Katoen : Stof
 {
@@ -97,8 +106,11 @@ internal class Katoen : Stof
     }
 }
 ```
+
 ## Oefening 2
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -119,7 +131,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Winkel
+
 ```csharp
 class Winkel
 {
@@ -157,14 +171,23 @@ class Winkel
     }
 }
 ```
+
 ### Klasse Stof, Stretchstof en Katoen
+
 Blijven hetzelfde als in oefening 1
+
 ## Oefening 3
+
 Gewoon in uw ToString-method plaatsen, is al gebeurd in oefening 1.
+
 ## Oefening 4
+
 ### Klasse Program
+
 Zelfde als in oefening 2
+
 ### Klasse Stof
+
 ```csharp
 enum Kwaliteitslabels { A, B, C, Onbekend}
 class Stof
@@ -205,7 +228,9 @@ class Stof
     }
 }
 ```
+
 ### Klasse Stretchstof
+
 ```csharp
 class Stretchstof : Stof
 {
@@ -240,7 +265,9 @@ class Stretchstof : Stof
     }
 }
 ```
+
 ### Klasse Katoen
+
 ```csharp
 internal class Katoen : Stof
 {
@@ -271,7 +298,9 @@ internal class Katoen : Stof
     }
 }
 ```
+
 ## Oefening 5 & 6
+
 ![katoen toevoegen](afbeeldingen/katoen.png)
 
 ![stretchstof toevoegen](afbeeldingen/stretchstof.png)
@@ -281,6 +310,7 @@ internal class Katoen : Stof
 ![zoekopdracht mislukt](afbeeldingen/zoekopdrachtmislukt.png)
 
 ### Klasse Form1
+
 ```csharp
 public partial class Form1 : Form
 {
@@ -332,7 +362,9 @@ public partial class Form1 : Form
     }
 }
 ```
+
 ### Klasse Winkel
+
 ```csharp
 class Winkel
 {
@@ -385,9 +417,13 @@ class Winkel
     }
 }
 ```
+
 ### Klasse Stof, Stretchstof en Katoen
+
 In principe zijn deze alledrie hetzelfde als in oefening 4, maar ik heb echter een aantal code-verbeteringen toegevoegd.
+
 ### Klasse Stof
+
 ```csharp
 enum Kwaliteitslabels { A, B, C }
     class Stof
@@ -422,7 +458,9 @@ enum Kwaliteitslabels { A, B, C }
         }
     }
 ```
+
 ### Klasse Stretchstof
+
 ```csharp
 class Stretchstof : Stof
     {
@@ -453,7 +491,9 @@ class Stretchstof : Stof
         }
     }
 ```
+
 ### Klasse Katoen
+
 ```csharp
 internal class Katoen : Stof
     {

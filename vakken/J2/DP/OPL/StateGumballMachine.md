@@ -1,17 +1,17 @@
 # Oefening State Pattern
+
 > We maken gebruik van een Interface state om de basisfuncties van een State in te stellen.
-
 > Specifieke states maken we door klasses te gebruiken die de State interface implementeren. In dit voorbeeld is er ook een abstracte klasse die de interface implementeerd. De child-classes moeten die implementatie niet meer doen.
-
 > De GumballMachine heeft alle States als property (behalve de abstracte class, WEL de child-classes). We houden ook het aantal beschikbare gumballs bij met een variabele 'count'. Voor zowel die variabele als alle states hebben we getters. Ook hebben we een methode setState om de state van buitenaf te kunnen veranderen. Tot slot hebben we een ToString die de staat van de machine weergeeft.
-
 > In de main maak je eerst een nieuwe machine aan. In dit voorbeeld geef je een bedrijfsnaam, model en een aantal beschikbare gumballs mee als parameters. Nadien gebruik je de methode 'insertQuarter()' om te starten. Tot slot gebruik je 'turnCrank()' om de machine te laten beginnen.
 
-## Code:
+## Code
+
 > Bij het copy pasten: vergeet je package niet toe te voegen!
 > Voorbeeld: 'package edu.ap.mathiasv.dp_statepattern;'
 
 ### Main
+
 ```java
 public class Main {
     final static int AANTAL_GUMBALLS = 10;
@@ -26,7 +26,9 @@ public class Main {
     }
 }
 ```
+
 ### Interface State
+
 ```java
 public interface State {
     public void insertQuarter();
@@ -35,7 +37,9 @@ public interface State {
     public void dispense();
 }
 ```
+
 ### GumballMachine
+
 ```java
 public class GumballMachine {
     private String company;
@@ -62,66 +66,66 @@ public class GumballMachine {
             state = noQuarterState;
         }
     }
-    
+
     public void insertQuarter(){
         state.insertQuarter();
     }
-    
+
     public void ejectQuarter(){
         state.ejectQuarter();
     }
-    
+
     public void turnCrank(){
         state.turnCrank();
     }
-    
+
     public void setState(State state){
         this.state = state;
     }
-    
-    public void releaseBall(){            
+
+    public void releaseBall(){
         System.out.println("A gumball comes rolling out the slot...");
         if(count != 0){
-            count = count - 1;            
+            count = count - 1;
         }
     }
-    
+
     // getters
     public State getNoQuarterState(){
         return noQuarterState;
     }
-    
+
     public State getHasQuarterState(){
         return hasQuarterState;
     }
-    
+
     public State getSoldOutState(){
         return soldOutState;
     }
-    
+
     public State getSoldState(){
         return soldState;
     }
-    
+
     public State getWinnerState(){
         return winnerState;
     }
-    
+
     public State getState(){
         return this.state;
     }
-    
+
     public int getCount(){
         return count;
     }
-    
+
     public int getWinnerPercentage(){
         return WINNER_PERCENTAGE_ON_100;
     }
 
     @Override
     public String toString() {
-        String summary = 
+        String summary =
                 this.company + "\n" +
                 this.model + "\n" +
                 "Inventory: " + count + " gumballs\n";
@@ -134,12 +138,15 @@ public class GumballMachine {
     }
 }
 ```
+
 ### State classes
+
 #### State class NoQuarterState
+
 ```java
 public class NoQuarterState implements State{
     GumballMachine gumballMachine;
-    
+
     public NoQuarterState(GumballMachine gumballMachine) {
         this.gumballMachine = gumballMachine;
     }
@@ -166,13 +173,16 @@ public class NoQuarterState implements State{
     }
 }
 ```
+
 #### State class HasQuarterState
+
 > Additional import: `import java.util.Random;`
+
 ```java
 public class HasQuarterState implements State {
     Random randomWinner = new Random(System.currentTimeMillis());
     GumballMachine gumballMachine;
-    
+
     public HasQuarterState(GumballMachine gumballMachine) {
         this.gumballMachine = gumballMachine;
     }
@@ -206,10 +216,12 @@ public class HasQuarterState implements State {
     }
 }
 ```
+
 #### Abstract state class GumballSoldState
+
 ```java
 public abstract class GumballSoldState implements State {
-    
+
     @Override
     public void insertQuarter() {
         System.out.println("Please wait, we're already giving you a gumball");
@@ -229,11 +241,13 @@ public abstract class GumballSoldState implements State {
     public abstract void dispense();
 }
 ```
+
 #### State class SoldState
+
 ```java
 public class SoldState extends GumballSoldState {
     GumballMachine gumballMachine;
-    
+
     public SoldState(GumballMachine gumballMachine) {
         this.gumballMachine = gumballMachine;
     }
@@ -251,11 +265,13 @@ public class SoldState extends GumballSoldState {
     }
 }
 ```
+
 #### State class WinnerState
+
 ```java
 public class WinnerState extends GumballSoldState {
     GumballMachine gumballMachine;
-    
+
     public WinnerState(GumballMachine gumballMachine) {
         this.gumballMachine = gumballMachine;
     }
@@ -277,14 +293,16 @@ public class WinnerState extends GumballSoldState {
                 gumballMachine.setState(gumballMachine.getSoldOutState());
             }
         }
-    }    
+    }
 }
 ```
+
 #### State class SoldOutState
+
 ```java
 public class SoldOutState implements State {
     GumballMachine gumballMachine;
-    
+
     public SoldOutState(GumballMachine gumballMachine) {
         this.gumballMachine = gumballMachine;
     }

@@ -1,6 +1,9 @@
 # Les 4
+
 ## Oefening 4.1
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -14,7 +17,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Huisdier
+
 ```csharp
 internal class Huisdier
     {
@@ -45,7 +50,9 @@ internal class Huisdier
         }
     }
 ```
+
 ### Klasse Hond
+
 ```csharp
 internal enum Oorgroottes { Kort, Lang }
 
@@ -67,7 +74,9 @@ internal enum Oorgroottes { Kort, Lang }
         }
     }
 ```
+
 ### Klasse Kat
+
 ```csharp
 enum Vachtlengtes { Kort, Lang}
     class Kat : Huisdier
@@ -90,8 +99,11 @@ enum Vachtlengtes { Kort, Lang}
         }
     }
 ```
+
 ## Oefenign 4.2
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -105,7 +117,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Wagen
+
 ```csharp
 internal class Wagen
     {
@@ -159,7 +173,9 @@ internal class Wagen
         }
     }
 ```
+
 ### Klasse Sportwagen
+
 ```csharp
 class Sportwagen : Wagen
     {
@@ -199,7 +215,9 @@ class Sportwagen : Wagen
         }
     }
 ```
+
 ### Klasse Gezinswagen
+
 ```csharp
 internal class Gezinswagen : Wagen
     {
@@ -238,8 +256,11 @@ internal class Gezinswagen : Wagen
         }
     }
 ```
+
 ## Oefening 4.3
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -259,7 +280,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Winkel
+
 ```csharp
 class Winkel
     {
@@ -295,7 +318,9 @@ class Winkel
         }
     }
 ```
+
 ### Klasse Product
+
 ```csharp
 class Product
 {
@@ -321,7 +346,9 @@ class Product
     }
 }
 ```
+
 ### Klasse Food
+
 ```csharp
 class Food : Product
 {
@@ -345,7 +372,9 @@ class Food : Product
     }
 }
 ```
+
 ### Klasse NonFood
+
 ```csharp
 class NonFood : Product
 {
@@ -366,8 +395,11 @@ class NonFood : Product
     }
 }
 ```
+
 ## Oefening 4.4
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -384,7 +416,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Festival
+
 ```csharp
 internal class Festival
     {
@@ -453,7 +487,9 @@ internal class Festival
         }
     }
 ```
+
 ### Klasse Persoon
+
 ```csharp
 enum Muziekstijlen { RAndB, Dance, Rock}
     class Persoon
@@ -477,7 +513,9 @@ enum Muziekstijlen { RAndB, Dance, Rock}
         }
     }
 ```
+
 ### Klasse Artiest
+
 ```csharp
 class Artiest : Persoon
     {
@@ -486,7 +524,9 @@ class Artiest : Persoon
         }
     }
 ```
+
 ### Klasse Festivalganger
+
 ```csharp
 class Festivalganger : Persoon
     {
@@ -508,8 +548,11 @@ class Festivalganger : Persoon
 
     }
 ```
+
 ## Oefening 4.5
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -557,7 +600,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Adres
+
 ```csharp
 class Adres
     {
@@ -580,7 +625,9 @@ class Adres
         }
     }
 ```
+
 ### Klasse Bank
+
 ```csharp
 class Bank
     {
@@ -616,7 +663,9 @@ class Bank
         }
     }
 ```
+
 ### Klasse Klant
+
 ```csharp
 class Klant
     {
@@ -654,7 +703,9 @@ class Klant
         }
     }
 ```
+
 ### Klasse Rekening
+
 ```csharp
 internal class Rekening
     {
@@ -705,7 +756,9 @@ internal class Rekening
         }
     }
 ```
+
 ### Klasse Spaarrekening
+
 ```csharp
 class Spaarrekening : Rekening
     {
@@ -739,7 +792,9 @@ class Spaarrekening : Rekening
         }
     }
 ```
+
 ### Klasse Beleggingsrekening
+
 ```csharp
 class Beleggingsrekening : Rekening
     {

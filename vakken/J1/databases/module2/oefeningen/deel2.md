@@ -1,18 +1,24 @@
 # Deel 2
+
 Vanaf dit deel zet ik alle keywords in hoofdletters omdat de code zo overzichtelijker is.
+
 ## Oefening 1
-### 1.
+
+### 1
+
 ```sql
-SELECT 
+SELECT
     COUNT(DISTINCT functie) AS `Aantal Bestuursfuncties`
 FROM
     bestuursleden;
 ```
-### 2.
+
+### 2
+
 ```sql
 SELECT DISTINCT
     spelersnr,
-    (SELECT 
+    (SELECT
             s.naam
         FROM
             spelers s
@@ -21,7 +27,7 @@ SELECT DISTINCT
 FROM
     wedstrijden w1
 WHERE
-    1 < (SELECT 
+    1 < (SELECT
             COUNT(spelersnr)
         FROM
             wedstrijden w
@@ -29,17 +35,19 @@ WHERE
             w.spelersnr = w1.spelersnr
                 AND gewonnen > verloren);
 ```
-### 3.
+
+### 3
+
 ```sql
 SELECT DISTINCT
     spelersnr,
-    (SELECT 
+    (SELECT
             naam
         FROM
             spelers s
         WHERE
             b.spelersnr = s.spelersnr) AS naam,
-    (SELECT 
+    (SELECT
             COUNT(spelersnr)
         FROM
             boetes b1
@@ -48,49 +56,56 @@ SELECT DISTINCT
 FROM
     boetes b
 WHERE
-    1 < (SELECT 
+    1 < (SELECT
             COUNT(spelersnr)
         FROM
             boetes b1
         WHERE
             b.spelersnr = b1.spelersnr);
 ```
+
 ## Oefening 2
-### 1.
+
+### 1
+
 ```sql
-SELECT 
+SELECT
     MIN(gewonnen - verloren) as `laagste aantal`
 FROM
     wedstrijden
 WHERE
     gewonnen > verloren;
 ```
-### 2.
+
+### 2
+
 ```sql
 SELECT DISTINCT
     spelersnr, bedrag, datum
 FROM
     boetes b
 WHERE
-    b.bedrag = (SELECT 
+    b.bedrag = (SELECT
             MAX(bedrag)
         FROM
             boetes b1
         WHERE
             b.spelersnr = b1.spelersnr);
 ```
-### 3.
+
+### 3
+
 ```sql
 SELECT DISTINCT
     spelersnr,
-    COALESCE((SELECT 
+    COALESCE((SELECT
                     MAX(bedrag)
                 FROM
                     boetes b2
                 WHERE
                     s.spelersnr = b2.spelersnr),
             0) AS `Hoogste bedrag`,
-    COALESCE((SELECT 
+    COALESCE((SELECT
                     MIN(bedrag)
                 FROM
                     boetes b2
@@ -100,26 +115,31 @@ SELECT DISTINCT
 FROM
     spelers s;
 ```
+
 ## Oefening 3
-### 1.
+
+### 1
+
 ```sql
-SELECT 
+SELECT
     AVG(bedrag)
 FROM
     boetes b
 WHERE
-    1 IN (SELECT 
+    1 IN (SELECT
             teamnr
         FROM
             wedstrijden w
         WHERE
             b.spelersnr = w.spelersnr);
 ```
-### 2.
+
+### 2
+
 ```sql
 SELECT DISTINCT
     spelersnr,
-    (SELECT 
+    (SELECT
             naam
         FROM
             spelers s
@@ -128,24 +148,26 @@ SELECT DISTINCT
 FROM
     wedstrijden w
 WHERE
-    8 = (SELECT 
+    8 = (SELECT
             SUM(gewonnen)
         FROM
             wedstrijden w1
         WHERE
             w.spelersnr = w1.spelersnr);
 ```
-### 3.
+
+### 3
+
 ```sql
-SELECT 
-    COALESCE((SELECT 
+SELECT
+    COALESCE((SELECT
                     MAX(bedrag)
                 FROM
                     boetes b
                 WHERE
                     s.spelersnr = b.spelersnr),
             0) AS `Maximale Boete`,
-    COALESCE((SELECT 
+    COALESCE((SELECT
                     AVG(bedrag)
                 FROM
                     boetes b
@@ -155,8 +177,11 @@ SELECT
 FROM
     spelers s;
 ```
+
 ## Oefening 4
-### 1.
+
+### 1
+
 ```sql
 SELECT
     jaartoe
@@ -164,7 +189,9 @@ FROM
     spelers
 GROUP BY jaartoe;
 ```
-### 2.
+
+### 2
+
 ```sql
 SELECT
     jaartoe, count(*)
@@ -172,14 +199,16 @@ FROM
     spelers s
 GROUP BY jaartoe;
 ```
-### 3.
+
+### 3
+
 ```sql
-SELECT 
+SELECT
     teamnr, COUNT(*), SUM(gewonnen)
 FROM
     wedstrijden w
 WHERE
-    w.teamnr = (SELECT 
+    w.teamnr = (SELECT
             teamnr
         FROM
             teams
@@ -187,11 +216,15 @@ WHERE
             divisie = 'ere')
 GROUP BY teamnr;
 ```
+
 ## Oefening 5
-### 1.
+
+### 1
+
 #### Oplossing 1
+
 ```sql
-SELECT 
+SELECT
     s.spelersnr, naam, SUM(bedrag)
 FROM
     spelers s
@@ -199,11 +232,13 @@ FROM
     boetes b ON s.spelersnr = b.spelersnr
 GROUP BY s.spelersnr , naam;
 ```
+
 #### Oplossing 2
+
 ```sql
-SELECT 
+SELECT
     spelersnr,
-    (SELECT 
+    (SELECT
             naam
         FROM
             spelers s
@@ -214,10 +249,13 @@ FROM
     boetes b
 GROUP BY spelersnr;
 ```
+
 Dit is wel juist, maar van de oefening wordt verwacht dat je een `GROUP BY` op 2 kolommen tegelijk kan toepassen, daarom moet je oplossing 1 ook snappen.
-### 2.
+
+### 2
+
 ```sql
-SELECT 
+SELECT
     t.teamnr, t.divisie, SUM(w.gewonnen)
 FROM
     teams t
@@ -225,10 +263,13 @@ FROM
     wedstrijden w ON t.teamnr = w.teamnr
 GROUP BY t.teamnr , t.divisie;
 ```
+
 ## Oefening 6
-### 1.
+
+### 1
+
 ```sql
-SELECT 
+SELECT
     FLOOR(spelersnr / 25 + 1) AS groep,
     COUNT(*) AS aantal,
     MAX(spelersnr) AS `Max spelersnr`
@@ -236,27 +277,31 @@ FROM
     spelers
 GROUP BY FLOOR(spelersnr / 25 + 1);
 ```
-### 2.
+
+### 2
+
 ```sql
 SELECT DISTINCT
     w.spelersnr, coalesce(b.aantal, 0) as aantal
 FROM
     wedstrijden w
         LEFT OUTER JOIN
-    (SELECT 
+    (SELECT
         spelersnr, COUNT(*) AS aantal
     FROM
         boetes
     GROUP BY spelersnr) b ON w.spelersnr = b.spelersnr;
 ```
-### 3.
+
+### 3
+
 ```sql
-SELECT 
+SELECT
     w.teamnr, COUNT(DISTINCT (spelersnr)) AS aantal
 FROM
     wedstrijden w
         INNER JOIN
-    (SELECT 
+    (SELECT
         teamnr
     FROM
         teams t
@@ -267,47 +312,56 @@ WHERE
     gewonnen > verloren
 GROUP BY w.teamnr;
 ```
+
 ## Oefening 7
-### 1.
+
+### 1
+
 ```sql
-SELECT 
+SELECT
     plaats
 FROM
     spelers
 GROUP BY plaats
 HAVING COUNT(*) > 4;
 ```
-### 2.
+
+### 2
+
 ```sql
-SELECT 
+SELECT
     spelersnr
 FROM
     boetes
 GROUP BY spelersnr
 HAVING SUM(bedrag) > 150;
 ```
-### 3.
+
+### 3
+
 ```sql
-SELECT 
+SELECT
     teamnr, divisie
 FROM
     teams
 WHERE
-    teamnr IN (SELECT 
+    teamnr IN (SELECT
             teamnr
         FROM
             wedstrijden
         GROUP BY teamnr
         HAVING COUNT(DISTINCT spelersnr) > 4)
 ```
-### 4.
+
+### 4
+
 ```sql
-SELECT 
+SELECT
     spelersnr
 FROM
     boetes
 GROUP BY spelersnr
-HAVING SUM(bedrag) = (SELECT 
+HAVING SUM(bedrag) = (SELECT
         SUM(bedrag) * 2
     FROM
         boetes

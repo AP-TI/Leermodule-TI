@@ -1,5 +1,7 @@
 # Les exceptions
+
 ## Oefening 1
+
 ```csharp
 class Program
     {
@@ -19,7 +21,9 @@ class Program
         }
     }
 ```
+
 #### Extra 1: FormatException + OverflowException
+
 ```csharp
 class Program
     {
@@ -43,7 +47,9 @@ class Program
         }
     }
 ```
+
 #### Extra 2: Blijven vragen tot de gebruiker een getal meegeeft
+
 ```csharp
 class Program
     {
@@ -74,7 +80,9 @@ class Program
         }
     }
 ```
+
 #### Extra 3: Som van 3 getallen
+
 ```csharp
 internal class Program
     {
@@ -109,8 +117,11 @@ internal class Program
         }
     }
 ```
+
 ## Oefening Oefening 2
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -132,7 +143,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Persoon
+
 ```csharp
 internal class Persoon
 {

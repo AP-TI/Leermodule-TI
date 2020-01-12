@@ -1,6 +1,9 @@
 # Deel 7
+
 ## Oefening 1
-### 1.
+
+### 1
+
 ```sql
 SELECT
     spelersnr,
@@ -13,7 +16,9 @@ SELECT
 FROM
     spelers
 ```
-### 3.
+
+### 3
+
 ```sql
 SELECT
     Divisie,
@@ -28,10 +33,15 @@ FROM
 WHERE
     teamnr = 1;
 ```
+
 ## Oefening 2
-### 1.
+
+### 1
+
 (lees gewoon de errors in de output)
+
 ### 2.1
+
 ```sql
 SELECT
     t.teamnr, s.naam
@@ -41,7 +51,9 @@ FROM
 WHERE
     t.spelersnr = s.spelersnr;
 ```
+
 ### 2.2
+
 ```sql
 SELECT
     w.wedstrijdnr, s.naam, t.divisie
@@ -53,7 +65,9 @@ WHERE
     w.spelersnr = s.spelersnr
         AND w.teamnr = t.teamnr
 ```
+
 ### 2.3
+
 ```sql
 SELECT
     s.spelersnr

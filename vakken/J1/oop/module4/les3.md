@@ -1,12 +1,18 @@
 # Les 3
+
 ## Oefening 1
+
 Gewoon de klasse 'Stof' abstract maken door het `abstract`-keyword ervoor te zetten. `abstract class Stof`
 De rest van de klasse blijft hetzelfde.
 
 Hetzelfde voor oefening 5.4 van module 3. `internal abstract class Wagen`
+
 ## Oefening 2
+
 ![oefening 2](afbeeldingen/streaming.png)
+
 ### Abstracte klasse Medium
+
 ```csharp
 abstract class Medium
 {
@@ -18,7 +24,9 @@ abstract class Medium
     public abstract string Stoppen();
 }
 ```
+
 ### Klasse Film
+
 ```csharp
 class Film : Medium
 {
@@ -42,7 +50,9 @@ class Film : Medium
       public override string ToString() => $"Film - {Naam}";
 }
 ```
+
 ### Klasse Serie
+
 ```csharp
 class Serie : Medium
 {
@@ -71,7 +81,9 @@ class Serie : Medium
       public override string ToString() => $"Serie - {Naam}";
 }
 ```
+
 ### Klasse Acteur
+
 ```csharp
 class Acteur
 {
@@ -87,7 +99,9 @@ class Acteur
     public override string ToString() => $"{Voornaam} {Naam}";
 }
 ```
+
 ### Klasse StreamingApplicatie (Form1)
+
 ```csharp
 public partial class StreamingApplicatie : Form
 {
@@ -135,8 +149,11 @@ public partial class StreamingApplicatie : Form
     }
 }
 ```
+
 ## Oefening 3
+
 ### Klasse Program
+
 ```csharp
     public class Program
     {
@@ -208,7 +225,9 @@ public partial class StreamingApplicatie : Form
         }
     }
 ```
+
 ### Klasse Robot
+
 ```csharp
 public abstract class Robot : IComparable
     {
@@ -326,7 +345,9 @@ public abstract class Robot : IComparable
 
     }
 ```
+
 ### Klasse Dweilrobot
+
 ```csharp
     public class Dweilrobot : Robot
     {
@@ -362,7 +383,9 @@ public abstract class Robot : IComparable
         }
     }
 ```
+
 ### Klasse Opvangrobot
+
 ```csharp
     public abstract class Opvangrobot : Robot
     {
@@ -404,7 +427,9 @@ public abstract class Robot : IComparable
         }
     }
 ```
+
 ### Klasse Stofzuiger
+
 ```csharp
     public class Stofzuiger : Opvangrobot
     {
@@ -423,7 +448,9 @@ public abstract class Robot : IComparable
         }
     }
 ```
+
 ### Klasse Grasmaaier
+
 ```csharp
     public class Grasmaaier : Opvangrobot
     {

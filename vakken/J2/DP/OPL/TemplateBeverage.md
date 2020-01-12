@@ -1,11 +1,15 @@
 # Oefening Facade Pattern
+
 > Uitleg niet voorzien wegens te weinig tijd, maar zo moeilijk is het niet...
-## Code:
+
+## Code
+
 > Bij het copy pasten: vergeet je package niet toe te voegen!
 > Voorbeeld: 'package edu.ap.mathiasv.dp_templatepattern;'
-> Hier zouden nog 'toString()' methodes bij moeten, maar die zijn weggelaten om tijd te besparen. 
+> Hier zouden nog 'toString()' methodes bij moeten, maar die zijn weggelaten om tijd te besparen.
 
 ### Main
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -16,7 +20,9 @@ public class Main {
     }
 }
 ```
+
 ### Abstract Class CaffeineBeverage
+
 ```java
 public abstract class CaffeineBeverage {
     final void prepareRecipe(){
@@ -27,7 +33,7 @@ public abstract class CaffeineBeverage {
             addCondiments();
         }
     }
-    
+
     public void boilWater(){
         System.out.println("The water is boiling");
     }
@@ -41,8 +47,11 @@ public abstract class CaffeineBeverage {
     }
 }
 ```
+
 ### Beverages
+
 ### Class Coffee
+
 ```java
 public class Coffee extends CaffeineBeverage {
     public Coffee() {
@@ -59,13 +68,17 @@ public class Coffee extends CaffeineBeverage {
     }
 }
 ```
+
 ### Class Tea
+
 > Vereist de volgende imports:
+
 ```java
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 ```
+
 ```java
 public class Tea extends CaffeineBeverage {
     public Tea() {
@@ -80,7 +93,7 @@ public class Tea extends CaffeineBeverage {
     void addCondiments() {
         System.out.println("Adding lemon");
     }
-    
+
     @Override
     public boolean customerWantsCondiments(){
         String input = getUserInput();

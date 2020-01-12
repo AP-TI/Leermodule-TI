@@ -1,4 +1,5 @@
 # Hoofdstuk 2
+
 Von Neumann-cyclus: ophalen, decoderen, uitvoeren, wegschrijven.
 
 Datatypes zijn gestandaardiseerd dankzij IEEE
@@ -8,6 +9,7 @@ Getalbreedte: het aantal bits, benut door de computer, voor een getal
 Kardinaliteit (#): aantal elementen van een verzameling
 
 Unsigned integers: datatype van de natuurlijke getallen
+
 - unsigned byte: 2<sup>8</sup>
 - unsigned int = 2<sup>16</sup>
 - unsigned long: 2<sup>32</sup>
@@ -19,6 +21,7 @@ Overflow: het verschijnsel waarbij een resultaat niet langer binnen de opgelegde
 CONVERTEREN NAAR NEGATIEF: 2 KOMPLEMENT
 
 Signed integers: datatype van de natuurlijke getallen
+
 - signed byte: (-2<sup>7</sup> - 2<sup>7</sup>-1)
 - signed int = 2^16: (-2<sup>15</sup> - 2<sup>15</sup>-1)
 - signed long: 2^32: (-2^<sup>31</sup> - 2<sup>31</sup>-1)
@@ -27,6 +30,7 @@ Een voldoende hoge precisie van opgeslagen reële getallen is doorslaggevend voo
 
 Exacte getallen worden slechts benaderd weergegeven als machinegetallen
 Notatie:
+
 - Exact getal: x
 - Benaderde weergave als machinegetal: x’
 
@@ -50,11 +54,13 @@ Wetenschappelijke getalnotatie:
 getal = toestandsteken x mantisse x (getalbasis)exponent
 
 Verdeling bij wetenschappelijke notatie:
+
 - 1 bit voor toestandsteken
 - 1 bit voor grootte-orde (exponent)
 - 4 bits voor mantisse (x’)
 
 Verdeling bij mini-precision:
+
 - 1 bit voor toestandsteken
 - 3 bits voor exponent
 - 4 bits voor mantisse (x’)
@@ -106,6 +112,7 @@ De absolute foutvlaggen worden groter naarmate de opgeslagen getalwaarde |x’| 
 mini-precision: 1 byte (8 bits) : 256 mogelijke waarden, single precision: 4 bytes (32 bits): ongeveer 4 miljard mogelijke waarden
 
 Verdeling bij single-precision:
+
 - 1 bit voor toestandsteken
 - 8 bits voor exponent
 - 23 bits voor mantisse (x’)
@@ -119,6 +126,7 @@ Vaste procentuele opslagfout = 2<sup>-24</sup> ≈ 10<sup>-8</sup>
 Als de computer meerdere bewerkingen uitvoert op x’ in R, dan kunnen de fouten verergeren
 
 Er bestaan
+
 - oneindig veel niet-machinegetallen
 - eindig aantal bruikbare machinegetallen
 

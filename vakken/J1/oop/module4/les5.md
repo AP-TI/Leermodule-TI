@@ -1,5 +1,7 @@
 # Les 5
+
 ## Oefening 1
+
 ![student toevoegen](afbeeldingen/les5_oefening1_studenttoevoegen.png)
 
 ![studentenlijst](afbeeldingen/les5_oefening1_studentenlijst.png)
@@ -7,6 +9,7 @@
 ![bereken examentijd](afbeeldingen/les5_oefening1_berekenexamentijd.png)
 
 ### Klasse Form1
+
 ```csharp
     public partial class Form1 : Form
     {
@@ -82,6 +85,7 @@
 ```
 
 ### Klasse Student
+
 ```csharp
     class Student
     {
@@ -110,6 +114,7 @@
 ```
 
 ### Klasse Adres
+
 ```csharp
     class Adres
     {
@@ -138,6 +143,7 @@
 ```
 
 ### Klasse InvalidCharactersException
+
 ```csharp
     class InvalidCharactersException : Exception
     {

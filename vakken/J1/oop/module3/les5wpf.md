@@ -1,12 +1,15 @@
 # Les 5 | WPF
+
 De oefeningen van les 5, maar dan met WPF in plaats van Windows Forms. Dit is geen leerstof.
 
 Het voordeel van WPF tegenover Windows Forms is dat je de layout in xaml maakt. Dit geeft meer controle over waar wat staat, biedt schaalvoordelen en daardoor ziet alles er gewoon veel "cleaner" uit. Ook kan ik hier makkelijk de het design bijvoegen omdat de code veel simpeler is en overal werkt.
+
 ## Oefening 5.1
 
 ![dobbelspel](afbeeldingen/dobbelspelwpf1.png)
 
 ### Het design (MainWindow.xaml)
+
 ```xml
 <Window x:Class="WpfApp1_5._1.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -27,6 +30,7 @@ Het voordeel van WPF tegenover Windows Forms is dat je de layout in xaml maakt. 
 ```
 
 ### Klasse MainWindow (MainWindow.xaml.cs)
+
 ```csharp
 public partial class MainWindow : Window
     {
@@ -54,7 +58,9 @@ public partial class MainWindow : Window
         }
     }
 ```
+
 ### Klasse Geld
+
 ```csharp
 internal class Geld
     {
@@ -92,7 +98,9 @@ internal class Geld
         }
     }
 ```
+
 ### Klasse Dobbelsteen
+
 ```csharp
 class Dobbelsteen
     {
@@ -103,11 +111,13 @@ class Dobbelsteen
         }
     }
 ```
+
 ## Oefening 5.2
 
 ![bankrekening](afbeeldingen/bankrekeningwpf.png)
 
 ### Het Design (MainWindow.xaml)
+
 ```xml
 <Window x:Class="WpfApp1_5._2.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -127,7 +137,9 @@ class Dobbelsteen
     </Grid>
 </Window>
 ```
+
 ### Klasse MainWindow
+
 ```csharp
 public partial class MainWindow : Window
     {
@@ -164,7 +176,9 @@ public partial class MainWindow : Window
         }
     }
 ```
+
 ### Klasse Bankrekening
+
 ```csharp
 class Bankrekening
     {
@@ -185,11 +199,13 @@ class Bankrekening
         }
     }
 ```
+
 ## Oefening 5.3
 
 ![imdb design](afbeeldingen/imdbwpf.png)
 
 ### Het design (MainWindow.xaml)
+
 ```xml
 <Window x:Class="WpfApp1_5._3.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -252,7 +268,9 @@ class Bankrekening
 </Window>
 
 ```
+
 ### Klasse MainWindow (MainWindow.xaml.cs)
+
 ```csharp
 public partial class MainWindow : Window
 {
@@ -427,11 +445,13 @@ public partial class MainWindow : Window
         }
     }
 ```
+
 De summary boven de methode `ChangeRatingVisibility` zorgt ervoor dat je een korte omschrijving krijgt van wat de methode doet en waarvoor de parameters dienen als je de methode ergens in het programma probeert op te roepen.
 
 ![summary](afbeeldingen/summary.png)
 
 ### Klasse Film
+
 ```csharp
 class Film
     {
@@ -489,7 +509,9 @@ class Film
 
     }
 ```
+
 ### Klasse Serie
+
 ```csharp
 class Serie
 {

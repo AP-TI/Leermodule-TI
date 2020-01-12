@@ -1,5 +1,7 @@
 # Deel 2
+
 ## Oefening 1: Aantal dagen
+
 ```csharp
 class Program
     {
@@ -19,7 +21,9 @@ class Program
         }
     }
 ```
+
 ## Oefening 2: Firmaconferentie
+
 ```csharp
 class Program
     {
@@ -37,7 +41,9 @@ class Program
         }
     }
 ```
+
 ## Oefening 3: Invoer bij oefening 2
+
 ```csharp
 class Program
     {
@@ -60,7 +66,9 @@ class Program
         }
     }
 ```
+
 ## Oefening 4: Interest
+
 ```csharp
 class Program
     {
@@ -68,7 +76,7 @@ class Program
         {
             const double JAARLIJKS_INTEREST_PERCENTAGE = 0.0175;
             const short DAGEN_IN_EEN_JAAR = 365;
-            
+
             DateTime vandaag = DateTime.Today;
             DateTime eindeVanHetJaar = new DateTime(vandaag.Year, 12, 31);
 
@@ -77,12 +85,14 @@ class Program
 
             double berekendInterestBedrag = gestortBedrag * JAARLIJKS_INTEREST_PERCENTAGE;
             double berekendJaarBedrag = berekendInterestBedrag * (eindeVanHetJaar - vandaag).Days / DAGEN_IN_EEN_JAAR + gestortBedrag;
-            
+
             Console.WriteLine("Dit bedrag zal u tegen 31 december {0} euro interest opbrengen met een totaal van {1} euro.", berekendInterestBedrag, berekendJaarBedrag);
         }
     }
 ```
+
 ## Oefening 5: Stelsels
+
 ```csharp
 class Program
     {
@@ -108,7 +118,9 @@ class Program
         }
     }
 ```
+
 ## Oefening 6: Verjaardagen
+
 ```csharp
 class Program
     {
@@ -121,12 +133,14 @@ class Program
             if (verjaardag < vandaag)
             {
                 verjaardag.AddYears(1);
-            }            
+            }
             Console.WriteLine("U verjaart binnen { 0} dagen.", (verjaardag - vandaag).Days);
         }
     }
 ```
+
 ## Oefening 7: Geleefde dagen
+
 ```csharp
 class Program
     {

@@ -1,18 +1,27 @@
 # Deel 1
+
 ## Oefening 1
-### 1.
+
+### 1
+
 ```sql
 select betalingsnr from boetes where bedrag not between 50 and 100;
 ```
-### 2.
+
+### 2
+
 ```sql
 select spelersnr, naam from spelers where naam like '_e%e_';
 ```
-### 3.
+
+### 3
+
 ```sql
 select spelersnr from spelers where bondsnr is null;
 ```
+
 ## Oefening 2
+
 ```sql
 select
     naam, voorletters
@@ -26,13 +35,19 @@ where
         where
             t.spelersnr = s.spelersnr);
 ```
+
 ## Oefening 3
-### 1.
+
+### 1
+
 ```sql
 select spelersnr, naam from spelers where spelersnr = any(select spelersnr from boetes);
 ```
+
 LET OP! Wegens een bug in MySQL workbench lijkt dit een error te geven, dit is niet het geval, de query runt gewoon.
-### 2.
+
+### 2
+
 ```sql
 select
     betalingsnr, bedrag, datum
@@ -46,7 +61,9 @@ where
         where
             year(b1.datum) = year(b2.datum));
 ```
-### 3.
+
+### 3
+
 ```sql
 select
     (select
@@ -68,8 +85,11 @@ select
                 from
                     spelers)) as hoogste;
 ```
+
 ## Oefening 4
-### 1.
+
+### 1
+
 ```sql
 SELECT
     spelersnr
@@ -83,7 +103,9 @@ WHERE
         WHERE
             s.spelersnr = w.spelersnr);
 ```
-### 2.
+
+### 2
+
 ```sql
 select
     t.teamnr, divisie
@@ -97,8 +119,11 @@ where
         where
             spelersnr = 6);
 ```
+
 ## Oefening 5
-### 1.
+
+### 1
+
 ```sql
 select
     spelersnr, naam
@@ -113,7 +138,9 @@ where
             w.spelersnr = s.spelersnr
                 and w.teamnr = 1);
 ```
-### 2.
+
+### 2
+
 ```sql
 SELECT
     spelersnr, naam

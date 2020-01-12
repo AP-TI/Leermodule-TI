@@ -1,11 +1,15 @@
 # Oefening Facade Pattern
+
 > Uitleg niet voorzien wegens te weinig tijd, maar zo moeilijk is het niet...
-## Code:
+
+## Code
+
 > Bij het copy pasten: vergeet je package niet toe te voegen!
 > Voorbeeld: 'package edu.ap.mathiasv.dp_facadepattern;'
-> Hier zouden nog 'toString()' methodes bij moeten, maar die zijn weggelaten om tijd te besparen. 
+> Hier zouden nog 'toString()' methodes bij moeten, maar die zijn weggelaten om tijd te besparen.
 
 ### Main
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -18,7 +22,9 @@ public class Main {
     }
 }
 ```
+
 ### Class GarageFacade
+
 ```java
 public class GarageFacade {
     private Garagepoort poort;
@@ -26,21 +32,21 @@ public class GarageFacade {
     private Radio radio;
 
     public GarageFacade(
-            Garagepoort poort, 
+            Garagepoort poort,
             Licht licht,
             Radio radio) {
         this.poort = poort;
         this.licht = licht;
         this.radio = radio;
     }
-    
+
     public void openGarage(){
         poort.open();
         licht.aan();
         radio.aan();
         System.out.println("Garage gaat open, is verlicht en er is muziek!");
     }
-    
+
     public void sluitGarage(){
         poort.close();
         licht.uit();
@@ -61,8 +67,11 @@ public class GarageFacade {
     }
 }
 ```
+
 ### Garage Items
+
 ### Class Garagepoort
+
 ```java
 public class Garagepoort {
     public Garagepoort(){}
@@ -70,7 +79,9 @@ public class Garagepoort {
     public void close(){}
 }
 ```
+
 ### Class Licht
+
 ```java
 public class Licht {
     public Licht(){}
@@ -78,7 +89,9 @@ public class Licht {
     public void uit(){}
 }
 ```
+
 ### Class Radio
+
 ```java
 public class Radio {
     public Radio(){}

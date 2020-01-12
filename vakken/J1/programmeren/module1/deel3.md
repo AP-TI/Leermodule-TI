@@ -1,5 +1,7 @@
 # Deel 3
+
 ## Oefening 1: Telefoonnummer
+
 ```csharp
 class Program
     {
@@ -13,7 +15,9 @@ class Program
         }
     }
 ```
+
 ## Oefening 2: Random datum
+
 ```csharp
 class Program
     {
@@ -32,24 +36,28 @@ class Program
         }
     }
 ```
+
 ## Oefening 3: Bibliotheek
+
 ```csharp
 class Program
     {
         static void Main(string[] args)
         {
             const short UITLEEN_TERMIJN = 14;
-           
+
             DateTime vandaag = DateTime.Today;
 
             Console.Write("Wat is uw naam? ");
             string naam = Console.ReadLine();
 
-            Console.WriteLine("Het boek is uitgeleed op {0} en is gereserveerd door {1} tot {2}", vandaag.ToShortDateString(), naam, vandaag.AddDays(UITLEEN_TERMIJN).ToShortDateString());   
+            Console.WriteLine("Het boek is uitgeleed op {0} en is gereserveerd door {1} tot {2}", vandaag.ToShortDateString(), naam, vandaag.AddDays(UITLEEN_TERMIJN).ToShortDateString());
         }
     }
 ```
+
 ## Oefening 4: Hotelklokken
+
 ```csharp
 class Program
     {
@@ -78,7 +86,9 @@ class Program
         }
     }
 ```
+
 ## Oefening 5: Schaakspel
+
 ```csharp
 class Program
     {

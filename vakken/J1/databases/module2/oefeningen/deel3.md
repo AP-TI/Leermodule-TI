@@ -1,28 +1,35 @@
 # Deel 3
+
 ## Oefening 1
-### 1.
+
+### 1
+
 ```sql
-SELECT 
+SELECT
     naam, voorletters, spelersnr
 FROM
     spelers
 ORDER BY SUBSTR(naam, 1, 1);
 ```
-### 2.
+
+### 2
+
 ```sql
-SELECT 
+SELECT
     spelersnr, SUM(bedrag)
 FROM
     boetes
 GROUP BY spelersnr
 ORDER BY SUM(bedrag);
 ```
-### 3.
+
+### 3
+
 ```sql
-SELECT 
+SELECT
     spelersnr,
     naam,
-    coalesce((SELECT 
+    coalesce((SELECT
             SUM(bedrag)
         FROM
             boetes b
@@ -33,54 +40,64 @@ FROM
 GROUP BY spelersnr
 ORDER BY 3;
 ```
+
 ## Oefening 2
-### 1.
+
+### 1
+
 ```sql
-SELECT 
+SELECT
     spelersnr
 FROM
-    boetes 
-UNION SELECT 
+    boetes
+UNION SELECT
     spelersnr
 FROM
-    teams 
-UNION SELECT 
+    teams
+UNION SELECT
     spelersnr
 FROM
     spelers
 WHERE
     plaats = 'Den Haag';
 ```
-### 2.
+
+### 2
+
 ```sql
-SELECT 
+SELECT
     spelersnr
 FROM
-    bestuursleden 
-UNION SELECT 
+    bestuursleden
+UNION SELECT
     spelersnr
 FROM
     boetes
 GROUP BY spelersnr
 HAVING COUNT(*) >= 2
 ```
-### 3.
+
+### 3
+
 ```sql
-SELECT 
+SELECT
     MAX(datum)
 FROM
-    (SELECT 
+    (SELECT
         MAX(geb_datum) AS datum
     FROM
-        spelers UNION SELECT 
+        spelers UNION SELECT
         MAX(datum)
     FROM
         boetes) AS datums;
 ```
-### 4.
+
+### 4
+
 #### Mogelijkheid 1
+
 ```sql
-SELECT 
+SELECT
     s.spelersnr, s.naam, COALESCE(SUM(b.bedrag), 0) as totaal
 FROM
     spelers s
@@ -89,12 +106,14 @@ FROM
 GROUP BY spelersnr
 ORDER BY totaal;
 ```
+
 #### Mogelijkheid 2
+
 ```sql
-SELECT 
+SELECT
     spelersnr,
     naam,
-    COALESCE((SELECT 
+    COALESCE((SELECT
                     SUM(bedrag)
                 FROM
                     boetes b

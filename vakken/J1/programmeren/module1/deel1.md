@@ -1,5 +1,7 @@
 # Deel 1
+
 ## Oefening 1: Visitekaartje
+
 ```csharp
 class Program
     {
@@ -13,7 +15,9 @@ class Program
         }
     }
 ```
+
 ## Oefening 2: Getallen
+
 ```csharp
 class Program
     {
@@ -58,7 +62,9 @@ class Program
         }
     }
 ```
+
 ## Oefening 3: Vierkant
+
 ```csharp
 class Program
     {
@@ -68,14 +74,16 @@ class Program
 
             Console.WriteLine("Lengte van de zijde van het vierkant:");
             double zijde = double.Parse(Console.ReadLine());
-            
+
             Console.Write("Zijde: {0}", zijde);
             Console.Write("Omtrek: {0}", zijde * AANTALZIJDEN);
             Console.Write("Oppervlakte: {0}", zijde * zijde);
         }
     }
 ```
+
 ## Oefening 4: Balk
+
 ```csharp
 class Program
     {
@@ -96,7 +104,9 @@ class Program
         }
     }
 ```
+
 ## Oefening 5: Bankrekening
+
 ```csharp
 class Program
     {
@@ -110,9 +120,9 @@ class Program
             string volgende7Getallenstring = Console.ReadLine();
             Console.WriteLine("Geef de laatste 2 getallen van uw bankrekeningnummer in aub.");
             short laatste2Getallen = short.Parse(Console.ReadLine());
-            
+
             long eerste10Getallen = long.Parse(eerste3Getallenstring + volgende7Getallenstring);
-            
+
             if (eerste10Getallen % DELENDOOR == laatste2Getallen)
             {
                 Console.WriteLine("Dit is een correct rekeningnummer!");
@@ -124,7 +134,9 @@ class Program
         }
     }
 ```
+
 ## Oefening 6: Gemiddelde
+
 ```csharp
 class Program
     {
@@ -151,7 +163,9 @@ class Program
         }
     }
 ```
+
 ## Oefening 7: Seconden
+
 ```csharp
 class Program
     {
@@ -168,7 +182,9 @@ class Program
         }
     }
 ```
+
 ## Oefening 8: Munten
+
 ```csharp
 class Program
     {
@@ -193,12 +209,14 @@ class Program
 
             double totaal = /*500 * briefjes500 + 200 * briefjes200 + 100 * briefjes100 + 50 * briefjes50 + 20 * briefjes20 + 10 * briefjes10 + 5 * briefjes5
                 +*/ 2 * munten2 + 1 * munten1 + 0.5 * munten050 + 0.2 * munten020 + 0.1 * munten010 + 0.05 * munten005 + 0.02 * munten002 + 0.01 * munten001;
-            
+
             Console.WriteLine("Totaal: {0}", totaal.ToString("0.00"));
         }
     }
 ```
+
 ## Oefening 9: BTW
+
 ```csharp
 class Program
     {
@@ -219,7 +237,9 @@ class Program
         }
     }
 ```
+
 ## Oefening 10: Mosselfestijn
+
 ```csharp
 class Program
     {
@@ -246,7 +266,9 @@ class Program
         }
     }
 ```
+
 ## Oefening 11: Stripwinkel
+
 ```csharp
 class Program
     {

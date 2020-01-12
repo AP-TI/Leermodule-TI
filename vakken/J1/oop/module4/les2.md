@@ -1,10 +1,13 @@
 # Les 2
+
 ## Oefening 1
+
 ![Oefening 1](afbeeldingen/les2_oefening1.png)
 
 ![Vertraging toegevoegd messagebox](afbeeldingen/les2_oefening1_messagebox.png)
 
 ### Klasse Form1
+
 ```csharp
 public partial class Form1 : Form
 {
@@ -31,7 +34,9 @@ public partial class Form1 : Form
     }
 }
 ```
+
 ### Klasse Trein
+
 ```csharp
 enum Eindbestemmingen { BrusselZuid, AntwerpenCentraal, Mechelen}
     class Trein
@@ -58,9 +63,13 @@ enum Eindbestemmingen { BrusselZuid, AntwerpenCentraal, Mechelen}
         }
     }
 ```
+
 ## Oefening 2
+
 ![oefening 2](afbeeldingen/les2_oefening2.png)
+
 ### Klasse Form1
+
 ```csharp
 public partial class Form1 : Form
 {
@@ -98,7 +107,9 @@ public partial class Form1 : Form
     }
 }
 ```
+
 ### Klasse Trein
+
 ```csharp
 enum Eindbestemmingen { BrusselZuid, AntwerpenCentraal, Mechelen}
 class Trein
@@ -130,7 +141,9 @@ class Trein
     }
 }
 ```
+
 ### Klasse Passagierstrein
+
 ```csharp
 class Passagierstrein : Trein
 {
@@ -146,7 +159,9 @@ class Passagierstrein : Trein
     }
 }
 ```
+
 ### Klasse Goederentrein
+
 ```csharp
 class Goederentrein : Trein
 {
@@ -182,9 +197,13 @@ class Goederentrein : Trein
     }
 }
 ```
+
 ## Oefening 3
+
 ![oefening 3](afbeeldingen/les2_oefening3.png)
+
 ### Klasse Form1
+
 ```csharp
 public partial class Form1 : Form
     {
@@ -240,7 +259,9 @@ public partial class Form1 : Form
         }
     }
 ```
+
 ### Klasse Adres
+
 ```csharp
 class Adres
 {
@@ -260,7 +281,9 @@ class Adres
     public override string ToString() => $"{Straat} {Huisnummer}\n{Postcode} {Gemeente}";
 }
 ```
+
 ### Klasse Passagier
+
 ```csharp
 class Passagier
 {
@@ -282,7 +305,9 @@ class Passagier
     public override string ToString() => $"{Voornaam} {Naam}\n\n{Adres}";
 }
 ```
+
 ### Klasse EersteKlassePassagier
+
 ```csharp
 class EersteKlassePassagier : Passagier
 {
@@ -295,7 +320,9 @@ class EersteKlassePassagier : Passagier
     public override string ToString() => "(1) " + base.ToString();
 }
 ```
+
 ### Klasse TweedeKlassePassagier
+
 ```csharp
 class TweedeKlassePassagier : Passagier
 {
@@ -306,10 +333,15 @@ class TweedeKlassePassagier : Passagier
     public override string ToString() => "(2) " + base.ToString();
 }
 ```
+
 ### Klasse Trein, Passagierstrein en Goederentrein
+
 Blijven hetzelfde als in oefening 2.
+
 ## Oefening 4
+
 ### Klasse Form1
+
 ```csharp
 public partial class Form1 : Form
 {
@@ -370,7 +402,9 @@ public partial class Form1 : Form
     }
 }
 ```
+
 ### Klasse Passagier
+
 ```csharp
 enum Geslachten { Man, Vrouw, Onbekend}
 class Passagier
@@ -404,7 +438,9 @@ class Passagier
     public override string ToString() => $"{Voornaam} {Naam}\n\n{Adres}";
 }
 ```
+
 ### Klasse VerifieerRijksRegisterNummer
+
 ```csharp
 static class VerifieerRijksRegisterNummer
     {
@@ -456,7 +492,9 @@ static class VerifieerRijksRegisterNummer
         }
     }
 ```
+
 ### Klasse EersteKlassePassagier
+
 ```csharp
 class EersteKlassePassagier : Passagier
 {
@@ -469,7 +507,9 @@ class EersteKlassePassagier : Passagier
     public override string ToString() => "(1) " + base.ToString();
 }
 ```
+
 ### Klasse TweedeKlassePassagier
+
 ```csharp
 class TweedeKlassePassagier : Passagier
 {
@@ -480,7 +520,11 @@ class TweedeKlassePassagier : Passagier
     public override string ToString() => "(2) " + base.ToString();
 }
 ```
+
 ### Klasse Adres
+
 Blijft hetzelfde als in oefening 3.
+
 ### Klasse Trein, Passagierstrein en Goederentrein
+
 Blijven hetzelfde als in oefening 2.

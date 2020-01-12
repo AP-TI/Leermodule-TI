@@ -1,4 +1,5 @@
 # Getalformaten
+
 B = getalbasis
 
 msb = most significant bit

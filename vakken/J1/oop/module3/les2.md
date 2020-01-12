@@ -1,6 +1,9 @@
 # Les 2
+
 ## Oefening 2.1
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -15,7 +18,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Vlucht
+
 ```csharp
 enum Bestemmingen { Frankrijk, Engeland, Duitsland }
     class Vlucht
@@ -52,7 +57,9 @@ enum Bestemmingen { Frankrijk, Engeland, Duitsland }
         }
     }
 ```
+
 ### Klasse Persoon
+
 ```csharp
 enum Geslacht { Man, Vrouw};
     class Persoon
@@ -99,8 +106,11 @@ enum Geslacht { Man, Vrouw};
         }
     }
 ```
+
 ## Oefening 2.2
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -114,7 +124,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Persoon
+
 ```csharp
 enum Geslacht { Man, Vrouw};
     class Persoon
@@ -157,7 +169,9 @@ enum Geslacht { Man, Vrouw};
         }
     }
 ```
+
 ### Klasse Auto
+
 ```csharp
 internal class Auto
     {
@@ -209,8 +223,11 @@ internal class Auto
         }
     }
 ```
+
 ## Oefening 2.3
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -226,7 +243,9 @@ class Program
         }
     }
 ```
+
 ### Klasse auto
+
 ```csharp
 internal class Auto
     {
@@ -263,7 +282,9 @@ internal class Auto
         }
     }
 ```
+
 ### Klasse Persoon
+
 ```csharp
 enum Geslacht { Man, Vrouw};
     class Persoon
@@ -337,8 +358,11 @@ enum Geslacht { Man, Vrouw};
         }
     }
 ```
+
 ## Oefening 2.4
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -351,11 +375,13 @@ class Program
 
             Console.WriteLine(vlucht1);
             Console.Write("Type de achternaam van een passagier om info te krijgen: ");
-            Console.WriteLine(vlucht1.PassagierOpzoeken(Console.ReadLine()));           
+            Console.WriteLine(vlucht1.PassagierOpzoeken(Console.ReadLine()));
         }
     }
 ```
+
 ### Klasse Persoon
+
 ```csharp
 enum Geslacht { Vrouw, Man }
     class Persoon
@@ -398,7 +424,9 @@ enum Geslacht { Vrouw, Man }
         }
     }
 ```
+
 ### Klasse Vlucht
+
 ```csharp
 internal enum Bestemmingen { Frankrijk, Engeland, Duitsland }
 
@@ -474,7 +502,9 @@ internal enum Bestemmingen { Frankrijk, Engeland, Duitsland }
         }
     }
 ```
+
 ## Oefening 2.5 (nog niet nagekeken)
+
 ```csharp
 class Program
     {
@@ -496,8 +526,11 @@ class Program
         }
     }
 ```
+
 ## Oefening 2.6 (nog niet nagekeken)
+
 ### Klasse Program
+
 ```csharp
 internal class Program
     {
@@ -513,7 +546,9 @@ internal class Program
         }
     }
 ```
+
 ### Klasse Persoon
+
 ```csharp
 internal enum Geslacht { Vrouw, Man }
 
@@ -557,7 +592,9 @@ internal enum Geslacht { Vrouw, Man }
         }
     }
 ```
+
 ### Klasse Vlucht
+
 ```csharp
 internal enum Bestemmingen { Frankrijk, Engeland, Duitsland }
 
@@ -641,7 +678,9 @@ internal enum Bestemmingen { Frankrijk, Engeland, Duitsland }
         }
     }
 ```
+
 ## Oefening 2.7
+
 ```csharp
 internal class Program
     {

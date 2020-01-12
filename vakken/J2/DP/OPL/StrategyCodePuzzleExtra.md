@@ -92,7 +92,7 @@ public class Character {
             this.setHitPoints(MAX_HEALTH);
         }
     }
-    
+
     public void restoreFullHealth(){
         this.setHitPoints(MAX_HEALTH);
     }
@@ -320,7 +320,6 @@ public class SwordBehavior extends WeaponBehavior {
 
 }
 ```
-
 
 ```java
 public class Troll extends Character {

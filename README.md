@@ -1,10 +1,12 @@
 # ![](assets/apti.png) APTI 2018-2019 (Jaar 1)
+
 - [Module 1](module1.md)
 - [Module 2](module2.md)
 - [Module 3](module3.md)
 - [Module 4](module4.md)
 
 # ![](assets/apti.png) APTI 2019-2020 (Jaar 2)
+
 - [Semester 1](Jaar2_Semester1.md)
 - [Module 3](Jaar2_Semester2.md)
 

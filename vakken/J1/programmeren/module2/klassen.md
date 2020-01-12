@@ -1,6 +1,9 @@
 # Klassen
+
 ## Oefening 1
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -17,7 +20,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Persoon
+
 ```csharp
 class Persoon
     {
@@ -59,9 +64,13 @@ class Persoon
 
     }
 ```
+
 ## Oefening 2
+
 #### Versie Maxim (KONING is hoogste)
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -82,7 +91,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Speelkaarten
+
 ```csharp
 enum Waarden { Aas, Twee, Drie, Vier, Vijf, Zes, Zeven, Acht, Negen, Tien, Boerin, Dame, Koning};
     enum Soorten { Schoppen, Klaveren, Ruiten, Harten };
@@ -160,13 +171,18 @@ enum Waarden { Aas, Twee, Drie, Vier, Vijf, Zes, Zeven, Acht, Negen, Tien, Boeri
         }
     }
 ```
+
 #### Versie Mathias (AAS is hoogste)
-### Enums:
+
+### Enums
+
 ```csharp
 enum Waardes { Boer = 11, Dame, Heer, Aas }
 enum Soorten { Schoppen, Klaveren, Ruiten, Harten }
 ```
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -183,7 +199,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Speelkaarten
+
 ```csharp
 class Kaart
     {
@@ -270,7 +288,9 @@ class Kaart
 ```
 
 ## Oefening 3
+
 ### Klasse Program
+
 ```csharp
 class Program
     {
@@ -282,7 +302,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Dobbelsteen
+
 ```csharp
 public class Dobbelsteen
     {
@@ -327,7 +349,9 @@ public class Dobbelsteen
         }
     }
 ```
+
 ### Klasse PaarDobbelstenen
+
 ```csharp
 public class PaarDobbelstenen
     {
@@ -375,8 +399,11 @@ public class PaarDobbelstenen
         }
     }
 ```
+
 ## Oefening4
+
 ### Klasse Program
+
 ```csharp
 class Program
 {
@@ -393,7 +420,9 @@ class Program
     }
 }
 ```
+
 ### Klasse Reis
+
 ```csharp
 enum Vervoersmiddelen { Vliegtuig, Bus, Trein }
 enum Verblijven { Hotel, Jeugdherberg }
@@ -473,7 +502,7 @@ class Reis
         else
             prijsVerblijf = PRIJS_JEUGDHERBERG_PER_DAG;
 
-        return (prijsVerblijf * reisDuur.Days); 
+        return (prijsVerblijf * reisDuur.Days);
     }
 
     public int VervoersPrijs()
@@ -518,15 +547,18 @@ class Reis
             "Verblijf: " + this.Verblijf + '\n' +
             "VertrekDatum: " + this.vertrekHeenDatum.ToShortDateString() + '\n' +
             "TerugKeerDatum: " + this.VertrekTerugKeerDatum.ToShortDateString() + '\n' +
-            "Totaal prijs zonder korting: " + string.Format("{0:n}",TotaalPrijs()) + '\n' + 
+            "Totaal prijs zonder korting: " + string.Format("{0:n}",TotaalPrijs()) + '\n' +
             "Totaal prijs met korting: " + string.Format("{0:n}",TotaalPrijsMetKorting()) + '\n'
         );
     }
 
 }
 ```
+
 ## Oefening 5
+
 ### Klasse Persoon
+
 ```csharp
 enum Land { België, Nederland, Luxemburg}
     class Persoon
@@ -556,13 +588,15 @@ enum Land { België, Nederland, Luxemburg}
         }
     }
 ```
+
 ### Klasse Bankrekening
+
 ```csharp
 class Bankrekening
     {
         private const double INTREST_PERCENTAGE = 0.0125;
         private const int BANKKAART_DELER = 97;
-        
+
 
         //Property's
         public double Saldo { get; set; }
@@ -578,7 +612,7 @@ class Bankrekening
         public DateTime Registratie_Datum { get; set; }
 
         public Persoon Eigenaar { get; set; }
-        
+
 
         //constructors
 
@@ -599,7 +633,7 @@ class Bankrekening
             else
                 return false;
         }
-        
+
         public void Storten(double bedrag)
         {
             Saldo += bedrag;
@@ -641,7 +675,9 @@ class Bankrekening
 ```
 
 ## Oefening 6
+
 ### Klasse Program (MAIN)
+
 ```csharp
 class Program
     {
@@ -657,7 +693,9 @@ class Program
         }
     }
 ```
+
 ### Klasse Persoon
+
 ```csharp
 class Persoon
     {
@@ -674,7 +712,7 @@ class Persoon
 
         public override string ToString()
         {
-            return 
+            return
                 (
                     "Naam: " + this.Naam + "\n" +
                     "Voornaam: " + this.Voornaam + "\n" +
@@ -683,7 +721,9 @@ class Persoon
         }
     }
 ```
+
 ### Klasse CD
+
 ```csharp
 class CD
     {

@@ -1,20 +1,19 @@
 # Oefening Strategy Pattern: MiniDuckSimulator
+
 >We maken gebruik van een abstract 'Duck'-class, waarvan de classes 'ModelDuck' en 'MallardDuck' overerven.
-
 >Om deze eendjes te laten vliegen en geluid te laten maken, maken we de 'FlyBehavior'-interface en de 'QuackBehavior'-interface. De 'FlyBehavior'-interface bevat een methode 'fly()'. De 'QuackBehavior'-interface bevat een methode 'quack()'.
-
 > De twee 'FlyBehavior'-classes 'FlyWithWings' en 'FlyNoWay' implementeren de 'FlyBehavior'-interface. Ze overriden de fly()-methode.
-
 > De drie 'QuackBehavior'-classes 'Quack', 'Squeak' en 'MuteQuack' implementeren de 'QuackBehavior'-interface. Ze overriden de 'quack()'-methode.
-
 >De class 'Duck' heeft de interfaces 'FlyBehavior' en 'QuackBehavior' als properties. Dit zorgt ervoor dat een eend een vlieggedrag en een kwaakgedrag heeft. Verder hebben we een constructor die een standaard gedragingen instelt voor ons eendje, en de methoden performFly() & performQuack() welke respectievelijk de fly() en quack()-methoden van de behaviors oproepen.
-
 > De rubberduck kan in dit voorbeeld standaard niet vliegen, maar dankzij de setFlyBehavior()-methode kunnen we dit dynamisch wijzigen!
-## Code:
+
+## Code
+
 > Bij het copy pasten: vergeet je package niet toe te voegen!
 > Voorbeeld: `package edu.ap.mathiasv.dp_strategyducksimulator;`
 
 ### MiniDuckSimulator (Main)
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -28,21 +27,21 @@ public class Main {
         rubberDuck.setUnflyable();
         System.out.println(rubberDuck.fly());
         System.out.println(rubberDuck.quack());
-        
+
         /* Test MallardDuck*/
         System.out.println("\nMallardDuck test");
         MallardDuck mallardDuck = new MallardDuck();
         System.out.println(mallardDuck);
         System.out.println(mallardDuck.fly());
         System.out.println(mallardDuck.quack());
-        
+
         /* Test RedheadDuck*/
         System.out.println("\nRedheadDuck test");
         RedheadDuck redheadDuck = new RedheadDuck();
         System.out.println(redheadDuck);
         System.out.println(redheadDuck.fly());
         System.out.println(redheadDuck.quack());
-        
+
         /* Test DecoyDuck*/
         System.out.println("\nDecoyDuck test");
         DecoyDuck decoyDuck = new DecoyDuck();
@@ -52,33 +51,35 @@ public class Main {
     }
 }
 ```
+
 ### Abstract class Duck
+
 ```java
 public abstract class Duck {
     private FlyBehavior flyBehavior;
     private QuackBehavior quackBehavior;
-    
+
     public Duck(FlyBehavior flyBehavior, QuackBehavior quackBehavior){
         this.quackBehavior = quackBehavior;
         this.flyBehavior = flyBehavior;
     }
-    
+
     public String fly(){
         return flyBehavior.fly();
     }
-    
+
     public String quack(){
         return quackBehavior.quack();
     }
-    
+
     public void setFlyBehavior(FlyBehavior flyBehavior){
         this.flyBehavior = flyBehavior;
     }
-    
+
     public void setQuackBehavior(QuackBehavior quackBehavior){
         this.quackBehavior = quackBehavior;
     }
-    
+
     public FlyBehavior getFlyBehavior(){
         return this.flyBehavior;
     }
@@ -86,15 +87,18 @@ public abstract class Duck {
     public QuackBehavior getQuackBehavior() {
         return this.quackBehavior;
     }
-    
+
     @Override
     public String toString() {
         return "No specific duck found.";
     }
 }
 ```
+
 ### Subclasses van Duck
+
 #### MallardDuck
+
 ```java
 public class MallardDuck extends Duck{
     public MallardDuck() {
@@ -117,7 +121,9 @@ public class MallardDuck extends Duck{
     }
 }
 ```
+
 #### RedheadDuck
+
 ```java
 public class RedheadDuck extends Duck{
     public RedheadDuck() {
@@ -140,7 +146,9 @@ public class RedheadDuck extends Duck{
     }
 }
 ```
+
 #### DecoyDuck
+
 ```java
 public class DecoyDuck extends Duck {
     public DecoyDuck() {
@@ -163,7 +171,9 @@ public class DecoyDuck extends Duck {
     }
 }
 ```
+
 #### RubberDuck
+
 ```java
 public class RubberDuck extends Duck{
     public RubberDuck() {
@@ -183,32 +193,40 @@ public class RubberDuck extends Duck{
     public void setFlyable(){
         this.setFlyBehavior(new FlyWithWings());
     }
-    
+
     public void setUnflyable(){
         this.setFlyBehavior(new FlyNoWay());
     }
-    
+
     @Override
     public String toString() {
         return "A Rubber duck.";
     }
 }
 ```
+
 ### Interfaces
+
 #### FlyBehavior Interface
+
 ```java
 public interface FlyBehavior {
     public String fly();
 }
 ```
+
 #### QuackBehavior Interface
+
 ```java
 public interface QuackBehavior {
     public String quack();
 }
 ```
+
 ### FlyBehaviorclasses
+
 #### FlyWithWings
+
 ```java
 public class FlyWithWings implements FlyBehavior{
     @Override
@@ -222,7 +240,9 @@ public class FlyWithWings implements FlyBehavior{
     }
 }
 ```
+
 #### FlyNoWay
+
 ```java
 public class FlyNoWay implements FlyBehavior {
     @Override
@@ -236,8 +256,11 @@ public class FlyNoWay implements FlyBehavior {
     }
 }
 ```
+
 ### QuackBehaviorclasses
+
 #### Quack
+
 ```java
 public class Quack implements QuackBehavior {
     @Override
@@ -251,7 +274,9 @@ public class Quack implements QuackBehavior {
     }
 }
 ```
+
 #### Squeak
+
 ```java
 public class Squeak implements QuackBehavior{
     @Override
@@ -265,7 +290,9 @@ public class Squeak implements QuackBehavior{
     }
 }
 ```
+
 #### MuteQuack
+
 ```java
 public class MuteQuack implements QuackBehavior {
     @Override

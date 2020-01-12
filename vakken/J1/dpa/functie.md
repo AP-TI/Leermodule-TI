@@ -1,7 +1,10 @@
 # DPA
+
 ## Het grote "ik doe niks verkeerd maar da werkt hier ni"-kennissysteem
+
 ### Deel 6
-#### WAAROM KAN IK MIJN ZELFGESCHREVEN FUNCTIE NIET SELECTEREN?
+
+#### WAAROM KAN IK MIJN ZELFGESCHREVEN FUNCTIE NIET SELECTEREN
 
 ![error](afbeeldingen/functionerror.png)
 

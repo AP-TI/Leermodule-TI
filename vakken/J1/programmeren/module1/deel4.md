@@ -1,5 +1,7 @@
 # Deel 4
+
 ## Oefening 1: Getaltoestand
+
 ```csharp
 class Program
     {
@@ -26,7 +28,8 @@ class Program
     }
 ```
 
-## Oefening 2: Deelbaar door 2 
+## Oefening 2: Deelbaar door 2
+
 ```csharp
 class Program
     {
@@ -35,7 +38,7 @@ class Program
             string toestand = "deelbaar door ";
             Console.WriteLine("Voer een getal in: ");
             int invoerGetal = int.Parse(Console.ReadLine());
-            
+
             if (invoerGetal % 8 == 0)
             {
                 toestand += "8, 4 en 2";
@@ -58,6 +61,7 @@ class Program
 ```
 
 ## Oefening 3: Karakter inlezen
+
 ```csharp
 class Program
     {
@@ -94,6 +98,7 @@ class Program
 ```
 
 ## Oefening 4: Getal 1-2-3-4 cijfers
+
 ```csharp
 class Program
     {
@@ -117,9 +122,11 @@ class Program
 ```
 
 ## Oefening 5: ZIE OEF 4
+
 ## Oefening 6: ZIE OEF 3
 
 ## Oefening 7: Hexadecimaal
+
 ```csharp
 class Program
     {
@@ -164,6 +171,7 @@ class Program
 ```
 
 ## Oefening 8: Som aantal getallen
+
 ```csharp
 class Program
     {
@@ -184,6 +192,7 @@ class Program
 ```
 
 ## Oefening 9: Aantal positief / negatief
+
 ```csharp
 class Program
     {
@@ -212,6 +221,7 @@ class Program
 ```
 
 ## Oefening 10: Aantal positief / negatief met 0
+
 ```csharp
 class Program
     {
@@ -245,6 +255,7 @@ class Program
 ```
 
 ## Oefening 11: Product
+
 ```csharp
 class Program
     {
@@ -270,7 +281,8 @@ class Program
     }
 ```
 
-## Oefening 12: Som van cijfers 
+## Oefening 12: Som van cijfers
+
 ```csharp
 class Program
     {
@@ -293,6 +305,7 @@ class Program
 ```
 
 ## Oefening 13: Gemiddelde
+
 ```csharp
 class Program
     {
@@ -322,6 +335,7 @@ class Program
 ```
 
 ## Oefening 14: Grootste getal
+
 ```csharp
 class Program
     {
@@ -359,19 +373,20 @@ class Program
 ```
 
 ## Oefening 15: Kleinste getal
+
 ```csharp
 class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Geef getallen in, -32768 om te stoppen en het kleinste getal zal worden weergegeven");
-            const int AFSLUITWAARDE = -32768;         
+            const int AFSLUITWAARDE = -32768;
             int getal = int.Parse(Console.ReadLine());
             int aantalGetallen = 0;
             int kleinsteGetal = getal;
             while (getal != AFSLUITWAARDE)
-            {               
-                if (getal < kleinsteGetal )    
+            {
+                if (getal < kleinsteGetal )
                 {
                     kleinsteGetal = getal;
                     aantalGetallen = 1;
@@ -381,7 +396,7 @@ class Program
                     aantalGetallen += 1;
                 }
                 getal = int.Parse(Console.ReadLine());
-                
+
             }
             if (aantalGetallen > 0)
             {
@@ -396,6 +411,7 @@ class Program
 ```
 
 ## Oefening 16: Stijgende volgorde
+
 ```csharp
 class Program
     {
@@ -414,6 +430,7 @@ class Program
 ```
 
 ## Oefening 17: Gemiddelde aantal getallen
+
 ```csharp
 class Program
     {
@@ -431,7 +448,7 @@ class Program
                 getal =  double.Parse(Console.ReadLine());
                 aantalGetallen += 1;
                 som += vorigGetal;
-                            
+
             } while (getal != 0 || vorigGetal != 0);
             aantalGetallen -= 2;
             som = som - 2 * getal;
@@ -449,6 +466,7 @@ class Program
 ```
 
 ## Oefening 18: Dezelfde getallen
+
 ```csharp
 class Program
     {
@@ -484,6 +502,7 @@ class Program
 ```
 
 ## Oefening 19: Stijgende getallen, stoppen met fout of 0
+
 ```csharp
 class Program
     {
@@ -506,6 +525,7 @@ class Program
 ```
 
 ## Oefening 20: Gemiddelde 20 getallen
+
 ```csharp
 class Program
     {
@@ -529,6 +549,7 @@ class Program
 ```
 
 ## Oefening 21: Even getallen optellen
+
 ```csharp
 class Program
     {
@@ -555,6 +576,7 @@ class Program
 ```
 
 ## Oefening 22: Driehoekjes (+ logo avicii voor de lol)
+
 ```csharp
 class Program
     {
@@ -624,7 +646,7 @@ class Program
                 lengteSpaties--;
                 for (int j = 1; j <= lengteKarakter; j++)
                 {
-                    Console.Write("*"); 
+                    Console.Write("*");
                 }
                 lengteKarakter++;
                 Console.Write("\n");
@@ -700,6 +722,7 @@ class Program
 ```
 
 ## Oefening 23: Rechthoekig kadertje
+
 ```csharp
 class Program
     {
@@ -746,6 +769,7 @@ class Program
 ```
 
 ## Oefening 24: Minimumgetal
+
 ```csharp
 class Program
     {
@@ -776,6 +800,7 @@ class Program
 ```
 
 ## Oefening 25: Maximumgetal
+
 ```csharp
 class Program
     {
@@ -806,6 +831,7 @@ class Program
 ```
 
 ## Oefening 26: Som van kwadraten 50 - 100
+
 ```csharp
 class Program
     {
@@ -823,6 +849,7 @@ class Program
 ```
 
 ## Oefening 27: Positief getal deelbaar door  2 - 3 - 6
+
 ```csharp
 class Program
     {
@@ -859,13 +886,14 @@ class Program
 ```
 
 ## Oefening 28: 30 termen van 6
+
 ```csharp
 class Program
     {
         static void Main(string[] args)
         {
             TermenVan6();
-            TermenVan8(); 
+            TermenVan8();
             TermenPlusHetDubbele();
             TermenPlusDeHelft();
             TermenPlus_NoemerMaal2();
@@ -964,7 +992,7 @@ class Program
             som += tussenWaarde;
             tussenWaarde += 1 / (2 + 1);
             som += tussenWaarde;
-            
+
             for (int i = 1; i <= 30; i += 1)
             {
                 Console.WriteLine("1/{0}", noemer);
@@ -978,7 +1006,9 @@ class Program
 ```
 
 ## Oefening 29: ---
+
 ## Oefening 30: Hoger - Lager (spel)
+
 ```csharp
 class Program
     {
@@ -1024,6 +1054,7 @@ class Program
 ```
 
 ## Oefening 31: Gokautomaat
+
 ```csharp
 class Program
     {
@@ -1064,6 +1095,7 @@ class Program
 ```
 
 ## Oefening 32: Strings
+
 ```csharp
 class Program
     {
@@ -1230,7 +1262,9 @@ class Program
         }
     }
 ```
+
 ## Oefening 33: Delers van een positief getal
+
 ```csharp
 class Program
     {
@@ -1255,9 +1289,13 @@ class Program
 ```
 
 ## Oefening 34: ---
+
 ## Oefening 35: ---
+
 ## Oefening 36: ---
+
 ## Oefening 37: Faculteit van getallen
+
 ```csharp
 class Program
     {
@@ -1276,7 +1314,9 @@ class Program
 ```
 
 ## Oefening 38: ---
+
 ## Oefening 39: Eerste 20 getallen van Fibonnaci
+
 ```csharp
 class Program
     {
@@ -1299,6 +1339,7 @@ class Program
 ```
 
 ## Oefening 40: 10e getal van Fibonnaci
+
 ```csharp
 class Program
     {
@@ -1321,6 +1362,7 @@ class Program
 ```
 
 ## Oefening 41: Som 2 cijfers van tweecijfersgetal = deler van getal
+
 ```csharp
 class Program
     {
@@ -1340,6 +1382,7 @@ class Program
 ```
 
 ## Oefening 42: Dagnummer bepalen
+
 ```csharp
 class Program
     {
@@ -1358,6 +1401,7 @@ class Program
 ```
 
 ## Oefening 43: Tennis (de eenvoudige oplossing, niet met de juiste regels)
+
 ```csharp
 class Program
     {
@@ -1395,6 +1439,7 @@ class Program
 ```
 
 ## Oefening 44: Machten met getal
+
 ```csharp
 class Program
     {

@@ -23,7 +23,6 @@ END //
 ```
 
 > Maak een DELETE PROCEDURE aan, met als meegegeven variabele (IN) P_SPELERSNR. Noem variabelen altijd “P_%” zodat je weet dat dat de procedure variabelen zijn. Geef ook gelijk het type mee (INTEGER). Tussen BEGIN en END // komt de body van de stored procedure, waar je iets kan doen met de IN variabele.
-
 > Je hebt de procedure nu aangemaakt, maar nog niet uitgevoerd. Een stored procedure voer je uit met CALL.
 
 ```sql
@@ -38,7 +37,7 @@ CALL DELETE_WEDSTRIJDEN(8);
 
 ```sql
 SET @AANTAL = 0;
--- 
+--
 DELIMITER //
 CREATE PROCEDURE AANTAL_BOETES
 (
@@ -87,7 +86,7 @@ BEGIN
 END //
 ```
 
-> Gewoon hetzelfde als de if structuur in csharp, alleen moet je hier de if else echt afsluiten met END IF. 
+> Gewoon hetzelfde als de if structuur in csharp, alleen moet je hier de if else echt afsluiten met END IF.
 
 #### CASE
 
@@ -106,60 +105,60 @@ END //
 #### WHILE
 
 ```sql
-BEGIN    
+BEGIN
   SET TELLER = -1;
   WHILE  TELLER <  WACHT_AANTAL DO
     SET TELLER = TELLER + 1;
-  END WHILE;    
+  END WHILE;
 END //
 ```
 
 > WHILE … DO … END WHILE.
 
 #### REPEAT
+
 ```sql
-BEGIN    
+BEGIN
   SET TELLER = -1;
   REPEAT
     SET TELLER = TELLER + 1;
-  UNTIL TELLER = WACHT_AANTAL END REPEAT;    
+  UNTIL TELLER = WACHT_AANTAL END REPEAT;
 END //
 ```
 
-> Volgens mij echt los hetzelfde concept als WHILE, FOR, … 
+> Volgens mij echt los hetzelfde concept als WHILE, FOR, …
 
 #### LOOP
 
 ```sql
-BEGIN    
+BEGIN
   SET TELLER = -1;
   LOOP1: LOOP
     IF TELLER = WACHT_AANTAL  THEN
       LEAVE LOOP1;
     ELSE
       BEGIN
-        SET TELLER = TELLER + 1; 
-        ITERATE LOOP1;               
+        SET TELLER = TELLER + 1;
+        ITERATE LOOP1;
       END;
     END IF;
-  END LOOP LOOP1;    
-END //   
+  END LOOP LOOP1;
+END //
 ```
 
 > Opnieuw echt los hetzelfde concept als WHILE, FOR, … (ik zie het een beetje als een while true met een if, en dan break;, ik denk niet dat Olga hiermee akkoord gaat...)
-
-> Voorbeeld in PPT5 dia 19: je maakt een variabele EIND die je met de CALL functie meegeeft als OUT-parameter. In de stored procedure geef je er de juiste waarde aan met SET, en kan je hem gebruiken. 
+> Voorbeeld in PPT5 dia 19: je maakt een variabele EIND die je met de CALL functie meegeeft als OUT-parameter. In de stored procedure geef je er de juiste waarde aan met SET, en kan je hem gebruiken.
 
 #### CALL
 
-> In de CALL functie kan je ook expressies gebruiken die 1 waarde geven. Voorbeeld: 
+> In de CALL functie kan je ook expressies gebruiken die 1 waarde geven. Voorbeeld:
 
 ```sql
 SET @EIND = 0;
 CALL WACHTEN((SELECT COUNT(*) FROM BOETES),@EIND);
 ```
 
-> Count geeft hier 1 waarde weer, die geef je door aan de IN-PARAM in de stored procedure. 
+> Count geeft hier 1 waarde weer, die geef je door aan de IN-PARAM in de stored procedure.
 
 ```sql
 CALL TENNIS.WACHTEN(...)
@@ -168,12 +167,12 @@ CALL TENNIS.WACHTEN(...)
 > Hier gebruik je de databasenaam om extra specifiek te zijn. Dit moet niet, maar kan duidelijker zijn.
 
 ```sql
-BEGIN    
+BEGIN
   SET TELLER = -1;
   WHILE  TELLER <  WACHT_AANTAL DO
     SET TELLER = TELLER + 1;
     CALL WACHTEN (WACHT_AANTAL-1,TELLER);
-  END WHILE;    
+  END WHILE;
 END //
 ```
 
@@ -185,13 +184,13 @@ in een procedure de uitvoer van een SELECT opslaan in variabelen of parameters.
 het resultaat van de SELECT mag slechts 1 rij bevatten.
 
 ```sql
-BEGIN    
+BEGIN
   SELECT
-    SUM(BEDRAG) INTO SOM_BOETES    
+    SUM(BEDRAG) INTO SOM_BOETES
   FROM
-    BOETES 
+    BOETES
   WHERE
-    SPELERSNR = P_SPELERSNR;    
+    SPELERSNR = P_SPELERSNR;
 END //
 ```
 
@@ -244,7 +243,6 @@ SELECT @VERWERKT;  (resultaat is 2 maar procedure crasht)
 ```
 
 > Hier zie je dat de CALL functie 2x na elkaar wordt aangeroepen. Aangezien je 2x dezelfde data wil inserten (dus ook een PK) ga je een error krijgen: duplicate entry. PS: in ppt staat er dan ook nog eens geen @ bij de variabele VERWERKT in de 2e CALL functie. Dat geeft nog een andere error: unknown column.
-
 > Een handler voeg je toe in het begin van de BEGIN-END blok.
 
 ```sql
@@ -253,7 +251,7 @@ CREATE PROCEDURE DUBBEL
   OUT P_VERWERKT SMALLINT,
   OUT ERROR CHAR(5)
 )
-BEGIN   
+BEGIN
   DECLARE CONTINUE HANDLER FOR SQLSTATE ‘23000’ SET ERROR = ‘23000’;
   SET ERROR = ‘00000’;
   SET P_VERWERKT = 1;
@@ -271,7 +269,7 @@ resultaat van een SELECT-instructie rij per rij doorlopen
 > Voorbeeld:
 
 ```sql
-BEGIN   
+BEGIN
   DECLARE V_SPELERSNR1 INTEGER;
   DECLARE V_SPELERSNR2 INTEGER;
   DECLARE V_SPELERSNR3 INTEGER;
@@ -279,27 +277,24 @@ BEGIN
   DECLARE C_SPELERS CURSOR FOR
   SELECT
     SPELERSNR
-  FROM 
+  FROM
     SPELERS;
 
   OPEN C_SPELERS;
 
   FETCH C_SPELERS INTO V_SPELERSNR1;
   FETCH C_SPELERS INTO V_SPELERSNR2;
-  FETCH C_SPELERS INTO V_SPELERSNR3;; 
+  FETCH C_SPELERS INTO V_SPELERSNR3;;
   CLOSE C_SPELERS;
 END //
 ```
 
 > Je declareert de CURSOR voor de SELECT-instructie eronder.
-
 > Je opent de CURSOR om hem te kunnen gebruiken. De CURSOR wijst nu naar de eerste rij die uit de SELECT-instructie komt.
-
 > FETCH:  je CURSOR staat op een bepaalde positie. Aan de hand van die positie steek je de data van die rij op die positie in V_SPELERSNR. Bijvoorbeeld: cursor op 1: steek data van rij 1 in variabele. Als laatste gaat hij automatisch 1 plekkie vooruit. Dit moet je dus niet handmatig doen. Doe je dus 2x FETCH na elkaar, zal de cursor de 2e keer 1 verder zijn, automatisch.
+> Sluit de CURSOR wanneer je hem niet meer nodig hebt met CLOSE. Er wordt namelijk geheugen gereserveerd zolang hij open is!
 
-> Sluit de CURSOR wanneer je hem niet meer nodig hebt met CLOSE. Er wordt namelijk geheugen gereserveerd zolang hij open is! 
-
-#### Voordelen: 
+#### Voordelen:
 
 - onderhoud
 - performantie
@@ -315,7 +310,7 @@ DELIMITER //
 CREATE FUNCTION DOLLARS
 (
   BEDRAG DECIMAL(7,2)
-) 
+)
 RETURNS DECIMAL(7,2)
 BEGIN
   RETURN BEDRAG * (1/0,8);
@@ -323,10 +318,10 @@ END //
 
 DELIMITER ;
 SELECT
-  BETALINGSNR, 
+  BETALINGSNR,
   BEDRAG,
   DOLLARS(BEDRAG)
-FROM 
+FROM
   BOETES;
 ```
 

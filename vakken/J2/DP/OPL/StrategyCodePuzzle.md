@@ -1,16 +1,17 @@
 # Oefening Strategy Pattern: Code Puzzle
+
 > We maken gebruik van een abstract 'Character'-class, waarvan de classes 'King', 'Queen', 'Knight' en 'Troll' overerven.
-
 > Om deze karakters van wapens te voorzien, maken we de 'WeaponBehavior'-interface. Deze bevat de 'useWeapon()'-methode.
-
 > De vier behaviorclasses 'SwordBehavior', 'KnifeBehavior', 'BowAndArrowBehavior' en 'AxeBehavior' implementeren de 'WeaponBehavior'-interface. Ze hebben ook een override van de 'useWeapon()'-methode en 'ToString()'-methode.
-
 > De class 'Character' heeft de interface 'WeaponBehavior' als property. Dit zorgt ervoor dat een karakter een wapen kan gebruiken. Verder hebben we een constructor die een defaultbehavior instelt voor ons karakter, een 'setWeapon()'-methode, een 'fight()'-methode en een 'ToString()'-override.
 
-## Code:
+## Code
+
 > Bij het copy pasten: vergeet je package niet toe te voegen!
 > Voorbeeld: `package edu.ap.mathiasv.dp_strategyCodePuzzle;`
+
 ### Main
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -18,20 +19,22 @@ public class Main {
         Queen queen = new Queen();
         Knight knight = new Knight();
         Troll troll = new Troll();
-        
+
         System.out.println(king);
         System.out.println(queen);
         System.out.println(knight);
         System.out.println(troll);
-        
+
         WeaponBehavior behavior = new BowAndArrowBehavior();
         knight.setWeapon(behavior);
-        
+
         System.out.println(knight);
-    }    
+    }
 }
 ```
+
 ### Class Character
+
 ```java
 public abstract class Character {
     public WeaponBehavior behavior;
@@ -39,11 +42,11 @@ public abstract class Character {
     public Character(WeaponBehavior behavior) {
         this.behavior = behavior;
     }
-    
+
     void setWeapon(WeaponBehavior newBehavior){
         behavior = newBehavior;
     }
-    
+
     public void fight(){
         behavior.useWeapon();
     }
@@ -54,8 +57,11 @@ public abstract class Character {
     }
 }
 ```
+
 ### Subclasses van Character
+
 #### King
+
 ```java
 public class King extends Character {
     public King(){
@@ -68,7 +74,9 @@ public class King extends Character {
     }
 }
 ```
+
 #### Queen
+
 ```java
 public class Queen extends Character {
     public Queen(){
@@ -81,7 +89,9 @@ public class Queen extends Character {
     }
 }
 ```
+
 #### Knight
+
 ```java
 public class Knight extends Character {
     public Knight(){
@@ -94,7 +104,9 @@ public class Knight extends Character {
     }
 }
 ```
+
 #### Troll
+
 ```java
 public class Troll extends Character {
     public Troll(){
@@ -109,6 +121,7 @@ public class Troll extends Character {
 ```
 
 ### WeaponBehavior Interface
+
 ```java
 public interface WeaponBehavior {
     public String useWeapon();
@@ -116,7 +129,9 @@ public interface WeaponBehavior {
 ```
 
 ### Behaviorclasses
+
 #### SwordBehavior
+
 ```java
 public class SwordBehavior implements WeaponBehavior{
     @Override
@@ -133,6 +148,7 @@ public class SwordBehavior implements WeaponBehavior{
 ```
 
 #### AxeBehavior
+
 ```java
 public class AxeBehavior implements WeaponBehavior{
     @Override
@@ -149,6 +165,7 @@ public class AxeBehavior implements WeaponBehavior{
 ```
 
 #### KnifeBehavior
+
 ```java
 public class KnifeBehavior implements WeaponBehavior{
     @Override
@@ -165,6 +182,7 @@ public class KnifeBehavior implements WeaponBehavior{
 ```
 
 #### BowAndArrowBehaviorBehavior
+
 ```java
 public class BowAndArrowBehavior implements WeaponBehavior{
     @Override

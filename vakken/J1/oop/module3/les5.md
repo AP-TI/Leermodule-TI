@@ -1,5 +1,7 @@
 # Les 5
+
 ## Oefening 5.1
+
 Om te beginnen; zorg ervoor dat je Toolbox zichtbaar is. Standaard is dit niet het geval, zoals in onderstaand screenshot
 
 ![geen toolbox](afbeeldingen/knipsel.png)
@@ -24,10 +26,15 @@ Als je het programma start, zou dat er ongeveer zo moeten uitzien;
 Maar dan zonder het Saldo, want de code daarvoor moeten we nog aanmaken.
 
 #### De code
+
 ### Klasse Program
+
 Hebben we voor het eerst gewoon standaard gelaten.
+
 ### Klasse Dobbelspel (Form1.cs)
+
 Opgelet: dit is enkel het code-deel van de klasse (daarvan partial class). Het design-deel wordt automatisch aangemaakt door Visual Studio en daar blijven we af.
+
 ```csharp
 public partial class Dobbelspel : Form
     {
@@ -56,7 +63,9 @@ public partial class Dobbelspel : Form
         }
     }
 ```
+
 ### Klasse Geld
+
 ```csharp
 internal class Geld
     {
@@ -94,7 +103,9 @@ internal class Geld
         }
     }
 ```
+
 ### Klasse Dobbelsteen
+
 ```csharp
 class Dobbelsteen
     {
@@ -105,19 +116,23 @@ class Dobbelsteen
         }
     }
 ```
+
 Het uiteindelijke resultaat zou er ongeveer zo moeten uitzien;
 ![worp](afbeeldingen/knipsel3.png)
 ![geld op](afbeeldingen/knipsel4.png)
 
-#### Nieuw:
+#### Nieuw
+
 [WPF-versie](les5wpf.md) van deze oefening
 
 ## Oefening 5.2
+
 Maak gebruik van Knoppen, Een Textbox en een Label om het programma er als volgt uit te laten zien;
 
 ![bankrekening](afbeeldingen/bankrekening.png)
 
 ### Klasse Bank (Form1.cs)
+
 ```csharp
 public partial class Bank : Form
 {
@@ -156,9 +171,12 @@ public partial class Bank : Form
     }
 }
 ```
+
 De `MessageBox` zorgt ervoor dat er een melding wordt getoond aan de gebruiker als zijn bankrekening negatief staat. Het zou er ongeveer zo moeten uitzien;
 ![bankrekening foutmelding](afbeeldingen/bankrekening1.png)
+
 ### Klasse Bankrekening
+
 ```csharp
 class Bankrekening
     {
@@ -179,7 +197,9 @@ class Bankrekening
         }
     }
 ```
+
 ## Oefening 5.3
+
 Bij alle oefeningen hiervoor was het maken van een layout nog redelijk simpel. Nu komt er echter een extra moeilijkheidsgraad. Je moet namelijk verschillende elementen verbergen of tonen afhankelijk van wat de gebruiker wilt doen.
 
 Om te beginnen moet je scherm er ongeveer zo uitzien om series toe te kunnen voegen;
@@ -205,6 +225,7 @@ Bovendien moet je een beoordeling kunnen toevoegen aan de geselecteerde Film of 
 ![beoordeling](afbeeldingen/imdb4.png)
 
 ### Klasse Imdb (Form1.cs)
+
 ```csharp
 public partial class Imdb : Form
     {
@@ -373,7 +394,9 @@ public partial class Imdb : Form
         }
     }
 ```
+
 ### Klasse Film
+
 ```csharp
 class Film
     {
@@ -431,7 +454,9 @@ class Film
 
     }
 ```
+
 ### Klasse Serie
+
 ```csharp
 class Serie
     {
@@ -486,12 +511,17 @@ class Serie
 
     }
 ```
+
 Zoals je misschien al hebt gemerkt, zit er enorm veel dubbele code in deze oefening. Dit komt omdat deze oefening gebaseerd is op [oefening 3.1](https://github.com/AP-TI-2018-2019/AP_2018-2019/blob/master/vakken/oop/les3.md), de onderliggende code is (bijna) volledig hetzelfde, met als enige verschil dat er een GUI aan verbonden is. Dit toont nog maar eens het nut van polymorfisme, een begrip dat we nog niet kenden in les 3, aan.
+
 ## Oefening 5.3 - Extra
+
 Een leuke extra die je kan maken is een affiche van de film tonen aan de hand van de titel, door een zoekopdracht te maken en de eerste afbeelding te nemen. Ik heb ervoor gekozen om gebruik te maken van de API van IMDb. Het enige wat je moet doen is een extra pictureBox maken en de code in de Imdb-klasse (Form1.cs) aanpassen. Al de andere klasses blijven gewoon hetzelfde.
 
 Om te begrijpen hoe dit allemaal werkt is het belangrijk dat je eerst weet hoe JSON werkt. [Hier](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) is een goede uitleg.
+
 ### Klasse Imdb (Form1.cs)
+
 ```csharp
 public partial class Imdb : Form
 {
@@ -682,6 +712,7 @@ public partial class Imdb : Form
     }
 }
 ```
+
 Deze code gaat niet meteen werken, omdat je nog referenties mist. Om dit op te lossen klik je rechts op `References` en vervolgens op `Add Reference`.
 
 ![voeg referentie toe](afbeeldingen/addreference.png)
@@ -697,7 +728,9 @@ En tot slot ga je op het rode lijntje staan, druk je op `Alt` + `Enter`, en nogm
 Uiteindelijk zou je dit als resultaat moeten krijgen;
 
 ![imdbaffiche](afbeeldingen/imdbaffiche.png)
+
 ## Oefening 5.4
+
 Net zoals in de vorige oefening moeten we de zichtbaarheid van bepaalde `Control`s aanpassen afhankelijk van wat de gebruiker wilt doen. Het hoofdscherm zou er ongeveer zo moeten uitzien;
 
 ![garage gezinswagen](afbeeldingen/garage.png)
@@ -734,6 +767,7 @@ En door op de verwijder-knop te drukken wordt de auto uiteraard uit de lijst ver
 Oké, tijd voor de code die alles laat werken.
 
 ### Klasse Garage (Form1.cs)
+
 ```csharp
 public partial class Garage : Form
 {
@@ -813,7 +847,9 @@ public partial class Garage : Form
     }
 }
 ```
+
 ### Klasse Wagen
+
 ```csharp
 internal class Wagen
     {
@@ -867,7 +903,9 @@ internal class Wagen
         }
     }
 ```
+
 ### Klasse Gezinswagen
+
 ```csharp
 internal class Gezinswagen : Wagen
 {
@@ -906,7 +944,9 @@ internal class Gezinswagen : Wagen
     }
 }
 ```
+
 ### Klasse Sportwagen
+
 ```csharp
 class Sportwagen : Wagen
 {
