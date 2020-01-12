@@ -21,8 +21,8 @@
 ![G2](afb/AfbeeldingNSG2.jpg)
 
 3) Lees een willekeurig aantal getallen in met als afsluitwaarde 3456. Druk het kleinste getal af en hoeveel getallen we al hebben bekeken.
-![G2](afb/AfbeeldingNSG3.jpg)
+![G3](afb/AfbeeldingNSG3.jpg)
 4) Druk het gemiddelde af van 50 in te lezen getallen.
-![G2](afb/AfbeeldingNSG4.jpg)
+![G4](afb/AfbeeldingNSG4.jpg)
 5) Druk alle delers af van een in te lezen getal. Het in te lezen getal moet positief zijn.
-![G2](afb/AfbeeldingNSG5.jpg)
+![G5](afb/AfbeeldingNSG5.jpg)
