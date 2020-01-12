@@ -711,149 +711,64 @@ public class Main {
     }
 }
 ```
-<!--
+
 ## 1.9
 
-### Klasse Main
+### Klasse AlcoholischeDrank
 
-Zelfde code als oefening 1.4, maar met extra testvariabelen.
 ```java
-public class Main {
-
-    public static void main(String[] args) {
-        NietAlcoholischeDrank water = new NietAlcoholischeDrank(2.50, "Chaudfontaine", false);
-        NietAlcoholischeDrank waterBruis = new NietAlcoholischeDrank(2.50, "Chaidfontaine", true);
-        AlcoholischeDrank vodka = new AlcoholischeDrank(8.99, "Krupnik", 30);
-        AlcoholischeDrank passoa = new AlcoholischeDrank(9.99, "Passoã", 17);
-        AlcoholischeDrank vodka1 = new AlcoholischeDrank(28.99, "Bizon Grass", 40);
-        Cafe cafe = new Cafe();
-        cafe.addDrank(vodka);
-        cafe.addDrank(water);
-        cafe.addDrank(vodka1);
-        cafe.addDrank(passoa);
-        cafe.addDrank(waterBruis);
-        System.out.println(cafe);
-    }
-}
-```
-### Klasse Drank
-```java
-public abstract class Drank implements Comparable<Drank>{
-    private double prijs;
-    private String naam;
-    
-    public Drank(double prijs, String naam){
-        this.prijs = prijs;
-        this.naam = naam;
+public class AlcoholischeDrank extends Drank{
+    double alcoholPercentage;
+    public AlcoholischeDrank(double prijs, String naam, double alcoholPercentage) {
+        super(prijs, naam);
+        this.alcoholPercentage = alcoholPercentage;
     }
     
     @Override
     public String toString(){
-        return "Prijs: " + prijs + "\nNaam: " + naam;
+        return super.toString() + "\nAlcoholpercentage: " + alcoholPercentage + "%";
     }
-
+    
     @Override
-    public int compareTo(Drank drank) {
-        if(prijs == drank.prijs)
-            return naam.compareTo(drank.naam);
-        if(prijs < drank.prijs)
-            return -1;
-        return 1;
-    }
-}
-```
-### Klasse AlcoholischeDrank
-```java
-public class AlcoholischeDrank extends Drank {
-
-    private double alcoholpercentage;
-
-    public double getAlcoholpercentage() {
-        return alcoholpercentage;
-    }
-
-    public AlcoholischeDrank(double prijs, String naam, double alcoholpercentage) {
-        super(prijs, naam);
-        this.alcoholpercentage = alcoholpercentage;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString() + "\nAlcoholpercentage: " + alcoholpercentage;
-    }
-
-    @Override
-    public int compareTo(Drank drank) {
-        if (drank instanceof AlcoholischeDrank) {
-            AlcoholischeDrank ad = (AlcoholischeDrank) drank;
-            return Double.compare(getAlcoholpercentage(), ad.getAlcoholpercentage());
+    public int compareTo(Drank t){
+        if(t instanceof AlcoholischeDrank){
+            AlcoholischeDrank ad = (AlcoholischeDrank)t;
+            return Double.compare(alcoholPercentage, ad.alcoholPercentage);
         }
-        return super.compareTo(drank);
+        return -1;
     }
-
 }
 ```
 ### Klasse NietAlcoholischeDrank
 ```java
-public class NietAlcoholischeDrank extends Drank {
-
-    private boolean prik;
-
-    public boolean isPrik() {
-        return prik;
-    }
-
+public class NietAlcoholischeDrank extends Drank{
+    boolean prik;
+    
     public NietAlcoholischeDrank(double prijs, String naam, boolean prik) {
         super(prijs, naam);
         this.prik = prik;
     }
-
-    @Override
-    public String toString() {
-        return super.toString() + "\nPrik: " + (prik ? "ja" : "nee");
-    }
-
-    @Override
-    public int compareTo(Drank drank) {
-        if (drank instanceof NietAlcoholischeDrank) {
-            NietAlcoholischeDrank nad = (NietAlcoholischeDrank) drank;
-            if (isPrik() == nad.isPrik()) {
-                return 0;
-            }
-            if (nad.isPrik() == false) {
-                return 1;
-            }
-            return -1;
-        }
-        return super.compareTo(drank);
-    }
-
-}
-```
-### Klasse Cafe
-```java
-public class Cafe {
-    private ArrayList<Drank> dranken = new ArrayList<>();
-    
-    public void addDrank(Drank drank){
-        dranken.add(drank);
-    }
-    
-    public String drankenToString(){
-        Collections.sort(dranken);
-        String result = "";
-        for(Drank drank : dranken){
-            result += "\n" + drank;
-        }
-        return result;
-    }
     
     @Override
     public String toString(){
-        return drankenToString();
+        return super.toString() + "\nPrik: " + (prik ? "Ja" : "Nee");
+    }
+    
+    @Override
+    public int compareTo(Drank t){
+        if(t instanceof NietAlcoholischeDrank){
+            NietAlcoholischeDrank nad = (NietAlcoholischeDrank)t;
+            int compare = Boolean.compare(prik, nad.prik);
+            if(compare == 0){
+                return super.compareTo(t);
+            }
+            return compare;
+        }
+        return -1;
     }
 }
 ```
+<!--
 ## 1.10
 ### Klasse Main
 ```java
