@@ -1,6 +1,7 @@
 # Oefeningen reeks 1
 
 [Video met uitleg oefeningen 1-7](https://youtu.be/25XicakeLAw)
+[Video met uitleg oefeningen 8-10](https://youtu.be/cAHtbJc7MsM)
 
 ## 1.1
 
@@ -618,15 +619,18 @@ public class Garage {
 }
 ```
 
-<!-- ## 1.8
-Om te kunnen sorteren op prijs, moeten we eerst een aanpassing maken in de klasse `Drank`. Daar implementeren we de `interface` `Comparable`. Deze werkt vergelijkbaar met de `IComparable` `interface` uit C#.
+## 1.8
+
+Om te kunnen sorteren op prijs, moeten we eerst een aanpassing maken in de klasse `Drank`. Daar implementeren we de `interface` `Comparable`. Deze werkt vergelijkbaar met de `IComparable` `interface` uit C#. Om te checken of 2 dranken hetzelfde zijn op basis van de naam, hebben we de methode `equals` overschreven.
+
 ### Klasse Drank
+
 ```java
 public abstract class Drank implements Comparable<Drank>{
     private double prijs;
     private String naam;
-    
-    public Drank(double prijs, String naam){
+
+    public Drank(double prijs, String naam) {
         this.prijs = prijs;
         this.naam = naam;
     }
@@ -637,17 +641,34 @@ public abstract class Drank implements Comparable<Drank>{
     }
 
     @Override
-    public int compareTo(Drank drank) {
-        if(prijs == drank.prijs)
-            return naam.compareTo(drank.naam);
-        if(prijs < drank.prijs)
-            return -1;
-        return 1;
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Drank other = (Drank) obj;
+        if (!Objects.equals(this.naam, other.naam)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int compareTo(Drank t) {
+        return Double.compare(prijs, t.prijs);
     }
 }
+
 ```
 Hierna kunnen we in de klasse `Cafe` heel gemakkelijk de lijst van dranken sorteren op prijs.
+
 ### Klasse Cafe
+
 ```java
 public class Cafe {
     private ArrayList<Drank> dranken = new ArrayList<>();
@@ -671,8 +692,30 @@ public class Cafe {
     }
 }
 ```
-## 1.9
+Tot slot kunnen we in de klasse `Main` nog checken ofdat twee dranken aan elkaar gelijk zijn door de `equals`-methode van een drank object aan te roepen.
 ### Klasse Main
+```java
+public class Main {
+    public static void main(String[] args) {
+        Cafe cafe = new Cafe("test");
+        Drank drank = new AlcoholischeDrank(2.1, "alcoholische drank", 12);
+        Drank drank2 = new AlcoholischeDrank(2.1, "alcohoalische drank", 40);
+        Drank drank1 = new NietAlcoholischeDrank(1.2, "niet alcoholische drank", true);
+        Drank drank3 = new NietAlcoholischeDrank(1.1, "niet alcoholische drank zonder prik", true);
+        System.out.println(drank.equals(drank2));
+        cafe.addDrank(drank2);
+        cafe.addDrank(drank);
+        cafe.addDrank(drank3);
+        cafe.addDrank(drank1);
+        System.out.println(cafe);
+    }
+}
+```
+<!--
+## 1.9
+
+### Klasse Main
+
 Zelfde code als oefening 1.4, maar met extra testvariabelen.
 ```java
 public class Main {
