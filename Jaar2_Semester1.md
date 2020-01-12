@@ -5,7 +5,7 @@
 - [Cursus Intro-BI](https://github.com/ddhaese/Intro_BI)
 ## Java
 - [Oefeningen](vakken/J2/Java/Oefeningen/algemeen.md)
-- [Theorie](vakken/J2/Java/Theorie/algoritmes.md)
+- [Theorie](vakken/J2/Java/Theorie/algoritmen.md)
 ## System and Application Design
 - [Oefeningen SAAD](vakken/J2/SAAD/oefeningen.md)
 ## Webframeworks
