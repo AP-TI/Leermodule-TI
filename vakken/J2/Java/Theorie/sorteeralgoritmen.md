@@ -1,6 +1,6 @@
 # Sorteeralgoritmen
 
-> Maven project van de [algoritmen](Algoritmen.zip).
+> Maven project van de [algoritmen](https://github.com/MrDanaT/Algorithms).
 > Bij vragen stuur een DM naar Dana.
 
 ## Overzichtje
