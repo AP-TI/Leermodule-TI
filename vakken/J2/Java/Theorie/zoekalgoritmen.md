@@ -11,7 +11,7 @@
 | linear search (value absent)  | O(n)      | O(n)         | O(n)       | ^                                                | ^                                          |
 | binary search                 | O(1)      | O(log(n))    | O(log(n))  | Is zeer snel                                     | kan enkel op gesorteerde lijst             |
 | binary search tree            | O(1)      | O(log(n))    | O(n)       | ^                                                | ^                                          |
-| HashSearch                    | O(1)      | O(1)         | O(1)       | Snel                                             | Collissions kunnen voor vertraging zorgen. |
+| HashSearch                    | O(1)      | O(1)         | O(n)       | Snel                                             | Collissions kunnen voor vertraging zorgen. |
 
 ## Standaard algoritmen
 
