@@ -60,7 +60,7 @@ for(int i = 0; i < arr.length; i++) {
 [Video](https://youtu.be/pJouYrHd5Xc)
 ```java
 public void sort(int[] array) {
-    for (int i = 1; i < 10; i++) {
+    for (int i = 1; i < array.length; i++) {
         for (int j = i; j > 0; j--) {
             if (array[j] < array[j - 1]) {
                 swap(array, j, j - 1);
