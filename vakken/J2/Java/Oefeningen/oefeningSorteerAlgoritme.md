@@ -5,7 +5,7 @@
    2) > De performantie kan geoptimaliseerd worden indien we een boolean bijhouden om te zien of er een swap is gedaan of niet. Indien er geen swap is gedaan, betekent dit dat de input al gesorteerd staat. Hierdoor is er geen nood om meer dan eenmaal over de array te loopen.
    3) > [Voor code zie theorie](../Theorie/sorteeralgoritmen.md)
 2) Wat is de best case tijdscomplexiteit nu de bubble sort geoptimaliseerd is ? Best case is (in het geoptimaliseerde algoritme) wanneer de array reeds gesorteerd aangeboden wordt aan de bubble sort.
-   1) > Zoals eerder vermeld, is zal de best-case scenario een complexiteit van T(N)=O(N) kennen.
+   1) > Zoals eerder vermeld zal de best-case scenario een complexiteit van T(N)=O(N) kennen.
 
 3) Is de bubblesort een in-place algoritme ?
    1) > Ja. Het gebruikt O(1) extra geheugengebruik (een int voor de swap) en volgens de classificatie is elk algoritme dat <= O(log(n)) geheugen gebruikt een in-place algoritme.
