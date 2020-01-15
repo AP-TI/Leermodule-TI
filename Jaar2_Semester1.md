@@ -23,4 +23,4 @@
 
 ## Intro ERP
 
-- [Theorie ERP](Summady.md)
+- [Theorie ERP](Summary.md)
