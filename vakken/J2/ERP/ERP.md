@@ -1,5 +1,6 @@
 # ERP THEORIE
 > Vertrouwen op volledigheid = eigen risico
+
 > Made by Luka & Mathias
 
 A process is a series of related tasks or methods that together turn inputs into outputs. (input -> steps -> output), (core process vs supporting process)
