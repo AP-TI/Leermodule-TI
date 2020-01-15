@@ -23,4 +23,4 @@
 
 ## Intro ERP
 
-- [Theorie ERP](Summary.md)
+- [Theorie ERP](vakken/J2/ERP/Summary.md)
