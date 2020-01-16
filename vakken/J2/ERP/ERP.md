@@ -11,7 +11,7 @@ Een ERP is een systeem dat het mogelijk maakt om data beschikbaar te maken tusse
 
 Typisch voor een ERP:
 
-- duur in aankoop, maar verminderd vaste kosten
+- duur in aankoop, maar vermindert vaste kosten
 - alle onderdelen van het bedrijf hebben toegang
 - alle data in 1 systeem
 - alles op computer
