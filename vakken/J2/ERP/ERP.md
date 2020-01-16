@@ -121,7 +121,7 @@ Typical ERP Implementation
 - Technology project / change project
 
 - Acquisition Rationale
-  - ERP beïnvloed de manier van werken binnen het bedrijf. Het kan ons bepaalde voordelen geven t.o.v. concurrenten en t.o.v. een oudere manier van werken.
+  - ERP beïnvloedt de manier van werken binnen het bedrijf. Het kan ons bepaalde voordelen geven t.o.v. concurrenten en t.o.v. een oudere manier van werken.
   - Het is belangrijk dat het management weet wat een ERP kan doen. Als zij niet mee zijn met het idee van een ERP zal er geen ERP komen. Het is dus belangrijk dat de voordelen worden gecommuniceerd naar iedereen binnen het bedrijf: iedereen moet positief mee zijn met het verhaal.
   - Iedereen moet een ERP leren gebruiken. Dat maakt dat het extra belangrijk is dat iedereen met een ERP wil werken, anders is er geen motivatie.
   - Belangrijke vragen:
@@ -141,7 +141,7 @@ Typical ERP Implementation
     - Contingency: onverwachte problemen
     - Software failures: het werkt niet of toch niet zoals gepland
     - Non-use / Misuse: mensen gebruiken niet alle functionaliteiten of gebruiken ze verkeerd -> training nodig
-    - External: moet voldoen aan wetgeving, jou leveranciers en klanten moeten kunnen communiceren met de implementatie (ook overschakelen naar ERP?)
+    - External: moet voldoen aan wetgeving, jouw leveranciers en klanten moeten kunnen communiceren met de implementatie (ook overschakelen naar ERP?)
     - Competitive: concurrentie doet hetzelfde: als er iets misgaat bij jouw implementatie hebben zij een groot voordeel
     - Reputation: als er iets mis gaat kan dat nadelen hebben voor klanten, ook de dure aankoop kan investeerders afschrikken
   - Risico analyse is ENORM belangrijk!!
