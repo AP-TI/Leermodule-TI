@@ -301,7 +301,7 @@ invers element: HULP:
 
 - dankzij deze regel moet je dus niet alle opties afgaan om uiteindelijk geen antwoord te vinden zoals in voorbeeld 3.
 
-##### Structuren:
+##### Structuren
 
 Alle eigenschappen van de hoofdbewerkingen plus en maal binnen een eindig restsysteem wordt samengevat in een structuur
 

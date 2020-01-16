@@ -294,7 +294,7 @@ END //
 > FETCH:  je CURSOR staat op een bepaalde positie. Aan de hand van die positie steek je de data van die rij op die positie in V_SPELERSNR. Bijvoorbeeld: cursor op 1: steek data van rij 1 in variabele. Als laatste gaat hij automatisch 1 plekkie vooruit. Dit moet je dus niet handmatig doen. Doe je dus 2x FETCH na elkaar, zal de cursor de 2e keer 1 verder zijn, automatisch.
 > Sluit de CURSOR wanneer je hem niet meer nodig hebt met CLOSE. Er wordt namelijk geheugen gereserveerd zolang hij open is!
 
-#### Voordelen:
+#### Voordelen
 
 - onderhoud
 - performantie

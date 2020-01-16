@@ -635,7 +635,7 @@ public abstract class Drank implements Comparable<Drank>{
         this.prijs = prijs;
         this.naam = naam;
     }
-    
+
     @Override
     public String toString(){
         return "Prijs: " + prijs + "\nNaam: " + naam;
@@ -666,6 +666,7 @@ public abstract class Drank implements Comparable<Drank>{
 }
 
 ```
+
 Hierna kunnen we in de klasse `Cafe` heel gemakkelijk de lijst van dranken sorteren op prijs.
 
 ### Klasse Cafe
@@ -673,11 +674,11 @@ Hierna kunnen we in de klasse `Cafe` heel gemakkelijk de lijst van dranken sorte
 ```java
 public class Cafe {
     private ArrayList<Drank> dranken = new ArrayList<>();
-    
+
     public void addDrank(Drank drank){
         dranken.add(drank);
     }
-    
+
     public String drankenToString(){
         Collections.sort(dranken);
         String result = "";
@@ -686,15 +687,18 @@ public class Cafe {
         }
         return result;
     }
-    
+
     @Override
     public String toString(){
         return drankenToString();
     }
 }
 ```
+
 Tot slot kunnen we in de klasse `Main` nog checken ofdat twee dranken aan elkaar gelijk zijn door de `equals`-methode van een drank object aan te roepen.
+
 ### Klasse Main
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -724,12 +728,12 @@ public class AlcoholischeDrank extends Drank{
         super(prijs, naam);
         this.alcoholPercentage = alcoholPercentage;
     }
-    
+
     @Override
     public String toString(){
         return super.toString() + "\nAlcoholpercentage: " + alcoholPercentage + "%";
     }
-    
+
     @Override
     public int compareTo(Drank t){
         if(t instanceof AlcoholischeDrank){
@@ -740,21 +744,23 @@ public class AlcoholischeDrank extends Drank{
     }
 }
 ```
+
 ### Klasse NietAlcoholischeDrank
+
 ```java
 public class NietAlcoholischeDrank extends Drank{
     boolean prik;
-    
+
     public NietAlcoholischeDrank(double prijs, String naam, boolean prik) {
         super(prijs, naam);
         this.prik = prik;
     }
-    
+
     @Override
     public String toString(){
         return super.toString() + "\nPrik: " + (prik ? "Ja" : "Nee");
     }
-    
+
     @Override
     public int compareTo(Drank t){
         if(t instanceof NietAlcoholischeDrank){
@@ -812,7 +818,7 @@ public abstract class Auto implements Comparable<Auto>{
     public void setKilometerstand(double kilometerstand) {
         this.kilometerstand = kilometerstand;
     }
-    
+
     public Auto(Type type, Merk merk, String chassisnummer, String nummerplaat, double kilometerstand, double kilometerFactor){
         volgnummer = ++teller;
         this.type = type;
@@ -822,7 +828,7 @@ public abstract class Auto implements Comparable<Auto>{
         this.kilometerstand = kilometerstand;
         this.kilometerFactor = kilometerFactor;
     }
-    
+
     @Override
     public String toString(){
         return "Volgnummer: " + volgnummer + "\nType: " + type + "\nVerbruik: " + kilometerFactor + "/100km" + "\nMerk: " + merk + "\nChassisnummer: " + chassisnummer + "\nNummerplaat: " + nummerplaat + "\nKilometerstand: " + kilometerstand;
@@ -862,7 +868,7 @@ public class SortByKM implements Comparator<Auto>{
     public int compare(Auto t, Auto t1) {
         return Double.compare(t.getKilometerstand(), t1.getKilometerstand());
     }
-    
+
 }
 ```
 
@@ -871,19 +877,19 @@ public class SortByKM implements Comparator<Auto>{
 ```java
 public class Garage {
     private ArrayList<Auto> autolijst;
-    
+
     public Garage(){
         autolijst = new ArrayList<Auto>();
     }
-    
+
     public void addAuto(Auto auto){
         autolijst.add(auto);
     }
-    
+
     public boolean removeAuto(Auto auto){
         return autolijst.remove(auto);
     }
-    
+
     public String autolijstSportwagenToString(){
         StringBuffer result = new StringBuffer();
         for(Auto auto: autolijst){
@@ -900,15 +906,15 @@ public class Garage {
         }
         return result.toString();
     }
-    
+
     public void sort(){
         Collections.sort(autolijst);
     }
-    
+
     public void sort(Comparator comparator){
         Collections.sort(autolijst, comparator);
     }
-    
+
     @Override
     public String toString(){
         return "Auto's in deze garage: " + autolijstGezinswagenToString() + autolijstSportwagenToString();
