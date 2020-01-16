@@ -32,7 +32,7 @@ Druk op enter om uit te voeren.
 
 ### Windows
 
-Download [dit bestand](https://apti.ml/xmlvalidator/xmlvalidator.zip)
+Download [dit bestand](https://apti.be/xmlvalidator/xmlvalidator.zip)
 
 Pak het ergens uit (er mag geen spatie in 1 van de bovenliggende mappen staan!) en navigeer vervolgens naar de `bin`-map.
 
