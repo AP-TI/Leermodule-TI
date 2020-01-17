@@ -6,7 +6,8 @@
 
 ## Put
 
-> Initial: aanmaken
+> Initial: aanmaken van het object
+> De eerste keer is het niet nodig om er "_rev" bij te zetten. Dit wordt automatisch gegenereerd.
 
 ![put1](afb/putLimoen.png)
 
@@ -14,7 +15,7 @@
 
 ![put2](afb/wijzigLimoen.png)
 
-> Bij de eerste keer is het niet nodig om een "_rev" bij te zetten. Dit wordt automatisch gegenereerd.
+
 
 ## Delete
 
