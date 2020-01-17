@@ -1,10 +1,12 @@
 # Postman
 
-## Get
+## CouchDB
+
+### Get
 
 ![get](afb/getLimoen.png)
 
-## Put
+### Put
 
 > Initial: aanmaken van het object
 
@@ -18,6 +20,6 @@
 
 
 
-## Delete
+### Delete
 
 ![delete](afb/deleteLimoen.png)
