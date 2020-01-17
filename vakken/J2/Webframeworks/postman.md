@@ -6,8 +6,14 @@
 
 ## Put
 
-![get](afb/putLimoen.png)
+> Initial: aanmaken
+
+![put1](afb/putLimoen.png)
+
+> Wijziging wanneer het object al bestaat:
+
+![put2](afb/wijzigLimoen.png)
 
 ## Delete
 
-![get](afb/deleteLimoen.png)
+![delete](afb/deleteLimoen.png)
