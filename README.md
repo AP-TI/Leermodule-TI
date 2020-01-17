@@ -14,3 +14,5 @@
  [![](assets/dc.png)](https://apti.be/discord)
 
 Mogelijk dankzij de inspanningen van onze [contributors](https://github.com/AP-TI-2018-2019/AP_2018-2019/graphs/contributors).
+
+> Onze [website](https://apti.be/)
