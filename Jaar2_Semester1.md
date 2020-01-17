@@ -20,6 +20,7 @@
 ## Webframeworks
 
 - [Cursus Webframeworks](https://github.com/ddhaese/Web_Frameworks_I)
+- [Video's oefeningen](https://www.youtube.com/playlist?list=PLHCoiYvRMyVng1-sMjSle3Eehgj47wxRY)
 
 ## Intro ERP
 
