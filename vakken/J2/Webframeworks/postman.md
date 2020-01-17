@@ -14,6 +14,8 @@
 
 ![put2](afb/wijzigLimoen.png)
 
+> Bij de eerste keer is het niet nodig om een "_rev" bij te zetten. Dit wordt automatisch gegenereerd.
+
 ## Delete
 
 ![delete](afb/deleteLimoen.png)
