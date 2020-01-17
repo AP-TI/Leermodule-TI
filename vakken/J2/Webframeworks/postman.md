@@ -8,7 +8,7 @@
 
 ![get](afb/putLimoen.png)
 
-> Bij de eerste keer, is het niet nodig om een "_rev" bij te zetten. Dit wordt automatisch gegenereerd.
+> Bij de eerste keer is het niet nodig om een "_rev" bij te zetten. Dit wordt automatisch gegenereerd.
 
 ## Delete
 
