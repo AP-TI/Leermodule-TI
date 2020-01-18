@@ -2,9 +2,9 @@
 
 ## Database
 
-> werkt hetzelfde als files, vandaar enkel een get-voorbeeld:
+> werkt hetzelfde als files, vandaar enkel een put-voorbeeld om een nieuwe database aan te maken:
 
-![getDB](afb/createDatabase.png)
+![putDB](afb/createDatabase.png)
 
 ## Files
 
