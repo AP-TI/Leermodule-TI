@@ -215,7 +215,6 @@ Kunnen performantiewinst verkrijgen door:
 * Er zijn verschillende soorten DB'en zoals
   * NoSQL
   * SQL
-  * FireBase
 
 ### Oracle
 
@@ -262,7 +261,7 @@ Kunnen performantiewinst verkrijgen door:
     * Is er een clustering?
       * Bv. Veel Belgen wiens achternaam met "De" of "Van" beginnen.
   * **Systeem** statistieken
-    * I/O performantie en gebruik
+    * I/O performantie en gebruik.
     * CPU performantie en gebruik.
 * Oracle - **Hardware**
   * *Ik denk niet echt nuttig.*
@@ -332,7 +331,7 @@ Kunnen performantiewinst verkrijgen door:
   * **Serializable**
     * Eerst wachten tot alle locked bestanden unlocked worden en vanaf dat ik er mee bezig ben, kan niemand nog deleten , updaten en inserten(locken) tot ik er helemaal mee klaar ben.
   * **Snapshot**
-    * Precies een foto trekken van de data waar je aan wil beginnen werken. Zorgt wel voor een niet up-to-date ervaring.
+    * Precies een foto trekken van de data waar je aan wil beginnen werken. Zorgt wel voor een niet up-to-date ervaring. Doordat je met niet up-to-date data werkt, kunnen ook update errors ontstaan, als er iemand anders tegelijk aan dezelfde data bezig is.
 * MS SQL Server - **Clustered index**
   * **Clustered**:
     * Leaf bevat data: de index van de leaf verwijst naar waar de data zit.
