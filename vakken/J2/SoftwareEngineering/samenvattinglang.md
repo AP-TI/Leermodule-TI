@@ -651,6 +651,6 @@ async void Exec(){
   * Sustainable Pace
     * Haalbare tempo.
 
-> Nuttige dingen aan TTD is dat je functionaliteiten schrijft die werken en voor tests geslagen zijn. Door aan pair programming te doen heb je natuurlijk ook iedereen die er aan meewerkt. Ook de 5 waarden: courage, simplicity, feedback, communication en respect. Doet het op een rustig tempo. Kleine releases...
+> Nuttige dingen aan TDD is dat je functionaliteiten schrijft die werken en voor tests geslagen zijn. Door aan pair programming te doen heb je natuurlijk ook iedereen die er aan meewerkt. Ook de 5 waarden: courage, simplicity, feedback, communication en respect. Doet het op een rustig tempo. Kleine releases...
 
 ![Examenvraag les 6](./assets/Screenshot_58.png)
