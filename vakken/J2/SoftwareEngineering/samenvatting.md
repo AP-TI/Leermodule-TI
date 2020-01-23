@@ -134,3 +134,27 @@ Nadelen:
 5) Herhaal vorige stappen.
 
 (6. Verander het systeem.)
+
+
+## Extreme Programming
+XP Values
+- Simplicity
+- Communication
+- Feedback
+- Respect
+- Courage
+
+Een aantal XP Practices
+- Pair Programming
+- Test Driven Development
+  - ![tdd](assets/tdd.png)
+- Continueous Integration
+- Refactoring
+- Small Releases
+- Collective Code Ownership
+- Sustainable Pace
+
+## .NET Performance
+### LINQ
+- Language-Integrated Query Language
+- Kan zowel in methode-als query-vorm geschreven worden.
