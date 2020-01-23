@@ -139,9 +139,10 @@ Nadelen:
 ## Extreme Programming
 FC SRC
 XP Values
-- Simplicity
-- Communication
 - Feedback
+- Communication
+
+- Simplicity
 - Respect
 - Courage
 
