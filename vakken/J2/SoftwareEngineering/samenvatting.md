@@ -117,3 +117,9 @@ Nadelen:
 
 ### Clustered index
 -  De data is fysiek op de schijf in dezelfde volgorde opgeslagen als de index. Hierdoor kan er slechts 1 clustered index zijn per tabel. Een non-clustered index daarentegen heeft pointers naar de fysieke rijen. Hierdoor is het sneller om data op te vragen a.d.h.v. een clustered index, maar doorgaans trager om data toe te voegen aan een tabel die een clustered index bevat, omdat de data opnieuw volledig fysiek herordend moet worden op de schijf.
+
+## Theorie of Constraints (TOC)
+- Er is altijd minstens 1 constraint.
+- TOC identificeert de constraint en herstructureert de rest van de organisatie errond.
+- TOC werkt volgens het principe "de sterkte van de ketting wordt bepaald door de zwakste schakel".
+  - Dit betekent dat het proces of de organisatie kwetsbaar is omdat de zwakste persoon of het zwakste deel altijd een impact kan hebden op de uitkomst van de processen.
