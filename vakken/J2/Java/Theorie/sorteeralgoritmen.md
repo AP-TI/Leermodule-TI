@@ -75,6 +75,8 @@ public void sort(int[] array) {
 
 ### Quicksort algoritme
 
+[Video](https://www.youtube.com/watch?v=hcy9DBzEqyw)
+
 ```java
     public void sort(int[] array) {
         quicksort(array, 0, array.length - 1);
