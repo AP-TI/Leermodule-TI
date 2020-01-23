@@ -137,6 +137,7 @@ Nadelen:
 
 
 ## Extreme Programming
+FC SRC
 XP Values
 - Simplicity
 - Communication
@@ -181,3 +182,4 @@ Een aantal XP Practices
 #### Parallel vs Concurrent
 - Parallel wilt zeggen dat de taken effectief door verschillend CPU's worden uitgevoerd (een CPU kan maar 1 ding tegelijk doen).
 - Concurrent wilt zeggen dat de CPU slim zijn rekentijd verdeelt over de taken, en het zal lijken alsof deze taken gelijktijdig worden uitgevoerd.
+
