@@ -19,7 +19,8 @@
 
 ## Software engineering
 
-- [Samenvatting](vakken/J2/SoftwareEngineering/samenvatting.md)
+- [Korte samenvatting](vakken/J2/SoftwareEngineering/samenvatting.md)
+- [Lange samenvatting](vakken/J2/SoftwareEngineering/samenvattinglang.md)
 
 ## Webframeworks
 
