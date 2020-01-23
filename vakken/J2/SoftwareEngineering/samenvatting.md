@@ -158,3 +158,11 @@ Een aantal XP Practices
 ### LINQ
 - Language-Integrated Query Language
 - Kan zowel in methode-als query-vorm geschreven worden.
+
+#### LINQ to entities optimizations
+|Actie|Wanneer|
+|--|--|
+|Eager loading|Als er een grote kans is dat de data snel zal worden opgevraagd|
+|Lazy loading|Als er een kleine kans is dat de data snel zal worden opgevraagd|
+|Precompiled query|Queries die vaak gebruikt worden|
+|Queries debuggen|Als je queries complexe logica bevatten|
