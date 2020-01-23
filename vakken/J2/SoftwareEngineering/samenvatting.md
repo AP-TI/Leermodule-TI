@@ -121,5 +121,16 @@ Nadelen:
 ## Theorie of Constraints (TOC)
 - Er is altijd minstens 1 constraint.
 - TOC identificeert de constraint en herstructureert de rest van de organisatie errond.
+  - Laat de bottleneck focussen. Zorg dat de bottleneck niet wordt afgeleid door werk dat niets met de doorvoer te maken heeft.
 - TOC werkt volgens het principe "de sterkte van de ketting wordt bepaald door de zwakste schakel".
   - Dit betekent dat het proces of de organisatie kwetsbaar is omdat de zwakste persoon of het zwakste deel altijd een impact kan hebden op de uitkomst van de processen.
+
+### Focusing steps
+0) Wat is het doel?
+1) Waar bevindt de bottleneck zich?
+2) Laat de bottleneck focussen.
+3) Pas aan aan de bottleneck.
+4) Maak de bottleneck groter. (meer resources op de plaats van de bottleneck plaatsen, zodat het sneller vooruit gaat)
+5) Herhaal vorige stappen.
+
+(6. Verander het systeem.)
