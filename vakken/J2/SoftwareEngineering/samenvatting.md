@@ -161,8 +161,23 @@ Een aantal XP Practices
 
 #### LINQ to entities optimizations
 |Actie|Wanneer|
-|--|--|
+|-|-|
 |Eager loading|Als er een grote kans is dat de data snel zal worden opgevraagd|
 |Lazy loading|Als er een kleine kans is dat de data snel zal worden opgevraagd|
 |Precompiled query|Queries die vaak gebruikt worden|
 |Queries debuggen|Als je queries complexe logica bevatten|
+
+### TPL
+- Task Parallel Library
+- Sinds .NET 4.0
+- Makkelijkere manier om multi-threaded te werken
+  - Tasks
+    - Vergelijkbaar met Promises in JavaScript
+    - Functies die een `Task`/`Task<T>` returnen zijn `awaitable`
+      - Gebruik het `await`-keyword om de huidige functie te pauzeren totdat de opgeroepen functie een resultaat teruggeeft. Ondertussen kan de oproeper verder andere taken uitvoeren.
+        - Om ervoor te zorgen dat je `await` kan gebruiken, moet je de functie als `async` markeren.
+    - Je kan meerdere taken die elkaar niet verhinderen gelijktijdig uitvoeren. Daarna kan je gebruik maken van `Task.WhenAll()` om verder te gaan als alle `Task`s klaar zijn.
+
+#### Parallel vs Concurrent
+- Parallel wilt zeggen dat de taken effectief door verschillend CPU's worden uitgevoerd (een CPU kan maar 1 ding tegelijk doen).
+- Concurrent wilt zeggen dat de CPU slim zijn rekentijd verdeelt over de taken, en het zal lijken alsof deze taken gelijktijdig worden uitgevoerd.
