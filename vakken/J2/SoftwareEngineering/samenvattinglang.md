@@ -392,7 +392,7 @@ Kunnen performantiewinst verkrijgen door:
 * Het doel van deze les is om in de praktijk zo snel mogelijk pro-actief bottlenecks te identificeren en deze op te lossen nog vóór er problemen worden veroorzaakt.
 * Waarom zou je het veranderen van het systeem als uw last-resort houden?
   * Niemand houdt van verandering.
-  * Kan zelfs voor zorgen werkvertraging zorgen.
+  * Kan zelfs voor werkvertraging zorgen.
 * Step Change vs Incremental change:
   * Zorg dat je incrementele (kleine) veranderingen toepast zodat mensen makkelijk kunnen volgen i.p.v. in 1 keer een grote verandering te doen.
 * ROI
