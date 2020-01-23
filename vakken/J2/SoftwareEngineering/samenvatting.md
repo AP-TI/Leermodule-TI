@@ -114,3 +114,6 @@ Nadelen:
 
 ### Bulk processing
 - In de plaats van verschillende queries te doen voor CRUD-operaties op verschillende rijen, gewoon alles in 1 keer doen.
+
+### Clustered index
+-  De data is fysiek op de schijf in dezelfde volgorde opgeslagen als de index. Hierdoor kan er slechts 1 clustered index zijn per tabel. Een non-clustered index daarentegen heeft pointers naar de fysieke rijen. Hierdoor is het sneller om data op te vragen a.d.h.v. een clustered index, maar doorgaans trager om data toe te voegen aan een tabel die een clustered index bevat, omdat de data opnieuw volledig fysiek herordend moet worden op de schijf.
