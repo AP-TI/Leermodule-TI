@@ -75,3 +75,42 @@ Je maakt een nieuwe branch vanaf de `master`-branch. Je wijzigt de code op de ni
 2) Zo weinig mogelijk duplicatie van concepten
 3) Zo leesbaar mogelijk; de code onthult de intentie
 4) Bevat enkel de noodzakelijke code
+
+## Database Performantie
+### Agnostische aanpak
+Voordelen:
+- Logica staat los van database
+  - Kan vrij van database wisselen
+- Protocol om naar database te gaan wordt gegenereerd
+
+Nadelen:
+- Kracht van specifieke database wordt niet gebruikt
+- Oorzaken van performantieproblemen zijn moeilijker te vinden
+
+### Thick database
+Voordelen:
+- Kracht van specifieke database wordt gebruikt
+- Performantieproblemen kunnen makkelijker gelocaliseerd worden
+- Data integriteit beheren is makkelijker
+
+Nadelen:
+- Hangt vast aan één database
+- Logica aanpassen gebeurt in database
+
+#### Lagen
+- Gegevensschema
+  - Tabellen
+- Code schema
+  - Procedural Language/Structured Query Language (PL/SQL)
+- Toegangsschema
+  - Security
+
+### Optimalisatietechnieken
+#### Rules Based Optimization (vroeger)
+- Werkt op basis van een aantal vooropgestelde regels (bv. als er een index is doe dit, anders doe dat) en zou dus in theorie het snelste een resultaat moeten teruggeven.
+
+#### Cost Based Optimization 
+- Berekent de kostprijs van verschillende operaties, en geeft een resultaat terug volgens de snelst mogelijke route.
+
+### Bulk processing
+- In de plaats van verschillende queries te doen voor CRUD-operaties op verschillende rijen, gewoon alles in 1 keer doen.
