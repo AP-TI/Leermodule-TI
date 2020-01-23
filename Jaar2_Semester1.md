@@ -17,6 +17,10 @@
 
 - [Oefeningen SAAD](vakken/J2/SAAD/oefeningen.md)
 
+## Software engineering
+
+- [Samenvatting](vakken/J2/SoftwareEngineering/samenvatting.md)
+
 ## Webframeworks
 
 - [Cursus Webframeworks](https://github.com/ddhaese/Web_Frameworks_I)
