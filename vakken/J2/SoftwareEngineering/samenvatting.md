@@ -5,6 +5,7 @@ Voordelen:
 - Overal mogelijk
 - Competitief
 - Engagement
+
 Nadelen:
 - Kan belangrijker worden dan doel
 - Niet voor iedereen
