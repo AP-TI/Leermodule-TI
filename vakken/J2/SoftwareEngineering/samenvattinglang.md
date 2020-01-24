@@ -444,7 +444,7 @@ Kunnen performantiewinst verkrijgen door:
       * in bytes: 2, 1
   * Common **reference types**
     * Bv. System.Object, System.String
-      * Alle objecten erven over van deze type, text data
+      * Alle objecten erven over van dit type, text data
 * Performantiewijs:
   * **Value types** bevatten de waarde zelf, dus deze staat direct op de stack
   * **Reference types** bevatten een pointer naar de waarde die zich op de heap bevindt.
@@ -534,7 +534,7 @@ var msConsoles = (from consoles in console where console.Company == "Microsoft" 
 | yield return 2;                                                    |                                              |
 | ...                                                                |                                              |
 | yield return 5;                                                    |                                              |
-| Zal zo niet heel de array uitvoeren als het bij de 2de value stopt | hier blijft het wel heel de array uitvoeren. |
+| Zal zo niet heel de array uitvoeren als het bij de 2de value stopt | hier blijft het wel heelz de array uitvoeren. |
 
 ### Task Parallel Library (TPL)
 
