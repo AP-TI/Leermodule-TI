@@ -360,7 +360,7 @@ Kunnen performantiewinst verkrijgen door:
 
 * Denk aan code, hardware, netwerk en set-up
 * Houd performantie in het achterhoofd
-* Loop niet verloren in optimalisatie tenzij het nodig s, kan impact hebben op:
+* Loop niet verloren in optimalisatie tenzij het nodig is, kan impact hebben op:
   * Stabiliteit (bugs)
   * Onderhoudbaarheid (leesbare JavaScript, variabele)
   * Budget / tijd (refactoring)
@@ -372,7 +372,7 @@ Kunnen performantiewinst verkrijgen door:
 ### Theory of Constraint (**TOC**)
 
 * *The theory of constraints (TOC) is a management paradigm that views any manageable system as being limited in achieving more of its goals by a very small number of constraints. There is always at least one constraint, and TOC uses a focusing process to identify the constraint and restructure the rest of the organization around it. TOC adopts the common idiom "a chain is no stronger than its weakest link." This means that processes, organizations, etc., are vulnerable because the weakest person or part can always damage or break them or at least adversely affect the outcome.*
-  * Korte samenvatting: een klein zwak schakel in een grote organisatie zorgt voor vertraging voor een algemene vertraging.
+  * Korte samenvatting: een kleine zwakke schakel in een grote organisatie zorgt voor vertraging, wat kan leiden tot een algemene vertraging.
 * Spel gespeeld met boten en hoeden te maken en de rest lego's items.
   1) Het doel is om een zo **hoog mogelijke output** te genereren met een zo **weinig mogelijke input**.
   2) Hierbij moeten wij een **bottleneck identificeren**. Er zal **altijd** wel een bottleneck zijn in een organisatie.
