@@ -109,7 +109,7 @@ Kunnen performantiewinst verkrijgen door:
 
 |           | Golden Master testing                                                                                                                                                                                                                |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Definitie | Je pakt een gekend input, steekt het in een methode, bekijkt de output en vergelijkt het met een goedgekeurde versie van de output. Indien dit slechter is, pas je het programma aan. Als dit beter is, pas je de Golden Master aan. |
+| Definitie | Je pakt een gekende input, steekt het in een methode, bekijkt de output en vergelijkt het met een goedgekeurde versie van de output. Indien dit slechter is, pas je het programma aan. Als dit beter is, pas je de Golden Master aan. |
 | Voordelen | Moet Business Rules niet kennen                                                                                                                                                                                                      |
 |           | Leert bij over applicatie                                                                                                                                                                                                            |
 |           | Vertrouwen                                                                                                                                                                                                                           |
@@ -145,7 +145,7 @@ Kunnen performantiewinst verkrijgen door:
     * Weinig elementen. Schrijf enkel code dat echt nodig is.
 * _Code bekijken_
 * __Wat is Reveal Intent?__:
-  * Het encapsuleren, hernoemen en verduidelijken van stukken code met een niet-betekenisvolle voorkomen.
+  * Het encapsuleren, hernoemen en verduidelijken van stukken code met een niet-betekenisvolle naam voorkomen.
     * Magic numbers/strings in de code encapsuleren en een symbolische constante die de betekenis van die nummer/string weergeeft geven.
       * Bv: van ```if (x < 5) ...``` naar ```int MAX_AANTAL_SPELERS = 5; if (x < MAX_AANTAL_SPELERS) ...```
     * Variabele/methode/classes met niet-beschrijvende namen hernoemen naar iets langs dat het wel goed beschrijft om de betekenis er achter duidelijk te maken.
