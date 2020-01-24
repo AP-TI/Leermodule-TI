@@ -225,7 +225,7 @@ Kunnen performantiewinst verkrijgen door:
 | Oracle; Soort aanpak: | Agnostisch    aanpak                                                                                          | Thick database                                                                     |
 | --------------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | **Wat?**              | Een agnost is iemand die geen overtuiging heeft in het wel of niet bestaan van een bovennatuurlijk macht.     | Een dik gevulde database waar alles in steekt.                                     |
-| **Andere woorden...** | Er is een DB maar we zijn niet zeker. Alle logica zit verspreid op verschillende locaties en dus niet op de DB. | Alle(s) logica steekt in de DB. Onze .NET laagt spreekt de data in de DB aan.      |
+| **Andere woorden...** | Er is een DB maar we zijn niet zeker. Alle logica zit verspreid op verschillende locaties en dus niet op de DB. | Alle(s) logica steekt in de DB. Onze .NET laag spreekt de data in de DB aan.      |
 | **Voordelen**         | Vrij wisselen van DB.                                                                                         | Kracht van specifieke DB wordt gebruikt.                                           |
 |                       | Logica staat los van DB.                                                                                      | Performantieproblemen kunnen makkelijk(er) gelocaliseerd worden.                   |
 |                       | Protocol om naar DB te gaan, wordt gegenereerd.                                                               | Data integriteit beheren is makkelijk(er) (door gebruik te maken van constraints). |
@@ -288,7 +288,7 @@ Kunnen performantiewinst verkrijgen door:
       * Indexen
         * Leg enkel indexen die echt helpen.
 * Oracle - **Caching**
-  * Het gevaar aan caching is dat er een kans is dat je geen met up-to-date data hebt.
+  * Het gevaar aan caching is dat er een kans is dat je geen up-to-date data hebt.
 * Oracle - **In het geheel verwerken**
   * **Bulk processing**
   * Ophalen via **SELECT** en **FORALL**
@@ -315,7 +315,7 @@ Kunnen performantiewinst verkrijgen door:
 
 * Master Data File
   * Slechts EEN van.
-* Secundary Data File
+* Secondary Data File
   * 0..*
 * Log File
   * 1..*
