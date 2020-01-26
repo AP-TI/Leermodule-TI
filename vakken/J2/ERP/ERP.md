@@ -274,7 +274,7 @@ Typical ERP Implementation
   - Kost extra
 - Go-live readiness review
   - De datum om het systeem live te zetten kan verplaatst worden als het project nog niet klaar is, want als je het op dat moment implementeert dan ga je waarschijnlijk falen
-  - Testing is dus heel belangrijk 
+  - Testing is dus heel belangrijk
     - Unit testing -> stuk per stuk testen
     - Integration testing -> Hoe twee stukken samen werken testen
     - End-to-end testing -> Van begin tot einde testen

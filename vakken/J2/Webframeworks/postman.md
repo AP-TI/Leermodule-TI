@@ -19,7 +19,6 @@
 ### Put
 
 > Initial: aanmaken van het object: zonder "_rev"
-
 > De eerste keer is het niet nodig om er "_rev" bij te zetten. Dit wordt automatisch gegenereerd.
 
 ![put1](afb/putLimoen.png)
@@ -27,7 +26,6 @@
 > Wijziging wanneer het object al bestaat: met "_rev"
 
 ![put2](afb/wijzigLimoen.png)
-
 
 ### Delete
 
@@ -42,11 +40,9 @@
 ### Put
 
 > Initial: aanmaken van het object: zonder "_rev"
-
 > Wijzigen: met "_rev" zoals bij een file
 
 ![putView](afb/putNewView.png)
-
 
 ### Delete
 

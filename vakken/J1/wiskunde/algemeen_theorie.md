@@ -10,3 +10,5 @@ Om te slagen op je examen wiskunde dien je je boek van wiskunde open te doen en 
 
 - [Belangrijke formules](belangrijke_formules.md)
 - [Belangrijke begrippen](belangrijke_begrippen.md)
+
+- ["Korte samenvatting van het boek"](./kortesamenvatting.pas)
