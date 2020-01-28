@@ -108,8 +108,10 @@ V …
 - <b>S/4HANA</b>
     - Ariba: source-to-pay process
 
+![mm1](afb/mm1.png)
+
 ## Gastcollege 1: Mendix
-- Mendix: low-code, grafische tools (zonder code) platform voor web en mobile apps
+- <b>Mendix:</b> low-code, grafische tools (zonder code) platform voor web en mobile apps
     - miscommunicatie -> 1 taal
     - te weinig IT-ers -> makkelijker samenwerken
     - oude legacy systemen -> cloud based oplossing die bovenop legacy werkt
@@ -118,27 +120,27 @@ V …
 - By 2024, more than 65% of all new business applications will be developed on high productivity platforms
 
 ## Gastcollege 2: S/4HANA
-- r3: 
+- <b>r3:</b> 
     - alle schermen, dus ook diegene die niet voor jou zijn: vervuilde gui. 
     - meer toegespitst in snelle input, maar wel onthouden welke velden voor jou zijn
     - database kan geen zware loads aan -> secundaire tabellen: opsplitsen per onderwerp om ietwat performantie te krijgen.
     - logica in application layer -> heel veel data doorpushen -> bottleneck
 
-- s4: 
+- <b>s4:</b> 
     - rolgericht, alleen voor jou: meteen klikken, niet zoeken
     - exception driven: rode cijfers in fiori
     - kan zware loads aan
     - logica in database layer -> minder gegevens doorpushen -> performantie
     - Geen BW nodig!
 
-- sap → cloud, maar klant vertrouwt dat niet
+- <b>sap → cloud</b>, maar klant vertrouwt dat niet
     - wel backwards compatible met vorige versies: klant blij maar SAP moet support geven
 
 - ECC = netweaver systeem, beetje fiori de rest SAP gui. Draait op alle db
 - Suite on HANA : erp op HANA, zowel Fiori als SAP Gui
 - S/4HANA = Fiori UX + HANA + Simplification
 
-- SAP Fiori
+- <b>SAP Fiori<b>
     - responsief, grafisch, simpel maar functioneel
 
 ## Gastcollege 3: SAP Cloud Platform
@@ -146,7 +148,7 @@ V …
 - digital platform 
 - intelligent technologies
 
-- Mobile apps:
+- <b>Mobile apps:<b>
     - Cloud Foundry Environment
     - NEO Environment
     - ABAP Environment
@@ -154,4 +156,4 @@ V …
 - cloud platform cockpit
 - global account met subaccounts
 
-- leonardo: vb koffiemachine
+- <b>SAP Leonardo:</b> vb koffiemachine
