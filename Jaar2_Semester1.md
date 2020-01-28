@@ -8,6 +8,10 @@
 
 - [Cursus Intro-BI](https://github.com/ddhaese/Intro_BI)
 
+## Intro-SAP
+
+- [Theorie](vakken/J2/SAP/summary.md)
+
 ## Java
 
 - [Oefeningen](vakken/J2/Java/Oefeningen/algemeen.md)
