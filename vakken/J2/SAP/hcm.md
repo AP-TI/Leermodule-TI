@@ -61,11 +61,12 @@
 
 - Profile matchup
     - Maakt het mogelijk om personen met posities en jobs te vergelijken op basis van requirements en qualifications
-    - R = Q -> OK , R < Q -> OK , R > Q -> NOK
+    > R = Q -> OK , R < Q -> OK , R > Q -> NOK
 ## Talent management
 - Carrière voorstellen en plannen
 - Maak nieuwe jobs “stations”, maak requirements per “station”
-- Voorbeeld: Security Guard -> Security Manager -> Chief Security Manager
+- Voorbeeld: 
+> Security Guard -> Security Manager -> Chief Security Manager
 
 - Succession planning
 	- Zorg voor doorgroeimogelijkheden naar key-positions
