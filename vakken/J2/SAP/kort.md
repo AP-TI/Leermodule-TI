@@ -1,6 +1,6 @@
 # Korte samenvatting
 ## History
-<b>Tijdlijn:</> 
+<b>Tijdlijn:</b> 
 x
 
  | 1972: oprichting SAP -> RF (boekhoudsysteem)
@@ -140,7 +140,7 @@ V …
 - Suite on HANA : erp op HANA, zowel Fiori als SAP Gui
 - S/4HANA = Fiori UX + HANA + Simplification
 
-- <b>SAP Fiori<b>
+- <b>SAP Fiori</b>
     - responsief, grafisch, simpel maar functioneel
 
 ## Gastcollege 3: SAP Cloud Platform
@@ -148,7 +148,7 @@ V …
 - digital platform 
 - intelligent technologies
 
-- <b>Mobile apps:<b>
+- <b>Mobile apps:</b>
     - Cloud Foundry Environment
     - NEO Environment
     - ABAP Environment
