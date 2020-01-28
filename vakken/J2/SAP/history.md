@@ -52,6 +52,7 @@ V …
     - Aankoop
     - Magazijnbeheer
     - Facturatiebeheer
+    
 ![R1](afb/R1.png)
 
 ## SAP R/2 
@@ -75,6 +76,7 @@ V …
 - +1700 Werknemers / +1000 klanten / +500M DM (+250 M EUR)
 - SAP breidt uit naar bijna heel Europa en naar USA
 - SAP Consulting (gericht op hulp voor kleinere bedrijven)
+
 ![R2](afb/R2.png)
 
 ## SAP R/3
@@ -85,6 +87,7 @@ V …
 - SAP wereldwijd (Rusland, Azië, Zuid-Amerika)
 - SAP op Windows NT (Microsoft)
 - Contract met IBM: grootste contract tot dan
+
 ![R3_1](afb/R3_1.png)
 
 ## SAP ONLINE (1996 - 2000)
@@ -96,11 +99,13 @@ V …
     - Makkelijker customizen
 - SAP BW module (business warehouse)
 - BI & Data analysis
+
 ![R3_2](afb/R3_2.png)
 
 ## SAP 2000 - 2010
 - Veel overnames en nieuwe producten
 - Netweaver, ERP, Microsoft Duet, UI5 (CLOUD)
+
 ![R3_3](afb/R3_3.png)
 
 ## SAP (2011 - 2014)
@@ -108,6 +113,7 @@ V …
 - HANA Database:
     - Column based, in memory stored database
 - SAP Successfactors
+
 ![R3_4](afb/R3_4.png)
 
 ### SAP 2012:
@@ -115,6 +121,7 @@ V …
 
 ### SAP 2013:
 - HANA Database
+
 ![R3_5](afb/R3_5.png)
 
 ### SAP 2014: 
@@ -135,4 +142,5 @@ V …
             - Deep Learning
         - Cyborgs & Robotics
         - Automation
+
 ![S/4HANA](afb/S4HANA.png)
