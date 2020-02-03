@@ -14,6 +14,8 @@
 
 ## Webservices
 
+- [Overzicht](vakken/J2/Webservices/algemeen.md)
+
 ## Introductie ABAP
 
 ## Introductie Mobile Development
