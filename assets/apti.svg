@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="Layer_1"
+   data-name="Layer 1"
+   viewBox="0 0 249.00498 75.246967"
+   version="1.1"
+   sodipodi:docname="apti.svg"
+   width="88.930351"
+   height="26.873917"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <metadata
+     id="metadata134">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>AP_basis_outline_q</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="3840"
+     inkscape:window-height="2066"
+     id="namedview132"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="4.6659157"
+     inkscape:cx="84.74565"
+     inkscape:cy="117.01935"
+     inkscape:window-x="2293"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Layer_1"
+     scale-x="2.8" />
+  <defs
+     id="defs75">
+    <style
+       id="style73">.cls-1{fill:#b1080f;}.cls-2{fill:#e50609;}.cls-3{fill:#68676c;}</style>
+  </defs>
+  <title
+     id="title77">AP_basis_outline_q</title>
+  <polygon
+     class="cls-2"
+     points="37.59,75.16 37.59,0 0,75.16 "
+     id="polygon81"
+     style="fill:#e50609"
+     transform="translate(0,0.0130007)" />
+  <polygon
+     class="cls-1"
+     points="75.17,75.16 37.59,0 37.59,75.16 "
+     id="polygon83"
+     style="fill:#b1080f"
+     transform="translate(0,0.0130007)" />
+  <path
+     class="cls-2"
+     d="M 108.99,0.0130007 H 82.68 V 52.633001 h 26.31 a 26.31,26.31 0 1 0 0,-52.6200003 z"
+     id="path85"
+     inkscape:connector-curvature="0"
+     style="fill:#e50609" />
+  <rect
+     class="cls-1"
+     x="82.68"
+     width="18.790001"
+     height="75.160004"
+     id="rect87"
+     y="0.013000704"
+     style="fill:#b1080f" />
+  <rect
+     style="fill:#b1080f;fill-opacity:1;stroke-width:1.04373944"
+     id="rect4581"
+     width="18.790001"
+     height="75.160004"
+     x="172.04636"
+     y="0" />
+  <rect
+     style="fill:#e50609;fill-opacity:1;stroke-width:1.98070014"
+     id="rect4583"
+     width="18.789997"
+     height="75.160004"
+     x="0.047398452"
+     y="144.07512"
+     transform="matrix(0,1,1,0,0,0)" />
+  <rect
+     style="fill:#b1080f;fill-opacity:1;stroke-width:0.90334207"
+     id="rect4581-9"
+     width="18.790001"
+     height="56.299824"
+     x="230.21498"
+     y="18.947145" />
+  <rect
+     style="fill:#e50609;fill-opacity:1;stroke-width:0.99034977"
+     id="rect4583-8"
+     width="18.789997"
+     height="18.789989"
+     x="0.15714809"
+     y="230.21498"
+     transform="matrix(0,1,1,0,0,0)" />
+</svg>
