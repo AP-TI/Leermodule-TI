@@ -10,7 +10,7 @@
 - [Semester 1](Jaar2_Semester1.md)
 - [Module 3](Jaar2_Semester2.md)
 
- [![](assets/youtube.svg)](https://apti.be/youtube)
+ [![](assets/youtube.svg)](https://www.youtube.com/channel/UCcZPpgyhpB-o1Q5fXxbN5_w)
  [![](assets/discord.svg)](https://apti.be/discord)
 
 Mogelijk dankzij de inspanningen van onze [contributors](https://github.com/AP-TI-2018-2019/AP_2018-2019/graphs/contributors).
