@@ -1,0 +1,23 @@
+== image:assets/apti.svg[apti] 2018-2019 (Jaar 1)
+
+- link:module1.md[Module 1]
+- link:module2.md[Module 2]
+- link:module3.md[Module 3]
+- link:module4.md[Module 4]
+
+== image:assets/apti.svg[apti] 2019-2020 (Jaar 2)
+
+- link:Jaar2_Semester1.md[Semester 1]
+- link:Jaar2_Semester2.md[Module 3]
+
+link:https://www.youtube.com/channel/UCcZPpgyhpB-o1Q5fXxbN5_w[image:assets/youtube.svg[YouTube]]
+link:https://apti.be/discord[image:assets/discord.svg[Discord]]
+
+Mogelijk dankzij de inspanningen van onze link:https://github.com/AP-TI-2018-2019/AP_2018-2019/graphs/contributors[contributors].
+
+:note-caption: ℹ
+
+[NOTE]
+====
+Onze link:https://apti.be/[website]
+====
