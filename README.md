@@ -14,10 +14,9 @@
 
 - [Semester 1](Uitdovend_Jaar3_Semester1.md)
 
-# ![](assets/apti.svg) 2019-2020 (Jaar 2)
+# Elektronica-ICT 2020-2021 (Jaar 1)
 
-- [Semester 1](Uitdovend_Jaar2_Semester1.md)
-- [Module 3](Uitdovend_Jaar2_Semester2.md)
+- [Semester 1](Nieuw_Jaar1_Semester1.md)
 
 
  [![](assets/youtube.svg)](https://www.youtube.com/channel/UCcZPpgyhpB-o1Q5fXxbN5_w)
