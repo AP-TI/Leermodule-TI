@@ -12,8 +12,7 @@
 
 # ![](assets/apti.svg) 2020-2021 (Jaar 3)
 
-- [Semester 1](Uitdovend_Jaar2_Semester1.md)
-- [Semester 2](Uitdovend_Jaar2_Semester2.md)
+- [Semester 1](Uitdovend_Jaar3_Semester1.md)
 
 # ![](assets/apti.svg) 2019-2020 (Jaar 2)
 
