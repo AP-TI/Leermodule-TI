@@ -14,7 +14,7 @@
 
 ## Webservices
 
-- [Overzicht](vakken/J2/Webservices/algemeen.md)
+- [Overzicht](vakken/Uitdovend_J2/Webservices/algemeen.md)
 
 ## Introductie ABAP
 
