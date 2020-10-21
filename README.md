@@ -8,7 +8,18 @@
 # ![](assets/apti.svg) 2019-2020 (Jaar 2)
 
 - [Semester 1](Uitdovend_Jaar2_Semester1.md)
+- [Module 3](Uitdovend_Jaar2_Module3.md)
+
+# ![](assets/apti.svg) 2020-2021 (Jaar 3)
+
+- [Semester 1](Uitdovend_Jaar2_Semester1.md)
+- [Semester 2](Uitdovend_Jaar2_Semester2.md)
+
+# ![](assets/apti.svg) 2019-2020 (Jaar 2)
+
+- [Semester 1](Uitdovend_Jaar2_Semester1.md)
 - [Module 3](Uitdovend_Jaar2_Semester2.md)
+
 
  [![](assets/youtube.svg)](https://www.youtube.com/channel/UCcZPpgyhpB-o1Q5fXxbN5_w)
  [![](assets/discord.svg)](https://apti.be/discord)
