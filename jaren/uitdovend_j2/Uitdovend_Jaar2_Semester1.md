@@ -2,7 +2,7 @@
 
 ## Design-patterns
 
-- [Oefeningen DP](/jaren/uitdovend_j2/DP/DP.md)
+- [Oefeningen DP](DP/DP.md)
 
 ## Intro-BI
 
@@ -10,21 +10,21 @@
 
 ## Intro-SAP
 
-- [Theorie](jaren/uitdovend_j2/SAP/summary.md)
+- [Theorie](SAP/summary.md)
 
 ## Java
 
-- [Oefeningen](jaren/uitdovend_j2/Java/Oefeningen/algemeen.md)
-- [Theorie](jaren/uitdovend_j2/Java/Theorie/algoritmen.md)
+- [Oefeningen](Java/Oefeningen/algemeen.md)
+- [Theorie](Java/Theorie/algoritmen.md)
 
 ## System and Application Design
 
-- [Oefeningen SAAD](jaren/uitdovend_j2/SAAD/oefeningen.md)
+- [Oefeningen SAAD](SAAD/oefeningen.md)
 
 ## Software engineering
 
-- [Korte samenvatting](jaren/uitdovend_j2/SoftwareEngineering/samenvatting.md)
-- [Lange samenvatting](jaren/uitdovend_j2/SoftwareEngineering/samenvattinglang.md)
+- [Korte samenvatting](SoftwareEngineering/samenvatting.md)
+- [Lange samenvatting](SoftwareEngineering/samenvattinglang.md)
 
 ## Webframeworks
 
@@ -34,4 +34,4 @@
 
 ## Intro ERP
 
-- [Theorie ERP](jaren/uitdovend_j2/ERP/Summary.md)
+- [Theorie ERP](ERP/Summary.md)
